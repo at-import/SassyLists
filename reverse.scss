@@ -1,0 +1,28 @@
+/**
+ * Reverses the order of $list
+ * -------------------------------------------------------------------------------
+ * @example reverse( (a, b, c) )         => c, b, a
+ * @example reverse( (a, b, c a) )       => c a, b, a
+ * @example reverse( (a, b, c a), true ) => a c, b, a
+ * @example reverse( a )                 => a
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $recursive [Boolean] : enable / disable recursivity
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function reverse($list, $recursive: false) {
+   $result: ();
+
+   @for $i from length($list)*-1 through -1 {
+      @if type-of(nth($list, abs($i))) == list and $recursive {
+        $result: append($result, reverse(nth($list, abs($i)), $recursive));      
+      }
+
+      @else {
+        $result: append($result, nth($list, abs($i)));
+      }
+   }
+
+   @return $result;
+}

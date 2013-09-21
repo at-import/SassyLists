@@ -1,0 +1,22 @@
+/**
+ * Sum up all unitless values in $list
+ * -------------------------------------------------------------------------------
+ * @example sum( (1 2 3 4 5) )   => 15
+ * @example sum( (1 a 2 b 3) )   => 6
+ * @example sum( (10px 3em 5%) ) => 0
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * -------------------------------------------------------------------------------
+ * @return [Number]
+ */
+@function sum($list) {
+  $result: 0;
+  
+  @each $item in $list {
+    @if type-of($item) == number and unitless($item) {
+      $result: $result + $item;
+    }
+  }
+  
+  @return $result;
+}

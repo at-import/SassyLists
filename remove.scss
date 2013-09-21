@@ -1,0 +1,29 @@
+/**
+ * Remove value(s) $value from $list
+ * -------------------------------------------------------------------------------
+ * @example remove( (a, b, c),   b )       => a, c
+ * @example remove( (a, b, c),   z )       => a, b, c
+ * @example remove( (a, b, c b), b )       => a, c b
+ * @example remove( (a, b, c b), b, true ) => a, c
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $value [Literal] : value to remove
+ * @param $recursive [Boolean] : enable / disable recursivity
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function remove($list, $value, $recursive: false) {
+  $result: ();
+
+  @for $i from 1 through length($list) {
+    @if type-of(nth($list, $i)) == list and $recursive {
+      $result: append($result, remove(nth($list, $i), $value, $recursive));
+    }
+
+    @else if nth($list, $i) != $value {
+      $result: append($result, nth($list, $i));
+    }
+  }
+
+  @return $result;
+}
