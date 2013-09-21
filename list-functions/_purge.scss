@@ -1,0 +1,21 @@
+/**
+ * Remove all false and null values from $list
+ * -------------------------------------------------------------------------------
+ * @example first( (a, null, b, false, c, null) ) => a, b, c
+ * @example first( (a, b, c) )                    => a, b, c
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function purge($list) {
+  $result: ();
+  
+  @each $item in $list {
+    @if $item != null or $item != false {
+      $result: append($result, $item);
+    }
+  }
+  
+  @return $result;
+}

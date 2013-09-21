@@ -2,6 +2,9 @@
  * A couple of advanced Sass list functions
  * ------------------------------------------------------------------------------- *
  *
+ * purge($list)
+ * Remove all false and null values from $list
+ *
  * first($list)
  * Returns first element of $list
  *
@@ -52,6 +55,7 @@
  * Repository: https://github.com/HugoGiraudel/Sass-snippets/blob/master/src/list-functions/
  * ------------------------------------------------------------------------------- */
 
+@import "list-functions/purge";
 @import "list-functions/first";
 @import "list-functions/last";
 @import "list-functions/last-index";
