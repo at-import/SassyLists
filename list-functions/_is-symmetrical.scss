@@ -2,8 +2,10 @@
  * Test if $list is symmetrical
  * Is only one-level deep
  * -------------------------------------------------------------------------------
- * @example is-symmetrical( (a, b, c, d, e) ) => true
- * @example is-symmetrical( (a, b, c, b, a) ) => false
+ * @dependence `replace-nth()`
+ * -------------------------------------------------------------------------------
+ * @example is-symmetrical( (a, b, c, d, e) ) => false
+ * @example is-symmetrical( (a, b, c, b, a) ) => true
  * @example is-symmetrical( a )               => true
  * @example is-symmetrical( a, b c d, a )     => true
  * -------------------------------------------------------------------------------
@@ -17,7 +19,7 @@
   }
       
   $result: ();
-  
+
   @each $item in $list {
     $result: append($result, $item, space); 
   }
