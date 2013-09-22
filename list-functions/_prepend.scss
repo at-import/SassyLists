@@ -10,5 +10,9 @@
  * @return [List]
  */
 @function prepend($list, $value) {
-  @return join($value, $list);
+  @if $value != "" and $value != null {
+  	@return join($value, $list);
+  }
+  
+  @return $list;
 }
