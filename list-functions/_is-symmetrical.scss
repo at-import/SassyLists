@@ -13,10 +13,6 @@
  * @return [Boolean]
  */
 @function is-symmetrical($list) {
-  @if length($list) == 1 { 
-    @return true; 
-  }
-      
   $result: ();
 
   @each $item in $list {
