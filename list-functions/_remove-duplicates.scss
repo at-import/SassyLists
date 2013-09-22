@@ -1,0 +1,32 @@
+/** 
+ * Remove duplicate values from $list
+ * -------------------------------------------------------------------------------
+ * @example remove-duplicates( (a, b, a, c, b, d, c, e) ) => a, b, c, d, e
+ * @example remove-duplicates( (a, b, (c, c, c)) ) => a, b, c
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $recursive [Boolean] : enable / disable recursivity
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function remove-duplicates($list, $recursive: false) {
+  $result: ();
+  
+  @each $item in $list {
+
+    @if not index($result, $item) {
+
+      @if type-of($item) == list and $recursive {
+        $result: append($result, remove-duplicates($item, $recursive));
+      }
+      
+      @else {
+        $result: append($result, $item);
+      }
+
+    }
+
+  }
+  
+  @return $result;
+}

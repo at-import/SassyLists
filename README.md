@@ -21,5 +21,6 @@ Here are a couple of advanced Sass list functions you may or may not need in you
 * `sum()`: sum all unitless values in list
 * `chunk()`: chunk list into size large lists
 * `count-values()`: count the number of occurrences of each value of list
+* `remove-duplicates()`: remove duplicate values from list
 
-If you ever need to use them in one of your pen at CodePen, just link to http://codepen.io/HugoGiraudel/pen/loAgq as an extra CSS resource. You'll have instant access to all functions. *
+If you ever need to use them in one of your pen at CodePen, just link to http://codepen.io/HugoGiraudel/pen/loAgq as an extra CSS resource. You'll have instant access to all functions.

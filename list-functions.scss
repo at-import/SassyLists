@@ -56,9 +56,12 @@
  * count-values($list)
  * Count the number of occurrences of each value of $list
  *
+ * remove-duplicates($list, $recursive: false)
+ * Remove duplicate values from $list
+ *
  * ------------------------------------------------------------------------------- *
  * CodePen: http://codepen.io/HugoGiraudel/pen/loAgq
- * Repository: https://github.com/HugoGiraudel/Sass-snippets/blob/master/src/list-functions/
+ * Repository: https://github.com/Team-Sass/Sass-list-functions/
  * ------------------------------------------------------------------------------- */
 
 @import "list-functions/purge";
@@ -79,3 +82,4 @@
 @import "list-functions/sum";
 @import "list-functions/chunk";
 @import "list-functions/count-values";
+@import "list-functions/remove-duplicates";
