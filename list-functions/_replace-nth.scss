@@ -1,6 +1,8 @@
 /**
  * Replace value at $index from $list by $value
  * -------------------------------------------------------------------------------
+ * @dependence `remove-nth()`
+ * -------------------------------------------------------------------------------
  * @example replace-nth( (a, b, c),   2, z ) => a, z, c
  * @example replace-nth( (a, b, c),   0, z ) => error
  * @example replace-nth( (a, b, c),  -1, z ) => a, b, z
@@ -18,6 +20,10 @@
  * @return [List] | false
  */
 @function replace-nth($list, $index, $value) {
+  @if $value == "" {
+    @return remove-nth($list, $index);
+  }
+
   $result: false;
       
   @if type-of($index) != number {

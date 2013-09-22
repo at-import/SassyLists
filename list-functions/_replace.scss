@@ -1,6 +1,8 @@
 /** 
  * Replace $old-value by $new-value in $list
  * -------------------------------------------------------------------------------
+ * @dependence `remove()`
+ * -------------------------------------------------------------------------------
  * @example replace( (a, b, c), b, z )         => a, z, c
  * @example replace( (a, b, c), y, z )         => a, b, c
  * @example replace( (a, b, c a), a, z )       => z, b, c z
@@ -14,6 +16,10 @@
  * @return [List]
  */
 @function replace($list, $old-value, $new-value, $recursive: false) {
+  @if $new-value == "" {
+    @return remove($list, $old-value, $recursive);
+  }
+
   $result: ();
 
   @for $i from 1 through length($list) {

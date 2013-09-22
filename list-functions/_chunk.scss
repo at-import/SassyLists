@@ -1,8 +1,9 @@
 /** 
  * Chunk $list into $size large lists
  * -------------------------------------------------------------------------------
- * @example chunk( (a, b, c, d, e),  2 ) => a b, c d, e
- * @example chunk( (a, b, c, d, e),  3 ) => a b c, d e
+ * @example chunk( (a, b, c, d, e), 2 ) => a b, c d, e
+ * @example chunk( (a, b, c, d, e), 3 ) => a b c, d e
+ * @example chunk( a, 3 ) 				=> a
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $size [Number] : length of lists
