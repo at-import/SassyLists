@@ -1,5 +1,5 @@
 /** 
- * Add $value at $index in $list
+ * Chunk $list into $size large lists
  * -------------------------------------------------------------------------------
  * @example chunk( (a, b, c, d, e),  2 ) => a b, c d, e
  * @example chunk( (a, b, c, d, e),  3 ) => a b c, d e
@@ -10,22 +10,22 @@
  * @return [List]
  */
 @function chunk($list, $size) {
-	$result: ();
-	$n: ceil(length($list) / $size);
-	$temp-index: 0;
+  $result: ();
+  $n: ceil(length($list) / $size);
+  $temp-index: 0;
 
-	@for $i from 1 through $n {
-		$temp-list: ();
+  @for $i from 1 through $n {
+    $temp-list: ();
 
-		@for $j from 1 + $temp-index through $size + $temp-index {
-			@if $j <= length($list) {
-				$temp-list: append($temp-list, nth($list, $j));
-			}
-		}
+    @for $j from 1 + $temp-index through $size + $temp-index {
+      @if $j <= length($list) {
+        $temp-list: append($temp-list, nth($list, $j));
+      }
+    }
 
-		$result: append($result, $temp-list);
-		$temp-index: $temp-index + $size;
-	}
+    $result: append($result, $temp-list);
+    $temp-index: $temp-index + $size;
+  }
 
-	@return $result;
+  @return $result;
 }
