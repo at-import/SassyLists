@@ -1,6 +1,8 @@
 /** 
  * Add $value at $index in $list
  * -------------------------------------------------------------------------------
+ * @dependence `purge()`
+ * -------------------------------------------------------------------------------
  * @example insert-nth( (a, b, c),  2, z ) => a, z, b, c
  * @example insert-nth( (a, b, c),  0, z ) => error
  * @example insert-nth( (a, b, c), -1, z ) => error
@@ -39,14 +41,12 @@
         
     @for $i from 1 through length($list) {
       @if $i == $index {
-        @if $value != "" and $value != null {
-          $result: append($result, $value);
-        }
+        $result: append($result, $value);
       }
 
       $result: append($result, nth($list, $i));
     }
   }
 
-  @return $result;
+  @return purge($result);
 }

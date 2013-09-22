@@ -22,17 +22,9 @@
     }
 
     @else {
-      @if $item == $old-value {
-        @if $new-value != "" and $new-value != null {
-          $result: append($result, $new-value);
-        }
-      }
-
-      @else {
-        $result: append($result, $item);
-      }
+      $result: append($result, if($item == $old-value, $new-value, $item));
     }
   }
 
-  @return $result;
+  @return purge($result);
 }

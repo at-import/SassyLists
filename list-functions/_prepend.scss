@@ -1,6 +1,8 @@
 /**
  * Add $value as first index of $list
  * -------------------------------------------------------------------------------
+ * @dependence `purge()`
+ * -------------------------------------------------------------------------------
  * @example prepend( (a, b, c), z )   => z, a, b, c
  * @example prepend( (a, b, c), y z ) => y z, a, b, c
  * -------------------------------------------------------------------------------
@@ -10,9 +12,5 @@
  * @return [List]
  */
 @function prepend($list, $value) {
-  @if $value != "" and $value != null {
-  	@return join($value, $list);
-  }
-  
-  @return $list;
+  @return purge(join($value, $list));
 }
