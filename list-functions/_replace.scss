@@ -1,6 +1,8 @@
 /** 
  * Replace $old-value by $new-value in $list
  * -------------------------------------------------------------------------------
+ * @dependence `purge()`
+ * -------------------------------------------------------------------------------
  * @example replace( (a, b, c), b, z )         => a, z, c
  * @example replace( (a, b, c), y, z )         => a, b, c
  * @example replace( (a, b, c a), a, z )       => z, b, c z

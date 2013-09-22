@@ -1,8 +1,7 @@
 /**
- * Test if $list is symmetrical
- * Is only one-level deep
+ * Test if $list is symmetrical (one-level deep)
  * -------------------------------------------------------------------------------
- * @dependence `replace-nth()`
+ * @dependence `reverse()`
  * -------------------------------------------------------------------------------
  * @example is-symmetrical( (a, b, c, d, e) ) => false
  * @example is-symmetrical( (a, b, c, b, a) ) => true
@@ -24,5 +23,5 @@
     $result: append($result, $item, space); 
   }
       
-  @return $list == reverse($list); 
+  @return $result == reverse($result); 
 }

@@ -14,7 +14,7 @@
 @function reverse($list, $recursive: false) {
   $result: ();
 
-  @for $i from length($list)*-1 through -1 {
+  @for $i from length($list) * -1 through -1 {
     $item: nth($list, abs($i));
 
     @if type-of($item) == list and $recursive {
