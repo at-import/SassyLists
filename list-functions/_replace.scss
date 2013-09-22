@@ -1,8 +1,6 @@
 /** 
  * Replace $old-value by $new-value in $list
  * -------------------------------------------------------------------------------
- * @dependence `remove()`
- * -------------------------------------------------------------------------------
  * @example replace( (a, b, c), b, z )         => a, z, c
  * @example replace( (a, b, c), y, z )         => a, b, c
  * @example replace( (a, b, c a), a, z )       => z, b, c z
@@ -16,24 +14,22 @@
  * @return [List]
  */
 @function replace($list, $old-value, $new-value, $recursive: false) {
-  @if $new-value == "" {
-    @return remove($list, $old-value, $recursive);
-  }
-
   $result: ();
 
-  @for $i from 1 through length($list) {
-    @if type-of(nth($list, $i)) == list and $recursive {
-      $result: append($result, replace(nth($list, $i), $old-value, $new-value, $recursive));
+  @each $item in $list {
+    @if type-of($item) == list and $recursive {
+      $result: append($result, replace($item, $old-value, $new-value, $recursive));
     }
 
     @else {
-      @if nth($list, $i) == $old-value {
-        $result: append($result, $new-value);
+      @if $item == $old-value {
+        @if $new-value != "" and $new-value != null {
+          $result: append($result, $new-value);
+        }
       }
 
       @else {
-        $result: append($result, nth($list, $i));
+        $result: append($result, $item);
       }
     }
   }

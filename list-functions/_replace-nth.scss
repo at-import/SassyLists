@@ -1,8 +1,6 @@
 /**
  * Replace value at $index from $list by $value
  * -------------------------------------------------------------------------------
- * @dependence `remove-nth()`
- * -------------------------------------------------------------------------------
  * @example replace-nth( (a, b, c),   2, z ) => a, z, c
  * @example replace-nth( (a, b, c),   0, z ) => error
  * @example replace-nth( (a, b, c),  -1, z ) => a, b, z
@@ -20,24 +18,20 @@
  * @return [List] | false
  */
 @function replace-nth($list, $index, $value) {
-  @if $value == "" {
-    @return remove-nth($list, $index);
-  }
-
   $result: false;
       
   @if type-of($index) != number {
-    @warn "$index: #{quote($index)} is not a number for `replace-nth`.";
+    @warn "$index: #{quote($index)} is not a number for `replace-nth`/`remove-nth`.";
     @return $result;
   }
 
   @else if $index == 0 {
-    @warn "List index 0 must be a non-zero integer for `replace-nth`.";
+    @warn "List index 0 must be a non-zero integer for `replace-nth`/`remove-nth`.";
     @return $result;
   }
       
   @else if abs($index) > length($list) {
-    @warn "List index is #{$index} but list is only #{length($list)} item long for `replace-nth`.";
+    @warn "List index is #{$index} but list is only #{length($list)} item long for `replace-nth`/`remove-nth`.";
     @return $result;
   }
 
@@ -47,7 +41,9 @@
 
     @for $i from 1 through length($list) {
       @if $i == $index {
-        $result: append($result, $value);
+        @if $value != "" and $value != null {
+          $result: append($result, $value);
+        }
       }
     
       @else {

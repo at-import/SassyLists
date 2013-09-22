@@ -1,6 +1,8 @@
 /**
  * Remove value from $list at index $index
  * -------------------------------------------------------------------------------
+ * @dependence `replace-nth()`
+ * -------------------------------------------------------------------------------
  * @example remove-nth( (a, b, c),   2 ) => a, c
  * @example remove-nth( (a, b, c),   0 ) => error
  * @example remove-nth( (a, b, c),  -1 ) => a, b
@@ -17,33 +19,5 @@
  * @return [List] | false
  */
 @function remove-nth($list, $index) {
-  $result: false;
-        
-  @if type-of($index) != number {
-    @warn "$index: #{quote($index)} is not a number for `remove-nth`.";
-    @return $result;
-  }
-
-  @else if $index == 0 {
-    @warn "List index 0 must be a non-zero integer for `remove-nth`.";
-    @return $result;
-  }
-
-  @else if abs($index) > length($list) {
-    @warn "List index is #{$index} but list is only #{length($list)} item long for `remove-nth`.";
-    @return $result;
-  }
-
-  @else {
-    $result: ();
-    $index: if($index < 0, length($list) + $index + 1, $index);  
-
-    @for $i from 1 through length($list) {
-      @if $i != $index {
-        $result: append($result, nth($list, $i));
-      }
-    }
-  }
-        
-  @return $result;
+  @return replace-nth($list, $index, "");
 }
