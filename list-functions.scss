@@ -6,16 +6,16 @@
  * Remove all false and null values from $list
  *
  * first($list)
- * Returns first element of $list
+ * Return first element of $list
  *
  * last($list)
- * Returns last element of $list
+ * Return last element of $list
  *
  * last-index($list, $value)
- * Returns last index of $value in $list
+ * Return last index of $value in $list
  *
  * to-string($list, $glue: '', $is-nested: false)
- * Joins all elements of $list with $glue
+ * Join all elements of $list with $glue
  *
  * prepend($list, $value)
  * Add $value as first index of $list
@@ -36,10 +36,10 @@
  * Remove value from $list at index $index
  *
  * slice($list, $start: 1, $end: length($list))
- * Slices $list between $start and $end
+ * Slice $list between $start and $end
  *
  * reverse($list, $recursive: false)
- * Reverses the order of $list
+ * Reverse the order of $list
  *
  * loop($list, $value: 1)
  * Shift indexes from $list of $value
@@ -49,6 +49,12 @@
  * 
  * sum($list)
  * Sum up all unitless values in $list
+ *
+ * chunk($list, $size)
+ * Chunk $list into $size large lists
+ *
+ * count-values($list)
+ * Count the number of occurrences of each value of $list
  *
  * ------------------------------------------------------------------------------- *
  * CodePen: http://codepen.io/HugoGiraudel/pen/loAgq
@@ -71,3 +77,5 @@
 @import "list-functions/loop";
 @import "list-functions/is-symmetrical";
 @import "list-functions/sum";
+@import "list-functions/chunk";
+@import "list-functions/count-values";

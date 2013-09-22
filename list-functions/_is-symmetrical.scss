@@ -17,6 +17,7 @@
   }
       
   $result: ();
+  
   @each $item in $list {
     $result: append($result, $item, space); 
   }
