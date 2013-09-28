@@ -47,7 +47,7 @@
  * is-symmetrical($list)
  * Check if $list is symmetrical
  * 
- * sum($list)
+ * sum($list, $force: false)
  * Sum up all unitless values in $list
  *
  * chunk($list, $size)
