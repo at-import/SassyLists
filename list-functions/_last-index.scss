@@ -11,7 +11,7 @@
  */
 @function last-index($list, $value) {
   @for $i from length($list) * -1 through -1 {
-  	$i: abs($i);
+    $i: abs($i);
 
     @if nth($list, $i) == $value {
       @return $i;
