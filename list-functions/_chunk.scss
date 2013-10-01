@@ -11,9 +11,9 @@
  * @return [List]
  */
 @function chunk($list, $size) {
-  $result: ();
   $n: ceil(length($list) / $size);
   $temp-index: 0;
+  $result: ();
 
   @for $i from 1 through $n {
     $temp-list: ();

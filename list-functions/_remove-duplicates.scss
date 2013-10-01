@@ -15,7 +15,7 @@
   @each $item in $list {
 
     @if not index($result, $item) {
-      @if type-of($item) == list and $recursive {
+      @if length($item) > 1 and $recursive {
         $result: append($result, remove-duplicates($item, $recursive));
       }
       

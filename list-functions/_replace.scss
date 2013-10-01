@@ -19,7 +19,7 @@
   $result: ();
 
   @each $item in $list {
-    @if type-of($item) == list and $recursive {
+    @if length($item) > 1 and $recursive {
       $result: append($result, replace($item, $old-value, $new-value, $recursive));
     }
 

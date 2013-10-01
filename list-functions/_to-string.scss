@@ -15,7 +15,7 @@
   $result: null;
 
   @each $item in $list {
-    @if type-of($item) == list {
+    @if length($item) > 1 {
       $result: $result#{to-string($item, $glue, true)};
     }
 

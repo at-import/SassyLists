@@ -2,26 +2,47 @@
  * A couple of advanced Sass list functions
  * ------------------------------------------------------------------------------- *
  *
- * purge($list)
- * Remove all false and null values from $list
+ * chunk($list, $size)
+ * Chunk $list into $size large lists
+ *
+ * count-values($list)
+ * Count the number of occurrences of each value of $list
+ *
+ * debug($list)
+ * Returns $list as a string
  *
  * first($list)
  * Return first element of $list
  *
+ * insert-nth($list, $index, $value)
+ * Add $value at $index in $list
+ *
+ * is-symmetrical($list)
+ * Check if $list is symmetrical
+ * 
  * last($list)
  * Return last element of $list
  *
  * last-index($list, $value)
  * Return last index of $value in $list
  *
- * to-string($list, $glue: '', $is-nested: false)
- * Join all elements of $list with $glue
+ * loop($list, $value: 1)
+ * Shift indexes from $list of $value
  *
  * prepend($list, $value)
  * Add $value as first index of $list
  *
- * insert-nth($list, $index, $value)
- * Add $value at $index in $list
+ * purge($list)
+ * Remove all false and null values from $list
+ *
+ * remove($list, $value, $recursive: false)
+ * Remove value(s) $value from $list
+ *
+ * remove-duplicates($list, $recursive: false)
+ * Remove duplicate values from $list
+ *
+ * remove-nth($list, $index)
+ * Remove value from $list at index $index
  *
  * replace($list, $old-value, $new-value, $recursive: false)
  * Replace $old-value by $new-value in $list
@@ -29,57 +50,40 @@
  * replace-nth($list, $index, $value)
  * Replace value at $index from $list by $value
  *
- * remove($list, $value, $recursive: false)
- * Remove value(s) $value from $list
- *
- * remove-nth($list, $index)
- * Remove value from $list at index $index
+ * reverse($list, $recursive: false)
+ * Reverse the order of $list
  *
  * slice($list, $start: 1, $end: length($list))
  * Slice $list between $start and $end
  *
- * reverse($list, $recursive: false)
- * Reverse the order of $list
- *
- * loop($list, $value: 1)
- * Shift indexes from $list of $value
- *
- * is-symmetrical($list)
- * Check if $list is symmetrical
- * 
  * sum($list, $force: false)
  * Sum up all unitless values in $list
  *
- * chunk($list, $size)
- * Chunk $list into $size large lists
- *
- * count-values($list)
- * Count the number of occurrences of each value of $list
- *
- * remove-duplicates($list, $recursive: false)
- * Remove duplicate values from $list
+ * to-string($list, $glue: '', $is-nested: false)
+ * Join all elements of $list with $glue
  *
  * ------------------------------------------------------------------------------- *
  * CodePen: http://codepen.io/HugoGiraudel/pen/loAgq
  * Repository: https://github.com/Team-Sass/Sass-list-functions/
  * ------------------------------------------------------------------------------- */
 
-@import "list-functions/purge";
-@import "list-functions/first";
-@import "list-functions/last";
-@import "list-functions/last-index";
-@import "list-functions/to-string";
-@import "list-functions/prepend";
-@import "list-functions/insert-nth";
-@import "list-functions/replace";
-@import "list-functions/replace-nth";
-@import "list-functions/remove";
-@import "list-functions/remove-nth";
-@import "list-functions/slice";
-@import "list-functions/reverse";
-@import "list-functions/loop";
-@import "list-functions/is-symmetrical";
-@import "list-functions/sum";
 @import "list-functions/chunk";
 @import "list-functions/count-values";
+@import "list-functions/debug";
+@import "list-functions/first";
+@import "list-functions/insert-nth";
+@import "list-functions/is-symmetrical";
+@import "list-functions/last";
+@import "list-functions/last-index";
+@import "list-functions/loop";
+@import "list-functions/prepend";
+@import "list-functions/purge";
+@import "list-functions/remove";
 @import "list-functions/remove-duplicates";
+@import "list-functions/remove-nth";
+@import "list-functions/replace";
+@import "list-functions/replace-nth";
+@import "list-functions/reverse";
+@import "list-functions/slice";
+@import "list-functions/sum";
+@import "list-functions/to-string";
