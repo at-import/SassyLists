@@ -1,11 +1,11 @@
 Advanced Sass list functions
 ============================
 
-Here are a couple of advanced Sass list functions you may or may not need in your projects. Including:
+Here are a couple of advanced Sass (SCSS) list functions you may or may not need in your projects. Including:
 
 * `chunk()`: chunk list into size large lists
 * `count-values()`: count the number of occurrences of each value of list
-* `debug()`: returns $list as a string
+* `debug()`: returns list as a string
 * `first()`: return first item in list
 * `insert-nth()`: insert value at index
 * `is-symmetrical()`: check if list is symmetrical
