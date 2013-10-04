@@ -24,4 +24,6 @@ Here are a couple of advanced Sass (SCSS) list functions you may or may not need
 * `sum()`: sum all unitless values in list
 * `to-string()`: cast list as string (JS `.join()`)
 
+Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.
+
 If you ever need to use them in one of your pen at CodePen, just link to http://codepen.io/HugoGiraudel/pen/loAgq as an extra CSS resource. You'll have instant access to all functions.
