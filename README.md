@@ -9,7 +9,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 2. Add `require 'ListFunctions'` to your `config.rb`
 3. Import it in your stylesheets with `@import 'ListFunctions'`
 
-## What in there? 
+## What's in there? 
 
 * `chunk()`: chunk list into size large lists
 * `count-values()`: count the number of occurrences of each value of list
@@ -32,9 +32,11 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `sum()`: sum all unitless values in list
 * `to-string()`: cast list as string (JS `.join()`)
 
+If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/Sass-list-functions/tree/master/compass-extension/stylesheets).
+
 ## Requirements
 
-* Sass ~> 3.2
+* Sass ~> 3.2.0
 * Compass ~> 0.12.2 (obviously)
 
 Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.
