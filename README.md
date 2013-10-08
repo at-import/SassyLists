@@ -1,7 +1,15 @@
 Advanced Sass list functions
 ============================
 
-Here are a couple of advanced Sass (SCSS) list functions you may or may not need in your projects. Including:
+Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists.
+
+## How to use it
+
+1. `gem install ListFunctions`
+2. Add `require 'ListFunctions'` to your `config.rb`
+3. Import it in your stylesheets with `@import 'ListFunctions'`
+
+## What in there? 
 
 * `chunk()`: chunk list into size large lists
 * `count-values()`: count the number of occurrences of each value of list
@@ -24,6 +32,14 @@ Here are a couple of advanced Sass (SCSS) list functions you may or may not need
 * `sum()`: sum all unitless values in list
 * `to-string()`: cast list as string (JS `.join()`)
 
+## Requirements
+
+* Sass ~> 3.2
+* Compass ~> 0.12.2 (obviously)
+
 Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.
 
-If you ever need to use them in one of your pen at CodePen, just link to http://codepen.io/HugoGiraudel/pen/loAgq as an extra CSS resource. You'll have instant access to all functions.
+## Also read
+
+* [Advanced Sass list functions](http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/)
+
