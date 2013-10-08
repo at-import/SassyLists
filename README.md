@@ -43,3 +43,6 @@ Some functions depend on other functions. If you include functions individually,
 
 * [Advanced Sass list functions](http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/)
 
+## Credits
+
+A million thanks to [Vinay Raghu](http://viii.in/) for making this Compass extension out of my original work and to [Team-Sass](https://github.com/Team-Sass) for their [Compass Extension template](https://github.com/Team-Sass/Compass-Extension-Template).
