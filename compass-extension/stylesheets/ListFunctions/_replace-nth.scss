@@ -1,0 +1,50 @@
+/**
+ * Replace value at $index from $list by $value
+ * -------------------------------------------------------------------------------
+ * @dependence `purge()`
+ * -------------------------------------------------------------------------------
+ * @example replace-nth( (a, b, c),   2, z ) => a, z, c
+ * @example replace-nth( (a, b, c),   0, z ) => error
+ * @example replace-nth( (a, b, c),  -1, z ) => a, b, z
+ * @example replace-nth( (a, b, c),  10, z ) => error
+ * @example replace-nth( (a, b, c), -10, z ) => error
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $index [Number] : index to update
+ * @param $value [Literal] : new value for index $index
+ * -------------------------------------------------------------------------------
+ * @raise [Error] if $index isn't an integer
+ * @raise [Error] if $index is 0
+ * @raise [Error] if abs value of $index is strictly greater than length of $list
+ * -------------------------------------------------------------------------------
+ * @return [List] | false
+ */
+@function replace-nth($list, $index, $value) {
+  $result: false;
+      
+  @if type-of($index) != number {
+    @warn "$index: #{quote($index)} is not a number for `replace-nth`/`remove-nth`.";
+    @return $result;
+  }
+
+  @else if $index == 0 {
+    @warn "List index 0 must be a non-zero integer for `replace-nth`/`remove-nth`.";
+    @return $result;
+  }
+      
+  @else if abs($index) > length($list) {
+    @warn "List index is #{$index} but list is only #{length($list)} item long for `replace-nth`/`remove-nth`.";
+    @return $result;
+  }
+
+  @else {
+    $result: ();
+    $index: if($index < 0, length($list) + $index + 1, $index);  
+
+    @for $i from 1 through length($list) {
+      $result: append($result, if($i == $index, $value, nth($list, $i)));
+    }
+  }
+ 
+  @return purge($result);
+}
