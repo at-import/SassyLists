@@ -1,0 +1,60 @@
+/**
+ * Slices $list between $start and $end
+ * -------------------------------------------------------------------------------
+ * @example slice( (a, b, c, d),  2, 3 ) => b, c
+ * @example slice( (a, b, c, d),  3, 2 ) => error
+ * @example slice( (a, b, c, d),  3, 5 ) => error
+ * @example slice( (a, b, c, d), -1, 3 ) => error
+ * @example slice( (a, b, c, d),  0, 3 ) => error
+ * @example slice( (a, b, c, d),  3, 3 ) => c
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $start [Number] : start index
+ * @param $end [Number] : end index
+ * -------------------------------------------------------------------------------
+ * @raise [Error] if $start or $end aren't integers
+ * @raise [Error] if $start is greater than $end
+ * @raise [Error] if $start or $end is strictly lesser than 1
+ * @raise [Error] if $start is strictly greater than length of $list
+ * @raise [Error] if $end is strictly greater than length of $list
+ * -------------------------------------------------------------------------------
+ * @return [List] | false
+ */ 
+@function slice($list, $start: 1, $end: length($list)) {
+  $result: false;
+              
+  @if type-of($start) != number or type-of($end) != number {
+    @warn "Either $start or $end are not a number for `slice`.";
+    @return $result;
+  }
+             
+  @else if $start > $end {
+    @warn "The start index has to be lesser than or equals to the end index for `slice`.";
+    @return $result;
+  }
+
+  @else if $start < 1 or $end < 1 {
+    @warn "List indexes must be non-zero integers for `slice`.";
+    @return $result;
+  }
+
+  @else if $start > length($list) {
+    @warn "List index is #{$start} but list is only #{length($list)} item long for `slice`.";
+    @return $result;
+  }
+             
+  @else if $end > length($list) {
+    @warn "List index is #{$end} but list is only #{length($list)} item long for `slice`.";
+    @return $result;
+  }
+  
+  @else {
+    $result: ();
+                
+    @for $i from $start through $end {
+      $result: append($result, nth($list, $i));
+    }
+  }
+
+  @return $result;
+}

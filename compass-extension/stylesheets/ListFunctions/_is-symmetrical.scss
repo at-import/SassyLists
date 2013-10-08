@@ -1,0 +1,23 @@
+/**
+ * Test if $list is symmetrical (one-level deep)
+ * -------------------------------------------------------------------------------
+ * @dependence `reverse()`
+ * -------------------------------------------------------------------------------
+ * @example is-symmetrical( (a, b, c, d, e) ) => false
+ * @example is-symmetrical( (a, b, c, b, a) ) => true
+ * @example is-symmetrical( a )               => true
+ * @example is-symmetrical( a, b c d, a )     => true
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * -------------------------------------------------------------------------------
+ * @return [Boolean]
+ */
+@function is-symmetrical($list) {
+  $result: ();
+
+  @each $item in $list {
+    $result: append($result, $item, space); 
+  }
+      
+  @return $result == reverse($result); 
+}
