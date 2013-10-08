@@ -9,7 +9,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 2. Add `require 'ListFunctions'` to your `config.rb`
 3. Import it in your stylesheets with `@import 'ListFunctions'`
 
-## What in there? 
+## What's in there? 
 
 * `chunk()`: chunk list into size large lists
 * `count-values()`: count the number of occurrences of each value of list
