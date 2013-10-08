@@ -1,0 +1,32 @@
+/** 
+ * Chunk $list into $size large lists
+ * -------------------------------------------------------------------------------
+ * @example chunk( (a, b, c, d, e), 2 ) => a b, c d, e
+ * @example chunk( (a, b, c, d, e), 3 ) => a b c, d e
+ * @example chunk( a, 3 )               => a
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $size [Number] : length of lists
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function chunk($list, $size) {
+  $n: ceil(length($list) / $size);
+  $temp-index: 0;
+  $result: ();
+
+  @for $i from 1 through $n {
+    $temp-list: ();
+
+    @for $j from 1 + $temp-index through $size + $temp-index {
+      @if $j <= length($list) {
+        $temp-list: append($temp-list, nth($list, $j));
+      }
+    }
+
+    $result: append($result, $temp-list);
+    $temp-index: $temp-index + $size;
+  }
+
+  @return $result;
+}

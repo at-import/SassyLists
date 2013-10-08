@@ -1,0 +1,32 @@
+/**
+ * Sum up all unitless values in $list
+ * -------------------------------------------------------------------------------
+ * @example sum( (1 2 3 4 5) )         => 15
+ * @example sum( (1 a 2 b 3) )         => 6
+ * @example sum( (10px 3em 5%) )       => 0
+ * @example sum( (10px 3em 5%, true) ) => 18
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $force [Boolean] : enable / disable parseInt
+ * -------------------------------------------------------------------------------
+ * @return [Number]
+ */
+@function sum($list, $force: false) {
+  $result: 0;
+  
+  @each $item in $list {
+    @if type-of($item) == number {
+
+      @if $force and unit($item) {
+        $item: $item / ($item * 0 + 1);
+      }
+
+      @if unitless($item) {
+        $result: $result + $item;
+      }
+      
+    }
+  }
+  
+  @return $result;
+}
