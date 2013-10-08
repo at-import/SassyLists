@@ -32,9 +32,11 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `sum()`: sum all unitless values in list
 * `to-string()`: cast list as string (JS `.join()`)
 
+If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/Sass-list-functions/tree/master/compass-extension/stylesheets).
+
 ## Requirements
 
-* Sass ~> 3.2
+* Sass ~> 3.2.0
 * Compass ~> 0.12.2 (obviously)
 
 Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.
