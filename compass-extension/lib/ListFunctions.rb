@@ -17,8 +17,8 @@ Compass::Frameworks.register('ListFunctions', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module ListFunctions
-  VERSION = "0.1"
-  DATE = "2013-10-06"
+  VERSION = "0.2"
+  DATE = "2013-10-16"
 end
 
 # This is where any custom SassScript should be placed. The functions will be  

@@ -56,6 +56,9 @@
  * slice($list, $start: 1, $end: length($list))
  * Slice $list between $start and $end
  *
+ * sort($list)
+ * Sort all numeric values in $list
+ *
  * sum($list, $force: false)
  * Sum up all unitless values in $list
  *
@@ -86,5 +89,6 @@
 @import "ListFunctions/replace-nth";
 @import "ListFunctions/reverse";
 @import "ListFunctions/slice";
+@import "ListFunctions/sort";
 @import "ListFunctions/sum";
 @import "ListFunctions/to-string";

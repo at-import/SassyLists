@@ -21,6 +21,7 @@ Here are a couple of advanced Sass (SCSS) list functions you may or may not need
 * `replace-nth()`: replace value at index
 * `reverse()`: reverse list
 * `slice()`: slice list
+* `sort()`: sort list
 * `sum()`: sum all unitless values in list
 * `to-string()`: cast list as string (JS `.join()`)
 

@@ -1,0 +1,42 @@
+/** 
+ * Sort numeric values of $list
+ * -------------------------------------------------------------------------------
+ * @dependence `last()`
+ * @dependence `insert-nth()`
+ * -------------------------------------------------------------------------------
+ * @example sort( (5, 12, 4.7, 6, 69, 6) )            => 4.7, 5, 6, 6, 12, 69
+ * @example sort( (5, 12, 4.7, "8", 6, 14px, 69, 6) ) => 4.7, 5, 6, 6, 12, 69
+ * @example sort( 1 )                                 => 1
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function sort($list) {
+  $result : nth($list, 1);
+  
+  @if length($list) > 1 {
+    @for $i from 2 through length($list) {
+      $item: nth($list, $i);
+      @if type-of($item) == number and unitless($item) { 
+        @if $item > last($result) {
+          $result: append($result, $item);
+        }
+        @else {
+          $index: 0;
+          @for $i from 1 through length($result) {
+            @if $item <= nth($result, $i) {
+              $index: $i;
+            }
+          }
+          $result: insert-nth($result, $index, $item); 
+        }
+      }
+      @else {
+        @warn "Not unitless number found. Omitted.";
+      }
+    }
+  }
+  
+  @return $result;
+}
