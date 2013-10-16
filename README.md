@@ -1,7 +1,10 @@
-SassyLists - Advanced Sass list functions
-=========================================
+# SassyLists
+
+## Advanced Sass list functions
 
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists.
+
+Current version: `0.1.1`.
 
 ## How to use it
 
