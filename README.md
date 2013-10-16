@@ -5,9 +5,9 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 
 ## How to use it
 
-1. `gem install ListFunctions`
-2. Add `require 'ListFunctions'` to your `config.rb`
-3. Import it in your stylesheets with `@import 'ListFunctions'`
+1. `gem install SassyLists`
+2. Add `require 'SassyLists'` to your `config.rb`
+3. Import it in your stylesheets with `@import 'SassyLists'`
 
 ## What's in there? 
 
@@ -29,6 +29,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `replace-nth()`: replace value at index
 * `reverse()`: reverse list
 * `slice()`: slice list
+* `sort()`: sort list
 * `sum()`: sum all unitless values in list
 * `to-string()`: cast list as string (JS `.join()`)
 
