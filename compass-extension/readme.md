@@ -1,5 +1,5 @@
-Advanced Sass list functions
-============================
+SassyLists - Advanced Sass list functions
+=========================================
 
 Here are a couple of advanced Sass (SCSS) list functions you may or may not need in your projects. Including:
 
@@ -27,4 +27,4 @@ Here are a couple of advanced Sass (SCSS) list functions you may or may not need
 
 Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.
 
-If you ever need to use them in one of your pen at CodePen, just link to http://codepen.io/HugoGiraudel/pen/loAgq as an extra CSS resource. You'll have instant access to all functions.
+If you ever need to use them in one of your pen at [CodePen](http://codepen.io), just link to http://codepen.io/HugoGiraudel/pen/loAgq as an extra CSS resource. You'll have instant access to all functions.

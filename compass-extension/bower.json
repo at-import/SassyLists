@@ -1,7 +1,7 @@
 {
-  "name": "ListFunctions",
+  "name": "SassyLists",
   "version": "0.1",
-  "main": "stylesheets/_ListFunctions.scss",
+  "main": "stylesheets/_SassyLists.scss",
   "ignore": [
     "**/.*",
     "node_modules",

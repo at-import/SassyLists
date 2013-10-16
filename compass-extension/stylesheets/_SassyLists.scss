@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------------------- *
- * A couple of advanced Sass list functions
+ * SassyLists - A couple of advanced Sass list functions
  * ------------------------------------------------------------------------------- *
  *
  * chunk($list, $size)
@@ -68,27 +68,27 @@
  * ------------------------------------------------------------------------------- *
  * CodePen (SCSS): http://codepen.io/HugoGiraudel/pen/loAgq
  * CodePen (Sass): http://codepen.io/HugoGiraudel/pen/BskrE
- * Repository: https://github.com/Team-Sass/Sass-ListFunctions/
+ * Repository: https://github.com/Team-Sass/Sass-list-functions/
  * ------------------------------------------------------------------------------- */
 
-@import "ListFunctions/chunk";
-@import "ListFunctions/count-values";
-@import "ListFunctions/debug";
-@import "ListFunctions/first";
-@import "ListFunctions/insert-nth";
-@import "ListFunctions/is-symmetrical";
-@import "ListFunctions/last";
-@import "ListFunctions/last-index";
-@import "ListFunctions/loop";
-@import "ListFunctions/prepend";
-@import "ListFunctions/purge";
-@import "ListFunctions/remove";
-@import "ListFunctions/remove-duplicates";
-@import "ListFunctions/remove-nth";
-@import "ListFunctions/replace";
-@import "ListFunctions/replace-nth";
-@import "ListFunctions/reverse";
-@import "ListFunctions/slice";
-@import "ListFunctions/sort";
-@import "ListFunctions/sum";
-@import "ListFunctions/to-string";
+@import "SassyLists/chunk";
+@import "SassyLists/count-values";
+@import "SassyLists/debug";
+@import "SassyLists/first";
+@import "SassyLists/insert-nth";
+@import "SassyLists/is-symmetrical";
+@import "SassyLists/last";
+@import "SassyLists/last-index";
+@import "SassyLists/loop";
+@import "SassyLists/prepend";
+@import "SassyLists/purge";
+@import "SassyLists/remove";
+@import "SassyLists/remove-duplicates";
+@import "SassyLists/remove-nth";
+@import "SassyLists/replace";
+@import "SassyLists/replace-nth";
+@import "SassyLists/reverse";
+@import "SassyLists/slice";
+@import "SassyLists/sort";
+@import "SassyLists/sum";
+@import "SassyLists/to-string";
