@@ -24,7 +24,8 @@
         }
         @else {
           $index: 0;
-          @for $i from 1 through length($result) {
+          @for $i from length($result)*-1 through -1 {
+            $i: abs($i);
             @if $item <= nth($result, $i) {
               $index: $i;
             }
