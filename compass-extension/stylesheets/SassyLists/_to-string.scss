@@ -7,23 +7,23 @@
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $glue [String] : value to use as a join string
- * @param $is-nested [Boolean] : strictly internal boolean for recursivity
+ * @param $root [Boolean] : strictly internal boolean for recursivity
  * -------------------------------------------------------------------------------
  * @return [String]
  */
-@function to-string($list, $glue: '', $is-nested: false) {
+@function to-string($list, $glue: '', $root: true) {
   $result: null;
 
   @each $item in $list {
     @if length($item) > 1 {
-      $result: $result#{to-string($item, $glue, true)};
+      $result: $result#{to-string($item, $glue, false)};
     }
 
     @else {
-      $condition: index($list, item) != length($list) or $is-nested;
+      $condition: index($list, $item) != length($list) or not $root;
       $result: if($condition, $result#{$item}#{$glue}, $result#{$item});
     }
   }
 
-  @return $result;
+  @return quote($result);
 }

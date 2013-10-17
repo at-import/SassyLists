@@ -6,29 +6,62 @@
  * @example debug( a )               => [ a ]
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
+ * @param $type [List] : enable/disable variables type
+ * @param $root [Boolean] : strictly internal boolean for recursivity
  * -------------------------------------------------------------------------------
  * @return [String]
  */
-@function debug($list) {
-  $result: #{"[ "};
+@function debug($list, $type: false, $root: true) {
+  $result: #{"[ \A "};
 
   @each $item in $list {
+    $result: $result#{"  "};
 
     @if length($item) > 1 {
-      $result: $result#{debug($item)};
+      $result: $result#{debug($item, $type, false)};
     }
 
     @else {
-      $result: $result#{$item};
+      $space: if(not $root, "  ", "");
+      $result: if($type, 
+          $result#{$space}#{"("}#{type-of($item)}#{") "}#{$item}, 
+          $result#{$space}#{$item}
+      );
     }
 
     @if index($list, $item) != length($list) {
-      $result: $result#{", "};
+      $result: $result#{", \A "};
     }
 
-  } 
+  }
 
-  $result: $result#{" ]"};
-
+  $result: if($root, 
+    $result#{"\A"}#{" ]"}, 
+    $result#{"\A"}#{"  "}#{" ]"});
   @return quote($result);
+}
+
+/** 
+ * Mixin displaying clean debug
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $type [List] : enable/disable variables type
+ */
+@mixin debug($list, $type: false) {
+  body:before {
+    content: debug($list, $type)              !important;
+    
+    display: block                            !important;
+    margin: 1em                               !important;
+    padding: .5em                             !important; 
+    
+    background: #EFEFEF                       !important;
+    border: 1px solid #DDD                    !important;
+    border-radius: .2em                       !important;
+    
+    color: #333                               !important;
+    font: .75em/1.5 "Courier New", monospace  !important;
+    text-shadow: 0 1px white                  !important;
+    white-space: pre-wrap                     !important;
+  }
 }
