@@ -30,15 +30,10 @@ Gem::Specification.new do |s|
   # s.files += Dir.glob("templates/**/*.*")
 
   # Gem Bookkeeping
-  # Versions of Ruby and Rubygems you require
   s.required_rubygems_version = ">= 1.3.6"
   s.rubygems_version = %q{1.3.6}
 
   # Gems Dependencies
-  # Gem names and versions that are required for your Compass extension.
-  # These are Gem dependencies, not Compass dependencies. Including gems
-  #  here will make sure the relevant gem and version are installed on the
-  #  user's system when installing your gem.
   s.add_dependency("sass",      [">=3.2.0"])
   s.add_dependency("compass",   [">= 0.12.1"])
 end

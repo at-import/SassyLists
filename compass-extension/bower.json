@@ -7,7 +7,4 @@
     "node_modules",
     "components"
   ]
-  // "dependencies": {
-  //   "dependency": ">=1.0"
-  // }
 }
