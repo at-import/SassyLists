@@ -1,36 +1,21 @@
-# Replace extension with the name of your extension's .rb file
 require './lib/SassyLists'
 
 Gem::Specification.new do |s|
   # Release Specific Information
-  #  Replace SassyLists with the name you used in your SassyLists.rb
-  #   in the mdodule with version and date.
   s.version = SassyLists::VERSION
   s.date = SassyLists::DATE
 
   # Gem Details
-  # Replace "SassyLists" with the name of your extension
   s.name = "SassyLists"
   s.rubyforge_project = "SassyLists"
-  # Description of your extension
   s.description = %q{Advanced Sass list functions}
-  # A summary of your Compass extension. Should be different than Description
   s.summary = %q{A collection of powerful Sass (SCSS) functions to deal with your lists.}
-  # The names of the author(s) of the extension.
-  # If more than one author, comma separate inside of the brackets
   s.authors = ["Hugo Giraudel"]
-  # The email address(es) of the author(s)
-  # If more than one author, comma separate inside of the brackets
   s.email = ["hugo.giraudel@gmail.com"]
-  # URL of the extension
   s.homepage = "https://github.com/Team-Sass/Sass-list-functions"
 
-  # Gem Files
-  # These are the files to be included in your Compass extension.
-  # Uncomment those that you use.
-
   # README file
-  s.files = ["readme.md"]
+  #s.files = ["readme.md"]
 
   # CHANGELOG
   s.files += ["CHANGELOG.md"]

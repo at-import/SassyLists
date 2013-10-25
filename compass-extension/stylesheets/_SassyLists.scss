@@ -35,6 +35,9 @@
  * purge($list)
  * Remove all false and null values from $list
  *
+ * random-value($list)
+ * Return random value from $list
+ *
  * remove($list, $value, $recursive: false)
  * Remove value(s) $value from $list
  *
@@ -82,6 +85,7 @@
 @import "SassyLists/loop";
 @import "SassyLists/prepend";
 @import "SassyLists/purge";
+@import "SassyLists/random-value";
 @import "SassyLists/remove";
 @import "SassyLists/remove-duplicates";
 @import "SassyLists/remove-nth";

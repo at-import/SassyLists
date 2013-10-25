@@ -4,9 +4,7 @@
 #  extension.
 require 'compass'
 
-# This tells Compass what your Compass extension is called, and where to find
-#  its files
-# Replace 'ListFunctions' with the name of your extension. Spaces allowed.
+require 'compass'
 extension_path = File.expand_path(File.join(File.dirname(__FILE__), ".."))
 Compass::Frameworks.register('SassyLists', :path => extension_path)
 
@@ -17,8 +15,8 @@ Compass::Frameworks.register('SassyLists', :path => extension_path)
 #    a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module SassyLists
-  VERSION = "0.1.3"
-  DATE = "2013-10-16"
+  VERSION = "0.2.1"
+  DATE = "2013-10-25"
 end
 
 # This is where any custom SassScript should be placed. The functions will be  
@@ -28,3 +26,9 @@ end
 # module Sass::Script::Functions
 # 
 # end
+
+module Sass::Script::Functions
+  def random(max = Sass::Script::Number.new(100))
+    Sass::Script::Number.new(rand(max.value), max.numerator_units, max.denominator_units)
+  end
+end

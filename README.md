@@ -4,7 +4,7 @@
 
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists.
 
-Current version: `0.1.3`.
+Current version: `0.2.1`.
 
 ## How to use it
 
@@ -25,6 +25,7 @@ Current version: `0.1.3`.
 * `loop()`: shift indexes in list
 * `prepend()`: prepend value to list
 * `purge()`: remove all `false` and `null` values from list
+* `random-value()`: return random value from list
 * `remove()`: remove value in list
 * `remove-duplicates()`: remove duplicate values from list
 * `remove-nth()`: remove value at index
