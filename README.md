@@ -14,28 +14,28 @@ Current version: `0.2.1`.
 
 ## What's in there? 
 
-* `chunk()`: chunk list into size large lists
-* `count-values()`: count the number of occurrences of each value of list
+* `chunk()`: chunks list into size large lists
+* `count-values()`: counts the number of occurrences of each value of list
 * `debug()`: returns list as a string
-* `first()`: return first item in list
-* `insert-nth()`: insert value at index
-* `is-symmetrical()`: check if list is symmetrical
-* `last()`: return last item in list
-* `last-index()`: return last index of value in list
-* `loop()`: shift indexes in list
-* `prepend()`: prepend value to list
-* `purge()`: remove all `false` and `null` values from list
-* `random-value()`: return random value from list
-* `remove()`: remove value in list
-* `remove-duplicates()`: remove duplicate values from list
-* `remove-nth()`: remove value at index
-* `replace()`: replace value in list
-* `replace-nth()`: replace value at index
-* `reverse()`: reverse list
-* `slice()`: slice list
-* `sort()`: sort list
-* `sum()`: sum all unitless values in list
-* `to-string()`: cast list as string (JS `.join()`)
+* `first()`: returns first item in list
+* `insert-nth()`: inserts value at index
+* `is-symmetrical()`: checks if list is symmetrical
+* `last()`: returns last item in list
+* `last-index()`: returns last index of value in list
+* `loop()`: shifts indexes in list
+* `prepend()`: prepends value to list
+* `purge()`: removes all `false` and `null` values from list
+* `random-value()`: returns random value from list
+* `remove()`: removes value in list
+* `remove-duplicates()`: removes duplicate values from list
+* `remove-nth()`: removes value at index
+* `replace()`: replaces value in list
+* `replace-nth()`: replaces value at index
+* `reverse()`: reverses list
+* `slice()`: slices list
+* `sort()`: sorts list
+* `sum()`: sums all unitless values in list
+* `to-string()`: casts list as string (JS `.join()`)
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/Sass-list-functions/tree/master/compass-extension/stylesheets).
 
