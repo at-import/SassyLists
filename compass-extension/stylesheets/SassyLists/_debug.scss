@@ -6,7 +6,7 @@
  * @example debug( a )               => [ a ]
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
- * @param $type [List] : enable/disable variables type
+ * @param $type [Boolean] : enable/disable variables type
  * @param $root [Boolean] : strictly internal boolean for recursivity
  * -------------------------------------------------------------------------------
  * @return [String]
