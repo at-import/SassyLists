@@ -11,33 +11,35 @@
  * -------------------------------------------------------------------------------
  * @return [String]
  */
-@function debug($list, $type: false, $root: true) {
-  $result: #{"[ \A "};
+@function debug($list, $type: true, $root: true) {
+  @if length($list) == 1 {
+    @return if($type, quote("(#{type-of($list)}) #{$list}"), quote("#{$list}"));
+  }
+  
+  $result : if($type, unquote("(list:#{length($list)})[ \A "), unquote("[ \A "));
+  $space  : if($root, "", "  ");
 
   @each $item in $list {
-    $result: $result#{"  "};
+    $result : unquote("#{$result}  ");
 
     @if length($item) > 1 {
-      $result: $result#{debug($item, $type, false)};
+      $result : unquote("#{$result}#{debug($item, $type, false)}");
     }
 
     @else {
-      $space: if(not $root, "  ", "");
-      $result: if($type, 
-          $result#{$space}#{"("}#{type-of($item)}#{") "}#{$item}, 
-          $result#{$space}#{$item}
+      $result : if($type, 
+        unquote("#{$result}#{$space}(#{type-of($item)}) #{$item}"), 
+        unquote("#{$result}#{$space}#{$item}")
       );
     }
 
     @if index($list, $item) != length($list) {
-      $result: $result#{", \A "};
+      $result : unquote("#{$result}, \A ");
     }
 
   }
 
-  $result: if($root, 
-    $result#{"\A"}#{" ]"}, 
-    $result#{"\A"}#{"  "}#{" ]"});
+  $result : unquote("#{$result}\A #{$space}]");
   @return quote($result);
 }
 
@@ -47,7 +49,7 @@
  * @param $list [List] : list
  * @param $type [List] : enable/disable variables type
  */
-@mixin debug($list, $type: false) {
+@mixin debug($list, $type: true) {
   body:before {
     content: debug($list, $type)              !important;
     

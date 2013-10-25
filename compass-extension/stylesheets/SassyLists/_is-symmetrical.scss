@@ -13,11 +13,5 @@
  * @return [Boolean]
  */
 @function is-symmetrical($list) {
-  $result: ();
-
-  @each $item in $list {
-    $result: append($result, $item, space); 
-  }
-      
-  @return $result == reverse($result); 
+  @return reverse($result) == reverse(reverse($result)); 
 }
