@@ -1,6 +1,8 @@
 /**
  * Reverses the order of $list
  * -------------------------------------------------------------------------------
+ * @doc http://sassylists.com/documentation.html#reverse
+ * -------------------------------------------------------------------------------
  * @example reverse( (a, b, c) )         => c, b, a
  * @example reverse( (a, b, c a) )       => c a, b, a
  * @example reverse( (a, b, c a), true ) => a c, b, a

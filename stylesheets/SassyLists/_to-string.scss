@@ -1,6 +1,8 @@
 /**
  * Joins all elements of $list with $glue
  * -------------------------------------------------------------------------------
+ * @doc http://sassylists.com/documentation.html#to-string
+ * -------------------------------------------------------------------------------
  * @example to-string( (a, b, c) )      => abc
  * @example to-string( (a, b, c), '-' ) => a-b-c
  * @example to-string( (a, b c, d) )    => abcd

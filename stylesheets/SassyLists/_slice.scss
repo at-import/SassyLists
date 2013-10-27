@@ -1,6 +1,8 @@
 /**
  * Slices $list between $start and $end
  * -------------------------------------------------------------------------------
+ * @doc http://sassylists.com/documentation.html#slice
+ * -------------------------------------------------------------------------------
  * @example slice( (a, b, c, d),  2, 3 ) => b, c
  * @example slice( (a, b, c, d),  3, 2 ) => error
  * @example slice( (a, b, c, d),  3, 5 ) => error

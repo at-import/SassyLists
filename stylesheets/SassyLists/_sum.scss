@@ -1,6 +1,8 @@
 /**
  * Sum up all unitless values in $list
  * -------------------------------------------------------------------------------
+ * @doc http://sassylists.com/documentation.html#sum
+ * -------------------------------------------------------------------------------
  * @example sum( (1 2 3 4 5) )         => 15
  * @example sum( (1 a 2 b 3) )         => 6
  * @example sum( (10px 3em 5%) )       => 0

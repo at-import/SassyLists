@@ -1,6 +1,8 @@
 /** 
  * Remove duplicate values from $list
  * -------------------------------------------------------------------------------
+ * @doc http://sassylists.com/documentation.html#remove-duplicates
+ * -------------------------------------------------------------------------------
  * @example remove-duplicates( (a, b, a, c, b, d, c, e) ) => a, b, c, d, e
  * @example remove-duplicates( (a, b, (c, c, c)) )        => a, b, c
  * -------------------------------------------------------------------------------
