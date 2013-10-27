@@ -5755,7 +5755,7 @@ section {
 @media (max-height: 860px) {
   /* line 176, ../sass/main.scss */
   .sidebar-nav {
-    max-height: 600px;
+    max-height: 540px;
     overflow: auto;
   }
 }
