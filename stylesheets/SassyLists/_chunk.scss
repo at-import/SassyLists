@@ -1,5 +1,5 @@
 /** 
- * Chunk $list into $size large lists
+ * Chunks $list into $size large lists
  * -------------------------------------------------------------------------------
  * @documentation http://sassylists.com/documentation/#chunk
  * -------------------------------------------------------------------------------
@@ -12,21 +12,21 @@
  * @return [List]
  */
 @function chunk($list, $size) {
-  $n: ceil(length($list) / $size);
-  $temp-index: 0;
+  $n-lists: ceil(length($list) / $size);
+  $tmp-index: 0;
   $result: ();
 
-  @for $i from 1 through $n {
-    $temp-list: ();
+  @for $i from 1 through $n-lists {
+    $tmp-list: ();
 
-    @for $j from 1 + $temp-index through $size + $temp-index {
+    @for $j from 1 + $tmp-index through $size + $tmp-index {
       @if $j <= length($list) {
-        $temp-list: append($temp-list, nth($list, $j));
+        $tmp-list: append($tmp-list, nth($list, $j));
       }
     }
 
-    $result: append($result, $temp-list);
-    $temp-index: $temp-index + $size;
+    $result: append($result, $tmp-list);
+    $tmp-index: $tmp-index + $size;
   }
 
   @return $result;

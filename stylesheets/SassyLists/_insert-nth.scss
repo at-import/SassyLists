@@ -1,5 +1,5 @@
 /** 
- * Add $value at $index in $list
+ * Adds $value at $index in $list
  * -------------------------------------------------------------------------------
  * @documentation http://sassylists.com/documentation/#insert-nth
  * -------------------------------------------------------------------------------
@@ -24,17 +24,17 @@
   $result: false;
       
   @if type-of($index) != number {
-    @warn "$index: #{quote($index)} is not a number for `insert-nth`.";
+    @warn "List index #{quote($index)} is not a number for `insert-nth`.";
     @return $result;
   }
 
   @else if $index < 1 {
-    @warn "List index 0 must be a non-zero integer for `insert-nth`";
+    @warn "List index #{quote($index)} must be a non-zero integer for `insert-nth`";
     @return $result;
   }
 
   @else if $index > length($list) {
-    @warn "List index is #{$index} but list is only #{length($list)} item long for `insert-nth'.";
+    @warn "List index is #{quote($index)} but list is only #{length($list)} items long for `insert-nth'.";
     @return $result;
   }
 

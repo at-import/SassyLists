@@ -1,5 +1,5 @@
 /** 
- * Sort numeric values of $list
+ * Sorts numeric values of $list
  * -------------------------------------------------------------------------------
  * @documentation http://sassylists.com/documentation/#sort
  * -------------------------------------------------------------------------------
@@ -19,28 +19,40 @@
   $result : nth($list, 1);
   
   @if length($list) > 1 {
+
     @for $i from 2 through length($list) {
       $item: nth($list, $i);
+
       @if type-of($item) == number {
+
         @if unitless($item) and $force {
+
           @if $item > last($result) {
             $result: append($result, $item);
           }
+
           @else {
             $index: 0;
+
             @for $i from length($result)*-1 through -1 {
               $i: abs($i);
+              
               @if $item <= nth($result, $i) {
                 $index: $i;
               }
             }
+
             $result: insert-nth($result, $index, $item); 
           }
+
         }
+
         @else {
           @warn "Not unitless number found. Omitted.";
         }
+
       } 
+
       @else {
         @warn "Not integer value found. Omitted.";
       }

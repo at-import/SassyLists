@@ -1,5 +1,5 @@
 /**
- * Replace value at $index from $list by $value
+ * Replaces value at $index from $list by $value
  * -------------------------------------------------------------------------------
  * @documentation http://sassylists.com/documentation/#replace-nth
  * -------------------------------------------------------------------------------
@@ -25,7 +25,7 @@
   $result: false;
       
   @if type-of($index) != number {
-    @warn "$index: #{quote($index)} is not a number for `replace-nth`/`remove-nth`.";
+    @warn "List index #{quote($index)} is not a number for `replace-nth`/`remove-nth`.";
     @return $result;
   }
 
@@ -35,7 +35,7 @@
   }
       
   @else if abs($index) > length($list) {
-    @warn "List index is #{$index} but list is only #{length($list)} item long for `replace-nth`/`remove-nth`.";
+    @warn "List index is #{quote($index)} but list is only #{length($list)} item long for `replace-nth`/`remove-nth`.";
     @return $result;
   }
 
