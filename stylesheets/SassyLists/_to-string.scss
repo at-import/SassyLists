@@ -1,0 +1,29 @@
+/**
+ * Joins all elements of $list with $glue
+ * -------------------------------------------------------------------------------
+ * @example to-string( (a, b, c) )      => abc
+ * @example to-string( (a, b, c), '-' ) => a-b-c
+ * @example to-string( (a, b c, d) )    => abcd
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $glue [String] : value to use as a join string
+ * @param $root [Boolean] : strictly internal boolean for recursivity
+ * -------------------------------------------------------------------------------
+ * @return [String]
+ */
+@function to-string($list, $glue: '', $root: true) {
+  $result: null;
+
+  @each $item in $list {
+    @if length($item) > 1 {
+      $result: $result#{to-string($item, $glue, false)};
+    }
+
+    @else {
+      $condition: index($list, $item) != length($list) or not $root;
+      $result: if($condition, $result#{$item}#{$glue}, $result#{$item});
+    }
+  }
+
+  @return quote($result);
+}

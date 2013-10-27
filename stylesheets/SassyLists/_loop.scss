@@ -1,0 +1,21 @@
+/**
+ * Shift indexes from $list of $value
+ * -------------------------------------------------------------------------------
+ * @example loop( (a, b, c, d, e) )     => e, a, b, c, d
+ * @example loop( (a, b, c, d, e),  2 ) => d, e, a, b, c
+ * @example loop( (a, b, c, d, e), -2 ) => c, d, e, a, b
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * @param $value [Number] : number of position between old and new indexes
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function loop($list, $value: 1) {
+  $result: ();
+    
+  @for $i from 0 to length($list) {
+    $result: append($result, nth($list, ($i - $value) % length($list) + 1));
+  }
+  
+  @return $result;
+}

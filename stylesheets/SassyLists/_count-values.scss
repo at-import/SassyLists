@@ -1,0 +1,33 @@
+/** 
+ * Count the number of occurrences of each value of $list
+ * -------------------------------------------------------------------------------
+ * @dependence `replace-nth()`
+ * -------------------------------------------------------------------------------
+ * @example count-values( (a, b, c, d, e) ) => a 1, b 1, c 1, d 1, e 1
+ * @example count-values( (a, b, c, a, d, b, a, e) ) => a 3, b 2, c 1, d 1, e 1
+ * @example count-values( a ) => a 1
+ * -------------------------------------------------------------------------------
+ * @param $list [List] : list
+ * -------------------------------------------------------------------------------
+ * @return [List]
+ */
+@function count-values($list) {
+  $keys   : ();
+  $counts : ();
+
+  @each $item in $list {
+    $index: index($keys, $item);
+
+    @if not $index {
+      $keys   : append($keys, $item);
+      $counts : append($counts, 1);
+    }
+
+    @else {
+      $count  : nth($counts, $index) + 1;
+      $counts : replace-nth($counts, $index, $count);
+    }
+  }
+
+  @return zip($keys, $counts);
+}
