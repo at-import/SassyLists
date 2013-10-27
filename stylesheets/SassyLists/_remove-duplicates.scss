@@ -1,10 +1,10 @@
 /** 
  * Remove duplicate values from $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#remove-duplicates
+ * @documentation http://sassylists.com/documentation/#remove-duplicates
  * -------------------------------------------------------------------------------
- * @example remove-duplicates( (a, b, a, c, b, d, c, e) ) => a, b, c, d, e
- * @example remove-duplicates( (a, b, (c, c, c)) )        => a, b, c
+ * @example remove-duplicates(a b a c b d c e)   => a, b, c, d, e
+ * @example remove-duplicates(a b (c c c), true) => a, b, c
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $recursive [Boolean] : enable / disable recursivity

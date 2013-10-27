@@ -1,11 +1,10 @@
 /** 
  * Returns $list as a string
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#debug
+ * @documentation http://sassylists.com/documentation/#debug
  * -------------------------------------------------------------------------------
- * @example debug( (a, b, c, d, e) ) => [ a, b, c, d, e ]
- * @example debug( (a b (c d e) ) )  => [ a, b, [ c, d, e ] ]
- * @example debug( a )               => [ a ]
+ * @example debug(a b c d e)   => [ a, b, c, d, e ]
+ * @example debug(a b (c d e)) => [ a, b, [ c, d, e ] ]
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $type [Boolean] : enable/disable variables type

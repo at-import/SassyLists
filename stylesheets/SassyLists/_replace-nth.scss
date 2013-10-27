@@ -1,15 +1,15 @@
 /**
  * Replace value at $index from $list by $value
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#replace-nth
+ * @documentation http://sassylists.com/documentation/#replace-nth
  * -------------------------------------------------------------------------------
  * @dependence `purge()`
  * -------------------------------------------------------------------------------
- * @example replace-nth( (a, b, c),   2, z ) => a, z, c
- * @example replace-nth( (a, b, c),   0, z ) => error
- * @example replace-nth( (a, b, c),  -1, z ) => a, b, z
- * @example replace-nth( (a, b, c),  10, z ) => error
- * @example replace-nth( (a, b, c), -10, z ) => error
+ * @example replace-nth(a b c,   2, z) => a, z, c
+ * @example replace-nth(a b c,   0, z) => error
+ * @example replace-nth(a b c,  10, z) => error
+ * @example replace-nth(a b c,  -1, z) => a, b, z
+ * @example replace-nth(a b c, -10, z) => error
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $index [Number] : index to update

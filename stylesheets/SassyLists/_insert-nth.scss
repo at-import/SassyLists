@@ -1,14 +1,14 @@
 /** 
  * Add $value at $index in $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#insert-nth
+ * @documentation http://sassylists.com/documentation/#insert-nth
  * -------------------------------------------------------------------------------
  * @dependence `purge()`
  * -------------------------------------------------------------------------------
- * @example insert-nth( (a, b, c),  2, z ) => a, z, b, c
- * @example insert-nth( (a, b, c),  0, z ) => error
- * @example insert-nth( (a, b, c), -1, z ) => error
- * @example insert-nth( (a, b, c), 10, z ) => error
+ * @example insert-nth(a b c,  2, z) => a, z, b, c
+ * @example insert-nth(a b c,  0, z) => error
+ * @example insert-nth(a b c, -1, z) => error
+ * @example insert-nth(a b c, 10, z) => error
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $index [Number] : index to add

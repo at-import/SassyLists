@@ -1,10 +1,9 @@
 /**
  * Returns first element of $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#first
+ * @documentation http://sassylists.com/documentation/#first
  * -------------------------------------------------------------------------------
- * @example first( (a, b, c) ) 	=> a
- * @example first( a ) 			=> a
+ * @example first(a b c) => a
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * -------------------------------------------------------------------------------

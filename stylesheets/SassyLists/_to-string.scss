@@ -1,11 +1,11 @@
 /**
  * Joins all elements of $list with $glue
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#to-string
+ * @documentation http://sassylists.com/documentation/#to-string
  * -------------------------------------------------------------------------------
- * @example to-string( (a, b, c) )      => abc
- * @example to-string( (a, b, c), '-' ) => a-b-c
- * @example to-string( (a, b c, d) )    => abcd
+ * @example to-string(a b c)      => abc
+ * @example to-string(a (b c) d)  => abcd
+ * @example to-string(a b c, '-') => a-b-c
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $glue [String] : value to use as a join string

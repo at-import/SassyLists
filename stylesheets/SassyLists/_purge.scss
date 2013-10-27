@@ -1,10 +1,10 @@
 /**
  * Remove all false and null values from $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#purge
+ * @documentation http://sassylists.com/documentation.html#purge
  * -------------------------------------------------------------------------------
- * @example purge( (a, null, b, false, c, null) ) => a, b, c
- * @example purge( (a, b, c) )                    => a, b, c
+ * @example purge(a null b false c) => a, b, c
+ * @example purge(a b c)            => a, b, c
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * -------------------------------------------------------------------------------

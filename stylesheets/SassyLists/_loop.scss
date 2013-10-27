@@ -1,11 +1,11 @@
 /**
  * Shift indexes from $list of $value
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#loop
+ * @documentation http://sassylists.com/documentation/#loop
  * -------------------------------------------------------------------------------
- * @example loop( (a, b, c, d, e) )     => e, a, b, c, d
- * @example loop( (a, b, c, d, e),  2 ) => d, e, a, b, c
- * @example loop( (a, b, c, d, e), -2 ) => c, d, e, a, b
+ * @example loop(a b c d e)     => e, a, b, c, d
+ * @example loop(a b c d e,  2) => d, e, a, b, c
+ * @example loop(a b c d e, -2) => c, d, e, a, b
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $value [Number] : number of position between old and new indexes

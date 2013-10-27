@@ -1,10 +1,10 @@
 /**
  * Returns last index of $value in $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#last-index
+ * @documentation http://sassylists.com/documentation/#last-index
  * -------------------------------------------------------------------------------
- * @example last-index( (a, b, c, a), a ) => 4
- * @example last-index( (a, b, c), z )    => null
+ * @example last-index(a b c a, a) => 4
+ * @example last-index(a b c, z)   => null
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $value [Literal] : value to be searched for

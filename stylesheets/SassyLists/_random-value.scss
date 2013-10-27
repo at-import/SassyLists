@@ -1,11 +1,11 @@
 /** 
  * Returns a random value of $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#random-value
+ * @documentation http://sassylists.com/documentation.html#random-value
  * -------------------------------------------------------------------------------
  * @dependence `rand` (Ruby)
  * -------------------------------------------------------------------------------
- * @example random-value( (a, b, c, d, e) ) => c
+ * @example random-value(a b c d e) => c
  * -------------------------------------------------------------------------------
  * @param $list [List] : List
  * -------------------------------------------------------------------------------

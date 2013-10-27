@@ -1,12 +1,12 @@
 /**
  * Sum up all unitless values in $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#sum
+ * @documentation http://sassylists.com/documentation/#sum
  * -------------------------------------------------------------------------------
- * @example sum( (1 2 3 4 5) )         => 15
- * @example sum( (1 a 2 b 3) )         => 6
- * @example sum( (10px 3em 5%) )       => 0
- * @example sum( (10px 3em 5%, true) ) => 18
+ * @example sum(1 2 3 4 5)         => 15
+ * @example sum(1 a 2 b 3)         => 6
+ * @example sum(10px 3em 5%)       => 0
+ * @example sum(10px 3em 5%, true) => 18
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $force [Boolean] : enable / disable parseInt

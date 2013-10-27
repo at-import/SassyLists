@@ -1,10 +1,9 @@
 /**
  * Returns last element of $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#last
+ * @documentation http://sassylists.com/documentation/#last
  * -------------------------------------------------------------------------------
- * @example last( (a, b, c) ) => c
- * @example last( a )         => a
+ * @example last(a b c) => c
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * -------------------------------------------------------------------------------

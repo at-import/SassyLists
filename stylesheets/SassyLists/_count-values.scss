@@ -1,13 +1,12 @@
 /** 
  * Count the number of occurrences of each value of $list
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#count-values
+ * @documentation http://sassylists.com/documentation/#count-values
  * -------------------------------------------------------------------------------
  * @dependence `replace-nth()`
  * -------------------------------------------------------------------------------
- * @example count-values( (a, b, c, d, e) ) => a 1, b 1, c 1, d 1, e 1
- * @example count-values( (a, b, c, a, d, b, a, e) ) => a 3, b 2, c 1, d 1, e 1
- * @example count-values( a ) => a 1
+ * @example count-values(a b c d e)       => a 1, b 1, c 1, d 1, e 1
+ * @example count-values(a b c a d b a e) => a 3, b 2, c 1, d 1, e 1
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * -------------------------------------------------------------------------------

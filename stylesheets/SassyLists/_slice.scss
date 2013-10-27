@@ -1,14 +1,14 @@
 /**
  * Slices $list between $start and $end
  * -------------------------------------------------------------------------------
- * @doc http://sassylists.com/documentation.html#slice
+ * @documentation http://sassylists.com/documentation/#slice
  * -------------------------------------------------------------------------------
- * @example slice( (a, b, c, d),  2, 3 ) => b, c
- * @example slice( (a, b, c, d),  3, 2 ) => error
- * @example slice( (a, b, c, d),  3, 5 ) => error
- * @example slice( (a, b, c, d), -1, 3 ) => error
- * @example slice( (a, b, c, d),  0, 3 ) => error
- * @example slice( (a, b, c, d),  3, 3 ) => c
+ * @example slice(a b c d,  2, 3) => b, c
+ * @example slice(a b c d,  3, 2) => error
+ * @example slice(a b c d,  3, 5) => error
+ * @example slice(a b c d, -1, 3) => error
+ * @example slice(a b c d,  0, 3) => error
+ * @example slice(a b c d,  3, 3) => c
  * -------------------------------------------------------------------------------
  * @param $list [List] : list
  * @param $start [Number] : start index
