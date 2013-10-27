@@ -74,6 +74,15 @@ section {
 
 .jumbotron {
 	background: none;
+
+	@media (max-width: 992px) { 
+		padding: 0;
+
+		.btn {
+    		display: block;
+    		margin-bottom: .5em;
+		}
+	}
 }
 
 .footer {
@@ -83,30 +92,22 @@ section {
 	li {
 		margin-left: .5em;
 	}
-}
 
-@media (max-width: 992px) {
-	.jumbotron {
-		padding: 0;
-	}
+	@media (max-width: 992px) {
+		p,
+		ul,
+		li {
+	    	float: none !important;
+		}
 
-	.jumbotron .btn {
-    	display: block;
-    	margin-bottom: .5em;
-	}
+		ul,
+		p {
+	    	text-align: center;
+		}
 
-	.footer p,
-	.footer ul,
-	.footer li {
-    	float: none !important;
-	}
-
-	.footer ul, .footer p {
-    	text-align: center;
-	}
-
-	.footer li {
-    	display: inline-block;
+		li {
+	    	display: inline-block;
+		}
 	}
 }
 
@@ -166,6 +167,49 @@ section {
 	margin-bottom: 1em;
 }
 
+/* By default it's not affixed in mobile views, so undo that */
+.sidebar.affix {
+	position: static;
+}
+
+/* All levels of nav */
+.sidebar-nav {
+	margin-bottom: 30px;
+	padding-top:    10px;
+	padding-bottom: 10px;
+	text-shadow: 0 1px 0 #fff;
+	background-color: #f7f5fa;
+
+	@media (max-height: 680px) {
+		max-height: 630px;
+		overflow: auto;
+	}
+
+	> li > a {
+		display: block;
+		color: #716b7a;
+		padding: 5px 20px;
+
+		&:focus,
+		&:hover {
+			text-decoration: none;
+			background-color: #e5e3e9;
+			border-left: 3px solid $blue;
+		}
+	}
+
+	.active,
+	.active:hover,
+	.active:focus {
+		 > a {
+			font-weight: bold;
+			color: $blue;
+			background-color: transparent;
+			border-left: 3px solid $blue;
+		}
+	}
+}
+
 .navbar {
 	border-radius: 0;
 	background: $pink;
@@ -174,46 +218,6 @@ section {
 	a {
 		color: white;
 	}
-}
-
-/* By default it's not affixed in mobile views, so undo that */
-.sidebar.affix {
-  position: static;
-}
-
-/* First level of nav */
-.sidebar  .nav {
-  margin-bottom: 30px;
-  padding-top:    10px;
-  padding-bottom: 10px;
-  text-shadow: 0 1px 0 #fff;
-  background-color: #f7f5fa;
-
-  @media (max-height: 680px) {
-  	max-height: 630px;
-  	overflow: auto;
-  }
-}
-
-/* All levels of nav */
-.sidebar .nav > li > a {
-  display: block;
-  color: #716b7a;
-  padding: 5px 20px;
-}
-.sidebar .nav > li > a:hover,
-.sidebar .nav > li > a:focus {
-  text-decoration: none;
-  background-color: #e5e3e9;
-  border-left: 3px solid $blue;
-}
-.sidebar .nav > .active > a,
-.sidebar .nav > .active:hover > a,
-.sidebar .nav > .active:focus > a {
-  font-weight: bold;
-  color: $blue;
-  background-color: transparent;
-  border-left: 3px solid $blue;
 }
 
 .navbar-nav > li > a:hover {

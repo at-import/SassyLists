@@ -5636,70 +5636,69 @@ section {
 .jumbotron {
   background: none;
 }
-
-/* line 79, ../sass/main.scss */
-.footer {
-  background: #EFEFEF;
-  padding: 1.5em 0 1em 0;
-}
-/* line 83, ../sass/main.scss */
-.footer li {
-  margin-left: .5em;
-}
-
 @media (max-width: 992px) {
-  /* line 89, ../sass/main.scss */
+  /* line 75, ../sass/main.scss */
   .jumbotron {
     padding: 0;
   }
-
-  /* line 93, ../sass/main.scss */
+  /* line 81, ../sass/main.scss */
   .jumbotron .btn {
     display: block;
     margin-bottom: .5em;
   }
+}
 
-  /* line 100, ../sass/main.scss */
+/* line 88, ../sass/main.scss */
+.footer {
+  background: #EFEFEF;
+  padding: 1.5em 0 1em 0;
+}
+/* line 92, ../sass/main.scss */
+.footer li {
+  margin-left: .5em;
+}
+@media (max-width: 992px) {
+  /* line 99, ../sass/main.scss */
   .footer p,
   .footer ul,
   .footer li {
     float: none !important;
   }
-
   /* line 104, ../sass/main.scss */
-  .footer ul, .footer p {
+  .footer ul,
+  .footer p {
     text-align: center;
   }
-
   /* line 108, ../sass/main.scss */
   .footer li {
     display: inline-block;
   }
 }
-/* line 114, ../sass/main.scss */
+
+/* line 115, ../sass/main.scss */
 .function {
   margin-bottom: 5em;
 }
-/* line 117, ../sass/main.scss */
+/* line 118, ../sass/main.scss */
 .function h3 {
   color: #669999;
   text-transform: uppercase;
   font-size: 1em;
 }
 
-/* line 124, ../sass/main.scss */
+/* line 125, ../sass/main.scss */
 .function-name {
   margin-bottom: .5em;
 }
 
-/* line 128, ../sass/main.scss */
+/* line 129, ../sass/main.scss */
 .function-code {
   padding: 1em;
   border-left: 0.3em solid #c6538c;
   background: #EFEFEF;
   margin-bottom: 1em;
 }
-/* line 134, ../sass/main.scss */
+/* line 135, ../sass/main.scss */
 .function-code pre {
   background: none;
   padding: 0;
@@ -5708,56 +5707,45 @@ section {
   margin: 0;
 }
 
-/* line 144, ../sass/main.scss */
+/* line 145, ../sass/main.scss */
 .function-arguments td, .function-arguments th {
   padding-left: 0 !important;
 }
 
-/* line 149, ../sass/main.scss */
+/* line 150, ../sass/main.scss */
 .glyphicon-play {
   color: rgba(102, 153, 153, 0.3);
   padding-left: 1em;
   font-size: .8em;
 }
 
-/* line 155, ../sass/main.scss */
+/* line 156, ../sass/main.scss */
 .sidebar {
   width: 220px;
   margin-top: 1.25em;
 }
 @media (min-width: 992px) {
-  /* line 155, ../sass/main.scss */
+  /* line 156, ../sass/main.scss */
   .sidebar {
     position: fixed;
   }
 }
 
-/* line 164, ../sass/main.scss */
+/* line 165, ../sass/main.scss */
 .sidebar-heading {
   margin-top: 0;
   margin-bottom: 1em;
 }
 
-/* line 169, ../sass/main.scss */
-.navbar {
-  border-radius: 0;
-  background: #c6538c;
-  border-bottom: 0.5em solid #f2d9e6;
-}
-/* line 174, ../sass/main.scss */
-.navbar a {
-  color: white;
-}
-
 /* By default it's not affixed in mobile views, so undo that */
-/* line 180, ../sass/main.scss */
+/* line 171, ../sass/main.scss */
 .sidebar.affix {
   position: static;
 }
 
-/* First level of nav */
-/* line 185, ../sass/main.scss */
-.sidebar .nav {
+/* All levels of nav */
+/* line 176, ../sass/main.scss */
+.sidebar-nav {
   margin-bottom: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
@@ -5765,40 +5753,46 @@ section {
   background-color: #f7f5fa;
 }
 @media (max-height: 680px) {
-  /* line 185, ../sass/main.scss */
-  .sidebar .nav {
+  /* line 176, ../sass/main.scss */
+  .sidebar-nav {
     max-height: 630px;
     overflow: auto;
   }
 }
-
-/* All levels of nav */
-/* line 199, ../sass/main.scss */
-.sidebar .nav > li > a {
+/* line 188, ../sass/main.scss */
+.sidebar-nav > li > a {
   display: block;
   color: #716b7a;
   padding: 5px 20px;
 }
-
-/* line 205, ../sass/main.scss */
-.sidebar .nav > li > a:hover,
-.sidebar .nav > li > a:focus {
+/* line 194, ../sass/main.scss */
+.sidebar-nav > li > a:focus, .sidebar-nav > li > a:hover {
   text-decoration: none;
   background-color: #e5e3e9;
   border-left: 3px solid #669999;
 }
-
-/* line 212, ../sass/main.scss */
-.sidebar .nav > .active > a,
-.sidebar .nav > .active:hover > a,
-.sidebar .nav > .active:focus > a {
+/* line 204, ../sass/main.scss */
+.sidebar-nav .active > a,
+.sidebar-nav .active:hover > a,
+.sidebar-nav .active:focus > a {
   font-weight: bold;
   color: #669999;
   background-color: transparent;
   border-left: 3px solid #669999;
 }
 
-/* line 219, ../sass/main.scss */
+/* line 213, ../sass/main.scss */
+.navbar {
+  border-radius: 0;
+  background: #c6538c;
+  border-bottom: 0.5em solid #f2d9e6;
+}
+/* line 218, ../sass/main.scss */
+.navbar a {
+  color: white;
+}
+
+/* line 223, ../sass/main.scss */
 .navbar-nav > li > a:hover {
   background: none;
   color: #669999;
