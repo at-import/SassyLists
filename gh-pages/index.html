@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SassyLists - Index</title>
+    <link rel='stylesheet' href='stylesheets/main.css'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+    <article>
+
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="glyphicon  glyphicon-align-justify"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">SassyLists</a>
+                </div>
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="documentation.html">Documentation</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://twitter.com/hugogiraudel">@HugoGiraudel</a></li>
+                        <li><a href="https://github.com/Team-Sass/Sass-list-functions">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1>SassyLists <small>0.2.1</small></h1>
+                <p>SassyLists is a Compass Extension providing you all functions you need to manipulate your Sass lists.</p>
+                <p><a class="btn btn-info">Read documentation</a> <a class="btn btn-warning">Contribute on GitHub</a></p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"> 
+
+                    <section class="row">
+                        <div class="col-md-6">
+                            <h2>What's the point?</h2>
+                            <p>Sass lists is a very powerful features. Think of a world where JavaScript wouldn't have any array! Unfortunately, Sass doesn't provide much built-in tools to deal with lists, especially complicated ones.</p>
+                            <p>Here comes SassyLists with about twenty functions to make it simple as a pie to deal with your Sass lists. Try it!</p>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h2>How does it work?</h2>
+                            <p>SassyLists is pure Sass and Compass. No magic Ruby behind it or anything. All functions are built with Sass. Thus, some functions can be a little slow depending on what you're doing with it.</p>
+                            <p>In any case, feel free to have a sneak peek at the code and improve it!</p>
+                        </div>
+                    </section>
+
+                    <section class="row">
+                        <div class="col-md-6">
+                            <h2>How to use it?</h2>
+                            <ol>
+                                <li><code>gem install SassyLists</code></li>
+                                <li>Add <code>require 'SassyLists'</code> to your <code>config.rb</code></li>
+                                <li>Import it in your stylesheets with <code>@import 'SassyLists'</code></li>
+                            </ol>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h2>Requirements</h2>
+                            <ul>
+                                <li><a href="http://sass-lang.com/">Sass</a> ~> 3.2.0</li>
+                                <li><a href="http://compass-style.org/">Compass</a> ~> 0.12.2</li>
+                            </ul>
+                            <p class="alert  alert-warning">Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>What's in there?</h2>
+
+                        <table class="table">
+                            <tr>
+                                <th>Name</th>
+                                <th>Point</th>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#chunk">#</a> <code>chunk</code></td>
+                            	<td>chunks list into size large lists</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#count-values">#</a> <code>count-values</code></td>
+                            	<td>counts the number of occurrences of each value of list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#debug">#</a> <code>debug</code></td>
+                            	<td>returns list as a string</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#first">#</a> <code>first</code></td>
+                            	<td>returns first item in list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#insert-nth">#</a> <code>insert-nth</code></td>
+                            	<td>inserts value at index</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#is-symmetrical">#</a> <code>is-symmetrical</code></td>
+                            	<td>checks if list is symmetrical</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#last">#</a> <code>last</code></td>
+                            	<td>returns last item in list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#last-index">#</a> <code>last-index</code></td>
+                            	<td>returns last index of value in list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#loop">#</a> <code>loop</code></td>
+                            	<td>shifts indexes in list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#prepend">#</a> <code>prepend</code></td>
+                            	<td>prepends value to list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#purge">#</a> <code>purge</code></td>
+                            	<td>removes all false and null values from list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#random-value">#</a> <code>random-value</code></td>
+                            	<td>returns a random value from list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#remove">#</a> <code>remove</code></td>
+                            	<td>removes value in list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#remove-duplicates">#</a> <code>remove-duplicates</code></td>
+                            	<td>removes duplicate values from list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#remove-nth">#</a> <code>remove-nth</code></td>
+                            	<td>remove value at index</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#replace">#</a> <code>replace</code></td>
+                            	<td>replaces value in list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#replace-nth">#</a> <code>replace-nth</code></td>
+                            	<td>replaces value at index</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#reverse">#</a> <code>reverse</code></td>
+                            	<td>reverses list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#slice">#</a> <code>slice</code></td>
+                            	<td>slices list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#sort">#</a> <code>sort</code></td>
+                            	<td>sorts numeric values from list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#sum">#</a> <code>sum</code></td>
+                            	<td>sums all unitless values in list</td>
+                            </tr>
+                            <tr>
+                            	<td><a href="documentation.html#to-string">#</a> <code>to-string</code></td>
+                            	<td>casts list as string (JS .join)</td>
+                            </tr>
+                        </table>
+                    </section>
+
+                    
+
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="pull-left">A million thanks to <a href="http://viii.in/">Vinay Raghu</a> for the help and to <a href="https://github.com/Team-Sass">Team-Sass</a> for their support.</p>
+                <ul class="pull-right  list-unstyled">
+                    <li class="pull-left"><a href="#">@HugoGiraudel</a></li>
+                    <li class="pull-left"><a href="#">GitHub</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </article>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src='js/bootstrap.min.js'></script>
+
+</body>
+</html>

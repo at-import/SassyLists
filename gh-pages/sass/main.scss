@@ -1,0 +1,207 @@
+@import "compass/css3";
+@import "bootstrap";
+
+$pink: #C6538C;
+$blue: #669999;
+
+body {
+	font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
+	color: #555;
+}
+
+a {
+	color: #a3c2c2;
+
+	&:hover {
+		color: #669999;
+	}
+}
+
+.glyphicon-play {
+	color: rgba(102, 153, 153, 0.3);
+	padding-left: 1em;
+	font-size: .8em;
+}
+
+code {
+	color: $pink;
+}
+
+ul {
+	list-style: square;
+}
+
+pre {
+	border: none;
+	border-left: .3em solid silver;
+	border-radius: 0;
+}
+
+section {
+	padding-bottom: 2.5em;
+}
+
+.alert {
+	padding: .5em;
+}
+
+.navbar {
+	border-radius: 0;
+	background: #c6538c;
+	border-bottom: 0.5em solid #f2d9e6;
+}
+.navbar a {
+	color: white !important;
+}
+
+.navbar-nav > li > a:hover {
+	background: none;
+	color: #669999 !important;
+}
+
+.jumbotron {
+	background: none;
+}
+
+.footer {
+	background: #EFEFEF;
+	padding: 1.5em 0 1em 0;
+
+	li {
+		margin-left: .5em;
+	}
+}
+
+@media (max-width: 992px) {
+	.jumbotron {
+		padding: 0;
+	}
+
+	.jumbotron .btn {
+    	display: block;
+    	margin-bottom: .5em;
+	}
+
+	.footer p,
+	.footer ul,
+	.footer li {
+    	float: none !important;
+	}
+
+	.footer ul, .footer p {
+    	text-align: center;
+	}
+
+	.footer li {
+    	display: inline-block;
+	}
+}
+
+
+.function {
+	margin-bottom: 5em; 
+  
+	h3 {
+		color: $blue;
+		text-transform: uppercase;
+		font-size: 1em;
+	}
+}
+
+.function-name {
+	margin-bottom: .5em;
+}
+
+.function-code {
+	padding: 1em;
+	border-left: .3em solid $pink;
+	background: #EFEFEF;
+	margin-bottom: 1em;
+
+	pre {
+		background: none;
+		padding: 0;
+		border: none;
+		float: left;
+		margin: 0;  
+	}
+}
+
+.function-arguments {
+	td, th {
+		padding-left: 0 !important;
+	}
+}
+
+.glyphicon-play {
+    color: rgba($blue, .3);
+    padding-left: 1em;
+    font-size: .8em;
+}
+
+.sidebar {
+	width: 220px;
+ 	margin-top: 1.25em;
+
+ 	h4 {
+		margin: 0;
+	}
+
+	@media (min-width: 992px) {
+		position: fixed;
+	}
+}
+
+.navbar {
+	border-radius: 0;
+	background: $pink;
+	border-bottom: .5em solid lighten($pink, 35%);
+
+	a {
+		color: white;
+	}
+}
+
+/* By default it's not affixed in mobile views, so undo that */
+.sidebar.affix {
+  position: static;
+}
+
+/* First level of nav */
+.sidebar  .nav {
+  margin-top: 1em;
+  margin-bottom: 30px;
+  padding-top:    10px;
+  padding-bottom: 10px;
+  text-shadow: 0 1px 0 #fff;
+  background-color: #f7f5fa;
+  border-radius: 5px;
+}
+
+/* All levels of nav */
+.sidebar .nav > li > a {
+  display: block;
+  color: #716b7a;
+  padding: 5px 20px;
+}
+.sidebar .nav > li > a:hover,
+.sidebar .nav > li > a:focus {
+  text-decoration: none;
+  background-color: #e5e3e9;
+  border-left: 3px solid $blue;
+}
+.sidebar .nav > .active > a,
+.sidebar .nav > .active:hover > a,
+.sidebar .nav > .active:focus > a {
+  font-weight: bold;
+  color: $blue;
+  background-color: transparent;
+  border-left: 3px solid $blue;
+}
+
+.navbar-nav > li > a:hover {
+  background: none;
+  color: $blue;
+}
+
+

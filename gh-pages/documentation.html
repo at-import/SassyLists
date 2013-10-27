@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>SassyLists - Documentation</title>
+    <link rel='stylesheet' href='stylesheets/main.css'>
+    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
+    <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+
+    <article>
+
+        <nav class="navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="glyphicon  glyphicon-align-justify"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">SassyLists</a>
+                </div>
+
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="documentation.html">Documentation</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="https://twitter.com/hugogiraudel">@HugoGiraudel</a></li>
+                        <li><a href="https://github.com/Team-Sass/Sass-list-functions">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="sidebar  affix-top">
+                        <h4 class="sidebar-heading">Choose your weapon</h4>
+                        <nav>
+                            <ul class="list-unstyled  nav  sidebar-nav">
+                                <li><a href="#chunk">chunk</a></li>
+                                <li><a href="#count-values">count-values</a></li>
+                                <li><a href="#debug">debug</a></li>
+                                <li><a href="#debug-mixin">debug (mixin)</a></li>
+                                <li><a href="#first">first</a></li>
+                                <li><a href="#insert-nth">insert-nth</a></li>
+                                <li><a href="#is-symmetrical">is-symmetrical</a></li>
+                                <li><a href="#last">last</a></li>
+                                <li><a href="#last-index">last-index</a></li>
+                                <li><a href="#loop">loop</a></li>
+                                <li><a href="#prepend">prepend</a></li>
+                                <li><a href="#purge">purge</a></li>
+                                <li><a href="#random-value">random-value</a></li>
+                                <li><a href="#remove">remove</a></li>
+                                <li><a href="#remove-duplicates">remove-duplicates</a></li>
+                                <li><a href="#remove-nth">remove-nth</a></li>
+                                <li><a href="#replace">replace</a></li>
+                                <li><a href="#replace-nth">replace-nth</a></li>
+                                <li><a href="#reverse">reverse</a></li>
+                                <li><a href="#slice">slice</a></li>
+                                <li><a href="#sort">sort</a></li>
+                                <li><a href="#sum">sum</a></li>
+                                <li><a href="#to-string">to-string</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <section class="function" id="chunk">
+                        <h2 class="function-name"><code>chunk</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+chunk($list, $size)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_chunk.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Chunks <code>$list</code> into <code>$size</code>large lists.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$size</code>
+                                    </td>
+                                    <td>Number</td>
+                                    <td>-</td>
+                                    <td>length of lists</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>chunk(a b c d e, 2)
+// a b, c d, e</pre>
+                        <pre>chunk(a b c d e, 3) 
+// a b c, d e</pre>
+                    </section>
+
+                    <section class="function" id="count-values">
+                        <h2 class="function-name"><code>count-values</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+count-values($list)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_count-values.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Counts the number of occurrences of each value of <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>replace-nth()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>count-values(a b c a d b a e)
+// a 3, b 2, c 1, d 1, e 1</pre>
+                    </section>
+
+                    <section class="function" id="debug">
+                        <h2 class="function-name"><code>debug</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+debug($list, $type: false, $root: true)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_debug.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns <code>$list</code> as a string. Displays variable types if <code>$type</code> set to true.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$type</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td><code>false</code>
+                                    </td>
+                                    <td>Enable variable types</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$root</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td><code>true</code>
+                                    </td>
+                                    <td>Strictly internal variable; <strong>do not touch</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>String</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>debug(a b c d e) 
+// [ a, b, c, d, e ]</pre>
+                        <pre>debug(a b c d e, true) 
+// [ (string) a, (string) b, (list:3) [ (string) c, (string) d, (string) e ] ]</pre>
+                    </section>
+
+                    <section class="function" id="debug-mixin">
+                        <h2 class="function-name"><code>debug (mixin)</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+@include debug($list, $type: true)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_debug.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Outputs the content of <code>$list</code> as a block in body <code>:before</code> pseudo-element. Displays variable types if <code>$type</code> set to true.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$type</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td><code>true</code>
+                                    </td>
+                                    <td>Enable variable types</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-example">Examples</h3>
+                        <p>Refer to <a href="http://codepen.io/HugoGiraudel/pen/unyBH">this pen</a> for an example.</p>
+                    </section>
+
+                    <section class="function" id="first">
+                        <h2 class="function-name"><code>first</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+first($list)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_first.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns first value of <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Literal</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>first(a b c)
+// a </pre>
+                    </section>
+
+                    <section class="function" id="insert-nth">
+                        <h2 class="function-name"><code>insert-nth</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+insert-nth($list, $index, $value)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_count-values.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Adds <code>$value</code> at <code>$index</code> in <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$index</code>
+                                    </td>
+                                    <td>Number</td>
+                                    <td>-</td>
+                                    <td>index to add to</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$value</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>value to add</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code> | <code>false</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-errors">Raise</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a number</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a non-zero integer</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> can't be greater than list length</li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>insert-nth(a b c, 2, z) 
+// a z b c</pre>
+                        <pre>insert-nth(a b c,  0, z) 
+// false (error)</pre>
+                        <pre>insert-nth(a b c, -1, z) 
+// false (error)</pre>
+                        <pre>insert-nth(a b c, 10, z) 
+// false (error)</pre>
+                    </section>
+
+                    <section class="function" id="is-symmetrical">
+                        <h2 class="function-name"><code>is-symmetrical</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+is-symmetrical($list)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_is-symmetrical.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Checks whether <code>$list</code> is symmetrical.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Boolean</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>reverse()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>is-symmetrical(a b c d e) 
+// false</pre>
+                        <pre>is-symmetrical(a b c b a) 
+// true</pre>
+                        <pre>is-symmetrical((a, b c d, a))
+// true</pre>
+                    </section>
+
+                    <section class="function" id="last">
+                        <h2 class="function-name"><code>last</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+last($list)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_last.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns last element of <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Literal</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>last(a b c) 
+// c</pre>
+                        <pre>last((a b, c d)) 
+// c d</pre>
+                    </section>
+
+                    <section class="function" id="last-index">
+                        <h2 class="function-name"><code>last-index</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+last-index($list, $value)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_last-index.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns last index of <code>$value</code> in <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$value</code>
+                                    </td>
+                                    <td>Literal</td>
+                                    <td>-</td>
+                                    <td>value to search for</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Number</code> | <code>null</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>last-index(a b c a, a) 
+// 4</pre>
+                        <pre>last-index(a b c, z)    
+// null</pre>
+                    </section>
+
+                    <section class="function" id="loop">
+                        <h2 class="function-name"><code>loop</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+loop($list, $value: 1)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_loop.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Shifts indexes from <code>$list</code>  <code>$value</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$value</code>
+                                    </td>
+                                    <td>Number</td>
+                                    <td>1</td>
+                                    <td>number of position between old and new indexes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>loop(a b c d e) 
+//e a b c d</pre>
+                        <pre>loop(a b c d e,  2)
+// d e a b c</pre>
+                        <pre>loop(a b c d e, -2)
+// c d e a b</pre>
+                    </section>
+
+                    <section class="function" id="prepend">
+                        <h2 class="function-name"><code>prepend</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+prepend($list, $value)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_prepend.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Adds <code>$value</code> at index 1 of <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$value</code>
+                                    </td>
+                                    <td>Literal</td>
+                                    <td>-</td>
+                                    <td>value to prepend</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>prepend(a b c, z)
+// z a b c</pre>
+                        <pre>prepend(a b c, y z) 
+// y z a b c</pre>
+                    </section>
+
+                    <section class="function" id="purge">
+                        <h2 class="function-name"><code>purge</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+purge($list)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_purge.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Removes all non true values from <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>purge(a null b false c null) 
+// a b c</pre>
+                    </section>
+
+                    <section class="function" id="random-value">
+                        <h2 class="function-name"><code>random-value</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+random-value($list)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_random-value.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns a random value from <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Literal</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>random()</code> (Ruby)</li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>random-value(a b c) 
+// b</pre>
+                    </section>
+
+                    <section class="function" id="remove">
+                        <h2 class="function-name"><code>remove</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+remove($list, $value, $recursive: false)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_remove.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Removes value(s) <code>$value</code> from <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$value</code>
+                                    </td>
+                                    <td>Literal</td>
+                                    <td>-</td>
+                                    <td>value to remove</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$recursive</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td>false</td>
+                                    <td>recursivity flag</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>replace()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>remove(a b c, b)
+// a, c</pre>
+                        <pre>remove(a b c, z)
+// a, b, c</pre>
+                        <pre>remove((a, b, c b), b)
+// a, c b</pre>
+                        <pre>remove((a, b, c b), b, true)
+// a, c</pre>
+                    </section>
+
+                    <section class="function" id="remove-duplicates">
+                        <h2 class="function-name"><code>remove-duplicates</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+remove-duplicates($list, $recursive: false)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_remove-duplicates.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Removes duplicated values from <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$recursive</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td>false</td>
+                                    <td>recursivity flag</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>remove-duplicates(a b a c b d c e)
+// a, b, c, d, e</pre>
+                        <pre>remove-duplicates((a, b, c c c), true) 
+// a, b, c</pre>
+                    </section>
+
+                    <section class="function" id="remove-nth">
+                        <h2 class="function-name"><code>remove-nth</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+remove-nth($list, $index)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_remove-nth.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Removes value from <code>$list</code> at index <code>$index</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$index</code>
+                                    </td>
+                                    <td>Number</td>
+                                    <td>-</td>
+                                    <td>index to remove</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code> | <code>false</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>replace-nth()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-errors">Raise</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a number</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a non-zero integer</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>abs($index)</code> can't be greater than list length</li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>remove-nth(a b c, 2) 
+// a, c</pre>
+                        <pre>remove-nth(a b c, -1)
+// a, b</pre>
+                        <pre>remove-nth(a b c, 0)
+// false (error)</pre>
+                        <pre>remove-nth(a b c, 10)
+// false (error)</pre>
+                        <pre>remove-nth(a b c, -10)
+// false (error)</pre>
+                    </section>
+
+                    <section class="function" id="replace">
+                        <h2 class="function-name"><code>replace</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+replace($list, $old-value, $new-value, $recursive: false)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_replace.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Replaces <code>$old-value</code> by <code>$new-value</code> in <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$old-value</code>
+                                    </td>
+                                    <td>Literal</td>
+                                    <td>-</td>
+                                    <td>value to udpate</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$new-value</code>
+                                    </td>
+                                    <td>Literal</td>
+                                    <td>-</td>
+                                    <td>new value</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$recursive</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td>false</td>
+                                    <td>recursivity flag</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>replace(a b c, b, z)
+// a, z, c</pre>
+                        <pre>replace(a b c, y, z)
+// a, b, c</pre>
+                        <pre>replace((a, b, c a), a, z)
+// z, b, c z</pre>
+                        <pre>replace((a, b, c a), a, z, true)
+// z, b, c z</pre>
+                    </section>
+
+                    <section class="function" id="replace-nth">
+                        <h2 class="function-name"><code>replace-nth</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+replace-nth($list, $index, $value)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_replace-nth.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Replaces value at <code>$index</code> from <code>$list</code> by <code>$value</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$index</code>
+                                    </td>
+                                    <td>Number</td>
+                                    <td>-</td>
+                                    <td>index to udpate</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$value</code>
+                                    </td>
+                                    <td>Literal</td>
+                                    <td>-</td>
+                                    <td>new value</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code> | <code>false</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-errors">Raise</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a number</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a non-zero integer</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>abs($index)</code> can't be greater than list length</li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>replace-nth(a b c, 2, z)
+// a, z, c</pre>
+                        <pre>replace-nth(a b c, 0, z)
+// false (error)</pre>
+                        <pre>replace-nth(a b c, -1, z)
+// a, b, z</pre>
+                        <pre>replace-nth(a b c, 10, z)
+// false (error)</pre>
+                        <pre>replace-nth(a b c, -10, z)
+// false (error)</pre>
+                    </section>
+
+                    <section class="function" id="reverse">
+                        <h2 class="function-name"><code>reverse</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+reverse($list, $recursive: false)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_reverse.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Reverses the order of <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$recursive</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td><code>false</code>
+                                    </td>
+                                    <td>recursivity flag</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>reverse(a b c)
+// c, b, a</pre>
+                        <pre>reverse((a, b, c a))
+// c a, b, a</pre>
+                        <pre>reverse((a, b, c a), true)
+// a c, b, a</pre>
+                    </section>
+
+                    <section class="function" id="slice">
+                        <h2 class="function-name"><code>slice</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+slice($list, $start: 1, $end: length($list))</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_slice.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Slices <code>$list</code> between <code>$start</code> and <code>$end</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$start</code>
+                                    </td>
+                                    <td>Number</td>
+                                    <td>1</td>
+                                    <td>start index</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$end</code>
+                                    </td>
+                                    <td>Number</td>
+                                    <td><code>length($list)</code>
+                                    </td>
+                                    <td>end index</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code> | <code>false</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-errors">Raise</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$start</code> and <code>$end</code> must be numbers</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$start</code> and <code>$end</code> must be non-zero positive integers</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$start</code> must be lesser or equals to <code>$end</code>
+                            </li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$start</code> and <code>$end</code> must be lesser than or equals to <code>length($list)</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>slice(a b c d,  2, 3)
+// b, c</pre>
+                        <pre>slice(a b c d,  3, 2)
+// false (error)</pre>
+                        <pre>slice(a b c d,  3, 5)
+// false (error)</pre>
+                        <pre>slice(a b c d, -1, 3)
+// false (error)</pre>
+                        <pre>slice(a b c d,  0, 3)
+// false (error)</pre>
+                        <pre>slice(a b c d,  3, 3)
+// c</pre>
+                    </section>
+
+                    <section class="function" id="sort">
+                        <h2 class="function-name"><code>sort</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+sort($list, $force: false)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_sort.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Sorts numeric values from <code>$list</code>. Strips unit if <code>$force</code> is enabled.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$force</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td><code>false</code>
+                                    </td>
+                                    <td>enable unit stripping</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>last()</code>
+                            </li>
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>insert-nth()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-errors">Raise</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Warning]</code> not unitless number found</li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>sort(5 12 4.7 6 69 6)
+// 4.7, 5, 6, 6, 12, 69</pre>
+                        <pre>sort(5 12 4.7 "8" 6 14px 69 6, true)
+// 4.7, 5, 6, 6, 12, 14, 69</pre>
+                    </section>
+
+                    <section class="function" id="sum">
+                        <h2 class="function-name"><code>sum</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+sum($list, $force: false)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_sum.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Sums up all unitless values in <code>$list</code>. Strips unit if <code>$force</code> is enabled.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$force</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td><code>false</code>
+                                    </td>
+                                    <td>enable unit stripping</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Number</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>sum(1 2 3 4 5)
+// 15</pre>
+                        <pre>sum(1 a 2 b 3)
+// 6</pre>
+                        <pre>sum(10px 3em 5%)
+// 0</pre>
+                        <pre>sum(10px 3em 5%, true)
+// 18</pre>
+                    </section>
+
+                    <section class="function" id="to-string">
+                        <h2 class="function-name"><code>to-string</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+to-string($list, $glue: '', $root: true)</pre>
+                            <a href="https://github.com/Team-Sass/Sass-list-functions/blob/master/compass-extension/stylesheets/SassyLists/_to-string.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Joins all elements of <code>$list</code> with <code>$glue</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$glue</code>
+                                    </td>
+                                    <td>String</td>
+                                    <td><code>''</code>
+                                    </td>
+                                    <td>value to use as a join string</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$root</code>
+                                    </td>
+                                    <td>Boolean</td>
+                                    <td><code>true</code>
+                                    </td>
+                                    <td>strictly internal variable; <strong>do not touch</strong>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>String</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>to-string(a b c)
+// abc</pre>
+                        <pre>to-string(a b c, '-' )
+// a-b-c</pre>
+                        <pre>to-string((a, b c, d))
+// abcd</pre>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+
+    </article>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>    
+    <script src='js/bootstrap.min.js'></script>
+
+</body>
+
+</html>
