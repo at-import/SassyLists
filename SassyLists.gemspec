@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary = %q{A collection of powerful Sass (SCSS) functions to deal with your lists.}
   s.authors = ["Hugo Giraudel"]
   s.email = ["hugo.giraudel@gmail.com"]
-  s.homepage = "https://github.com/Team-Sass/Sass-list-functions"
+  s.homepage = "http://sassylists.com/"
 
   # README file
   #s.files = ["readme.md"]
