@@ -2395,10 +2395,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 @font-face {
   font-family: 'Glyphicons Halflings';
   src: url("../fonts/glyphicons-halflings-regular.eot");
-  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), 
-  url("../fonts/glyphicons-halflings-regular.woff") format("woff"), 
-  url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), 
-  url("../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg");
+  src: url("../fonts/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular") format("svg");
 }
 
 /* line 232, ../sass/_bootstrap.scss */
@@ -5553,140 +5550,156 @@ th.visible-print, td.visible-print {
 }
 
 /* line 7, ../sass/main.scss */
+::-webkit-scrollbar {
+  width: .5em;
+  height: .35em;
+}
+
+/* line 12, ../sass/main.scss */
+::-webkit-scrollbar-thumb {
+  background: #aaa;
+}
+
+/* line 16, ../sass/main.scss */
+::-webkit-scrollbar-track {
+  background: rgba(217, 217, 217, 0.5);
+}
+
+/* line 20, ../sass/main.scss */
 body {
   font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
   color: #555;
 }
 
-/* line 12, ../sass/main.scss */
+/* line 25, ../sass/main.scss */
 a {
   color: #a3c2c2;
 }
-/* line 15, ../sass/main.scss */
+/* line 28, ../sass/main.scss */
 a:hover {
   color: #669999;
 }
 
-/* line 20, ../sass/main.scss */
+/* line 33, ../sass/main.scss */
 .glyphicon-play {
   color: rgba(102, 153, 153, 0.3);
   padding-left: 1em;
   font-size: .8em;
 }
 
-/* line 26, ../sass/main.scss */
+/* line 39, ../sass/main.scss */
 code {
   color: #c6538c;
 }
 
-/* line 30, ../sass/main.scss */
+/* line 43, ../sass/main.scss */
 ul {
   list-style: square;
 }
 
-/* line 34, ../sass/main.scss */
+/* line 47, ../sass/main.scss */
 pre {
   border: none;
   border-left: .3em solid silver;
   border-radius: 0;
 }
 
-/* line 40, ../sass/main.scss */
+/* line 53, ../sass/main.scss */
 section {
   padding-bottom: 2.5em;
 }
 
-/* line 44, ../sass/main.scss */
+/* line 57, ../sass/main.scss */
 .alert {
   padding: .5em;
 }
 
-/* line 48, ../sass/main.scss */
+/* line 61, ../sass/main.scss */
 .navbar {
   border-radius: 0;
   background: #c6538c;
   border-bottom: 0.5em solid #f2d9e6;
 }
 
-/* line 53, ../sass/main.scss */
+/* line 66, ../sass/main.scss */
 .navbar a {
   color: white !important;
 }
 
-/* line 57, ../sass/main.scss */
+/* line 70, ../sass/main.scss */
 .navbar-nav > li > a:hover {
   background: none;
   color: #669999 !important;
 }
 
-/* line 62, ../sass/main.scss */
+/* line 75, ../sass/main.scss */
 .jumbotron {
   background: none;
 }
 
-/* line 66, ../sass/main.scss */
+/* line 79, ../sass/main.scss */
 .footer {
   background: #EFEFEF;
   padding: 1.5em 0 1em 0;
 }
-/* line 70, ../sass/main.scss */
+/* line 83, ../sass/main.scss */
 .footer li {
   margin-left: .5em;
 }
 
 @media (max-width: 992px) {
-  /* line 76, ../sass/main.scss */
+  /* line 89, ../sass/main.scss */
   .jumbotron {
     padding: 0;
   }
 
-  /* line 80, ../sass/main.scss */
+  /* line 93, ../sass/main.scss */
   .jumbotron .btn {
     display: block;
     margin-bottom: .5em;
   }
 
-  /* line 87, ../sass/main.scss */
+  /* line 100, ../sass/main.scss */
   .footer p,
   .footer ul,
   .footer li {
     float: none !important;
   }
 
-  /* line 91, ../sass/main.scss */
+  /* line 104, ../sass/main.scss */
   .footer ul, .footer p {
     text-align: center;
   }
 
-  /* line 95, ../sass/main.scss */
+  /* line 108, ../sass/main.scss */
   .footer li {
     display: inline-block;
   }
 }
-/* line 101, ../sass/main.scss */
+/* line 114, ../sass/main.scss */
 .function {
   margin-bottom: 5em;
 }
-/* line 104, ../sass/main.scss */
+/* line 117, ../sass/main.scss */
 .function h3 {
   color: #669999;
   text-transform: uppercase;
   font-size: 1em;
 }
 
-/* line 111, ../sass/main.scss */
+/* line 124, ../sass/main.scss */
 .function-name {
   margin-bottom: .5em;
 }
 
-/* line 115, ../sass/main.scss */
+/* line 128, ../sass/main.scss */
 .function-code {
   padding: 1em;
   border-left: 0.3em solid #c6538c;
   background: #EFEFEF;
   margin-bottom: 1em;
 }
-/* line 121, ../sass/main.scss */
+/* line 134, ../sass/main.scss */
 .function-code pre {
   background: none;
   padding: 0;
@@ -5695,72 +5708,79 @@ section {
   margin: 0;
 }
 
-/* line 131, ../sass/main.scss */
+/* line 144, ../sass/main.scss */
 .function-arguments td, .function-arguments th {
   padding-left: 0 !important;
 }
 
-/* line 136, ../sass/main.scss */
+/* line 149, ../sass/main.scss */
 .glyphicon-play {
   color: rgba(102, 153, 153, 0.3);
   padding-left: 1em;
   font-size: .8em;
 }
 
-/* line 142, ../sass/main.scss */
+/* line 155, ../sass/main.scss */
 .sidebar {
   width: 220px;
   margin-top: 1.25em;
 }
-/* line 146, ../sass/main.scss */
-.sidebar h4 {
-  margin: 0;
-}
 @media (min-width: 992px) {
-  /* line 142, ../sass/main.scss */
+  /* line 155, ../sass/main.scss */
   .sidebar {
     position: fixed;
   }
 }
 
-/* line 155, ../sass/main.scss */
+/* line 164, ../sass/main.scss */
+.sidebar-heading {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+/* line 169, ../sass/main.scss */
 .navbar {
   border-radius: 0;
   background: #c6538c;
   border-bottom: 0.5em solid #f2d9e6;
 }
-/* line 160, ../sass/main.scss */
+/* line 174, ../sass/main.scss */
 .navbar a {
   color: white;
 }
 
 /* By default it's not affixed in mobile views, so undo that */
-/* line 166, ../sass/main.scss */
+/* line 180, ../sass/main.scss */
 .sidebar.affix {
   position: static;
 }
 
 /* First level of nav */
-/* line 171, ../sass/main.scss */
+/* line 185, ../sass/main.scss */
 .sidebar .nav {
-  margin-top: 1em;
   margin-bottom: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
   text-shadow: 0 1px 0 #fff;
   background-color: #f7f5fa;
-  border-radius: 5px;
+}
+@media (max-height: 680px) {
+  /* line 185, ../sass/main.scss */
+  .sidebar .nav {
+    max-height: 630px;
+    overflow: auto;
+  }
 }
 
 /* All levels of nav */
-/* line 182, ../sass/main.scss */
+/* line 199, ../sass/main.scss */
 .sidebar .nav > li > a {
   display: block;
   color: #716b7a;
   padding: 5px 20px;
 }
 
-/* line 188, ../sass/main.scss */
+/* line 205, ../sass/main.scss */
 .sidebar .nav > li > a:hover,
 .sidebar .nav > li > a:focus {
   text-decoration: none;
@@ -5768,7 +5788,7 @@ section {
   border-left: 3px solid #669999;
 }
 
-/* line 195, ../sass/main.scss */
+/* line 212, ../sass/main.scss */
 .sidebar .nav > .active > a,
 .sidebar .nav > .active:hover > a,
 .sidebar .nav > .active:focus > a {
@@ -5778,7 +5798,7 @@ section {
   border-left: 3px solid #669999;
 }
 
-/* line 202, ../sass/main.scss */
+/* line 219, ../sass/main.scss */
 .navbar-nav > li > a:hover {
   background: none;
   color: #669999;

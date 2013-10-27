@@ -4,6 +4,19 @@
 $pink: #C6538C;
 $blue: #669999;
 
+::-webkit-scrollbar {
+	width: .5em;
+	height: .35em;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #aaa;
+}
+
+::-webkit-scrollbar-track {
+	background: rgba(217,217,217,0.5);
+}
+
 body {
 	font: 1.6em/1.35 'Ubuntu', 'Helvetica', sans-serif;
 	color: #555;
@@ -143,13 +156,14 @@ section {
 	width: 220px;
  	margin-top: 1.25em;
 
- 	h4 {
-		margin: 0;
-	}
-
 	@media (min-width: 992px) {
 		position: fixed;
 	}
+}
+
+.sidebar-heading {
+	margin-top: 0;
+	margin-bottom: 1em;
 }
 
 .navbar {
@@ -169,13 +183,16 @@ section {
 
 /* First level of nav */
 .sidebar  .nav {
-  margin-top: 1em;
   margin-bottom: 30px;
   padding-top:    10px;
   padding-bottom: 10px;
   text-shadow: 0 1px 0 #fff;
   background-color: #f7f5fa;
-  border-radius: 5px;
+
+  @media (max-height: 680px) {
+  	max-height: 630px;
+  	overflow: auto;
+  }
 }
 
 /* All levels of nav */
