@@ -408,7 +408,7 @@ is-symmetrical($list)</pre>
 // false</pre>
                         <pre>is-symmetrical(a b c b a) 
 // true</pre>
-                        <pre>is-symmetrical((a, b c d, a))
+                        <pre>is-symmetrical(a (b c d) a)
 // true</pre>
                     </section>
 
@@ -541,7 +541,7 @@ loop($list, $value: 1)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>loop(a b c d e) 
-//e a b c d</pre>
+// e a b c d</pre>
                         <pre>loop(a b c d e,  2)
 // d e a b c</pre>
                         <pre>loop(a b c d e, -2)
@@ -634,7 +634,7 @@ purge($list)</pre>
                             </li>
                         </ul>
                         <h3 class="function-example">Examples</h3>
-                        <pre>purge(a null b false c null) 
+                        <pre>purge(a null b false c) 
 // a b c</pre>
                     </section>
 
@@ -734,13 +734,13 @@ remove($list, $value, $recursive: false)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>remove(a b c, b)
-// a, c</pre>
+// a c</pre>
                         <pre>remove(a b c, z)
-// a, b, c</pre>
-                        <pre>remove((a, b, c b), b)
-// a, c b</pre>
-                        <pre>remove((a, b, c b), b, true)
-// a, c</pre>
+// a b c</pre>
+                        <pre>remove(a b (c b), b)
+// a (c b)</pre>
+                        <pre>remove(a b (c b), b, true)
+// a c</pre>
                     </section>
 
                     <section class="function" id="remove-duplicates">
@@ -785,9 +785,9 @@ remove-duplicates($list, $recursive: false)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>remove-duplicates(a b a c b d c e)
-// a, b, c, d, e</pre>
-                        <pre>remove-duplicates((a, b, c c c), true) 
-// a, b, c</pre>
+// a b c d e</pre>
+                        <pre>remove-duplicates(a b (c c c), true) 
+// a b c</pre>
                     </section>
 
                     <section class="function" id="remove-nth">
@@ -843,9 +843,9 @@ remove-nth($list, $index)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>remove-nth(a b c, 2) 
-// a, c</pre>
+// a c</pre>
                         <pre>remove-nth(a b c, -1)
-// a, b</pre>
+// a b</pre>
                         <pre>remove-nth(a b c, 0)
 // false (error)</pre>
                         <pre>remove-nth(a b c, 10)
@@ -915,13 +915,13 @@ replace($list, $old-value, $new-value, $recursive: false)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>replace(a b c, b, z)
-// a, z, c</pre>
+// a z c</pre>
                         <pre>replace(a b c, y, z)
-// a, b, c</pre>
-                        <pre>replace((a, b, c a), a, z)
-// z, b, c z</pre>
-                        <pre>replace((a, b, c a), a, z, true)
-// z, b, c z</pre>
+// a b c</pre>
+                        <pre>replace(a b (c a), a, z)
+// z b (c a)</pre>
+                        <pre>replace(a b (c a), a, z, true)
+// z b (c z)</pre>
                     </section>
 
                     <section class="function" id="replace-nth">
@@ -984,11 +984,11 @@ replace-nth($list, $index, $value)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>replace-nth(a b c, 2, z)
-// a, z, c</pre>
+// a z c</pre>
                         <pre>replace-nth(a b c, 0, z)
 // false (error)</pre>
                         <pre>replace-nth(a b c, -1, z)
-// a, b, z</pre>
+// a b z</pre>
                         <pre>replace-nth(a b c, 10, z)
 // false (error)</pre>
                         <pre>replace-nth(a b c, -10, z)
@@ -1038,11 +1038,11 @@ reverse($list, $recursive: false)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>reverse(a b c)
-// c, b, a</pre>
-                        <pre>reverse((a, b, c a))
-// c a, b, a</pre>
-                        <pre>reverse((a, b, c a), true)
-// a c, b, a</pre>
+// c b a</pre>
+                        <pre>reverse(a b (c a))
+// (c a) b a</pre>
+                        <pre>reverse(a b (c a), true)
+// (a c) b a</pre>
                     </section>
 
                     <section class="function" id="slice">
@@ -1104,7 +1104,7 @@ slice($list, $start: 1, $end: length($list))</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>slice(a b c d,  2, 3)
-// b, c</pre>
+// b c</pre>
                         <pre>slice(a b c d,  3, 2)
 // false (error)</pre>
                         <pre>slice(a b c d,  3, 5)
@@ -1171,9 +1171,9 @@ sort($list, $force: false)</pre>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>sort(5 12 4.7 6 69 6)
-// 4.7, 5, 6, 6, 12, 69</pre>
+// 4.7 5 6 6 12 69</pre>
                         <pre>sort(5 12 4.7 "8" 6 14px 69 6, true)
-// 4.7, 5, 6, 6, 12, 14, 69</pre>
+// 4.7 5 6 6 12 14 69</pre>
                     </section>
 
                     <section class="function" id="sum">
@@ -1281,9 +1281,9 @@ to-string($list, $glue: '', $root: true)</pre>
                         <h3 class="function-example">Examples</h3>
                         <pre>to-string(a b c)
 // abc</pre>
-                        <pre>to-string(a b c, '-' )
+                        <pre>to-string(a b c, '-')
 // a-b-c</pre>
-                        <pre>to-string((a, b c, d))
+                        <pre>to-string(a (b c) d)
 // abcd</pre>
                     </section>
 
