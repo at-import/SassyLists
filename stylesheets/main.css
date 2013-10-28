@@ -5724,7 +5724,7 @@ section {
   width: 220px;
   margin-top: 1.25em;
 }
-@media (min-width: 992px) {
+@media (min-width: 992px) and (min-height: 900px) {
   /* line 156, ../sass/main.scss */
   .sidebar {
     position: fixed;
@@ -5752,26 +5752,19 @@ section {
   text-shadow: 0 1px 0 #fff;
   background-color: #f7f5fa;
 }
-@media (max-height: 860px) {
-  /* line 176, ../sass/main.scss */
-  .sidebar-nav {
-    max-height: 540px;
-    overflow: auto;
-  }
-}
-/* line 188, ../sass/main.scss */
+/* line 183, ../sass/main.scss */
 .sidebar-nav > li > a {
   display: block;
   color: #716b7a;
   padding: 5px 20px;
 }
-/* line 194, ../sass/main.scss */
+/* line 189, ../sass/main.scss */
 .sidebar-nav > li > a:focus, .sidebar-nav > li > a:hover {
   text-decoration: none;
   background-color: #e5e3e9;
   border-left: 3px solid #669999;
 }
-/* line 204, ../sass/main.scss */
+/* line 199, ../sass/main.scss */
 .sidebar-nav .active > a,
 .sidebar-nav .active:hover > a,
 .sidebar-nav .active:focus > a {
@@ -5781,18 +5774,18 @@ section {
   border-left: 3px solid #669999;
 }
 
-/* line 213, ../sass/main.scss */
+/* line 208, ../sass/main.scss */
 .navbar {
   border-radius: 0;
   background: #c6538c;
   border-bottom: 0.5em solid #f2d9e6;
 }
-/* line 218, ../sass/main.scss */
+/* line 213, ../sass/main.scss */
 .navbar a {
   color: white;
 }
 
-/* line 223, ../sass/main.scss */
+/* line 218, ../sass/main.scss */
 .navbar-nav > li > a:hover {
   background: none;
   color: #669999;

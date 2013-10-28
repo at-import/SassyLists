@@ -157,7 +157,7 @@ section {
 	width: 220px;
  	margin-top: 1.25em;
 
-	@media (min-width: 992px) {
+	@media (min-width: 992px) and (min-height: 900px) {
 		position: fixed;
 	}
 }
@@ -179,11 +179,6 @@ section {
 	padding-bottom: 10px;
 	text-shadow: 0 1px 0 #fff;
 	background-color: #f7f5fa;
-
-	@media (max-height: 860px) {
-		max-height: 540px;
-		overflow: auto;
-	}
 
 	> li > a {
 		display: block;
