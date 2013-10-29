@@ -1,22 +1,21 @@
-/** 
- * Replaces $old-value by $new-value in $list
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation.html#replace
- * -------------------------------------------------------------------------------
- * @dependence `purge()`
- * -------------------------------------------------------------------------------
- * @example replace( (a, b, c), b, z )         => a, z, c
- * @example replace( (a, b, c), y, z )         => a, b, c
- * @example replace( (a, b, c a), a, z )       => z, b, c z
- * @example replace( (a, b, c a), a, z, true ) => z, b, c z
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $old-value [Literal] : value to replace
- * @param $new-value [Literal] : new value for $old-value
- * @param $recursive [Boolean] : enable / disable recursivity
- * -------------------------------------------------------------------------------
- * @return [List]
- */
+// Replaces $old-value by $new-value in $list
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation.html#replace
+// -------------------------------------------------------------------------------
+// @dependence `purge()`
+// -------------------------------------------------------------------------------
+// @example replace( (a, b, c), b, z )         => a, z, c
+// @example replace( (a, b, c), y, z )         => a, b, c
+// @example replace( (a, b, c a), a, z )       => z, b, c z
+// @example replace( (a, b, c a), a, z, true ) => z, b, c z
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $old-value [Literal] : value to replace
+// @param $new-value [Literal] : new value for $old-value
+// @param $recursive [Boolean] : enable / disable recursivity
+// -------------------------------------------------------------------------------
+// @return [List]
+
 @function replace($list, $old-value, $new-value, $recursive: false) {
   $result: ();
 

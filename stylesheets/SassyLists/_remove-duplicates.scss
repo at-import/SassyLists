@@ -1,16 +1,15 @@
-/** 
- * Removes duplicate values from $list
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#remove-duplicates
- * -------------------------------------------------------------------------------
- * @example remove-duplicates(a b a c b d c e)   => a, b, c, d, e
- * @example remove-duplicates(a b (c c c), true) => a, b, c
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $recursive [Boolean] : enable / disable recursivity
- * -------------------------------------------------------------------------------
- * @return [List]
- */
+// Removes duplicate values from $list
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#remove-duplicates
+// -------------------------------------------------------------------------------
+// @example remove-duplicates(a b a c b d c e)   => a, b, c, d, e
+// @example remove-duplicates(a b (c c c), true) => a, b, c
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $recursive [Boolean] : enable / disable recursivity
+// -------------------------------------------------------------------------------
+// @return [List]
+
 @function remove-duplicates($list, $recursive: false) {
   $result: ();
   

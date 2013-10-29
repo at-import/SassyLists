@@ -1,18 +1,17 @@
-/**
- * Adds $value as first index of $list
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#prepend
- * -------------------------------------------------------------------------------
- * @dependence `purge()`
- * -------------------------------------------------------------------------------
- * @example prepend(a b c, z)   => z, a, b, c
- * @example prepend(a b c, y z) => y z, a, b, c
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $value [Literal] : value to prepend to the list
- * -------------------------------------------------------------------------------
- * @return [List]
- */
+// Adds $value as first index of $list
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#prepend
+// -------------------------------------------------------------------------------
+// @dependence `purge()`
+// -------------------------------------------------------------------------------
+// @example prepend(a b c, z)   => z, a, b, c
+// @example prepend(a b c, y z) => y z, a, b, c
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $value [Literal] : value to prepend to the list
+// -------------------------------------------------------------------------------
+// @return [List]
+
 @function prepend($list, $value) {
   @return purge(join($value, $list));
 }

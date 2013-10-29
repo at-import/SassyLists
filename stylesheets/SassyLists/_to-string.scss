@@ -1,18 +1,17 @@
-/**
- * Joins all elements of $list with $glue
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#to-string
- * -------------------------------------------------------------------------------
- * @example to-string(a b c)      => abc
- * @example to-string(a (b c) d)  => abcd
- * @example to-string(a b c, '-') => a-b-c
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $glue [String] : value to use as a join string
- * @param $root [Boolean] : strictly internal boolean for recursivity
- * -------------------------------------------------------------------------------
- * @return [String]
- */
+// Joins all elements of $list with $glue
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#to-string
+// -------------------------------------------------------------------------------
+// @example to-string(a b c)      => abc
+// @example to-string(a (b c) d)  => abcd
+// @example to-string(a b c, '-') => a-b-c
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $glue [String] : value to use as a join string
+// @param $root [Boolean] : strictly internal boolean for recursivity
+// -------------------------------------------------------------------------------
+// @return [String]
+
 @function to-string($list, $glue: '', $root: true) {
   $result: null;
 

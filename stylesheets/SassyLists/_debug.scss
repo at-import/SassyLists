@@ -1,17 +1,16 @@
-/** 
- * Returns $list as a string
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#debug
- * -------------------------------------------------------------------------------
- * @example debug(a b c d e)   => [ a, b, c, d, e ]
- * @example debug(a b (c d e)) => [ a, b, [ c, d, e ] ]
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $type [Boolean] : enable/disable variables type
- * @param $root [Boolean] : strictly internal boolean for recursivity
- * -------------------------------------------------------------------------------
- * @return [String]
- */
+// Returns $list as a string
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#debug
+// -------------------------------------------------------------------------------
+// @example debug(a b c d e)   => [ a, b, c, d, e ]
+// @example debug(a b (c d e)) => [ a, b, [ c, d, e ] ]
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $type [Boolean] : enable/disable variables type
+// @param $root [Boolean] : strictly internal boolean for recursivity
+// -------------------------------------------------------------------------------
+// @return [String]
+
 @function debug($list, $type: true, $root: true) {
   @if length($list) == 1 {
     @return if($type, quote("(#{type-of($list)}) #{$list}"), quote("#{$list}"));
@@ -45,11 +44,11 @@
 }
 
 /** 
- * Mixin displaying clean debug
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $type [List] : enable/disable variables type
- */
+// Mixin displaying clean debug
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $type [List] : enable/disable variables type
+///
 @mixin debug($list, $type: true) {
   body:before {
     content: debug($list, $type)              !important;

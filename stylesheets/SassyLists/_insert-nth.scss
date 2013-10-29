@@ -1,25 +1,24 @@
-/** 
- * Adds $value at $index in $list
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#insert-nth
- * -------------------------------------------------------------------------------
- * @dependence `purge()`
- * -------------------------------------------------------------------------------
- * @example insert-nth(a b c,  2, z) => a, z, b, c
- * @example insert-nth(a b c,  0, z) => error
- * @example insert-nth(a b c, -1, z) => error
- * @example insert-nth(a b c, 10, z) => error
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $index [Number] : index to add
- * @param $value [Literal] : value to add
- * -------------------------------------------------------------------------------
- * @raise [Error] if $index isn't an integer
- * @raise [Error] if $index is strictly lesser than 1
- * @raise [Error] if $index is strictly greater than length of $list
- * -------------------------------------------------------------------------------
- * @return [List] | false
- */
+// Adds $value at $index in $list
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#insert-nth
+// -------------------------------------------------------------------------------
+// @dependence `purge()`
+// -------------------------------------------------------------------------------
+// @example insert-nth(a b c,  2, z) => a, z, b, c
+// @example insert-nth(a b c,  0, z) => error
+// @example insert-nth(a b c, -1, z) => error
+// @example insert-nth(a b c, 10, z) => error
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $index [Number] : index to add
+// @param $value [Literal] : value to add
+// -------------------------------------------------------------------------------
+// @raise [Error] if $index isn't an integer
+// @raise [Error] if $index is strictly lesser than 1
+// @raise [Error] if $index is strictly greater than length of $list
+// -------------------------------------------------------------------------------
+// @return [List] | false
+
 @function insert-nth($list, $index, $value) {
   $result: false;
       

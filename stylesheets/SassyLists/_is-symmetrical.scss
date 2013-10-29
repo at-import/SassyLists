@@ -1,18 +1,17 @@
-/**
- * Checks whether $list is symmetrical (one-level deep)
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#is-symmetrical
- * -------------------------------------------------------------------------------
- * @dependence `reverse()`
- * -------------------------------------------------------------------------------
- * @example is-symmetrical(a b c d e)   => false
- * @example is-symmetrical(a b c b a)   => true
- * @example is-symmetrical(a (b c d) a) => true
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * -------------------------------------------------------------------------------
- * @return [Boolean]
- */
+// Checks whether $list is symmetrical (one-level deep)
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#is-symmetrical
+// -------------------------------------------------------------------------------
+// @dependence `reverse()`
+// -------------------------------------------------------------------------------
+// @example is-symmetrical(a b c d e)   => false
+// @example is-symmetrical(a b c b a)   => true
+// @example is-symmetrical(a (b c d) a) => true
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// -------------------------------------------------------------------------------
+// @return [Boolean]
+
 @function is-symmetrical($list) {
   @return reverse($list) == reverse(reverse($list));  
 }

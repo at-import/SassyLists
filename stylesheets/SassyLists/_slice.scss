@@ -1,27 +1,26 @@
-/**
- * Slices $list between $start and $end
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#slice
- * -------------------------------------------------------------------------------
- * @example slice(a b c d,  2, 3) => b, c
- * @example slice(a b c d,  3, 2) => error
- * @example slice(a b c d,  3, 5) => error
- * @example slice(a b c d, -1, 3) => error
- * @example slice(a b c d,  0, 3) => error
- * @example slice(a b c d,  3, 3) => c
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $start [Number] : start index
- * @param $end [Number] : end index
- * -------------------------------------------------------------------------------
- * @raise [Error] if $start or $end aren't integers
- * @raise [Error] if $start is greater than $end
- * @raise [Error] if $start or $end is strictly lesser than 1
- * @raise [Error] if $start is strictly greater than length of $list
- * @raise [Error] if $end is strictly greater than length of $list
- * -------------------------------------------------------------------------------
- * @return [List] | false
- */ 
+// Slices $list between $start and $end
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#slice
+// -------------------------------------------------------------------------------
+// @example slice(a b c d,  2, 3) => b, c
+// @example slice(a b c d,  3, 2) => error
+// @example slice(a b c d,  3, 5) => error
+// @example slice(a b c d, -1, 3) => error
+// @example slice(a b c d,  0, 3) => error
+// @example slice(a b c d,  3, 3) => c
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $start [Number] : start index
+// @param $end [Number] : end index
+// -------------------------------------------------------------------------------
+// @raise [Error] if $start or $end aren't integers
+// @raise [Error] if $start is greater than $end
+// @raise [Error] if $start or $end is strictly lesser than 1
+// @raise [Error] if $start is strictly greater than length of $list
+// @raise [Error] if $end is strictly greater than length of $list
+// -------------------------------------------------------------------------------
+// @return [List] | false
+
 @function slice($list, $start: 1, $end: length($list)) {
   $result: false;
               

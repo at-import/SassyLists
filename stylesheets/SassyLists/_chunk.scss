@@ -1,16 +1,15 @@
-/** 
- * Chunks $list into $size large lists
- * -------------------------------------------------------------------------------
- * @documentation http://sassylists.com/documentation/#chunk
- * -------------------------------------------------------------------------------
- * @example chunk(a b c d e, 2) => a b, c d, e
- * @example chunk(a b c d e, 3) => a b c, d e
- * -------------------------------------------------------------------------------
- * @param $list [List] : list
- * @param $size [Number] : length of lists
- * -------------------------------------------------------------------------------
- * @return [List]
- */
+// Chunks $list into $size large lists
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#chunk
+// -------------------------------------------------------------------------------
+// @example chunk(a b c d e, 2) => a b, c d, e
+// @example chunk(a b c d e, 3) => a b c, d e
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $size [Number] : length of lists
+// -------------------------------------------------------------------------------
+// @return [List]
+
 @function chunk($list, $size) {
   $n-lists: ceil(length($list) / $size);
   $tmp-index: 0;

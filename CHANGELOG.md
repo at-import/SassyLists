@@ -1,5 +1,6 @@
 # Changelog
 
+* `0.2.2`: moving all comments to invisible
 * `0.2.1`: fixing an issue with `random-value()`
 * `0.2.0`: adding `random-value()`
 * `0.1.4`: fixing an issue with `sort()`, `is-symmetrical()`
