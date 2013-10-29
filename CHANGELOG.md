@@ -1,5 +1,6 @@
 # Changelog
 
+* `0.2.3`: fixing important issues with comments
 * `0.2.2`: moving all comments to invisible
 * `0.2.1`: fixing an issue with `random-value()`
 * `0.2.0`: adding `random-value()`

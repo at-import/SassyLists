@@ -33,7 +33,7 @@
           @else {
             $index: 0;
 
-            @for $i from length($result)*-1 through -1 {
+            @for $i from length($result) * -1 through -1 {
               $i: abs($i);
               
               @if $item <= nth($result, $i) {
