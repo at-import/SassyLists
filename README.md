@@ -37,7 +37,7 @@ Current version: `0.2.3`.
 * `sum()`: sums all unitless values in list
 * `to-string()`: casts list as string (JS `.join()`)
 
-If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/Sass-list-functions/tree/master/compass-extension/stylesheets).
+If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 
 ## Requirements
 
