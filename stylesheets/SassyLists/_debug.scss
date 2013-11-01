@@ -6,63 +6,67 @@
 // @example debug(a b (c d e)) => [ a, b, [ c, d, e ] ]
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $type [Boolean] : enable/disable variables type
-// @param $root [Boolean] : strictly internal boolean for recursivity
+// @param $pre [Boolean] : enable/disable variables type and proper indentation
+// @param $level [Number] : internal variable for recursivity
 // -------------------------------------------------------------------------------
 // @return [String]
 
-@function debug($list, $type: true, $root: true) {
-  @if length($list) == 1 {
-    @return if($type, quote("(#{type-of($list)}) #{$list}"), quote("#{$list}"));
-  }
-  
-  $result : if($type, unquote("(list:#{length($list)})[ \A "), unquote("[ \A "));
-  $space  : if($root, "", "  ");
+@function debug($list, $pre: false, $level: 1) {
+    @debug $level;
+    $tab    : "    ";
+    $indent : "";
+    $break  : if($pre, "\A ", "");
 
-  @each $item in $list {
-    $result : unquote("#{$result}  ");
-
-    @if length($item) > 1 {
-      $result : unquote("#{$result}#{debug($item, $type, false)}");
+    @for $i from 1 to $level {
+      $indent : $indent + $tab;
     }
 
-    @else {
-      $result : if($type, 
-        unquote("#{$result}#{$space}(#{type-of($item)}) #{$item}"), 
-        unquote("#{$result}#{$space}#{$item}")
-      );
+    $result: "[" + $break;
+
+    @each $item in $list {
+        $result: $result + if($pre, $indent + $tab, " ");
+
+        @if length($item) > 1 {
+            $result: $result 
+                + if($pre, "(list: " + length($item) + ") ", "") 
+                + debug($item, $pre, $level + 1);
+        }
+
+        @else {
+            $result: $result
+                + if($pre, "(" + type-of($item) + ") ", "") 
+                + $item;
+        }
+
+        @if index($list, $item) != length($list) {
+            $result: $result + "," + $break;
+        }
     }
 
-    @if index($list, $item) != length($list) {
-      $result : unquote("#{$result}, \A ");
-    }
+    $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
 
-  }
-
-  $result : unquote("#{$result}\A #{$space}]");
-  @return quote($result);
+    @return quote($result);
 }
 
 // Mixin displaying clean debug
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $type [List] : enable/disable variables type
 
-@mixin debug($list, $type: true) {
-  body:before {
-    content: debug($list, $type)              !important;
-    
-    display: block                            !important;
-    margin: 1em                               !important;
-    padding: .5em                             !important; 
-    
-    background: #EFEFEF                       !important;
-    border: 1px solid #DDD                    !important;
-    border-radius: .2em                       !important;
-    
-    color: #333                               !important;
-    font: .75em/1.5 "Courier New", monospace  !important;
-    text-shadow: 0 1px white                  !important;
-    white-space: pre-wrap                     !important;
-  }
+@mixin debug($list) {
+    body:before {
+        content: debug($list, true)              !important;
+
+        display: block                            !important;
+        margin: 1em                               !important;
+        padding: .5em                             !important; 
+
+        background: #EFEFEF                       !important;
+        border: 1px solid #DDD                    !important;
+        border-radius: .2em                       !important;
+
+        color: #333                               !important;
+        font: .75em/1.5 "Courier New", monospace  !important;
+        text-shadow: 0 1px white                  !important;
+        white-space: pre-wrap                     !important;
+    }
 }
