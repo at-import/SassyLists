@@ -9,5 +9,5 @@
 // @return [Literal]
 
 @function first($list) {
-  @return nth($list, 1);
+	@return nth($list, 1);
 }

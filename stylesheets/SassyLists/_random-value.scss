@@ -11,5 +11,5 @@
 // @return [Literal]
 
 @function random-value($list) {
-  @return nth($list, random(length($list)) + 1);
+	@return nth($list, random(length($list)) + 1);
 }

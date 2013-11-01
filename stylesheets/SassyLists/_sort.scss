@@ -1,7 +1,8 @@
-// Sorts numeric values of $list
+// Sorts values of $list
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#sort
 // -------------------------------------------------------------------------------
+// @dependence `compare()`
 // @dependence `last()`
 // @dependence `insert-nth()`
 // -------------------------------------------------------------------------------
@@ -10,53 +11,50 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
-// @raise [Warning] if not unitless number found
+// @raise [Warning] if nested list found
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function sort($list, $force: false) {
-  $result : nth($list, 1);
-  
-  @if length($list) > 1 {
+@function sort($list, $matrix: null) {
+    @if dependencies("_compare", "last", "insert-nth") {
+        $result: nth($list, 1);
+        $matrix: if($matrix != null, $matrix, 
+            " " "!" "\"" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" ":" ";" "<" "=" ">" "?" "@" "[" "\\" "]" "^" "_"
+            "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" 
+            "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+        );
 
-    @for $i from 2 through length($list) {
-      $item: nth($list, $i);
+        @for $i from 2 through length($list) {
+            $item: nth($list, $i);
 
-      @if type-of($item) == number {
+            @if length($item) == 1 {
+                @if not _compare($item, last($result), $matrix) {
+                    $result: append($result, $item);
+                }
 
-        @if unitless($item) and $force {
+                @else {
+                    $index: 1;
+                    
+                    @for $j from length($result) * -1 through -1 {
+                        @if _compare($item, nth($result, abs($j)), $matrix) {
+                            $index: abs($j);
+                        }
+                    }
 
-          @if $item > last($result) {
-            $result: append($result, $item);
-          }
-
-          @else {
-            $index: 0;
-
-            @for $i from length($result) * -1 through -1 {
-              $i: abs($i);
-              
-              @if $item <= nth($result, $i) {
-                $index: $i;
-              }
+                    $result: insert-nth($result, $index, $item);
+                }
             }
 
-            $result: insert-nth($result, $index, $item); 
-          }
-
+            @else {
+                @warn "List found. Omitted.";
+            }
         }
 
-        @else {
-          @warn "Not unitless number found. Omitted.";
-        }
-
-      } 
-
-      @else {
-        @warn "Not integer value found. Omitted.";
-      }
+        @return $result;
     }
-  }
-  
-  @return $result;
+
+    @else {
+        @warn "A function is missing for `sort`. Please make sure you're including all dependencies.";
+        @return false;
+    }
 }

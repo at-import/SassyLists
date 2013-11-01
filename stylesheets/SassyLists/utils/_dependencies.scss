@@ -1,0 +1,15 @@
+// Dependency checker
+// -------------------------------------------------------------------------------
+// @param $args [List] : name of required functions
+// -------------------------------------------------------------------------------
+// @return [Boolean]
+
+@function dependencies($args...) {
+	$return: true;
+	@each $function in $args {
+		@if not function_exists($function) {
+			$return: false;
+		}
+	}
+	@return $return;
+}

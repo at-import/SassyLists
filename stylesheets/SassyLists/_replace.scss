@@ -17,17 +17,24 @@
 // @return [List]
 
 @function replace($list, $old-value, $new-value, $recursive: false) {
-  $result: ();
+    @if dependencies("purge") {
+        $result: ();
 
-  @each $item in $list {
-    @if length($item) > 1 and $recursive {
-      $result: append($result, replace($item, $old-value, $new-value, $recursive));
+        @each $item in $list {
+            @if length($item) > 1 and $recursive {
+                $result: append($result, replace($item, $old-value, $new-value, $recursive));
+            }
+
+            @else {
+                $result: append($result, if($item == $old-value, $new-value, $item));
+            }
+        }
+
+        @return purge($result);
     }
 
     @else {
-      $result: append($result, if($item == $old-value, $new-value, $item));
+        @warn "A function is missing for `replace`. Please make sure you're including all dependencies.";
+        @return false;
     }
-  }
-
-  @return purge($result);
 }

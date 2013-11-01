@@ -12,19 +12,19 @@
 // @return [List]
 
 @function reverse($list, $recursive: false) {
-  $result: ();
+    $result: ();
 
-  @for $i from length($list) * -1 through -1 {
-    $item: nth($list, abs($i));
+    @for $i from length($list) * -1 through -1 {
+        $item: nth($list, abs($i));
 
-    @if length($item) > 1 and $recursive {
-      $result: append($result, reverse($item, $recursive));      
+        @if length($item) > 1 and $recursive {
+            $result: append($result, reverse($item, $recursive));      
+        }
+
+        @else {
+            $result: append($result, $item);
+        }
     }
 
-    @else {
-      $result: append($result, $item);
-    }
-  }
-
-  @return $result;
+    @return $result;
 }

@@ -21,31 +21,12 @@
 // @return [List] | false
 
 @function replace-nth($list, $index, $value) {
-  $result: false;
-      
-  @if type-of($index) != number {
-    @warn "List index #{quote($index)} is not a number for `replace-nth`/`remove-nth`.";
-    @return $result;
-  }
-
-  @else if $index == 0 {
-    @warn "List index 0 must be a non-zero integer for `replace-nth`/`remove-nth`.";
-    @return $result;
-  }
-      
-  @else if abs($index) > length($list) {
-    @warn "List index is #{quote($index)} but list is only #{length($list)} item long for `replace-nth`/`remove-nth`.";
-    @return $result;
-  }
-
-  @else {
-    $result: ();
-    $index: if($index < 0, length($list) + $index + 1, $index);  
-
-    @for $i from 1 through length($list) {
-      $result: append($result, if($i == $index, $value, nth($list, $i)));
+    @if dependencies("purge") {
+        @return purge(set-nth($list, $index, $value));
     }
-  }
- 
-  @return purge($result);
+
+    @else {
+        @warn "A function is missing for `replace-nth`. Please make sure you're including all dependencies.";
+        @return false;
+    }
 }

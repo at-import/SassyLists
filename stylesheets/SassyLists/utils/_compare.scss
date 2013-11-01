@@ -1,0 +1,27 @@
+// Compares two values based on alphabetical order
+// -------------------------------------------------------------------------------
+// @param $a [Literal] : first value
+// @param $b [Literal] : second value
+// @param $matrix [List] : alphabetical order
+// -------------------------------------------------------------------------------
+// @return [Boolean]
+
+@function _compare($a, $b, $matrix) {
+	@if type-of($a) == number and type-of($b) == number {
+		@return $a < $b;
+	}
+
+	@else {
+		$a: to_lower_case($a + unquote(""));
+		$b: to_lower_case($b + unquote(""));
+
+		@for $i from 1 through min(str-length($a), str-length($b)) {
+			$index-a: index($matrix, str-slice($a, $i, $i));
+			$index-b: index($matrix, str-slice($b, $i, $i));
+
+			@if $index-a != $index-b { @return $index-a < $index-b; }
+		}
+	}
+
+	@return true;
+}

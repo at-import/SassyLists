@@ -6,6 +6,11 @@
 // Repository: https://github.com/Team-Sass/SassyLists/
 // -------------------------------------------------------------------------------
 
+// Utils
+@import "SassyLists/utils/compare";
+@import "SassyLists/utils/dependencies";
+
+// Functions
 @import "SassyLists/chunk";
 @import "SassyLists/count-values";
 @import "SassyLists/debug";

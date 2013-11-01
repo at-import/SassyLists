@@ -12,35 +12,35 @@
 // @return [String]
 
 @function debug($list, $type: true, $root: true) {
-  @if length($list) == 1 {
-    @return if($type, quote("(#{type-of($list)}) #{$list}"), quote("#{$list}"));
-  }
-  
-  $result : if($type, unquote("(list:#{length($list)})[ \A "), unquote("[ \A "));
-  $space  : if($root, "", "  ");
-
-  @each $item in $list {
-    $result : unquote("#{$result}  ");
-
-    @if length($item) > 1 {
-      $result : unquote("#{$result}#{debug($item, $type, false)}");
+    @if length($list) == 1 {
+        @return if($type, quote("(#{type-of($list)}) #{$list}"), quote("#{$list}"));
     }
 
-    @else {
-      $result : if($type, 
-        unquote("#{$result}#{$space}(#{type-of($item)}) #{$item}"), 
-        unquote("#{$result}#{$space}#{$item}")
-      );
+    $result : if($type, unquote("(list:#{length($list)})[ \A "), unquote("[ \A "));
+    $space  : if($root, "", "  ");
+
+    @each $item in $list {
+        $result : unquote("#{$result}  ");
+
+        @if length($item) > 1 {
+            $result : unquote("#{$result}#{debug($item, $type, false)}");
+        }
+
+        @else {
+            $result : if($type, 
+                unquote("#{$result}#{$space}(#{type-of($item)}) #{$item}"), 
+                unquote("#{$result}#{$space}#{$item}")
+            );
+        }
+
+        @if index($list, $item) != length($list) {
+            $result : unquote("#{$result}, \A ");
+        }
+
     }
 
-    @if index($list, $item) != length($list) {
-      $result : unquote("#{$result}, \A ");
-    }
-
-  }
-
-  $result : unquote("#{$result}\A #{$space}]");
-  @return quote($result);
+    $result : unquote("#{$result}\A #{$space}]");
+    @return quote($result);
 }
 
 // Mixin displaying clean debug
@@ -49,20 +49,20 @@
 // @param $type [List] : enable/disable variables type
 
 @mixin debug($list, $type: true) {
-  body:before {
-    content: debug($list, $type)              !important;
-    
-    display: block                            !important;
-    margin: 1em                               !important;
-    padding: .5em                             !important; 
-    
-    background: #EFEFEF                       !important;
-    border: 1px solid #DDD                    !important;
-    border-radius: .2em                       !important;
-    
-    color: #333                               !important;
-    font: .75em/1.5 "Courier New", monospace  !important;
-    text-shadow: 0 1px white                  !important;
-    white-space: pre-wrap                     !important;
-  }
+    body:before {
+        content: debug($list, $type)              !important;
+
+        display: block                            !important;
+        margin: 1em                               !important;
+        padding: .5em                             !important; 
+
+        background: #EFEFEF                       !important;
+        border: 1px solid #DDD                    !important;
+        border-radius: .2em                       !important;
+
+        color: #333                               !important;
+        font: .75em/1.5 "Courier New", monospace  !important;
+        text-shadow: 0 1px white                  !important;
+        white-space: pre-wrap                     !important;
+    }
 }
