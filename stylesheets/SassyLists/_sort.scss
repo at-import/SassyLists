@@ -6,10 +6,11 @@
 // @dependence `last()`
 // @dependence `insert-nth()`
 // -------------------------------------------------------------------------------
-// @example sort(5 12 4.7 6 69 6)          => 4.7, 5, 6, 6, 12, 69
-// @example sort(5 12 4.7 "8" 6 14px 69 6) => 4.7, 5, 6, 6, 12, 69
+// @example sort(8 abc 10 true aab 7 bac !important 2.8 aaa 4 14px acc 590 aaa) 
+// !important 2.8 4 7 8 10 14px 590 aaa aaa aab abc acc bac true
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
+// @param $matrix [List] : alphabetical order to follow
 // -------------------------------------------------------------------------------
 // @raise [Warning] if nested list found
 // -------------------------------------------------------------------------------
