@@ -22,11 +22,11 @@
 
         @each $item in $list {
             @if length($item) > 1 and $recursive {
-                $result: append($result, replace($item, $old-value, $new-value, $recursive));
+                $result: append($result, replace($item, $old-value, $new-value, $recursive), list-separator($list));
             }
 
             @else {
-                $result: append($result, if($item == $old-value, $new-value, $item));
+                $result: append($result, if($item == $old-value, $new-value, $item), list-separator($list));
             }
         }
 

@@ -17,11 +17,11 @@
 
         @if not index($result, $item) {
             @if length($item) > 1 and $recursive {
-                $result: append($result, remove-duplicates($item, $recursive));
+                $result: append($result, remove-duplicates($item, $recursive), list-separator($list));
             }
 
             @else {
-                $result: append($result, $item);
+                $result: append($result, $item, list-separator($list));
             }
         }
 

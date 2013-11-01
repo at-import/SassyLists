@@ -43,10 +43,10 @@
           
             @for $i from 1 through length($list) {
                 @if $i == $index {
-                    $result: append($result, $value);
+                    $result: append($result, $value, list-separator($list));
                 }
 
-                $result: append($result, nth($list, $i));
+                $result: append($result, nth($list, $i), list-separator($list));
             }
         }
 

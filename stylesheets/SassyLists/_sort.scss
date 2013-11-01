@@ -29,7 +29,7 @@
 
             @if length($item) == 1 {
                 @if not _compare($item, last($result), $matrix) {
-                    $result: append($result, $item);
+                    $result: append($result, $item, list-separator($list));
                 }
 
                 @else {

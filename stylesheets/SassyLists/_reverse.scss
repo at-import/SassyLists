@@ -18,11 +18,11 @@
         $item: nth($list, abs($i));
 
         @if length($item) > 1 and $recursive {
-            $result: append($result, reverse($item, $recursive));      
+            $result: append($result, reverse($item, $recursive), list-separator($list));      
         }
 
         @else {
-            $result: append($result, $item);
+            $result: append($result, $item, list-separator($list));
         }
     }
 

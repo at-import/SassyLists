@@ -53,7 +53,7 @@
         $result: ();
         
         @for $i from $start through $end {
-            $result: append($result, nth($list, $i));
+            $result: append($result, nth($list, $i), list-separator($list));
         }
     }
 

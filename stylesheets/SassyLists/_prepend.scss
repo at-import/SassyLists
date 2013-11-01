@@ -14,7 +14,7 @@
 
 @function prepend($list, $value) {
 	@if dependencies("purge") {
-		@return purge(join($value, $list));
+		@return purge(join($value, $list, list-separator($list)));
 	}
 	
 	@else {
