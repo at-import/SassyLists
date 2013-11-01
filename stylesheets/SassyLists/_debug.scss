@@ -6,51 +6,55 @@
 // @example debug(a b (c d e)) => [ a, b, [ c, d, e ] ]
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $type [Boolean] : enable/disable variables type
-// @param $root [Boolean] : strictly internal boolean for recursivity
+// @param $pre [Boolean] : enable/disable variable types and proper indentation
+// @param $level [Integer] : internal variable for recursivity
 // -------------------------------------------------------------------------------
 // @return [String]
 
-@function debug($list, $type: true, $root: true) {
-    @if length($list) == 1 {
-        @return if($type, quote("(#{type-of($list)}) #{$list}"), quote("#{$list}"));
+@function debug($list, $pre: false, $level: 1) {
+    @debug $level;
+    $tab    : "    ";
+    $indent : "";
+    $break  : if($pre, "\A ", "");
+
+    @for $i from 1 to $level {
+      $indent : $indent + $tab;
     }
 
-    $result : if($type, unquote("(list:#{length($list)})[ \A "), unquote("[ \A "));
-    $space  : if($root, "", "  ");
+    $result: "[" + $break;
 
     @each $item in $list {
-        $result : unquote("#{$result}  ");
+        $result: $result + if($pre, $indent + $tab, " ");
 
         @if length($item) > 1 {
-            $result : unquote("#{$result}#{debug($item, $type, false)}");
+            $result: $result 
+                + if($pre, "(list: " + length($item) + ") ", "") 
+                + debug($item, $pre, $level + 1);
         }
 
         @else {
-            $result : if($type, 
-                unquote("#{$result}#{$space}(#{type-of($item)}) #{$item}"), 
-                unquote("#{$result}#{$space}#{$item}")
-            );
+            $result: $result
+                + if($pre, "(" + type-of($item) + ") ", "") 
+                + $item;
         }
 
         @if index($list, $item) != length($list) {
-            $result : unquote("#{$result}, \A ");
+            $result: $result + "," + $break;
         }
-
     }
 
-    $result : unquote("#{$result}\A #{$space}]");
+    $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
+
     @return quote($result);
 }
 
 // Mixin displaying clean debug
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $type [List] : enable/disable variables type
 
-@mixin debug($list, $type: true) {
+@mixin debug($list) {
     body:before {
-        content: debug($list, $type)              !important;
+        content: debug($list, true)               !important;
 
         display: block                            !important;
         margin: 1em                               !important;
