@@ -165,10 +165,10 @@ count-values($list)</pre>
                         <h2 class="function-name"><code>debug</code></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
-debug($list, $type: false, $root: true)</pre>
+debug($list, $pre: false, $level: 1)</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_debug.scss" class="function-link  pull-right">View source</a>
                         </div>
-                        <p class="function-role">Returns <code>$list</code> as a string. Displays variable types if <code>$type</code> set to true.</p>
+                        <p class="function-role">Returns <code>$list</code> as a string. Enables variable types and correct indentation if <code>$pre</code> set to true.</p>
                         <h3 class="function-subheading">Parameters</h3>
                         <table class="table  function-arguments">
                             <thead>
@@ -188,18 +188,18 @@ debug($list, $type: false, $root: true)</pre>
                                     <td>list</td>
                                 </tr>
                                 <tr>
-                                    <td><code>$type</code>
+                                    <td><code>$pre</code>
                                     </td>
                                     <td>Boolean</td>
                                     <td><code>false</code>
                                     </td>
-                                    <td>Enable variable types</td>
+                                    <td>Enables variable types and proper indentation</td>
                                 </tr>
                                 <tr>
-                                    <td><code>$root</code>
+                                    <td><code>$level</code>
                                     </td>
-                                    <td>Boolean</td>
-                                    <td><code>true</code>
+                                    <td>Number</td>
+                                    <td><code>1</code>
                                     </td>
                                     <td>Strictly internal variable; <strong>do not touch</strong>
                                     </td>
@@ -214,7 +214,7 @@ debug($list, $type: false, $root: true)</pre>
                         <h3 class="function-example">Examples</h3>
                         <pre>debug(a b c d e) 
 // [ a, b, c, d, e ]</pre>
-                        <pre>debug(a b c d e, true) 
+                        <pre>debug(a b (c d e), true) 
 // [ (string) a, (string) b, (list:3) [ (string) c, (string) d, (string) e ] ]</pre>
                     </section>
 
@@ -222,10 +222,10 @@ debug($list, $type: false, $root: true)</pre>
                         <h2 class="function-name"><code>debug (mixin)</code></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
-@include debug($list, $type: true)</pre>
+@include debug($list)</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_debug.scss" class="function-link  pull-right">View source</a>
                         </div>
-                        <p class="function-role">Outputs the content of <code>$list</code> as a block in body <code>:before</code> pseudo-element. Displays variable types if <code>$type</code> set to true.</p>
+                        <p class="function-role">Outputs the content of <code>$list</code> as a block in body <code>:before</code> pseudo-element.</p>
                         <h3 class="function-subheading">Parameters</h3>
                         <table class="table  function-arguments">
                             <thead>
@@ -243,14 +243,6 @@ debug($list, $type: false, $root: true)</pre>
                                     <td>List</td>
                                     <td>-</td>
                                     <td>list</td>
-                                </tr>
-                                <tr>
-                                    <td><code>$type</code>
-                                    </td>
-                                    <td>Boolean</td>
-                                    <td><code>true</code>
-                                    </td>
-                                    <td>Enable variable types</td>
                                 </tr>
                             </tbody>
                         </table>
