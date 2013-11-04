@@ -4,7 +4,7 @@
 
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
-Current version: `0.2.4`.
+Current version: `0.3.0`.
 
 ## How to use it
 
@@ -14,10 +14,12 @@ Current version: `0.2.4`.
 
 ## What's in there? 
 
-* `chunk()`: chunks list into size large lists
+* `chunk()`: returns whether list contains $value
+* `contains()`: chunks list into size large lists
 * `count-values()`: counts the number of occurrences of each value of list
 * `debug()`: returns list as a string
 * `first()`: returns first item in list
+* `flatten()`: turns multidimensional list into a one-level list
 * `insert-nth()`: inserts value at index
 * `is-symmetrical()`: checks if list is symmetrical
 * `last()`: returns last item in list

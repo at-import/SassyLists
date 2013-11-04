@@ -1,0 +1,27 @@
+// Turns multidimensional $list into a one-level list
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation.html#flatten
+// -------------------------------------------------------------------------------
+// @example flatten(a b (c d (e f))) => a b c d e f
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// -------------------------------------------------------------------------------
+// @return [List]
+
+@function flatten($list) {
+    $result: ();
+
+    @each $item in $list {
+        @if length($item) > 1 {
+            @each $i in flatten($item) {
+                $result: append($result, $i);
+            }
+        }
+
+        @else {
+            $result: append($result, $item);
+        }
+    }
+
+    @return $result;
+}
