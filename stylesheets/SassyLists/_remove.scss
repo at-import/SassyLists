@@ -17,7 +17,7 @@
 
 @function remove($list, $value, $recursive: false) {
 	@if dependencies("replace-nth") {
-		@return replace($list, $value, "", $recursive);
+		@return replace($list, $value, null, $recursive);
 	}
 
 	@else {

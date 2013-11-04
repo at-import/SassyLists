@@ -21,7 +21,7 @@
 
 @function remove-nth($list, $index) {
 	@if dependencies("replace-nth") {
-		@return replace-nth($list, $index, "");
+		@return replace-nth($list, $index, null);
 	}
 
 	@else {

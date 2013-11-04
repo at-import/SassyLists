@@ -20,6 +20,13 @@
 		@for $i from 1 through min(str-length($a), str-length($b)) {
 			$index-a: index($matrix, str-slice($a, $i, $i));
 			$index-b: index($matrix, str-slice($b, $i, $i));
+			@if not $index-a {
+				$index-a: 1;
+				@warn "Character from $a not found in matrix.";
+			}
+			@if not $index-b {
+				$index-b: if($index-b, $index-b, 1);
+				@warn "Character from $b not found in matrix.";
 
 			@if $index-a != $index-b { @return $index-a < $index-b; }
 		}
