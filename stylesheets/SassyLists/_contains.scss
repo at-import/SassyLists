@@ -8,7 +8,7 @@
 // @param $list [List] : list
 // @param $value [Literal] : value to look for
 // -------------------------------------------------------------------------------
-// @return [List]
+// @return [Boolean]
 
 @function contains($list, $value) {
 	@return not not index($list, $value)
