@@ -43,10 +43,12 @@
                         <nav>
                             <ul class="list-unstyled  nav  sidebar-nav">
                                 <li><a href="#chunk">chunk</a></li>
+                                <li><a href="#contains">contains</a></li>
                                 <li><a href="#count-values">count-values</a></li>
                                 <li><a href="#debug">debug</a></li>
                                 <li><a href="#debug-mixin">debug (mixin)</a></li>
                                 <li><a href="#first">first</a></li>
+                                <li><a href="#flatten">flatten</a></li>
                                 <li><a href="#insert-nth">insert-nth</a></li>
                                 <li><a href="#is-symmetrical">is-symmetrical</a></li>
                                 <li><a href="#last">last</a></li>
@@ -116,6 +118,53 @@ chunk($list, $size)</pre>
 // a b, c d, e</pre>
                         <pre>chunk(a b c d e, 3) 
 // a b c, d e</pre>
+                    </section>
+
+                    <section class="function" id="contains">
+                        <h2 class="function-name"><code>contains</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+contains($list, $value)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_contains.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns whether <code>$list</code> contains <code>$value</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$value</code>
+                                    </td>
+                                    <td>Literal</td>
+                                    <td>-</td>
+                                    <td>value to look for</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Boolean</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>contains(a b c, a)
+// true</pre>
+                        <pre>contains(a b c, z) 
+// false</pre>
                     </section>
 
                     <section class="function" id="count-values">
@@ -286,6 +335,44 @@ first($list)</pre>
                         <h3 class="function-example">Examples</h3>
                         <pre>first(a b c)
 // a </pre>
+                    </section>
+
+                    <section class="function" id="flatten">
+                        <h2 class="function-name"><code>flatten</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+flatten($list)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_flatten.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Turns multidimensional <code>$list</code> into a one-level list.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>flatten(a b (c d (e f)))
+// a b c d e f</pre>
                     </section>
 
                     <section class="function" id="insert-nth">
