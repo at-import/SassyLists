@@ -15,48 +15,48 @@
 // @return [List]
 
 @function sort($list, $force: false) {
-  $result : nth($list, 1);
-  
-  @if length($list) > 1 {
+    $result : nth($list, 1);
 
-    @for $i from 2 through length($list) {
-      $item: nth($list, $i);
+    @if length($list) > 1 {
 
-      @if type-of($item) == number {
+        @for $i from 2 through length($list) {
+            $item: nth($list, $i);
 
-        @if unitless($item) and $force {
+            @if type-of($item) == number {
 
-          @if $item > last($result) {
-            $result: append($result, $item);
-          }
+                @if unitless($item) and $force {
 
-          @else {
-            $index: 0;
+                    @if $item > last($result) {
+                        $result: append($result, $item);
+                    }
 
-            @for $i from length($result) * -1 through -1 {
-              $i: abs($i);
-              
-              @if $item <= nth($result, $i) {
-                $index: $i;
-              }
+                    @else {
+                        $index: 0;
+
+                        @for $i from length($result) * -1 through -1 {
+                            $i: abs($i);
+
+                            @if $item <= nth($result, $i) {
+                                $index: $i;
+                            }
+                        }
+                        
+                        $result: insert-nth($result, $index, $item); 
+                    }
+
+                }
+
+                @else {
+                    @warn "Not unitless number found. Omitted.";
+                }
+
+            } 
+
+            @else {
+                @warn "Not integer value found. Omitted.";
             }
-
-            $result: insert-nth($result, $index, $item); 
-          }
-
         }
-
-        @else {
-          @warn "Not unitless number found. Omitted.";
-        }
-
-      } 
-
-      @else {
-        @warn "Not integer value found. Omitted.";
-      }
     }
-  }
-  
-  @return $result;
+
+    @return $result;
 }

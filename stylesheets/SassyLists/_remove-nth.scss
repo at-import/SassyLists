@@ -20,5 +20,5 @@
 // @return [List] | false
 
 @function remove-nth($list, $index) {
-  @return replace-nth($list, $index, "");
+	@return replace-nth($list, $index, "");
 }

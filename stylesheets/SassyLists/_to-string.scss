@@ -13,18 +13,18 @@
 // @return [String]
 
 @function to-string($list, $glue: '', $root: true) {
-  $result: null;
+    $result: null;
 
-  @each $item in $list {
-    @if length($item) > 1 {
-      $result: $result#{to-string($item, $glue, false)};
+    @each $item in $list {
+        @if length($item) > 1 {
+            $result: $result#{to-string($item, $glue, false)};
+        }
+
+        @else {
+            $condition: index($list, $item) != length($list) or not $root;
+            $result: if($condition, $result#{$item}#{$glue}, $result#{$item});
+        }
     }
 
-    @else {
-      $condition: index($list, $item) != length($list) or not $root;
-      $result: if($condition, $result#{$item}#{$glue}, $result#{$item});
-    }
-  }
-
-  @return quote($result);
+    @return quote($result);
 }

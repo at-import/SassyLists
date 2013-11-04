@@ -12,14 +12,11 @@
 
 @function last-index($list, $value) {
   
-  @for $i from length($list) * -1 through -1 {
-    $i: abs($i);
-
-    @if nth($list, $i) == $value {
-      @return $i;
-    }
-    
-  }
+	@for $i from length($list) * -1 through -1 {
+		@if nth($list, abs($i)) == $value {
+			@return abs($i);
+		}
+	}
 
   @return null;
 }

@@ -16,5 +16,5 @@
 // @return [List]
 
 @function remove($list, $value, $recursive: false) {
-  @return replace($list, $value, "", $recursive);
+	@return replace($list, $value, "", $recursive);
 }

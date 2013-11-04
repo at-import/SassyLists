@@ -13,5 +13,5 @@
 // @return [Boolean]
 
 @function is-symmetrical($list) {
-  @return reverse($list) == reverse(reverse($list));  
+	@return reverse($list) == reverse(reverse($list));  
 }

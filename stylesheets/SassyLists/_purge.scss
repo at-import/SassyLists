@@ -10,13 +10,13 @@
 // @return [List]
 
 @function purge($list) {
-  $result: ();
-  
-  @each $item in $list {
-    @if $item != null and $item != false and $item != "" {
-      $result: append($result, $item);
-    }
-  }
-  
-  @return $result;
+	$result: ();
+
+	@each $item in $list {
+		@if $item != null and $item != false and $item != "" {
+			$result: append($result, $item);
+		}
+	}
+
+	@return $result;
 }

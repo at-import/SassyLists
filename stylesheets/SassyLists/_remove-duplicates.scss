@@ -11,21 +11,19 @@
 // @return [List]
 
 @function remove-duplicates($list, $recursive: false) {
-  $result: ();
-  
-  @each $item in $list {
+    $result: ();
 
-    @if not index($result, $item) {
-      @if length($item) > 1 and $recursive {
-        $result: append($result, remove-duplicates($item, $recursive));
-      }
-      
-      @else {
-        $result: append($result, $item);
-      }
+    @each $item in $list {
+        @if not index($result, $item) {
+            @if length($item) > 1 and $recursive {
+                $result: append($result, remove-duplicates($item, $recursive));
+            }
+
+            @else {
+                $result: append($result, $item);
+            }
+        }
     }
 
-  }
-  
-  @return $result;
+    @return $result;
 }

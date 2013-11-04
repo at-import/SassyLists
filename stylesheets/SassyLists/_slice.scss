@@ -22,40 +22,40 @@
 // @return [List] | false
 
 @function slice($list, $start: 1, $end: length($list)) {
-  $result: false;
-              
-  @if type-of($start) != number or type-of($end) != number {
-    @warn "List indexes #{quote($start)} and #{quote($end)} must be numbers for `slice`.";
-    @return $result;
-  }
-             
-  @else if $start > $end {
-    @warn "Start index is #{quote($start)} but has to be lesser than or equals to the end index (#{quote($end)}) for `slice`.";
-    @return $result;
-  }
-
-  @else if $start < 1 or $end < 1 {
-    @warn "List indexes must be non-zero integers for `slice`.";
-    @return $result;
-  }
-
-  @else if $start > length($list) {
-    @warn "Start index is #{quote($start)} but list is only #{length($list)} items long for `slice`.";
-    @return $result;
-  }
-             
-  @else if $end > length($list) {
-    @warn "End index is #{quote($end)} but list is only #{length($list)} items long for `slice`.";
-    @return $result;
-  }
-  
-  @else {
-    $result: ();
-                
-    @for $i from $start through $end {
-      $result: append($result, nth($list, $i));
+    $result: false;
+      
+    @if type-of($start) != number or type-of($end) != number {
+        @warn "List indexes #{quote($start)} and #{quote($end)} must be numbers for `slice`.";
+        @return $result;
     }
-  }
+     
+    @else if $start > $end {
+        @warn "Start index is #{quote($start)} but has to be lesser than or equals to the end index (#{quote($end)}) for `slice`.";
+        @return $result;
+    }
 
-  @return $result;
+    @else if $start < 1 or $end < 1 {
+        @warn "List indexes must be non-zero integers for `slice`.";
+        @return $result;
+    }
+
+    @else if $start > length($list) {
+        @warn "Start index is #{quote($start)} but list is only #{length($list)} items long for `slice`.";
+        @return $result;
+    }
+     
+    @else if $end > length($list) {
+        @warn "End index is #{quote($end)} but list is only #{length($list)} items long for `slice`.";
+        @return $result;
+    }
+
+    @else {
+        $result: ();
+            
+        @for $i from $start through $end {
+            $result: append($result, nth($list, $i));
+        }
+    }
+
+    @return $result;
 }
