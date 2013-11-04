@@ -1366,6 +1366,51 @@ to-string($list, $glue: '', $root: true)</pre>
 // abcd</pre>
                     </section>
 
+                    <section class="function" id="union">
+                        <h2 class="function-name"><code>union</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+union($lists...)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_union.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns a list of shared values from <code>$lists</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$lists</code>
+                                    </td>
+                                    <td>ArgList</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>remove-duplicates()</code>
+                            </li>
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>flatten()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>union((a b), (b c), (a b c d))
+// a b c d</pre>
+                    </section>
+
                 </div>
             </div>
         </div>

@@ -1,4 +1,3 @@
-@import "compass/css3";
 @import "bootstrap";
 
 $pink: #C6538C;
@@ -156,10 +155,6 @@ section {
 .sidebar {
 	width: 220px;
  	margin-top: 1.25em;
-
-	@media (min-width: 992px) and (min-height: 900px) {
-		position: fixed;
-	}
 }
 
 .sidebar-heading {
