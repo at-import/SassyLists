@@ -1,0 +1,15 @@
+// Returns whether $list contains $value
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#contains
+// -------------------------------------------------------------------------------
+// @example chunk(a b c, a) => true
+// @example chunk(a b c, z) => false
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $value [Literal] : value to look for
+// -------------------------------------------------------------------------------
+// @return [List]
+
+@function contains($list, $value) {
+	@return not not index($list, $value)
+}
