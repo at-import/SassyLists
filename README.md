@@ -38,6 +38,7 @@ Current version: `0.3.0`.
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
 * `to-string()`: casts list as string (JS `.join()`)
+* `union()`: returns a list of shared values from given lists
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 

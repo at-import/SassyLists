@@ -1,0 +1,16 @@
+// Returns a list of shared values from $lists
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#union
+// -------------------------------------------------------------------------------
+// @dependence `flatten()`
+// @dependence `remove-duplicates()`
+// -------------------------------------------------------------------------------
+// @example union((a b), (b c), (a b c d)) => a b c d
+// -------------------------------------------------------------------------------
+// @param $lists [ArgList] : lists
+// -------------------------------------------------------------------------------
+// @return [List]
+
+@function union($lists...) {
+	@return remove-duplicates(flatten($lists));
+}
