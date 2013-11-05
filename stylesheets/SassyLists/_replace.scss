@@ -2,8 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation.html#replace
 // -------------------------------------------------------------------------------
-// @dependence `purge()`
-// -------------------------------------------------------------------------------
 // @example replace( (a, b, c), b, z )         => a, z, c
 // @example replace( (a, b, c), y, z )         => a, b, c
 // @example replace( (a, b, c a), a, z )       => z, b, c z
@@ -20,14 +18,20 @@
     $result: ();
 
     @each $item in $list {
-        @if length($item) > 1 and $recursive {
+        @if $item == $old-value {
+            @if $new-value != '' and $new-value != null {
+                $result: append($result, $new-value);
+            }
+        }
+
+        @else if length($item) > 1 and $recursive {
             $result: append($result, replace($item, $old-value, $new-value, $recursive));
         }
 
         @else {
-            $result: append($result, if($item == $old-value, $new-value, $item));
+            $result: append($result, $item);
         }
     }
 
-    @return purge($result);
+    @return $result;
 }
