@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#remove-duplicates
 // -------------------------------------------------------------------------------
+// @alias `unique()`
+// -------------------------------------------------------------------------------
 // @example remove-duplicates(a b a c b d c e)   => a, b, c, d, e
 // @example remove-duplicates(a b (c c c), true) => a, b, c
 // -------------------------------------------------------------------------------
@@ -26,4 +28,9 @@
     }
 
     @return $result;
+}
+
+// Alias
+@function unique($list, $recursive: false) {
+    @return remove-duplicates($list, $recursive);
 }

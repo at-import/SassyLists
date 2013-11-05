@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#is-symmetrical
 // -------------------------------------------------------------------------------
+// @alias `unfold()`
+// -------------------------------------------------------------------------------
 // @dependence `reverse()`
 // -------------------------------------------------------------------------------
 // @example is-symmetrical(a b c d e)   => false
@@ -14,4 +16,9 @@
 
 @function is-symmetrical($list) {
 	@return reverse($list) == reverse(reverse($list));  
+}
+
+// Alias
+@function is-mirror($list) {
+	@return is-symmetrical($list);
 }

@@ -2,7 +2,10 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation.html#random-value
 // -------------------------------------------------------------------------------
-// @dependence `rand` (Ruby)
+// @alias `roll()`
+// @alias `luck()`
+// -------------------------------------------------------------------------------
+// @dependence `rand()` (Ruby)
 // -------------------------------------------------------------------------------
 // @example random-value(a b c d e) => c
 // -------------------------------------------------------------------------------
@@ -12,4 +15,13 @@
 
 @function random-value($list) {
 	@return nth($list, random(length($list)) + 1);
+}
+
+// Aliases
+@function roll($list) {
+	@return random-value($list);
+}
+
+@function luck($list) {
+	@return random-value($list);
 }

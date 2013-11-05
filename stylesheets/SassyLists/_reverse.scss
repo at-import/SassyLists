@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#reverse
 // -------------------------------------------------------------------------------
+// @alias `mirror()`
+// -------------------------------------------------------------------------------
 // @example reverse(a b c)           => c, b, a
 // @example reverse(a b (c a))       => c a, b, a
 // @example reverse(a b (c a), true) => a c, b, a
@@ -27,4 +29,9 @@
     }
 
     @return $result;
+}
+
+// Alias
+@function mirror($list, $recursive: false) {
+    @return reverse($list, $recursive);
 }

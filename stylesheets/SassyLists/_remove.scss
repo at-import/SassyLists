@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#remove
 // -------------------------------------------------------------------------------
+// @alias `without()`
+// -------------------------------------------------------------------------------
 // @dependence `replace()`
 // -------------------------------------------------------------------------------
 // @example remove(a b c,   b)       => a, c
@@ -17,4 +19,9 @@
 
 @function remove($list, $value, $recursive: false) {
 	@return replace($list, $value, "", $recursive);
+}
+
+// Alias
+@function without($list, $value, $recursive: false) {
+	@return remove($list, $value, $recursive);
 }

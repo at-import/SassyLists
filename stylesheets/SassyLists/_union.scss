@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#union
 // -------------------------------------------------------------------------------
+// @alias `merge()`
+// -------------------------------------------------------------------------------
 // @dependence `flatten()`
 // @dependence `remove-duplicates()`
 // -------------------------------------------------------------------------------
@@ -13,4 +15,9 @@
 
 @function union($lists...) {
 	@return remove-duplicates(flatten($lists));
+}
+
+// Alias
+@function merge($lists...) {
+	@return union($lists...);
 }

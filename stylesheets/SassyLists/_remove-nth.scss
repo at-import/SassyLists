@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#remove-nth
 // -------------------------------------------------------------------------------
+// @alias `without-nth()`
+// -------------------------------------------------------------------------------
 // @dependence `replace-nth()`
 // -------------------------------------------------------------------------------
 // @example remove-nth(a b c,   2) => a, c
@@ -21,4 +23,9 @@
 
 @function remove-nth($list, $index) {
 	@return replace-nth($list, $index, "");
+}
+
+// Alias
+@function without-nth($list, $index) {
+	@return remove-nth($list, $index);
 }

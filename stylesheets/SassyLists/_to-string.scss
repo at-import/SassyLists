@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#to-string
 // -------------------------------------------------------------------------------
+// @alias `stringify()`
+// -------------------------------------------------------------------------------
 // @example to-string(a b c)      => abc
 // @example to-string(a (b c) d)  => abcd
 // @example to-string(a b c, '-') => a-b-c
@@ -13,18 +15,23 @@
 // @return [String]
 
 @function to-string($list, $glue: '', $root: true) {
-    $result: null;
+    $result: '';
 
     @each $item in $list {
         @if length($item) > 1 {
-            $result: $result#{to-string($item, $glue, false)};
+            $result: $result + to-string($item, $glue, false);
         }
 
         @else {
             $condition: index($list, $item) != length($list) or not $root;
-            $result: if($condition, $result#{$item}#{$glue}, $result#{$item});
+            $result: if($condition, $result + $item + $glue, $result + $item);
         }
     }
 
     @return quote($result);
+}
+
+// Alias
+@function stringify($list, $glue: '', $root: true) {
+    @return to-string($list, $glue, $root);
 }
