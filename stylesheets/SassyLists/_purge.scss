@@ -13,7 +13,7 @@
 	$result: ();
 
 	@each $item in $list {
-		@if $item != null and $item != false and $item != "" {
+		@if $item and $item != "" {
 			$result: append($result, $item);
 		}
 	}
