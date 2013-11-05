@@ -3615,6 +3615,10 @@ section {
 .function-arguments td, .function-arguments th {
   padding-left: 0 !important; }
 
+.function-aliases {
+  color: silver;
+  font-size: .5em; }
+
 .glyphicon-play {
   color: rgba(102, 153, 153, 0.3);
   padding-left: 1em;

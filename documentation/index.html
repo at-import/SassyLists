@@ -121,12 +121,12 @@ chunk($list, $size)</pre>
 // a b c, d e</pre>
                     </section>
 
-                    <section class="function" id="contains">
-                        <h2 class="function-name"><code>contains</code></h2>
+                    <section class="function" id="contain">
+                        <h2 class="function-name"><code>contain</code> <span class="function-aliases">(aliases as <code>include</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
-contains($list, $value)</pre>
-                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_contains.scss" class="function-link  pull-right">View source</a>
+contain($list, $value)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_contain.scss" class="function-link  pull-right">View source</a>
                         </div>
                         <p class="function-role">Returns whether <code>$list</code> contains <code>$value</code>.</p>
                         <h3 class="function-subheading">Parameters</h3>
@@ -162,9 +162,9 @@ contains($list, $value)</pre>
                             </li>
                         </ul>
                         <h3 class="function-example">Examples</h3>
-                        <pre>contains(a b c, a)
+                        <pre>contain(a b c, a)
 // true</pre>
-                        <pre>contains(a b c, z) 
+                        <pre>contain(a b c, z) 
 // false</pre>
                     </section>
 
@@ -339,7 +339,7 @@ first($list)</pre>
                     </section>
 
                     <section class="function" id="flatten">
-                        <h2 class="function-name"><code>flatten</code></h2>
+                        <h2 class="function-name"><code>flatten</code> <span class="function-aliases">(aliases as <code>unfold</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 flatten($list)</pre>
@@ -446,7 +446,7 @@ insert-nth($list, $index, $value)</pre>
                     </section>
 
                     <section class="function" id="is-symmetrical">
-                        <h2 class="function-name"><code>is-symmetrical</code></h2>
+                        <h2 class="function-name"><code>is-symmetrical</code> <span class="function-aliases">(aliases as <code>is-mirror</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 is-symmetrical($list)</pre>
@@ -580,7 +580,7 @@ last-index($list, $value)</pre>
                     </section>
 
                     <section class="function" id="loop">
-                        <h2 class="function-name"><code>loop</code></h2>
+                        <h2 class="function-name"><code>loop</code> <span class="function-aliases">(aliases as <code>shift-indexes</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 loop($list, $value: 1)</pre>
@@ -681,7 +681,7 @@ prepend($list, $value)</pre>
                     </section>
 
                     <section class="function" id="purge">
-                        <h2 class="function-name"><code>purge</code></h2>
+                        <h2 class="function-name"><code>purge</code> <span class="function-aliases">(aliases as <code>compact</code>, <code>clean</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 purge($list)</pre>
@@ -719,7 +719,7 @@ purge($list)</pre>
                     </section>
 
                     <section class="function" id="random-value">
-                        <h2 class="function-name"><code>random-value</code></h2>
+                        <h2 class="function-name"><code>random-value</code> <span class="function-aliases">(aliases as <code>roll</code>, <code>luck</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 random-value($list)</pre>
@@ -761,7 +761,7 @@ random-value($list)</pre>
                     </section>
 
                     <section class="function" id="remove">
-                        <h2 class="function-name"><code>remove</code></h2>
+                        <h2 class="function-name"><code>remove</code> <span class="function-aliases">(aliases as <code>without</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 remove($list, $value, $recursive: false)</pre>
@@ -824,7 +824,7 @@ remove($list, $value, $recursive: false)</pre>
                     </section>
 
                     <section class="function" id="remove-duplicates">
-                        <h2 class="function-name"><code>remove-duplicates</code></h2>
+                        <h2 class="function-name"><code>remove-duplicates</code> <span class="function-aliases">(aliases as <code>unique</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 remove-duplicates($list, $recursive: false)</pre>
@@ -871,7 +871,7 @@ remove-duplicates($list, $recursive: false)</pre>
                     </section>
 
                     <section class="function" id="remove-nth">
-                        <h2 class="function-name"><code>remove-nth</code></h2>
+                        <h2 class="function-name"><code>remove-nth</code> <span class="function-aliases">(aliases as <code>without-nth</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 remove-nth($list, $index)</pre>
@@ -1076,7 +1076,7 @@ replace-nth($list, $index, $value)</pre>
                     </section>
 
                     <section class="function" id="reverse">
-                        <h2 class="function-name"><code>reverse</code></h2>
+                        <h2 class="function-name"><code>reverse</code> <span class="function-aliases">(aliases as <code>mirror</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 reverse($list, $recursive: false)</pre>
@@ -1198,7 +1198,7 @@ slice($list, $start: 1, $end: length($list))</pre>
                     </section>
 
                     <section class="function" id="sort">
-                        <h2 class="function-name"><code>sort</code></h2>
+                        <h2 class="function-name"><code>sort</code> <span class="function-aliases">(aliases as <code>order</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 sort($list, $force: false)</pre>
@@ -1309,7 +1309,7 @@ sum($list, $force: false)</pre>
                     </section>
 
                     <section class="function" id="to-string">
-                        <h2 class="function-name"><code>to-string</code></h2>
+                        <h2 class="function-name"><code>to-string</code> <span class="function-aliases">(aliases as <code>stringify</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 to-string($list, $glue: '', $root: true)</pre>
@@ -1368,7 +1368,7 @@ to-string($list, $glue: '', $root: true)</pre>
                     </section>
 
                     <section class="function" id="union">
-                        <h2 class="function-name"><code>union</code></h2>
+                        <h2 class="function-name"><code>union</code> <span class="function-aliases">(aliases as <code>merge</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
 union($lists...)</pre>
