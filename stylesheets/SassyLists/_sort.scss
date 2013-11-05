@@ -2,7 +2,12 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#sort
 // -------------------------------------------------------------------------------
+<<<<<<< HEAD
 // @dependence `_compare()` (utils)
+=======
+// @alias `order()`
+// -------------------------------------------------------------------------------
+>>>>>>> 463170bb6443f8380c983ea293dfcacd6646cf0e
 // @dependence `last()`
 // @dependence `insert-nth()`
 // -------------------------------------------------------------------------------
@@ -58,4 +63,9 @@
         @warn "A function is missing for `sort`. Please make sure you're including all dependencies.";
         @return false;
     }
+}
+
+// Alias
+@function order($list, $force: false) {
+    @return sort($list, $force);
 }

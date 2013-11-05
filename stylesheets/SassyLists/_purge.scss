@@ -2,8 +2,11 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation.html#purge
 // -------------------------------------------------------------------------------
+// @alias `compact()`
+// @alias `clean()`
+// -------------------------------------------------------------------------------
 // @example purge(a null b false c) => a, b, c
-// @example purge(a b c)            => a, b, c
+// @example purge(a b c '')         => a, b, c
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
@@ -13,10 +16,19 @@
 	$result: ();
 
 	@each $item in $list {
-		@if $item != null and $item != false and $item != "" {
+		@if $item and $item != "" {
 			$result: append($result, $item, list-separator($list));
 		}
 	}
 
 	@return $result;
+}
+
+// Aliases
+@function compact($list) {
+	@return purge($list);
+}
+
+@function clean($list) {
+	@return purge($list);
 }

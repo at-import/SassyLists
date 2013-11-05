@@ -12,9 +12,11 @@
 
 // Functions
 @import "SassyLists/chunk";
+@import "SassyLists/contain";
 @import "SassyLists/count-values";
 @import "SassyLists/debug";
 @import "SassyLists/first";
+@import "SassyLists/flatten";
 @import "SassyLists/insert-nth";
 @import "SassyLists/is-symmetrical";
 @import "SassyLists/last";
@@ -33,3 +35,4 @@
 @import "SassyLists/sort";
 @import "SassyLists/sum";
 @import "SassyLists/to-string";
+@import "SassyLists/union";

@@ -1,27 +1,23 @@
-// Returns a random value of $list
+// Returns a list of shared values from $lists
 // -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation.html#random-value
+// @documentation http://sassylists.com/documentation/#union
 // -------------------------------------------------------------------------------
-// @alias `roll()`
-// @alias `luck()`
+// @alias `merge()`
 // -------------------------------------------------------------------------------
-// @dependence `rand()` (Ruby)
+// @dependence `flatten()`
+// @dependence `remove-duplicates()`
 // -------------------------------------------------------------------------------
-// @example random-value(a b c d e) => c
+// @example union((a b), (b c), (a b c d)) => a b c d
 // -------------------------------------------------------------------------------
-// @param $list [List] : List
+// @param $lists [ArgList] : lists
 // -------------------------------------------------------------------------------
-// @return [Literal]
+// @return [List]
 
-@function random-value($list) {
-	@return nth($list, random(length($list)) + 1);
+@function union($lists...) {
+	@return remove-duplicates(flatten($lists));
 }
 
-// Aliases
-@function roll($list) {
-	@return random-value($list);
-}
-
-@function luck($list) {
-	@return random-value($list);
+// Alias
+@function merge($lists...) {
+	@return union($lists...);
 }

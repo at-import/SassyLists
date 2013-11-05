@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#remove-nth
 // -------------------------------------------------------------------------------
+// @alias `without-nth()`
+// -------------------------------------------------------------------------------
 // @dependence `replace-nth()`
 // -------------------------------------------------------------------------------
 // @example remove-nth(a b c,   2) => a, c
@@ -28,4 +30,9 @@
     	@warn "A function is missing for `remove-nth`. Please make sure you're including all dependencies.";
     	@return false;
 	}
+}
+
+// Alias
+@function without-nth($list, $index) {
+	@return remove-nth($list, $index);
 }

@@ -36,7 +36,7 @@
 
     @else if $start < 1 or $end < 1 {
         @warn "List indexes must be non-zero integers for `slice`.";
-            @return $result;
+        @return $result;
     }
 
     @else if $start > length($list) {

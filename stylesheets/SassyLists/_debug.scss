@@ -6,8 +6,8 @@
 // @example debug(a b (c d e)) => [ a, b, [ c, d, e ] ]
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $pre [Boolean] : enable/disable variable types and proper indentation
-// @param $level [Integer] : internal variable for recursivity
+// @param $pre [Boolean] : enable/disable variables type and proper indentation
+// @param $level [Number] : internal variable for recursivity
 // -------------------------------------------------------------------------------
 // @return [String]
 

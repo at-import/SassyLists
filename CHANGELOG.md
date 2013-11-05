@@ -1,5 +1,8 @@
 # Changelog
 
+* `0.3.1`: added aliases and cleaned `to-string()`
+* `0.3.0`: adding `contains()`, `flatten()`, `union()`
+* `0.2.4`: improving `debug()`
 * `0.2.3`: fixing important issues with comments
 * `0.2.2`: moving all comments to invisible
 * `0.2.1`: fixing an issue with `random-value()`
