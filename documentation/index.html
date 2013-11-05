@@ -988,16 +988,11 @@ replace($list, $old-value, $new-value, $recursive: false)</pre>
                             <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
                             </li>
                         </ul>
-                        <h3 class="function-dependence">Dependencies</h3>
-                        <ul class="list-unstyled">
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
-                            </li>
-                        </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>replace(a b c, b, z)
 // a z c</pre>
-                        <pre>replace(a b c, y, z)
-// a b c</pre>
+                        <pre>replace(a b c, b, null)
+// a c</pre>
                         <pre>replace(a b (c a), a, z)
 // z b (c a)</pre>
                         <pre>replace(a b (c a), a, z, true)
