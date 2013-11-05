@@ -3,7 +3,7 @@
 // @documentation http://sassylists.com/documentation.html#purge
 // -------------------------------------------------------------------------------
 // @example purge(a null b false c) => a, b, c
-// @example purge(a b c)            => a, b, c
+// @example purge(a b c '')         => a, b, c
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
