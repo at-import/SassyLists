@@ -16,7 +16,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function sort($list, $force: false) {
+@function sort($list) {
     $result : nth($list, 1);
 
     @if length($list) > 1 {
@@ -26,7 +26,7 @@
 
             @if type-of($item) == number {
 
-                @if unitless($item) and $force {
+                @if unitless($item) {
 
                     @if $item > last($result) {
                         $result: append($result, $item);
@@ -64,6 +64,6 @@
 }
 
 // Alias
-@function order($list, $force: false) {
-    @return sort($list, $force);
+@function order($list) {
+    @return sort($list);
 }
