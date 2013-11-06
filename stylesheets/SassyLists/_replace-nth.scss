@@ -2,8 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#replace-nth
 // -------------------------------------------------------------------------------
-// @dependence `purge()`
-// -------------------------------------------------------------------------------
 // @example replace-nth(a b c,   2, z) => a, z, c
 // @example replace-nth(a b c,   0, z) => error
 // @example replace-nth(a b c,  10, z) => error
@@ -49,5 +47,5 @@
         }
     }
 
-    @return purge($result);
+    @return $result;
 }
