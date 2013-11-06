@@ -4,7 +4,7 @@
 
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
-Current version: `0.3.3`.
+Current version: `0.3.4`.
 
 ## How to use it
 
@@ -38,7 +38,7 @@ Current version: `0.3.3`.
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
 * `to-string()`: casts list as string (JS `.join()`)
-* `union()`: returns a list of shared values from given lists
+* `union()`: returns a list of values from $lists minus duplicates
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 
