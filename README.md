@@ -15,7 +15,7 @@ Current version: `0.3.3`.
 ## What's in there? 
 
 * `chunk()`: returns whether list contains $value
-* `contain()`: chunks list into size large lists
+* `contain()`: returns whether the list contains the value
 * `count-values()`: counts the number of occurrences of each value of list
 * `debug()`: returns list as a string
 * `first()`: returns first item in list
