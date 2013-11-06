@@ -1196,10 +1196,10 @@ slice($list, $start: 1, $end: length($list))</pre>
                         <h2 class="function-name"><code>sort</code> <span class="function-aliases">(aliased as <code>order</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
-sort($list, $force: false)</pre>
+sort($list)</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_sort.scss" class="function-link  pull-right">View source</a>
                         </div>
-                        <p class="function-role">Sorts numeric values from <code>$list</code>. Strips unit if <code>$force</code> is enabled.</p>
+                        <p class="function-role">Sorts numeric values from <code>$list</code>.</p>
                         <h3 class="function-subheading">Parameters</h3>
                         <table class="table  function-arguments">
                             <thead>
@@ -1217,14 +1217,6 @@ sort($list, $force: false)</pre>
                                     <td>List</td>
                                     <td>-</td>
                                     <td>list</td>
-                                </tr>
-                                <tr>
-                                    <td><code>$force</code>
-                                    </td>
-                                    <td>Boolean</td>
-                                    <td><code>false</code>
-                                    </td>
-                                    <td>enable unit stripping</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1247,8 +1239,6 @@ sort($list, $force: false)</pre>
                         <h3 class="function-example">Examples</h3>
                         <pre>sort(5 12 4.7 6 69 6)
 // 4.7 5 6 6 12 69</pre>
-                        <pre>sort(5 12 4.7 "8" 6 14px 69 6, true)
-// 4.7 5 6 6 12 14 69</pre>
                     </section>
 
                     <section class="function" id="sum">
