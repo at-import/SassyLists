@@ -13,5 +13,11 @@
 // @return [List]
 
 @function prepend($list, $value) {
-	@return purge(join($value, $list));
+    @if $value != null and $value != "" {
+		@return purge(join($value, $list));
+	}
+	
+	@else {
+		@return $list;
+	}
 }

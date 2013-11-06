@@ -23,17 +23,17 @@
     $result: false;
 
     @if type-of($index) != number {
-        @warn "List index #{quote($index)} is not a number for `insert-nth`.";
+        @warn "List index #{$index} is not a number for `insert-nth`.";
         @return $result;
     }
 
     @else if $index < 1 {
-        @warn "List index #{quote($index)} must be a non-zero integer for `insert-nth`";
+        @warn "List index #{$index} must be a non-zero integer for `insert-nth`";
         @return $result;
     }
 
     @else if $index > length($list) {
-        @warn "List index is #{quote($index)} but list is only #{length($list)} items long for `insert-nth'.";
+        @warn "List index is #{$index} but list is only #{length($list)} items long for `insert-nth'.";
         @return $result;
     }
 
@@ -42,7 +42,9 @@
 
         @for $i from 1 through length($list) {
             @if $i == $index {
-                $result: append($result, $value);
+                @if $value != null and $value != "" {
+                    $result: append($result, $value);
+                }
             }
 
             $result: append($result, nth($list, $i));

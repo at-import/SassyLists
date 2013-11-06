@@ -1,5 +1,6 @@
 # Changelog
 
+* `0.3.3`: removed dependence to `purge()` from all functions; fixed an issue with `sort()`; fixed an issue with error messages
 * `0.3.2`: removed dependence to `purge()` from `replace()`
 * `0.3.1`: added aliases and cleaned `to-string()`
 * `0.3.0`: adding `contains()`, `flatten()`, `union()`
