@@ -2,8 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#prepend
 // -------------------------------------------------------------------------------
-// @dependence `purge()`
-// -------------------------------------------------------------------------------
 // @example prepend(a b c, z)   => z, a, b, c
 // @example prepend(a b c, y z) => y z, a, b, c
 // -------------------------------------------------------------------------------
@@ -13,8 +11,8 @@
 // @return [List]
 
 @function prepend($list, $value) {
-    @if $value != null and $value != "" {
-		@return purge(join($value, $list));
+	@if $value != null and $value != "" {
+		@return join($value, $list);
 	}
 	
 	@else {
