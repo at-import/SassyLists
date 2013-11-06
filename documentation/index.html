@@ -423,11 +423,6 @@ insert-nth($list, $index, $value)</pre>
                             <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code> | <code>false</code>
                             </li>
                         </ul>
-                        <h3 class="function-dependence">Dependencies</h3>
-                        <ul class="list-unstyled">
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
-                            </li>
-                        </ul>
                         <h3 class="function-errors">Raise</h3>
                         <ul class="list-unstyled">
                             <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a number</li>
@@ -666,11 +661,6 @@ prepend($list, $value)</pre>
                         <h3 class="function-return">Return</h3>
                         <ul class="list-unstyled">
                             <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
-                            </li>
-                        </ul>
-                        <h3 class="function-dependence">Dependencies</h3>
-                        <ul class="list-unstyled">
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
                             </li>
                         </ul>
                         <h3 class="function-example">Examples</h3>
@@ -1046,11 +1036,6 @@ replace-nth($list, $index, $value)</pre>
                             <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code> | <code>false</code>
                             </li>
                         </ul>
-                        <h3 class="function-dependence">Dependencies</h3>
-                        <ul class="list-unstyled">
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>purge()</code>
-                            </li>
-                        </ul>
                         <h3 class="function-errors">Raise</h3>
                         <ul class="list-unstyled">
                             <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a number</li>
@@ -1359,7 +1344,7 @@ to-string($list, $glue: '', $root: true)</pre>
 union($lists...)</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_union.scss" class="function-link  pull-right">View source</a>
                         </div>
-                        <p class="function-role">Returns a list of shared values from <code>$lists</code>.</p>
+                        <p class="function-role">Returns a list of shared values from <code>$lists</code> minus duplicates.</p>
                         <h3 class="function-subheading">Parameters</h3>
                         <table class="table  function-arguments">
                             <thead>
