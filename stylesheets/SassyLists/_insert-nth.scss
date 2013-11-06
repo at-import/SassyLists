@@ -2,8 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#insert-nth
 // -------------------------------------------------------------------------------
-// @dependence `purge()`
-// -------------------------------------------------------------------------------
 // @example insert-nth(a b c,  2, z) => a, z, b, c
 // @example insert-nth(a b c,  0, z) => error
 // @example insert-nth(a b c, -1, z) => error
@@ -51,5 +49,5 @@
         }
     }
 
-    @return purge($result);
+    @return $result;
 }
