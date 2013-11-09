@@ -17,15 +17,15 @@
     $break  : if($pre, "\A ", "");
   
     @if length($list) == 0 {
-      @return "( )";
+        @return "( )";
     }
   
     @if length($list) == 1 {
-      @return $list;
+        @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
     }
 
     @for $i from 1 to $level {
-      $indent : $indent + $tab;
+        $indent : $indent + $tab;
     }
 
     $result: "[" + $break;
@@ -41,25 +41,25 @@
         }
 
         @else {
-          @if $pre {
-            $result: $result + "(" + type-of($item) + ") ";
-          }
+            @if $pre {
+                $result: $result + "(" + type-of($item) + ") ";
+            }
       
-          @if length($item) == 0 {
-            $result: $result + "( )";
-          }
+            @if length($item) == 0 {
+                $result: $result + "( )";
+            }
       
-          @else if type-of($item) == string {
-            $result: $result + quote($item);
-          }
+            @else if type-of($item) == string {
+                $result: $result + quote($item);
+            }
       
-          @else if $item == null {
-            $result: $result + "null";
-          }
+            @else if $item == null {
+                $result: $result + "null";
+            }
       
-          @else {
-            $result: $result + $item;
-          }
+            @else {
+                $result: $result + $item;
+            }
         }
     
         @if $i != length($list) {

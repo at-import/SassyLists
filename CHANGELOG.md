@@ -1,6 +1,6 @@
 # Changelog
 
-* `0.3.5`: improving `debug()` and `chunk()`
+* `0.3.5`: improving `debug()`, `to-string()` and `chunk()`
 * `0.3.4`: fixing a minor issue in `insert-nth()`, `replace-nth()` and `prepend()`
 * `0.3.3`: removed dependence to `purge()` from all functions; fixed an issue with `sort()`; fixed an issue with error messages
 * `0.3.2`: removed dependence to `purge()` from `replace()`

@@ -15,21 +15,25 @@
         @return $list;
     }
 
-    $n-lists: ceil(length($list) / $size);
-    $tmp-index: 0;
-    $result: ();
+    $index  : 1;
+    $result : ();
 
-    @for $i from 1 through $n-lists {
-        $tmp-list: ();
+    @for $i from 1 through ceil(length($list) / $size) {
+        $tmp: ();
 
-        @for $j from 1 + $tmp-index through $size + $tmp-index {
-            @if $j <= length($list) {
-                $tmp-list: append($tmp-list, nth($list, $j));
+        @for $j from 1 through $size {
+
+            @if $index <= length($list) {
+
+                $is-orphan: length($list) % $size == 1 and $j == 1;
+                $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
+
             }
+      
+            $index: $index + 1;
         }
 
-        $result: append($result, $tmp-list);
-        $tmp-index: $tmp-index + $size;
+        $result: append($result, $tmp);
     }
 
     @return $result;
