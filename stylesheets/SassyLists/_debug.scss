@@ -12,7 +12,6 @@
 // @return [String]
 
 @function debug($list, $pre: false, $level: 1) {
-    @debug $level;
     $tab    : "    ";
     $indent : "";
     $break  : if($pre, "\A ", "");

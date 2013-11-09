@@ -11,6 +11,10 @@
 // @return [List]
 
 @function chunk($list, $size) {
+    @if $size >= length($list) {
+        @return $list;
+    }
+
     $n-lists: ceil(length($list) / $size);
     $tmp-index: 0;
     $result: ();
