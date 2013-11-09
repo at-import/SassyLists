@@ -15,6 +15,14 @@
     $tab    : "    ";
     $indent : "";
     $break  : if($pre, "\A ", "");
+  
+    @if length($list) == 0 {
+      @return "( )";
+    }
+  
+    @if length($list) == 1 {
+      @return $list;
+    }
 
     @for $i from 1 to $level {
       $indent : $indent + $tab;
@@ -22,7 +30,8 @@
 
     $result: "[" + $break;
 
-    @each $item in $list {
+    @for $i from 1 through length($list) {
+        $item: nth($list, $i);
         $result: $result + if($pre, $indent + $tab, " ");
 
         @if length($item) > 1 {
@@ -32,12 +41,28 @@
         }
 
         @else {
-            $result: $result
-                + if($pre, "(" + type-of($item) + ") ", "") 
-                + $item;
+          @if $pre {
+            $result: $result + "(" + type-of($item) + ") ";
+          }
+      
+          @if length($item) == 0 {
+            $result: $result + "( )";
+          }
+      
+          @else if type-of($item) == string {
+            $result: $result + quote($item);
+          }
+      
+          @else if $item == null {
+            $result: $result + "null";
+          }
+      
+          @else {
+            $result: $result + $item;
+          }
         }
-
-        @if index($list, $item) != length($list) {
+    
+        @if $i != length($list) {
             $result: $result + "," + $break;
         }
     }
