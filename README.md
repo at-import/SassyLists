@@ -38,7 +38,7 @@ Current version: `0.3.4`.
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
 * `to-string()`: casts list as string (JS `.join()`)
-* `union()`: returns a list of values from $lists minus duplicates
+* `union()`: returns a list of values from lists minus duplicates
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 
