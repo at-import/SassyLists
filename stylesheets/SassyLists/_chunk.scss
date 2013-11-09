@@ -28,7 +28,10 @@
             }
         }
 
-        $result: append($result, $tmp-list);
+        @each $item in $tmp-list {
+            $result: append($result, $item);
+        }
+
         $tmp-index: $tmp-index + $size;
     }
 
