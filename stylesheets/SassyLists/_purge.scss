@@ -13,22 +13,22 @@
 // @return [List]
 
 @function purge($list) {
-	$result: ();
+    $result: ();
 
-	@each $item in $list {
-		@if $item and $item != "" {
-			$result: append($result, $item, list-separator($list));
-		}
-	}
+    @each $item in $list {
+        @if $item and $item != "" {
+            $result: append($result, $item, list-separator($list));
+        }
+    }
 
-	@return $result;
+    @return $result;
 }
 
 // Aliases
 @function compact($list) {
-	@return purge($list);
+    @return purge($list);
 }
 
 @function clean($list) {
-	@return purge($list);
+    @return purge($list);
 }

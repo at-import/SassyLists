@@ -18,17 +18,17 @@
 // @return [List]
 
 @function remove($list, $value, $recursive: false) {
-	@if dependencies("replace-nth") {
-		@return replace($list, $value, null, $recursive);
-	}
+    @if dependencies("replace-nth") {
+        @return replace($list, $value, null, $recursive);
+    }
 
-	@else {
-    	@warn "A function is missing for `remove`. Please make sure you're including all dependencies.";
-    	@return false;
-	}
+    @else {
+        @warn "A function is missing for `remove`. Please make sure you're including all dependencies.";
+        @return false;
+    }
 }
 
 // Alias
 @function without($list, $value, $recursive: false) {
-	@return remove($list, $value, $recursive);
+    @return remove($list, $value, $recursive);
 }

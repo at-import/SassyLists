@@ -7,7 +7,7 @@ This is the future version of SassyLists. Requires Sass 3.3. Check [http://sassy
 
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
-Current version: `0.3.0`.
+Current version: `0.3.5`.
 
 ## How to use it
 
@@ -18,7 +18,7 @@ Current version: `0.3.0`.
 ## What's in there? 
 
 * `chunk()`: returns whether list contains $value
-* `contain()`: chunks list into size large lists
+* `contain()`: returns whether the list contains the value
 * `count-values()`: counts the number of occurrences of each value of list
 * `debug()`: returns list as a string
 * `first()`: returns first item in list
@@ -41,7 +41,7 @@ Current version: `0.3.0`.
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
 * `to-string()`: casts list as string (JS `.join()`)
-* `union()`: returns a list of shared values from given lists
+* `union()`: returns a list of values from lists minus duplicates
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 

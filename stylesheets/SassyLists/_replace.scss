@@ -2,8 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation.html#replace
 // -------------------------------------------------------------------------------
-// @dependence `purge()`
-// -------------------------------------------------------------------------------
 // @example replace( (a, b, c), b, z )         => a, z, c
 // @example replace( (a, b, c), y, z )         => a, b, c
 // @example replace( (a, b, c a), a, z )       => z, b, c z
@@ -17,24 +15,24 @@
 // @return [List]
 
 @function replace($list, $old-value, $new-value, $recursive: false) {
-    @if dependencies("purge") {
-        $result: ();
+    $result: ();
 
-        @each $item in $list {
-            @if length($item) > 1 and $recursive {
-                $result: append($result, replace($item, $old-value, $new-value, $recursive), list-separator($list));
-            }
-
-            @else {
-                $result: append($result, if($item == $old-value, $new-value, $item), list-separator($list));
+    @each $item in $list {
+        @if $item == $old-value {
+            @if $new-value != '' and $new-value != null {
+                $result: append($result, $new-value, list-separator($list));
             }
         }
 
-        @return purge($result);
+        @else if length($item) > 1 and $recursive {
+            $result: append($result, replace($item, $old-value, $new-value, $recursive), list-separator($list));
+        }
+
+        @else {
+            $result: append($result, $item, list-separator($list));
+        }
+
     }
 
-    @else {
-        @warn "A function is missing for `replace`. Please make sure you're including all dependencies.";
-        @return false;
-    }
+    @return $result;
 }

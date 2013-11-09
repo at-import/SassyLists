@@ -2,14 +2,11 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#sort
 // -------------------------------------------------------------------------------
-<<<<<<< HEAD
-// @dependence `_compare()` (utils)
-=======
 // @alias `order()`
 // -------------------------------------------------------------------------------
->>>>>>> 463170bb6443f8380c983ea293dfcacd6646cf0e
 // @dependence `last()`
 // @dependence `insert-nth()`
+// @dependence `_compare()` (utils)
 // -------------------------------------------------------------------------------
 // @example sort(8 abc 10 true aab 7 bac !important 2.8 aaa 4 14px acc 590 aaa) 
 // !important 2.8 4 7 8 10 14px 590 aaa aaa aab abc acc bac true
