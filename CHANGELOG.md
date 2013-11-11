@@ -1,5 +1,6 @@
 # Changelog
 
+* `0.4.1`: improved `intersection()` perf
 * `0.4.0`: added `intersection()`
 * `0.3.5`: improving `debug()`, `to-string()` and `chunk()`
 * `0.3.4`: fixing a minor issue in `insert-nth()`, `replace-nth()` and `prepend()`
