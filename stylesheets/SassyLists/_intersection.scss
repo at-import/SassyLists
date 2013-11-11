@@ -20,7 +20,7 @@
     $result: ();
 
     @each $item in $list {
-        @if nth($item, 2) > 1 {
+        @if nth($item, 2) == length($lists) {
             $result: append($result, nth($item, 1));
         }
     }
