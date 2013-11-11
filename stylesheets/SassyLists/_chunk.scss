@@ -15,8 +15,8 @@
         @return $list;
     }
 
-    $index  : 1;
-    $result : ();
+    $index: 1;
+    $result: ();
 
     @for $i from 1 through ceil(length($list) / $size) {
         $tmp: ();

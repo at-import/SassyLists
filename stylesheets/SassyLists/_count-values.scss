@@ -12,20 +12,20 @@
 // @return [List]
 
 @function count-values($list) {
-    $keys   : ();
-    $counts : ();
+    $keys: ();
+    $counts: ();
 
     @each $item in $list {
         $index: index($keys, $item);
 
         @if not $index {
-            $keys   : append($keys, $item);
-            $counts : append($counts, 1);
+            $keys: append($keys, $item);
+            $counts: append($counts, 1);
         }
 
         @else {
-            $count  : nth($counts, $index) + 1;
-            $counts : replace-nth($counts, $index, $count);
+            $count: nth($counts, $index) + 1;
+            $counts: replace-nth($counts, $index, $count);
         }
     }
 

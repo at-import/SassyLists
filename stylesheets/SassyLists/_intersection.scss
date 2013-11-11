@@ -1,0 +1,29 @@
+// Returns a list of shared value from $lists minus duplicates
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#intersection
+// -------------------------------------------------------------------------------
+// @dependence `count-values()`
+// @dependence `flatten()`
+// -------------------------------------------------------------------------------
+// @example intersection(a b c, a c d, e d f) => a c d
+// -------------------------------------------------------------------------------
+// @param $lists [ArgList] : lists
+// -------------------------------------------------------------------------------
+// @return [List]
+
+@function intersection($lists...) {
+    @if length($lists) == 1 {
+        @return $lists;
+    }
+
+    $list: count-values(flatten($lists));
+    $result: ();
+
+    @each $item in $list {
+        @if nth($item, 2) > 1 {
+            $result: append($result, nth($item, 1));
+        }
+    }
+
+    @return $result;
+}

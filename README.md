@@ -4,7 +4,7 @@
 
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
-Current version: `0.3.5`.
+Current version: `0.4.0`.
 
 ## How to use it
 
@@ -21,6 +21,7 @@ Current version: `0.3.5`.
 * `first()`: returns first item in list
 * `flatten()`: turns multidimensional list into a one-level list
 * `insert-nth()`: inserts value at index
+* `intersection()`: returns a list of shared values across all given lists
 * `is-symmetrical()`: checks if list is symmetrical
 * `last()`: returns last item in list
 * `last-index()`: returns last index of value in list
@@ -38,7 +39,7 @@ Current version: `0.3.5`.
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
 * `to-string()`: casts list as string (JS `.join()`)
-* `union()`: returns a list of values from lists minus duplicates
+* `union()`: returns a list of values from given lists minus duplicates
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 
