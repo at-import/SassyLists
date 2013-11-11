@@ -50,6 +50,7 @@
                                 <li><a href="#first">first</a></li>
                                 <li><a href="#flatten">flatten</a></li>
                                 <li><a href="#insert-nth">insert-nth</a></li>
+                                <li><a href="#intersection">intersection</a></li>
                                 <li><a href="#is-symmetrical">is-symmetrical</a></li>
                                 <li><a href="#last">last</a></li>
                                 <li><a href="#last-index">last-index</a></li>
@@ -438,6 +439,51 @@ insert-nth($list, $index, $value)</pre>
 // false (error)</pre>
                         <pre>insert-nth(a b c, 10, z) 
 // false (error)</pre>
+                    </section>
+
+                    <section class="function" id="intersection">
+                        <h2 class="function-name"><code>intersection</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+intersection($lists...)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_intersection.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns a list of shared values from <code>$lists</code> minus duplicates.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$lists</code>
+                                    </td>
+                                    <td>ArgList</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-dependence">Dependencies</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>count-values()</code>
+                            </li>
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>flatten()</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>intersection((a b c e), (a c e d), (e a d f))
+// a e</pre>
                     </section>
 
                     <section class="function" id="is-symmetrical">
@@ -1344,7 +1390,7 @@ to-string($list, $glue: '', $root: true)</pre>
 union($lists...)</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_union.scss" class="function-link  pull-right">View source</a>
                         </div>
-                        <p class="function-role">Returns a list of shared values from <code>$lists</code> minus duplicates.</p>
+                        <p class="function-role">Returns a of all values from <code>$lists</code> minus duplicates.</p>
                         <h3 class="function-subheading">Parameters</h3>
                         <table class="table  function-arguments">
                             <thead>
