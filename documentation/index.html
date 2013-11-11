@@ -445,10 +445,10 @@ insert-nth($list, $index, $value)</pre>
                         <h2 class="function-name"><code>intersection</code></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
-intersection($lists...)</pre>
+intersection($list, $lists...)</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_intersection.scss" class="function-link  pull-right">View source</a>
                         </div>
-                        <p class="function-role">Returns a list of shared values across all given <code>$lists</code> minus duplicates.</p>
+                        <p class="function-role">Returns a list of shared values across <code>$list</code> and all given <code>$lists</code> minus duplicates.</p>
                         <h3 class="function-subheading">Parameters</h3>
                         <table class="table  function-arguments">
                             <thead>
@@ -461,24 +461,24 @@ intersection($lists...)</pre>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>first list</td>
+                                </tr>
+                                <tr>
                                     <td><code>$lists</code>
                                     </td>
                                     <td>ArgList</td>
                                     <td>-</td>
-                                    <td>list</td>
+                                    <td>other lists</td>
                                 </tr>
                             </tbody>
                         </table>
                         <h3 class="function-return">Return</h3>
                         <ul class="list-unstyled">
                             <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
-                            </li>
-                        </ul>
-                        <h3 class="function-dependence">Dependencies</h3>
-                        <ul class="list-unstyled">
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>count-values()</code>
-                            </li>
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>flatten()</code>
                             </li>
                         </ul>
                         <h3 class="function-example">Examples</h3>
@@ -1407,7 +1407,7 @@ union($lists...)</pre>
                                     </td>
                                     <td>ArgList</td>
                                     <td>-</td>
-                                    <td>list</td>
+                                    <td>lists</td>
                                 </tr>
                             </tbody>
                         </table>
