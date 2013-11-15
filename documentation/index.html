@@ -428,7 +428,6 @@ insert-nth($list, $index, $value)</pre>
                         <ul class="list-unstyled">
                             <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a number</li>
                             <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> must be a non-zero integer</li>
-                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$index</code> can't be greater than list length</li>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>insert-nth(a b c, 2, z) 
@@ -438,7 +437,7 @@ insert-nth($list, $index, $value)</pre>
                         <pre>insert-nth(a b c, -1, z) 
 // false (error)</pre>
                         <pre>insert-nth(a b c, 10, z) 
-// false (error)</pre>
+// a b c z</pre>
                     </section>
 
                     <section class="function" id="intersection">
