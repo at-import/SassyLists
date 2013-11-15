@@ -14,16 +14,17 @@
 // @return [List]
 
 @function loop($list, $value: 1) {
-	$result: ();
+    $result: ();
+    $length: length($list);
 
-	@for $i from 0 to length($list) {
-		$result: append($result, nth($list, ($i - $value) % length($list) + 1));
-	}
+    @for $i from 0 to $length {
+        $result: append($result, nth($list, ($i - $value) % $length + 1));
+    }
 
-	@return $result;
+    @return $result;
 }
 
 // Alias
 @function shift-indexes($list, $value: 1) {
-	@return loop($list, $value);
+    @return loop($list, $value);
 }

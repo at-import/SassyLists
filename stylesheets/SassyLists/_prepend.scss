@@ -11,11 +11,11 @@
 // @return [List]
 
 @function prepend($list, $value) {
-	@if $value != null and $value != "" {
-		@return join($value, $list);
-	}
-	
-	@else {
-		@return $list;
-	}
+    @if $value != null and $value != "" {
+        @return join($value, $list);
+    }
+
+    @else {
+        @return $list;
+    }
 }

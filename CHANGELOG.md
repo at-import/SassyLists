@@ -1,12 +1,13 @@
 # Changelog
 
-* `0.4.1`: improved `intersection()` perf
-* `0.4.0`: added `intersection()`
+* `0.4.2`: improving `insert-nth()` and cleaning some indentation issues
+* `0.4.1`: improving `intersection()` perf
+* `0.4.0`: adding `intersection()`
 * `0.3.5`: improving `debug()`, `to-string()` and `chunk()`
 * `0.3.4`: fixing a minor issue in `insert-nth()`, `replace-nth()` and `prepend()`
-* `0.3.3`: removed dependence to `purge()` from all functions; fixed an issue with `sort()`; fixed an issue with error messages
-* `0.3.2`: removed dependence to `purge()` from `replace()`
-* `0.3.1`: added aliases and cleaned `to-string()`
+* `0.3.3`: removing dependence to `purge()` from all functions; fixed an issue with `sort()`; fixed an issue with error messages
+* `0.3.2`: removing dependence to `purge()` from `replace()`
+* `0.3.1`: adding aliases and cleaned `to-string()`
 * `0.3.0`: adding `contains()`, `flatten()`, `union()`
 * `0.2.4`: improving `debug()`
 * `0.2.3`: fixing important issues with comments

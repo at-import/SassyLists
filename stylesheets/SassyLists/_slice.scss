@@ -23,12 +23,12 @@
 
 @function slice($list, $start: 1, $end: length($list)) {
     $result: false;
-      
+
     @if type-of($start) != number or type-of($end) != number {
         @warn "List indexes #{$start} and #{$end} must be numbers for `slice`.";
         @return $result;
     }
-     
+
     @else if $start > $end {
         @warn "Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `slice`.";
         @return $result;
@@ -43,7 +43,7 @@
         @warn "Start index is #{$start} but list is only #{length($list)} items long for `slice`.";
         @return $result;
     }
-     
+
     @else if $end > length($list) {
         @warn "End index is #{$end} but list is only #{length($list)} items long for `slice`.";
         @return $result;

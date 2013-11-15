@@ -2,10 +2,12 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#insert-nth
 // -------------------------------------------------------------------------------
-// @example insert-nth(a b c,  2, z) => a, z, b, c
+// @example insert-nth(a b c,  2, z) => a z d c
 // @example insert-nth(a b c,  0, z) => error
 // @example insert-nth(a b c, -1, z) => error
 // @example insert-nth(a b c, 10, z) => error
+// @example insert-nth(a b c,  4, z) => a b c d
+// @example insert-nth(a b c,  5, z) => error
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $index [Number] : index to add
@@ -31,8 +33,7 @@
     }
 
     @else if $index > length($list) {
-        @warn "List index is #{$index} but list is only #{length($list)} items long for `insert-nth'.";
-        @return $result;
+        @return append($list, $value);
     }
 
     @else {

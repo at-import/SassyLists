@@ -22,10 +22,10 @@
 // @return [List] | false
 
 @function remove-nth($list, $index) {
-	@return replace-nth($list, $index, "");
+    @return replace-nth($list, $index, "");
 }
 
 // Alias
 @function without-nth($list, $index) {
-	@return remove-nth($list, $index);
+    @return remove-nth($list, $index);
 }

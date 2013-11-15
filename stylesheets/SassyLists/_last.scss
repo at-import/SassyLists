@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#last
 // -------------------------------------------------------------------------------
+// @alias `tail()`
+// -------------------------------------------------------------------------------
 // @example last(a b c) => c
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
@@ -9,5 +11,10 @@
 // @return [Literal]
 
 @function last($list) {
-	@return nth($list, length($list));
+    @return nth($list, length($list));
+}
+
+// Alias
+@function tail($list) {
+    @return last($list);
 }

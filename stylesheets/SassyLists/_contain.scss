@@ -13,10 +13,10 @@
 // @return [Boolean]
 
 @function contain($list, $value) {
-	@return not not index($list, $value)
+    @return not not index($list, $value)
 }
 
 // Alias
 @function include($list, $value) {
-	@return contain($list, $value);
+    @return contain($list, $value);
 }

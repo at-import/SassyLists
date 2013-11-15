@@ -18,10 +18,10 @@
 // @return [List]
 
 @function remove($list, $value, $recursive: false) {
-	@return replace($list, $value, null, $recursive);
+    @return replace($list, $value, null, $recursive);
 }
 
 // Alias
 @function without($list, $value, $recursive: false) {
-	@return remove($list, $value, $recursive);
+    @return remove($list, $value, $recursive);
 }

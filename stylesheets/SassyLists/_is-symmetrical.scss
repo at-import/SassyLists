@@ -15,10 +15,11 @@
 // @return [Boolean]
 
 @function is-symmetrical($list) {
-	@return reverse($list) == reverse(reverse($list));  
+    $reverse: reverse($list);
+    @return $reverse == reverse($reverse);  
 }
 
 // Alias
 @function is-mirror($list) {
-	@return is-symmetrical($list);
+    @return is-symmetrical($list);
 }
