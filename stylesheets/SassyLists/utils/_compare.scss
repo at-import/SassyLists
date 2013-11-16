@@ -27,7 +27,7 @@
 			@if not $index-b {
 				$index-b: if($index-b, $index-b, 1);
 				@warn "Character from $b not found in matrix.";
-
+			}
 			@if $index-a != $index-b { @return $index-a < $index-b; }
 		}
 	}
