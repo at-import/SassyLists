@@ -8,29 +8,26 @@
 // -------------------------------------------------------------------------------
 // @return [Boolean]
 
-@function _compare($a, $b, $matrix) {
-	@if type-of($a) == number and type-of($b) == number {
-		@return $a < $b;
-	}
+@function compare($a, $b, $matrix) {
+	$a: to-lower-case($a + unquote(""));
+	$b: to-lower-case($b + unquote(""));
+	$min: min(str-length($a), str-length($b));
 
-	@else {
-		$a: to_lower_case($a + unquote(""));
-		$b: to_lower_case($b + unquote(""));
-
-		@for $i from 1 through min(str-length($a), str-length($b)) {
-			$index-a: index($matrix, str-slice($a, $i, $i));
-			$index-b: index($matrix, str-slice($b, $i, $i));
-			@if not $index-a {
-				$index-a: 1;
-				@warn "Character from $a not found in matrix.";
-			}
-			@if not $index-b {
-				$index-b: if($index-b, $index-b, 1);
-				@warn "Character from $b not found in matrix.";
-			}
-			@if $index-a != $index-b { @return $index-a < $index-b; }
+	@for $i from 1 through $min {
+		$index-a: index($matrix, str-slice($a, $i, $i));
+		@if not $index-a {
+			$index-a: 1;
+			@warn "#{str-slice($a, $i, $i)} not found in matrix.";
 		}
+
+		$index-b: index($matrix, str-slice($b, $i, $i));
+		@if not $index-b {
+			$index-b: 1;
+			@warn "#{str-slice($b, $i, $i)} not found in matrix.";
+		}
+
+		@if $index-a != $index-b { @return $index-a > $index-b; }
 	}
 
-	@return true;
+	@return str-length($a) > str-length($b);
 }
