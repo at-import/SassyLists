@@ -24,8 +24,7 @@
         }
 
         @else {
-            $count: nth($counts, $index) + 1;
-            $counts: replace-nth($counts, $index, $count);
+            $counts: replace-nth($counts, $index, nth($counts, $index) + 1);
         }
     }
 

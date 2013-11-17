@@ -5,8 +5,8 @@ Compass::Frameworks.register('SassyLists', :path => extension_path)
 #  Version is a number. If a version contains alphas, it will be created as a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module SassyLists
-  VERSION = "0.4.2"
-  DATE = "2013-11-15"
+  VERSION = "0.4.3"
+  DATE = "2013-11-17"
 end
 
 module Sass::Script::Functions

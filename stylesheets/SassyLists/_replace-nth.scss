@@ -41,7 +41,7 @@
         $index: if($index < 0, length($list) + $index + 1, $index);  
 
         @for $i from 1 through length($list) {
-            @if $value != null and $value != "" {
+            @if $value and $value != "" and $value != () {
                 $result: append($result, if($i == $index, $value, nth($list, $i)));
             }
         }

@@ -4,7 +4,7 @@
 
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
-Current version: `0.4.2`.
+Current version: `0.4.3`.
 
 ## How to use it
 
