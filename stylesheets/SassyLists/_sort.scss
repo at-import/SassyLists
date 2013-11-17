@@ -19,42 +19,44 @@
 // @return [List]
 
 @function sort($list, $matrix: null) {
-	@if dependencies("compare", "insert-nth") {
+    $missing-dependencies: dependencies("compare", "insert-nth");
 
-		$result: nth($list, 1);
-		$matrix: if($matrix != null, $matrix, 
-			" " "!" "\"" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" ":" ";" "<" "=" ">" "?" "@" "[" "\\" "]" "^" "_"
-			"0" "1" "2" "3" "4" "5" "6" "7" "8" "9" 
-			"a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
-		);
+    @if not $missing-dependencies {
 
-		@for $i from 1 through length($list) {
-			$item: nth($list, $i);
+        $result: nth($list, 1);
+        $matrix: if($matrix != null, $matrix, 
+            " " "!" "\"" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" ":" ";" "<" "=" ">" "?" "@" "[" "\\" "]" "^" "_"
+            "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" 
+            "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
+        );
 
-			@if length($item) == 1 {
-				$index: 0;
+        @for $i from 1 through length($list) {
+            $item: nth($list, $i);
 
-				@for $j from 1 through length($result) {
-					@if compare($item, nth($result, $j), $matrix) {
-						$index: $j;
-					}
-				}
+            @if length($item) == 1 {
+                $index: 0;
 
-				$result: insert-nth($result, $index + 1, $item);	
-			}
+                @for $j from 1 through length($result) {
+                    @if compare($item, nth($result, $j), $matrix) {
+                        $index: $j;
+                    }
+                }
 
-			@else {
-				@warn "List found. Omitted.";
-			}
-		}
+                $result: insert-nth($result, $index + 1, $item);    
+            }
 
-		@return $result;
-	}
+            @else {
+                @warn "List found. Omitted.";
+            }
+        }
 
-	@else {
-		@warn "A function is missing for `sort`. Please make sure you're including all dependencies.";
-		@return false;
-	}
+        @return $result;
+    }
+
+    @else {
+        @warn "#{$missing-dependencies} missing for `sort`. Please make sure you're including all dependencies.";
+        @return false;
+    }
 }
 
 // Alias

@@ -14,10 +14,10 @@
 // @return [List]
 
 @function union($lists...) {
-	@return remove-duplicates(flatten($lists));
+    @return remove-duplicates(flatten($lists));
 }
 
 // Alias
 @function merge($lists...) {
-	@return union($lists...);
+    @return union($lists...);
 }

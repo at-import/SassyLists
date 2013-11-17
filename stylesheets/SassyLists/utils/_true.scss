@@ -1,0 +1,14 @@
+// Returns truthiness of a value
+// -------------------------------------------------------------------------------
+// @usage insert-nth()
+// @usage prepend()
+// @usage replace()
+// @usage purge()
+// -------------------------------------------------------------------------------
+// @param $value [Literal] : value
+// -------------------------------------------------------------------------------
+// @return [Boolean]
+
+@function true($value) {
+    @return $value and $value != "" and $value != ();
+}

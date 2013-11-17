@@ -16,7 +16,7 @@
     $result: ();
 
     @each $item in $list {
-        @if $item and $item != "" {
+        @if true($item) {
             $result: append($result, $item, list-separator($list));
         }
     }

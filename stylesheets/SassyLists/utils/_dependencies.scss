@@ -2,14 +2,16 @@
 // -------------------------------------------------------------------------------
 // @param $args [List] : name of required functions
 // -------------------------------------------------------------------------------
-// @return [Boolean]
+// @return [List] | false
 
 @function dependencies($args...) {
-	$return: true;
+	$result: ();
+
 	@each $function in $args {
 		@if not function_exists($function) {
-			$return: false;
+			$result: append($result, $function);
 		}
 	}
-	@return $return;
+
+	@return if($result == (), false, $result);
 }

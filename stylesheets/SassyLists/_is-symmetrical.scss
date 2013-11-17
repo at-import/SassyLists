@@ -15,12 +15,14 @@
 // @return [Boolean]
 
 @function is-symmetrical($list) {
-    @if dependencies("reverse") {
+    $missing-dependencies: dependencies("reverse");
+
+    @if not $missing-dependencies {
         @return reverse($list) == reverse(reverse($list));  
     }
     
     @else {
-        @warn "A function is missing for `is-symmetrical`. Please make sure you're including all dependencies.";
+        @warn "#{$missing-dependencies} missing for `is-symmetrical`. Please make sure you're including all dependencies.";
         @return false;
     }
 }

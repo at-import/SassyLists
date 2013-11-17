@@ -40,7 +40,7 @@
 
         @for $i from 1 through length($list) {
             @if $i == $index {
-                @if $value != null and $value != "" {
+                @if true($value) {
                     $result: append($result, $value);
                 }
             }

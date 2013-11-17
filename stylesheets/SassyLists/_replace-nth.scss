@@ -19,12 +19,14 @@
 // @return [List] | false
 
 @function replace-nth($list, $index, $value) {
-    @if dependencies("purge") {
+    $missing-dependencies: dependencies("purge"),
+
+    @if not $missing-dependencies {
         @return purge(set-nth($list, $index, $value));
     }
 
     @else {
-        @warn "A function is missing for `replace-nth`. Please make sure you're including all dependencies.";
+        @warn "#{$missing-dependencies} missing for `replace-nth`. Please make sure you're including all dependencies.";
         @return false;
     }
 }

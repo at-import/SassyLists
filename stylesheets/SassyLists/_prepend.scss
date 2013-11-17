@@ -11,7 +11,7 @@
 // @return [List]
 
 @function prepend($list, $value) {
-    @if $value != null and $value != "" {
+    @if true($value) {
         @return join($value, $list);
     }
     
