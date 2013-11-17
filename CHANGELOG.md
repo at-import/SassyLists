@@ -1,6 +1,6 @@
 # Changelog
 
-* `0.4.3`: improving `insert-nth()`, `prepend()`, `replace-nth()` and `replace()` to prevevent from adding empty lists
+* `0.4.3`: improving `insert-nth()`, `prepend()`, `replace-nth()` and `replace()` to prevent from adding empty lists
 * `0.4.2`: improving `insert-nth()` and cleaning some indentation issues
 * `0.4.1`: improving `intersection()` perf
 * `0.4.0`: adding `intersection()`
