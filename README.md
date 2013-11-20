@@ -1,7 +1,5 @@
 # SassyLists [![Gem Version](https://badge.fury.io/rb/SassyLists.png)](http://badge.fury.io/rb/SassyLists)
 
-## Advanced Sass list functions
-
 Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
 ## How to use it
