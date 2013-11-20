@@ -1,4 +1,4 @@
-# SassyLists
+# SassyLists [![Gem Version](https://badge.fury.io/rb/SassyLists.png)](http://badge.fury.io/rb/SassyLists)
 
 ## Advanced Sass list functions
 
