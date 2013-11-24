@@ -19,7 +19,7 @@
 // @return [List]
 
 @function sort($list, $matrix: null) {
-    $missing-dependencies: dependencies("compare", "insert-nth");
+    $missing-dependencies: dependencies("_compare", "insert-nth");
 
     @if not $missing-dependencies {
 
@@ -37,7 +37,7 @@
                 $index: 0;
 
                 @for $j from 1 through length($result) {
-                    @if compare($item, nth($result, $j), $matrix) {
+                    @if _compare($item, nth($result, $j), $matrix) {
                         $index: $j;
                     }
                 }

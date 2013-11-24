@@ -1,5 +1,7 @@
 // Compares two values based on alphabetical order
 // -------------------------------------------------------------------------------
+// @private
+// -------------------------------------------------------------------------------
 // @usage sort()
 // -------------------------------------------------------------------------------
 // @param $a [Literal] : first value
@@ -8,22 +10,24 @@
 // -------------------------------------------------------------------------------
 // @return [Boolean]
 
-@function compare($a, $b, $matrix) {
+@function _compare($a, $b, $matrix) {
 	$a: to-lower-case($a + unquote(""));
 	$b: to-lower-case($b + unquote(""));
 	$min: min(str-length($a), str-length($b));
 
 	@for $i from 1 through $min {
-		$index-a: index($matrix, str-slice($a, $i, $i));
+		$char-a: str-slice($a, $i, $i);
+		$index-a: index($matrix, $char-a);
 		@if not $index-a {
 			$index-a: 1;
-			@warn "#{str-slice($a, $i, $i)} not found in matrix.";
+			@warn "#{$char-a} from #{$a} not found in matrix.";
 		}
 
-		$index-b: index($matrix, str-slice($b, $i, $i));
+		$char-b: str-slice($b, $i, $i);
+		$index-b: index($matrix, $char-b);
 		@if not $index-b {
 			$index-b: 1;
-			@warn "#{str-slice($b, $i, $i)} not found in matrix.";
+			@warn "#{$char-b} from #{$b} not found in matrix.";
 		}
 
 		@if $index-a != $index-b { @return $index-a > $index-b; }
