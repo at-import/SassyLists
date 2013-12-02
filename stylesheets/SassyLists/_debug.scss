@@ -78,7 +78,7 @@
 
 @mixin debug($list) {
     body:before {
-        content: debug($list, true)              !important;
+        content: debug($list, true)               !important;
 
         display: block                            !important;
         margin: 1em                               !important;
