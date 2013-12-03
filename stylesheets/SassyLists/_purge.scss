@@ -16,7 +16,7 @@
     $result: ();
 
     @each $item in $list {
-        @if $item and $item != "" and $value != () {
+        @if $item and $item != "" and $item != () {
             $result: append($result, $item);
         }
     }
