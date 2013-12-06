@@ -1,0 +1,37 @@
+// Sort map based on keys
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#map-sort-keys
+// -------------------------------------------------------------------------------
+// @example map-sort-keys((d: 2, b: 3, c: 2, a: 4), 2) => (a: 4, b: 3, c: 2, d: 2)
+// -------------------------------------------------------------------------------
+// @param $map [Map] : map 
+// -------------------------------------------------------------------------------
+// @dependence `sort()`
+// -------------------------------------------------------------------------------
+// @return [Map]
+
+@function map-sort-keys($map) {
+    $missing-dependencies: dependencies("sort");
+
+    @if type-of($map) != map {
+        @warn "Expecting map for `map-sort-keys`; #{type-of($map)} given.";
+        @return false;
+    }
+
+    @else {
+        @if not $missing-dependencies {
+            $result: ();
+          
+            @each $key in sort(map-keys($map)) {
+                $result: map-merge($result, ($key: map-get($map, $key)));
+            }
+
+            @return $result;
+        }
+
+        @else {
+            @warn "#{$missing-dependencies} missing for `map-sort-keys`. Please make sure you're including all dependencies.";
+            @return false;
+        }
+    }
+}

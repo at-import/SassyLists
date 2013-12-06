@@ -1,0 +1,29 @@
+// Find keys from map for a given value
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#map-find-keys
+// -------------------------------------------------------------------------------
+// @example map-find-keys((a: 2, b: 3, c: 2), 2) => a b
+// -------------------------------------------------------------------------------
+// @param $map [Map] : map 
+// @param $value [Literal] : value to look for in map
+// -------------------------------------------------------------------------------
+// @return [List] | false
+
+@function map-find-keys($map, $value) {
+    @if type-of($map) != map {
+        @warn "Expecting map for `map-sort-keys`; #{type-of($map)} given.";
+        @return false;
+    }
+
+    @else {
+        $result: ();
+
+        @each $key in map-keys($map) {
+            @if map-get($map, $key) == $value {
+                $result: append($result, $key);
+            }
+        }
+
+        @return if($result == (), false, $result);
+    }
+}

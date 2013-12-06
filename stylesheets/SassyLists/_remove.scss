@@ -6,10 +6,10 @@
 // -------------------------------------------------------------------------------
 // @dependence `replace()`
 // -------------------------------------------------------------------------------
-// @example remove(a b c,   b)       => a, c
-// @example remove(a b c,   z)       => a, b, c
-// @example remove(a b c b, b)       => a, c b
-// @example remove(a b c b, b, true) => a, c
+// @example remove(a b c,   b)         => a c
+// @example remove(a b c,   z)         => a b c
+// @example remove(a b (c b), b)       => a (c b)
+// @example remove(a b (c b), b, true) => a c
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $value [Literal] : value to remove

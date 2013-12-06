@@ -2,10 +2,10 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation.html#replace
 // -------------------------------------------------------------------------------
-// @example replace( (a, b, c), b, z )         => a, z, c
-// @example replace( (a, b, c), y, z )         => a, b, c
-// @example replace( (a, b, c a), a, z )       => z, b, c z
-// @example replace( (a, b, c a), a, z, true ) => z, b, c z
+// @example replace( a b c, b, z )           => a z c
+// @example replace( a b c, y, z )           => a b c
+// @example replace( a b (c a), a, z )       => z b (c a)
+// @example replace( a b (c a), a, z, true ) => z b (c z)
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $old [Literal] : value to replace

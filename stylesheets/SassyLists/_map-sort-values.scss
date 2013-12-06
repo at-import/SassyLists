@@ -1,0 +1,46 @@
+// Sort map based on values
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#map-sort-values
+// -------------------------------------------------------------------------------
+// @example map-sort-keys((d: 3, b: 1, c: 4, a: 1), 2) => (b: 1, a: 1, d: 3, c: 4)
+// -------------------------------------------------------------------------------
+// @param $map [Map] : map 
+// -------------------------------------------------------------------------------
+// @dependence `sort()`
+// @dependence `map-find-keys()`
+// -------------------------------------------------------------------------------
+// @return [Map]
+
+@function map-sort-values($map) {
+    $missing-dependencies: dependencies("sort", "map-find-keys");
+
+    @if type-of($map) != map {
+        @warn "Expecting map for `map-sort-values`; #{type-of($map)} given.";
+        @return false;
+    }
+
+    @else {
+        @if not $missing-dependencies {
+            $result: ();
+            $tmp: ();
+
+             @each $value in sort(map-values($map)) {
+                $keys: map-find-keys($map, $value);
+            
+                @each $key in $keys {
+                    @if not index($tmp, $key) {
+                        $result: map-merge($result, ($key: $value));
+                        $tmp: append($tmp, $key);
+                    }
+                }
+            }
+
+            @return $result;
+        }
+
+        @else {
+            @warn "#{$missing-dependencies} missing for `map-sort-values`. Please make sure you're including all dependencies.";
+            @return false;
+        }
+    }
+}

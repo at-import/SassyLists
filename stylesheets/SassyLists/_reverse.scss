@@ -4,9 +4,9 @@
 // -------------------------------------------------------------------------------
 // @alias `mirror()`
 // -------------------------------------------------------------------------------
-// @example reverse(a b c)           => c, b, a
-// @example reverse(a b (c a))       => c a, b, a
-// @example reverse(a b (c a), true) => a c, b, a
+// @example reverse(a b c)           => c b a
+// @example reverse(a b (c a))       => (c a) b a
+// @example reverse(a b (c a), true) => (a c) b a
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $recursive [Boolean] : enable / disable recursivity

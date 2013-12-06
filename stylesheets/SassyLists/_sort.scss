@@ -1,4 +1,4 @@
-// Sorts values of $list
+// Sorts numeric values of $list
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#sort
 // -------------------------------------------------------------------------------
@@ -6,60 +6,75 @@
 // -------------------------------------------------------------------------------
 // @dependence `last()`
 // @dependence `insert-nth()`
-// @dependence `_compare()` (utils)
+// @dependence `reverse()`
 // -------------------------------------------------------------------------------
-// @example sort(8 abc 10 true aab 7 bac !important 2.8 aaa 4 14px acc 590 aaa) 
-// !important 2.8 4 7 8 10 14px 590 aaa aaa aab abc acc bac true
+// @example sort(5 12 4.7 6 69 6)          => 4.7 5 6 6 12 69
+// @example sort(5 12 4.7 "8" 6 14px 69 6) => 4.7 5 6 6 12 69
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $matrix [List] : alphabetical order to follow
+// @param $ascending [Boolean] : ascending or descending
 // -------------------------------------------------------------------------------
-// @raise [Warning] if nested list found
+// @raise [Warning] if not unitless number found
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function sort($list, $matrix: null) {
-    $missing-dependencies: dependencies("_compare", "insert-nth");
-
-    @if not $missing-dependencies {
-
-        $result: nth($list, 1);
-        $matrix: if($matrix != null, $matrix, 
-            " " "!" "\"" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" ":" ";" "<" "=" ">" "?" "@" "[" "\\" "]" "^" "_"
-            "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" 
-            "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z"
-        );
-
-        @for $i from 1 through length($list) {
-            $item: nth($list, $i);
-
-            @if length($item) == 1 {
-                $index: 0;
-
-                @for $j from 1 through length($result) {
-                    @if _compare($item, nth($result, $j), $matrix) {
-                        $index: $j;
-                    }
-                }
-
-                $result: insert-nth($result, $index + 1, $item);    
-            }
-
-            @else {
-                @warn "List found. Omitted.";
-            }
-        }
-
-        @return $result;
-    }
-
-    @else {
-        @warn "#{$missing-dependencies} missing for `sort`. Please make sure you're including all dependencies.";
+@function sort($list, $ascending: true) {
+    @if type-of($list) == map {
+        @warn "Trying to sort a map; use `map-sort-keys` or `map-sort-values` instead.";
         @return false;
     }
+
+    $result: nth($list, 1);
+
+    @if length($list) > 1 {
+
+        @for $i from 2 through length($list) {
+            $item: nth($list, $i);
+
+            @if type-of($item) == number {
+
+                @if unitless($item) {
+
+                    @if $item > last($result) {
+                        $result: append($result, $item);
+                    }
+
+                    @else {
+                        $index: 0;
+
+                        @for $i from length($result) * -1 through -1 {
+                            $i: abs($i);
+
+                            @if $item <= nth($result, $i) {
+                                $index: $i;
+                            }
+                        }
+                        
+                        $result: insert-nth($result, $index, $item); 
+                    }
+
+                }
+
+                @else {
+                    @warn "Not unitless number found. Omitted.";
+                }
+
+            } 
+
+            @else {
+                @warn "Not integer value found. Omitted.";
+            }
+        }
+    }
+
+    @if not $ascending and length($result) > 1 {
+        $result: reverse($result);
+    }
+
+    @return $result;
 }
 
 // Alias
-@function order($list, $matrix: null) {
-    @return sort($list, $matrix);
-}
+@function order($list) {
+    @return sort($list);
+}   

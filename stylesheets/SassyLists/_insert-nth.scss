@@ -2,7 +2,7 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#insert-nth
 // -------------------------------------------------------------------------------
-// @example insert-nth(a b c,  2, z) => a, z, b, c
+// @example insert-nth(a b c,  2, z) => a z b c
 // @example insert-nth(a b c,  0, z) => error
 // @example insert-nth(a b c, -1, z) => error
 // @example insert-nth(a b c, 10, z) => error
