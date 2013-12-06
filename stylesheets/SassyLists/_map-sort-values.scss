@@ -2,6 +2,8 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#map-sort-values
 // -------------------------------------------------------------------------------
+// @alias `map-order-values()`
+// -------------------------------------------------------------------------------
 // @example map-sort-keys((d: 3, b: 1, c: 4, a: 1), 2) => (b: 1, a: 1, d: 3, c: 4)
 // -------------------------------------------------------------------------------
 // @param $map [Map] : map 
@@ -12,14 +14,14 @@
 // @return [Map]
 
 @function map-sort-values($map) {
-    $missing-dependencies: dependencies("sort", "map-find-keys");
-
     @if type-of($map) != map {
         @warn "Expecting map for `map-sort-values`; #{type-of($map)} given.";
         @return false;
     }
 
     @else {
+        $missing-dependencies: dependencies("sort", "map-find-keys");
+
         @if not $missing-dependencies {
             $result: ();
             $tmp: ();
@@ -43,4 +45,9 @@
             @return false;
         }
     }
+}
+
+// Alias
+@function map-order-values($map) {
+    @return map-sort-values($map);
 }
