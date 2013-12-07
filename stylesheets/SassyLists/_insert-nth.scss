@@ -18,34 +18,30 @@
 // @return [List] | false
 
 @function insert-nth($list, $index, $value) {
-    $result: false;
-
     @if type-of($index) != number {
         @warn "List index #{$index} is not a number for `insert-nth`.";
-        @return $result;
+        @return false;
     }
 
-    @else if $index < 1 {
+    @if $index < 1 {
         @warn "List index #{$index} must be a non-zero integer for `insert-nth`";
-        @return $result;
+        @return false;
     }
 
-    @else if $index > length($list) {
+    @if $index > length($list) {
         @return append($list, $value);
     }
 
-    @else {
-        $result: ();
+    $result: ();
 
-        @for $i from 1 through length($list) {
-            @if $i == $index {
-                @if $value and $value != "" and $value != () {
-                    $result: append($result, $value);
-                }
+    @for $i from 1 through length($list) {
+        @if $i == $index {
+            @if $value and $value != "" and $value != () {
+                $result: append($result, $value);
             }
-
-            $result: append($result, nth($list, $i));
         }
+
+        $result: append($result, nth($list, $i));
     }
 
     @return $result;

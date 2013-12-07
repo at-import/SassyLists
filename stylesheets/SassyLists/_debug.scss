@@ -12,10 +12,6 @@
 // @return [String]
 
 @function debug($list, $pre: false, $level: 1) {
-    $tab: "    ";
-    $indent: "";
-    $break: if($pre, "\A ", "");
-  
     @if length($list) == 0 {
         @return "( )";
     }
@@ -23,6 +19,10 @@
     @if length($list) == 1 {
         @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
     }
+
+    $tab: "    ";
+    $indent: "";
+    $break: if($pre, "\A ", "");
 
     @for $i from 1 to $level {
         $indent: $indent + $tab;
