@@ -9,9 +9,16 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
+// @raise [Error] if $list is a map
+// -------------------------------------------------------------------------------
 // @return [List]
 
 @function count-values($list) {
+    @if type-of($list) == map {
+        @warn "It makes no sense to count values from a map; all keys are unique.";
+        @return false;
+    }
+
     $missing-dependencies: dependencies("replace-nth");
 
     @if not $missing-dependencies {

@@ -15,6 +15,11 @@
 // @return [List]
 
 @function replace($list, $old, $value, $recursive: false) {
+    @if type-of($list) == map {
+        @warn "List expected for `replace`, map given.";
+        @return false;
+    }
+
     $result: ();
 
     @each $item in $list {

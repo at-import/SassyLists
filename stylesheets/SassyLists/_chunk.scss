@@ -11,6 +11,11 @@
 // @return [List]
 
 @function chunk($list, $size) {
+    @if $list == () {
+        @warn "Trying to chunk empty list in `chunk`.";
+        @return false;
+    }
+
     @if $size >= length($list) {
         @return $list;
     }

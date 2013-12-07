@@ -7,6 +7,8 @@
 // @param $map [Map] : map 
 // @param $value [Literal] : value to look for in map
 // -------------------------------------------------------------------------------
+// @raise [Error] if $map is not a map
+// -------------------------------------------------------------------------------
 // @return [List] | false
 
 @function map-find-keys($map, $value) {

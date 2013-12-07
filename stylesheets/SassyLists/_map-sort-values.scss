@@ -11,6 +11,8 @@
 // @dependence `sort()`
 // @dependence `map-find-keys()`
 // -------------------------------------------------------------------------------
+// @raise [Error] if $map is not a map
+// -------------------------------------------------------------------------------
 // @return [Map]
 
 @function map-sort-values($map) {

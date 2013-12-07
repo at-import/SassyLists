@@ -11,6 +11,7 @@
 // @param $index [Number] : index to add
 // @param $value [Literal] : value to add
 // -------------------------------------------------------------------------------
+// @raise [Error] if $list is a map
 // @raise [Error] if $index isn't an integer
 // @raise [Error] if $index is strictly lesser than 1
 // @raise [Error] if $index is strictly greater than length of $list
@@ -19,6 +20,11 @@
 
 @function insert-nth($list, $index, $value) {
     $result: false;
+
+    @if type-of($list) == map {
+        @warn "List expected for `insert-nth`, map given.";
+        @return $result;
+    }
 
     @if type-of($index) != number {
         @warn "List index #{$index} is not a number for `insert-nth`.";

@@ -10,9 +10,16 @@
 // @param $list [List] : list
 // @param $recursive [Boolean] : enable / disable recursivity
 // -------------------------------------------------------------------------------
+// @raise [Error] if $list is a map
+// -------------------------------------------------------------------------------
 // @return [List]
 
 @function remove-duplicates($list, $recursive: false) {
+    @if type-of($list) == map {
+        @warn "There can't be duplicate keys in a map.";
+        @return false;
+    }
+    
     $result: ();
 
     @each $item in $list {
