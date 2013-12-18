@@ -5,28 +5,28 @@
 // @example explode("a b c d e", " ") => a, b, c, d, e
 // -------------------------------------------------------------------------------
 // @param $string [String] : string to explode
-// @param $break [String] : string to use as the breaker
+// @param $delimiter [String] : string to use as the breaker
 // -------------------------------------------------------------------------------
 // @raise [Error] if either argument is not a string
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function explode($string, $break) {
+@function explode($string, $delimiter) {
     @if type-of($string) != "string" {
         @warn "`explode` function expecting a string; #{type-of($string)} given.";
         @return false;
     }
 
-    @if type-of($break) != "string" {
-        @warn "`explode` function expecting a string; #{type-of($break)} given.";
+    @if type-of($delimiter) != "string" {
+        @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
         @return false;
     }
 
     $result: ();
     $remaining: $string;
 
-    @while str-index($remaining, $break) != 0 {
-        $pos: str-index($remaining, $break);
+    @while str-index($remaining, $delimiter) != 0 {
+        $pos: str-index($remaining, $delimiter);
         $result: append($result, str-slice($remaining, 0, $pos - 1));
         $remaining: str-slice($remaining, $pos + 1);
     }
