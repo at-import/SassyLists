@@ -47,6 +47,7 @@
                                 <li><a href="#count-values">count-values</a></li>
                                 <li><a href="#debug">debug</a></li>
                                 <li><a href="#debug-mixin">debug (mixin)</a></li>
+                                <!--<li><a href="#explode">explode</a></li>-->
                                 <li><a href="#first">first</a></li>
                                 <li><a href="#flatten">flatten</a></li>
                                 <li><a href="#insert-nth">insert-nth</a></li>
@@ -67,6 +68,7 @@
                                 <li><a href="#slice">slice</a></li>
                                 <li><a href="#sort">sort</a></li>
                                 <li><a href="#sum">sum</a></li>
+                                <!--<li><a href="#to-map">to-map</a></li>-->
                                 <li><a href="#to-string">to-string</a></li>
                                 <li><a href="#union">union</a></li>
                             </ul>
@@ -304,6 +306,56 @@ debug($list, $pre: false, $level: 1)</pre>
                         <h3 class="function-example">Examples</h3>
                         <p>Refer to <a href="http://codepen.io/HugoGiraudel/pen/unyBH">this pen</a> for an example.</p>
                     </section>
+
+                    <!--<section class="function" id="explode">
+                        <h2 class="function-name"><code>explode</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+@include explode($string, $delimiter)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_explode.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Explode <code>$string</code> into a list using <code>$delimiter</code> to break it apart.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$string</code>
+                                    </td>
+                                    <td>String</td>
+                                    <td>-</td>
+                                    <td>String to explode</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$delimiter</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>Separator</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-errors">Raise</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$string</code> must be a string</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code>  <code>$delimiter</code> must be a string</li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>explode("a b c d e", " ")
+// a, b, c, d, e </pre>
+                    </section>-->
 
                     <section class="function" id="first">
                         <h2 class="function-name"><code>first</code></h2>
@@ -1337,6 +1389,43 @@ sum($list, $force: false)</pre>
                         <pre>sum(10px 3em 5%, true)
 // 18</pre>
                     </section>
+
+                    <!--<section class="function" id="to-map">
+                        <h2 class="function-name"><code>to-map</code> <span class="function-aliases">(aliased as <code>mapify</code>)</span></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+@include to-map($list)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_to-map.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Casts <code>$list</code> into a map using indexes as keys.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code></td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>Map</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>to-map(a b c d e)
+// (1: a, 2: b, 3: c, 4: d, 5: e) </pre>
+                    </section>-->
 
                     <section class="function" id="to-string">
                         <h2 class="function-name"><code>to-string</code> <span class="function-aliases">(aliased as <code>stringify</code>)</span></h2>
