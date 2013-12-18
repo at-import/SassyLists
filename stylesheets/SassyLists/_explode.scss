@@ -1,0 +1,37 @@
+// Explode $string into a list using $break as a breaker
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#explode
+// -------------------------------------------------------------------------------
+// @example explode("a b c d e", " ") => a, b, c, d, e
+// -------------------------------------------------------------------------------
+// @param $string [String] : string to explode
+// @param $break [String] : string to use as the breaker
+// -------------------------------------------------------------------------------
+// @raise [Error] if either argument is not a string
+// -------------------------------------------------------------------------------
+// @return [List]
+
+@function explode($string, $break) {
+    @if type-of($string) != "string" {
+        @warn "`explode` function expecting a string; #{type-of($string)} given.";
+        @return false;
+    }
+
+    @if type-of($break) != "string" {
+        @warn "`explode` function expecting a string; #{type-of($break)} given.";
+        @return false;
+    }
+
+    $result: ();
+    $remaining: $string;
+
+    @while str-index($remaining, $break) != 0 {
+        $pos: str-index($remaining, $break);
+        $result: append($result, str-slice($remaining, 0, $pos - 1));
+        $remaining: str-slice($remaining, $pos + 1);
+    }
+
+    $result: append($result, $remaining);
+
+    @return $result;
+}

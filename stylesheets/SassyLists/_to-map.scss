@@ -1,0 +1,26 @@
+// Cast a $list into a map, using indexes as keys
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#to-map
+// -------------------------------------------------------------------------------
+// @alias `mapify()`
+// -------------------------------------------------------------------------------
+// @example to-map(a b c d e) => (1: a, 2: b, 3: c, 4: d, 5: e)
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// -------------------------------------------------------------------------------
+// @return [Map]
+
+@function to-map($list) {
+    $result: ();
+
+    @for $i from 1 through length($list) {
+        $result: map-merge($result, ($i: nth($list, $i)));
+    }
+
+    @return $result;
+}
+
+// Alias
+@function mapify($list) {
+    @return to-map($list);
+}
