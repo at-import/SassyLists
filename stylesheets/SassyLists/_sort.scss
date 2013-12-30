@@ -4,69 +4,55 @@
 // -------------------------------------------------------------------------------
 // @alias `order()`
 // -------------------------------------------------------------------------------
-// @dependence `last()`
-// @dependence `insert-nth()`
-// @dependence `reverse()`
-// -------------------------------------------------------------------------------
 // @example sort(5 12 4.7 6 69 6)          => 4.7, 5, 6, 6, 12, 69
 // @example sort(5 12 4.7 "8" 6 14px 69 6) => 4.7, 5, 6, 6, 12, 69
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $ascending [Boolean] : ascending or descending
 // -------------------------------------------------------------------------------
-// @raise [Warning] if not unitless number found
+// @raise [Warning] if not-number found
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function sort($list, $ascending: true) {
-    $result: nth($list, 1);
+@function sort($list) {
+    $less:  ();
+    $equal: ();
+    $large: ();
+    $seed: ceil(length($list) / 2);
 
     @if length($list) > 1 {
+        $seed: nth($list, $seed);
 
-        @for $i from 2 through length($list) {
-            $item: nth($list, $i);
+        @each $item in $list {
+            @if comparable($seed, $item) {
+                @if $item < $seed {
+                    $less: append($less, $item);
+                }
 
-            @if type-of($item) == number {
-
-                @if unitless($item) {
-
-                    @if $item > last($result) {
-                        $result: append($result, $item);
-                    }
-
-                    @else {
-                        $index: 0;
-
-                        @for $i from length($result) * -1 through -1 {
-                            $i: abs($i);
-
-                            @if $item <= nth($result, $i) {
-                                $index: $i;
-                            }
-                        }
-                        
-                        $result: insert-nth($result, $index, $item); 
-                    }
-
+                @else if $item == $seed {
+                    $equal: append($equal, $item);
                 }
 
                 @else {
-                    @warn "Not unitless number found. Omitted.";
+                    $large: append($large, $item);
                 }
-
-            } 
+            }
 
             @else {
                 @warn "Not integer value found. Omitted.";
             }
         }
+
+        $less:  sort($less);
+        $large: sort($large);
+
+        $result: join($less, $equal);
+        $result: join($result, $large);
+
+        @return $result;
     }
 
-    @if not $ascending and length($result) > 1 {
-        $result: reverse($result);
-    }
-
-    @return $result;
+    @return $list;
 }
 
 // Alias

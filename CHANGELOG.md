@@ -1,5 +1,6 @@
 # Changelog
 
+* `0.4.7`: dramatically improving `sort()` performances and removing all its dependencies
 * `0.4.6`: fixing an issue when passing an empty list to `chunk()` and improved code quality
 * `0.4.5`: making `sort()` able to return in descending order
 * `0.4.4`: fixing a typo in `purge()`
