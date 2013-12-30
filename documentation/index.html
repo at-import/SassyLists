@@ -1282,7 +1282,7 @@ slice($list, $start: 1, $end: length($list))</pre>
                         <h2 class="function-name"><code>sort</code> <span class="function-aliases">(aliased as <code>order</code>)</span></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
-sort($list, $ascending: true)</pre>
+sort($list)</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_sort.scss" class="function-link  pull-right">View source</a>
                         </div>
                         <p class="function-role">Sorts numeric values from <code>$list</code>.</p>
@@ -1304,13 +1304,6 @@ sort($list, $ascending: true)</pre>
                                     <td>-</td>
                                     <td>list</td>
                                 </tr>
-                                <tr>
-                                    <td><code>$ascending</code>
-                                    </td>
-                                    <td>Boolean</td>
-                                    <td>true</td>
-                                    <td>ascending or descending</td>
-                                </tr>
                             </tbody>
                         </table>
                         <h3 class="function-return">Return</h3>
@@ -1318,25 +1311,14 @@ sort($list, $ascending: true)</pre>
                             <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
                             </li>
                         </ul>
-                        <h3 class="function-dependence">Dependencies</h3>
-                        <ul class="list-unstyled">
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>last()</code>
-                            </li>
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>insert-nth()</code>
-                            </li>
-                            <li><span class="glyphicon  glyphicon-play"></span>  <code>reverse()</code>
-                            </li>
-                        </ul>
                         <h3 class="function-errors">Raise</h3>
                         <ul class="list-unstyled">
-                            <li><span class="glyphicon  glyphicon-play"></span><code>[Warning]</code> not unitless number found</li>
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Warning]</code> not-number found</li>
                         </ul>
                         <h3 class="function-example">Examples</h3>
                         <pre>sort(5 12 4.7 6 69 6)
-// 4.7 5 6 6 12 69
-sort(5 12 4.7 6 69 6, false)
-// 69 12 6 6 5 4.7</pre>
-                    </section>
+// 4.7 5 6 6 12 69</pre>
+                </section>
 
                     <section class="function" id="sum">
                         <h2 class="function-name"><code>sum</code></h2>
