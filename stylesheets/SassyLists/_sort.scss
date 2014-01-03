@@ -43,13 +43,7 @@
             }
         }
 
-        $less:  sort($less);
-        $large: sort($large);
-
-        $result: join($less, $equal);
-        $result: join($result, $large);
-
-        @return $result;
+        @return join(join(sort($less), $equal), sort($large));
     }
 
     @return $list;
