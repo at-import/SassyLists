@@ -6,12 +6,13 @@
 // -------------------------------------------------------------------------------
 // @param $string [String] : string to explode
 // @param $delimiter [String] : string to use as the breaker
+// @param $private [List] : private variable storing current state of list
 // -------------------------------------------------------------------------------
 // @raise [Error] if either argument is not a string
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function explode($string, $delimiter) {
+@function explode($string, $delimiter, $private: ()) {
     @if type-of($string) != "string" {
         @warn "`explode` function expecting a string; #{type-of($string)} given.";
         @return false;
@@ -22,16 +23,15 @@
         @return false;
     }
 
-    $result: ();
+    $result: $private;
     $remaining: $string;
+    $index: str-index($string, $separator);
 
-    @while str-index($remaining, $delimiter) != 0 {
-        $pos: str-index($remaining, $delimiter);
-        $result: append($result, str-slice($remaining, 0, $pos - 1));
-        $remaining: str-slice($remaining, $pos + 1);
-    }
+    @if $index > 0 {
+        $result: append($result, str-slice($string, 1, $index - 1));
+        $remaining: str-slice($string, $index + str-length($separator));
+        @return explode($remaining, $separator, $result);
+   } 
 
-    $result: append($result, $remaining);
-
-    @return $result;
+   @return append($result, $remaining);
 }
