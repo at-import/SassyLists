@@ -65,6 +65,7 @@
                                 <li><a href="#replace">replace</a></li>
                                 <li><a href="#replace-nth">replace-nth</a></li>
                                 <li><a href="#reverse">reverse</a></li>
+                                <li><a href="#shuffle">shuffle</a></li>
                                 <li><a href="#slice">slice</a></li>
                                 <li><a href="#sort">sort</a></li>
                                 <li><a href="#sum">sum</a></li>
@@ -1213,6 +1214,45 @@ reverse($list, $recursive: false)</pre>
                         <pre>reverse(a b (c a), true)
 // (a c) b a</pre>
                     </section>
+                    
+                    <section class="function" id="shuffle">
+                        <h2 class="function-name"><code>shuffle</code> <span class="function-aliases">(aliased as <code>randomize</code>)</span></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+shuffle($list)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_shuffle.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Shuffles <code>$list</code>.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>shuffle(a b c d e)
+// d c e a b</pre>
+                    </section>
+
 
                     <section class="function" id="slice">
                         <h2 class="function-name"><code>slice</code></h2>
