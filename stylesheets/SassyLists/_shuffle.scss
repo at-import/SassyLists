@@ -1,6 +1,16 @@
 // Shuffle function using Fisher-Yates method
-// @param $list: list to shuffle
-// @return $list: shuffled list
+// Chunks $list into $size large lists
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#shuffle
+// -------------------------------------------------------------------------------
+// @alias `randomize()`
+// -------------------------------------------------------------------------------
+// @example shuffle(a b c d e) => b d c e a
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// -------------------------------------------------------------------------------
+// @return [List]
+
 @function shuffle($list) {
     @for $i from -1 * length($list) through -1 {
         $i: abs($i);
