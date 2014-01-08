@@ -258,7 +258,7 @@ debug($list, $pre: false, $level: 1)</pre>
                                     <td>Number</td>
                                     <td><code>1</code>
                                     </td>
-                                    <td>Strictly internal variable; <strong>do not touch</strong>
+                                    <td>strictly private variable; <strong>do not touch</strong>
                                     </td>
                                 </tr>
                             </tbody>
@@ -311,10 +311,10 @@ debug($list, $pre: false, $level: 1)</pre>
                         <h2 class="function-name"><code>explode</code></h2>
                         <div class="function-code  clearfix">
                             <pre class="pull-left">
-@include explode($string, $delimiter)</pre>
+@include explode($string, $delimiter, $private: ())</pre>
                             <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_explode.scss" class="function-link  pull-right">View source</a>
                         </div>
-                        <p class="function-role">Explode <code>$string</code> into a list using <code>$delimiter</code> to break it apart.</p>
+                        <p class="function-role">Explode <code>$string</code> into a list using <code>$separator</code> to break it apart.</p>
                         <h3 class="function-subheading">Parameters</h3>
                         <table class="table  function-arguments">
                             <thead>
@@ -334,11 +334,19 @@ debug($list, $pre: false, $level: 1)</pre>
                                     <td>String to explode</td>
                                 </tr>
                                 <tr>
-                                    <td><code>$delimiter</code>
+                                    <td><code>$separator</code>
+                                    </td>
+                                    <td>String</td>
+                                    <td>-</td>
+                                    <td>Separator</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$private</code>
                                     </td>
                                     <td>List</td>
                                     <td>-</td>
-                                    <td>Separator</td>
+                                    <td>strictly private variable; <strong>do not touch</strong>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -1449,7 +1457,7 @@ to-string($list, $glue: '', $root: true)</pre>
                                     <td>Boolean</td>
                                     <td><code>true</code>
                                     </td>
-                                    <td>strictly internal variable; <strong>do not touch</strong>
+                                    <td>strictly private variable; <strong>do not touch</strong>
                                     </td>
                                 </tr>
                             </tbody>
