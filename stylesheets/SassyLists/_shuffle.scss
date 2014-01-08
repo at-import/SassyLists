@@ -1,0 +1,18 @@
+// Shuffle function using Fisher-Yates method
+// @param $list: list to shuffle
+// @return $list: shuffled list
+@function shuffle($list) {
+    @for $i from -1 * length($list) through -1 {
+        $i: abs($i);
+        $j: random(length($list) - 1) + 1;
+        $tmp: nth($list, $i);
+        $list: set-nth($list, $i, nth($list, $j));
+        $list: set-nth($list, $j, $tmp);
+    }
+    @return $list;
+}
+
+// Alias
+@function randomize($list) {
+    @return shuffle($list);
+}
