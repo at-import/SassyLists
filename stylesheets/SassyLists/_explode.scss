@@ -12,14 +12,14 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function explode($string, $delimiter, $private: ()) {
+@function explode($string, $separator, $private: ()) {
     @if type-of($string) != "string" {
         @warn "`explode` function expecting a string; #{type-of($string)} given.";
         @return false;
     }
 
-    @if type-of($delimiter) != "string" {
-        @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
+    @if type-of($separator) != "string" {
+        @warn "`explode` function expecting a string; #{type-of($separator)} given.";
         @return false;
     }
 
