@@ -5,7 +5,7 @@
 // @example explode("a b c d e", " ") => a, b, c, d, e
 // -------------------------------------------------------------------------------
 // @param $string [String] : string to explode
-// @param $delimiter [String] : string to use as the breaker
+// @param $separator [String] : string to use as the breaker
 // @param $private [List] : private variable storing current state of list
 // -------------------------------------------------------------------------------
 // @raise [Error] if either argument is not a string
