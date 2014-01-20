@@ -2,7 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation.html#purge
 // -------------------------------------------------------------------------------
-// @alias `compact()`
 // @alias `clean()`
 // -------------------------------------------------------------------------------
 // @example purge(a null b false c) => a, b, c
@@ -24,11 +23,7 @@
     @return $result;
 }
 
-// Aliases
-@function compact($list) {
-    @return purge($list);
-}
-
+// Alias
 @function clean($list) {
     @return purge($list);
 }
