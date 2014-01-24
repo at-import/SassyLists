@@ -9,7 +9,7 @@
 // @return [List]
 
 @function reverse($list) {
-  @if length($list) == 1 {
+  @if length($list) < 2 {
     @return $list;
   }
 

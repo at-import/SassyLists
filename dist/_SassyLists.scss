@@ -53,8 +53,13 @@
 // @return [List] | false
 
 @function chunk($list, $size) {
-  @if $list == () {
-    @warn "Trying to chunk empty list in `chunk`.";
+  @if length($list) == 0 {
+    @warn "List cannot be empty for `chunk`.";
+    @return false;
+  }
+
+  @if type-of($size) != number {
+    @warn "#{$size} is not a number for `chunk`.";
     @return false;
   }
 
@@ -458,9 +463,16 @@
 // @param $list [List] : list
 // @param $value [Number] : number of position between old and new indexes
 // -------------------------------------------------------------------------------
-// @return [List]
+// @raise [Error] if $value isn't an integer
+// -------------------------------------------------------------------------------
+// @return [List] | false
 
 @function loop($list, $value: 1) {
+  @if type-of($value) != number {
+    @warn "#{$value} is not a number for `loop`.";
+    @return false;
+  }
+
   $result: ();
   $length: length($list);
 
@@ -689,7 +701,7 @@
 // @return [List]
 
 @function reverse($list) {
-  @if length($list) == 1 {
+  @if length($list) < 2 {
     @return $list;
   }
 

@@ -5,6 +5,7 @@
   }
 
   @include it("should be false if collection doesnt contain value") {
+    @include should(expect( contain( (), 4 ) ), to( equal( false ) ));
     @include should(expect( contain( 1 2 3, 4 ) ), to( equal( false ) ));
     @include should(expect( contain( "foo" "bar" "baz", "fod" ) ), to( equal( false ) ));
   }

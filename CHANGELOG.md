@@ -1,5 +1,13 @@
 # Changelog
 
+* `1.0.0`: moving code base to Sass 3.3 + adding a Grunt workflow
+    * adding `explode`
+    * making use of `list-separator()` and `set-nth()`
+    * updating `sort()` to make it able to sort strings
+    * removing all notion of recursion for sake of simplicity
+    * making `count-values()` return a map
+    * minor fixes and improvements
+    * improving overall performances
 * `0.4.9`: removing `compact()` alias for `purge()` (ref [#23](https://github.com/Team-Sass/SassyLists/issues/23))
 * `0.4.8`: adding `shuffle()`
 * `0.4.7`: dramatically improving `sort()` performances and removing all its dependencies

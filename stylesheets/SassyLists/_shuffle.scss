@@ -9,6 +9,10 @@
 // @return [List]
 
 @function shuffle($list) {
+  @if length($list) < 2 {
+    @return $list;
+  }
+  
   @for $i from -1 * length($list) through -1 {
     $i: abs($i);
     $j: random(length($list) - 1) + 1;

@@ -14,6 +14,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `contain()`: returns whether the list contains the value
 * `count-values()`: counts the number of occurrences of each value of list
 * `debug()`: returns list as a string
+* `explode()`: explodes a string into a list using a string as a delimiter
 * `first()`: returns first item in list
 * `flatten()`: turns multidimensional list into a one-level list
 * `insert-nth()`: inserts value at index
@@ -31,6 +32,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `replace()`: replaces value in list
 * `replace-nth()`: replaces value at index
 * `reverse()`: reverses list
+* `shuffle()`: shuffles list
 * `slice()`: slices list
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
@@ -41,8 +43,10 @@ If you feel like an explorer, you can have a look at the code [here](https://git
 
 ## Requirements
 
-* Sass ~> 3.2.0
-* Compass ~> 0.12.2 (obviously)
+* Sass ~> 3.3.0
+* Compass ~> 1.0.0
+
+If you are looking for the last version of SassyLists running on Sass 3.2, install `0.4.9`.
 
 Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.
 

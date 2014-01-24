@@ -1,7 +1,13 @@
 @include describe("The explode function") {
   $string: "The explode function should explode a string into a list using second argument as delimiter";
+  
   @include it("should explode a string into a list using second argument as delimiter") {
     @include should(expect( explode( $string ) ), to( equal( 'T' 'h' 'e' ' ' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'f' 'u' 'n' 'c' 't' 'i' 'o' 'n' ' ' 's' 'h' 'o' 'u' 'l' 'd' ' ' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'a' ' ' 's' 't' 'r' 'i' 'n' 'g' ' ' 'i' 'n' 't' 'o' ' ' 'a' ' ' 'l' 'i' 's' 't' ' ' 'u' 's' 'i' 'n' 'g' ' ' 's' 'e' 'c' 'o' 'n' 'd' ' ' 'a' 'r' 'g' 'u' 'm' 'e' 'n' 't' ' ' 'a' 's' ' ' 'd' 'e' 'l' 'i' 'm' 'i' 't' 'e' 'r' ) ));
     @include should(expect( explode( $string, 'e' ) ), to( equal( 'Th' ' ' 'xplod' ' function should ' 'xplod' ' a string into a list using s' 'cond argum' 'nt as d' 'limit' 'r' ) ));
+  }
+
+  @include it("should return false if arguments are invalid") {
+    @include should(expect( explode( 12345 ) ), to( equal( false ) ));
+    @include should(expect( explode( "string", 1 ) ), to( equal( false ) ));
   }
 } 

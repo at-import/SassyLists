@@ -6,10 +6,13 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
+// @raise [Error] if list is empty
+// -------------------------------------------------------------------------------
 // @return [Literal] | false
 
 @function last($list) {
-  @if length($list) < 1 { 
+  @if length($list) == 0 { 
+    @warn "Cannot find last item of empty list.";
     @return false; 
   }
   

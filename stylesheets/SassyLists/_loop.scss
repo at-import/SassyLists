@@ -7,9 +7,16 @@
 // @param $list [List] : list
 // @param $value [Number] : number of position between old and new indexes
 // -------------------------------------------------------------------------------
-// @return [List]
+// @raise [Error] if $value isn't an integer
+// -------------------------------------------------------------------------------
+// @return [List] | false
 
 @function loop($list, $value: 1) {
+  @if type-of($value) != number {
+    @warn "#{$value} is not a number for `loop`.";
+    @return false;
+  }
+
   $result: ();
   $length: length($list);
 

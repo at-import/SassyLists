@@ -1,5 +1,7 @@
 @include describe("The is-symmetrical function") {
   @include it("should return true if list is symmetrical") {
+    @include should(expect( is-symmetrical( () ) ), to( equal( true ) ));
+    @include should(expect( is-symmetrical( 1 ) ), to( equal( true ) ));
     @include should(expect( is-symmetrical( 1 2 3 2 1 ) ), to( equal( true ) ));
     @include should(expect( is-symmetrical( "a" "b" "a" ) ), to( equal( true ) ));
   }

@@ -5,18 +5,18 @@
 // @param $list [List] : list
 // @param $size [Number] : length of lists
 // -------------------------------------------------------------------------------
-// @raise [Error] if $list is empty
+// @raise [Error] if $size is not a number
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
 @function chunk($list, $size) {
-  @if $list == () {
-    @warn "Trying to chunk empty list in `chunk`.";
-    @return false;
-  }
-
   @if $size >= length($list) {
     @return $list;
+  }
+
+  @if type-of($size) != number {
+    @warn "#{$size} is not a number for `chunk`.";
+    @return false;
   }
 
   $index: 1;

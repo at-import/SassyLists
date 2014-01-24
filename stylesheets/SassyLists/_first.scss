@@ -6,10 +6,13 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
+// @raise [Error] if either $list is empty
+// -------------------------------------------------------------------------------
 // @return [Literal] | false
 
 @function first($list) {
-  @if length($list) < 1 { 
+  @if length($list) == 0 { 
+    @warn "Cannot find first item of empty list.";
     @return false; 
   }
 
