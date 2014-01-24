@@ -2,13 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#slice
 // -------------------------------------------------------------------------------
-// @example slice(a b c d,  2, 3) => b, c
-// @example slice(a b c d,  3, 2) => error
-// @example slice(a b c d,  3, 5) => error
-// @example slice(a b c d, -1, 3) => error
-// @example slice(a b c d,  0, 3) => error
-// @example slice(a b c d,  3, 3) => c
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $start [Number] : start index
 // @param $end [Number] : end index
@@ -22,36 +15,35 @@
 // @return [List] | false
 
 @function slice($list, $start: 1, $end: length($list)) {
-    @if type-of($start) != number or type-of($end) != number {
-        @warn "List indexes #{$start} and #{$end} must be numbers for `slice`.";
-        @return false;
-    }
+  @if type-of($start) != number or type-of($end) != number {
+    @warn "List indexes #{$start} and #{$end} must be numbers for `slice`.";
+    @return false;
+  }
 
-    @if $start > $end {
-        @warn "Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `slice`.";
-        @return false;
-    }
+  @if $start > $end {
+    @warn "Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `slice`.";
+    @return false;
+  }
 
-    @if $start < 1 or $end < 1 {
-        @warn "List indexes must be non-zero integers for `slice`.";
-        @return false;
-    }
+  @if $start < 1 or $end < 1 {
+    @warn "List indexes must be non-zero integers for `slice`.";
+    @return false;
+  }
 
-    @if $start > length($list) {
-        @warn "Start index is #{$start} but list is only #{length($list)} items long for `slice`.";
-        @return false;
-    }
+  @if $start > length($list) {
+    @warn "Start index is #{$start} but list is only #{length($list)} items long for `slice`.";
+    @return false;
+  }
 
-    @if $end > length($list) {
-        @warn "End index is #{$end} but list is only #{length($list)} items long for `slice`.";
-        @return false;
-    }
+  @if $end > length($list) {
+    @warn "End index is #{$end} but list is only #{length($list)} items long for `slice`.";
+    @return false;
+  }
 
-    $result: ();
-        
-    @for $i from $start through $end {
-        $result: append($result, nth($list, $i));
-    }
+  $result: ();
+  @for $i from $start through $end {
+    $result: append($result, nth($list, $i), list-separator($list));
+  }
 
-    @return $result;
+  @return $result;
 }

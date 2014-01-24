@@ -1,0 +1,26 @@
+@include describe("The replace-nth function") {
+  @include it("should replace nth in a list") {
+    @include should(expect( replace-nth( 1 2 3 4, 2 , 1 ) ), to(equal( 1 1 3 4 ) ));
+    @include should(expect( replace-nth( "bar" "foo" "bar" "baz"  , 2 , "tah" ) ), to(equal( "bar" "tah" "bar" "baz" ) ));
+  }
+
+  @include it("should remove nth from a list if no value is provided") {
+    @include should(expect( replace-nth( 1 2 3 4, 2 , null ) ), to(equal( 1 3 4 ) ));
+    @include should(expect( replace-nth( "bar" "foo" "bar" "baz"  , 2 , null ) ), to(equal( "bar" "bar" "baz" ) ));
+  }
+
+  @include it("should replace negative nth in a list") {
+    @include should(expect( replace-nth( 1 2 3 4, -2 , 1 ) ), to(equal( 1 2 1 4 ) ));
+    @include should(expect( replace-nth( "bar" "foo" "bar" "baz"  , -2 , "tah" ) ), to(equal( "bar" "foo" "tah" "baz" ) ));
+  }
+
+  @include it("should remove negative nth from a list if no value is provided") {
+    @include should(expect( replace-nth( 1 2 3 4, -2 , null ) ), to(equal( 1 2 4 ) ));
+    @include should(expect( replace-nth( "bar" "foo" "bar" "baz"  , -2 , null ) ), to(equal( "bar" "foo" "baz" ) ));
+  }
+
+  @include it("should return false for invalid indexes") {
+    @include should(expect( replace-nth( 1 2 3 4, 0 , null ) ), to( be( false ) ));
+    @include should(expect( replace-nth( "bar" "foo" "bar" "baz", "foo" , null ) ), to( be( false ) ));
+  }
+}

@@ -1,0 +1,14 @@
+@include describe("The purge function") {
+  @include it("should remove all falsy values from list") {
+    @include should(expect( purge( 0 1 2 false 3 null 4 "" ) ), to( equal( 0 1 2 3 4 ) ));
+    @include should(expect( purge( "a" "b" false "c" null "d" "" ) ), to( equal( "a" "b" "c" "d" ) ));
+  }
+
+  @include it("should leave lists without falsy values alone") {
+    @include should(expect( purge( 1 2 3 4 ) ), to( equal( 1 2 3 4 ) ));
+  }
+
+  @include it("should leave empty lists alone") {
+    @include should(expect( purge( () ) ), to( equal( () ) ));
+  }
+}

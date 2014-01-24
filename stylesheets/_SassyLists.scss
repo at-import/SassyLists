@@ -6,10 +6,13 @@
 // Repository: https://github.com/Team-Sass/SassyLists/
 // -------------------------------------------------------------------------------
 
+@import "SassyLists/helpers/true";
+@import "SassyLists/helpers/str-compare";
 @import "SassyLists/chunk";
 @import "SassyLists/contain";
 @import "SassyLists/count-values";
 @import "SassyLists/debug";
+@import "SassyLists/explode";
 @import "SassyLists/first";
 @import "SassyLists/flatten";
 @import "SassyLists/insert-nth";

@@ -1,37 +1,28 @@
-// Replaces $old-value by $new-value in $list
+// Replaces $old by $new in $list
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation.html#replace
 // -------------------------------------------------------------------------------
-// @example replace( (a, b, c), b, z )         => a, z, c
-// @example replace( (a, b, c), y, z )         => a, b, c
-// @example replace( (a, b, c a), a, z )       => z, b, c z
-// @example replace( (a, b, c a), a, z, true ) => z, b, c z
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $old [Literal] : value to replace
-// @param $value [Literal] : new value for $old-value
-// @param $recursive [Boolean] : enable / disable recursivity
+// @param $value [Literal] : new value for $old
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function replace($list, $old, $value, $recursive: false) {
-    $result: ();
+@function replace($list, $old, $value) {
+  $running: true;
 
-    @each $item in $list {
-        @if $item == $old {
-            @if $value and $value != '' and $value != () {
-                $result: append($result, $value);
-            }
-        }
+  @while $running {
+    $index: index($list, $old);
 
-        @else if length($item) > 1 and $recursive {
-            $result: append($result, replace($item, $old, $value, $recursive));
-        }
-
-        @else {
-            $result: append($result, $item);
-        }
+    @if not $index {
+      $running: false;
     }
 
-    @return $result;
+    @else {
+      $list: set-nth($list, $index, $value);
+    }
+
+  }
+
+  @return if(not is-true($value), purge($list), $list);
 }

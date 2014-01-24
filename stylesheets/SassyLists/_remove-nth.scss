@@ -6,12 +6,6 @@
 // -------------------------------------------------------------------------------
 // @dependence `replace-nth()`
 // -------------------------------------------------------------------------------
-// @example remove-nth(a b c,   2) => a, c
-// @example remove-nth(a b c,   0) => error
-// @example remove-nth(a b c,  -1) => a, b
-// @example remove-nth(a b c,  10) => error
-// @example remove-nth(a b c, -10) => error
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $index [Number] : index to remove
 // -------------------------------------------------------------------------------
@@ -22,10 +16,10 @@
 // @return [List] | false
 
 @function remove-nth($list, $index) {
-    @return replace-nth($list, $index, "");
+  @return replace-nth($list, $index, "");
 }
 
 // Alias
 @function without-nth($list, $index) {
-    @return remove-nth($list, $index);
+  @return remove-nth($list, $index);
 }

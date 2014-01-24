@@ -1,0 +1,14 @@
+@include describe("The is-true function") {
+  @include it("should return true if the value is valid") {
+    @include should(expect( is-true( 0 ) ), to( equal( true ) ));
+    @include should(expect( is-true( string ) ), to( equal( true ) ));
+    @include should(expect( is-true( true ) ), to( equal( true ) ));
+    @include should(expect( is-true( 1 ) ), to( equal( true ) ));
+  }
+
+  @include it("should return false if the value is invalid") {
+    @include should(expect( is-true( false ) ), to( equal( false ) ));
+    @include should(expect( is-true( null ) ), to( equal( false ) ));
+    @include should(expect( is-true( () ) ), to( equal( false ) ));
+  }
+}

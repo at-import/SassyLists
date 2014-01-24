@@ -1,0 +1,11 @@
+@include describe("The reverse function") {
+  @include it("should reverse the values of a list") {
+    @include should(expect( reverse( 1 2 3 4 ) ), to( equal( 4 3 2 1 ) ));
+    @include should(expect( reverse( "foo" "bar" "baz" ) ), to( equal( "baz" "bar" "foo" ) ));
+  }
+
+  @include it("should reverse the values of a list non-recursively") {
+    @include should(expect( reverse( 1 2 (3 4) ) ), to( equal( (3 4) 2 1 ) ));
+    @include should(expect( reverse( "foo" ("bar" "baz") ) ), to( equal( ("bar" "baz") "foo" ) ));
+  }
+}

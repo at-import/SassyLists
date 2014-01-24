@@ -1,2 +1,4 @@
 .sass-cache
 *.gem
+node_modules
+tmp

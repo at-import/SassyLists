@@ -1,0 +1,13 @@
+@include describe("The sum function") {
+  @include it("should return the sum of unitless numbers in list") {
+    @include should(expect( sum( 1 2 3 4 5 ) ), to( equal( 15 )));
+    @include should(expect( sum( 1px 2in 3pc 4% 5px 6 ) ), to( equal( 6 )));
+    @include should(expect( sum( "a" "b" "c" "d" "e" "f" ) ), to( equal( 0 )));
+  }
+
+  @include it("should return the sum of numbers included those with units when force flag is used") {
+    @include should(expect( sum( 1 2 3 4 5, true ) ), to( equal( 15 )));
+    @include should(expect( sum( 1px 2in 3pc 4% 5px 6, true ) ), to( equal( 21 )));
+    @include should(expect( sum( "a" "b" "c" "d" "e" "f", true ) ), to( equal( 0 )));
+  }
+}

@@ -1,0 +1,11 @@
+@include describe("The remove-duplicates function") {
+  @include it("should remove duplicated values from list") {
+    @include should(expect( remove-duplicates( 1 2 3 2 4 1 5 ) ), to( equal( 1 2 3 4 5 ) ));
+    @include should(expect( remove-duplicates( "a" "b" "a" "c" "c" "d" "b" "e" "f" ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
+  }
+
+  @include it("should leave a list without duplicated values alone") {
+    @include should(expect( remove-duplicates( 1 2 3 4 5 ) ), to( equal( 1 2 3 4 5 ) ));
+    @include should(expect( remove-duplicates( "a" "b" "c" "d" "e" "f" ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
+  }
+}

@@ -1,0 +1,11 @@
+@include describe("The prepend function") {
+  @include it("should prepend a value to a list") {
+    @include should(expect( prepend( 2 3 4, 1 ) ), to( equal( 1 2 3 4 ) ));
+    @include should(expect( prepend( "b" "c" "d", "a" ) ), to( equal( "a" "b" "c" "d" ) ));
+  }
+
+  @include it("should prepend a list to a list") {
+    @include should(expect( prepend( 3 4, 1 2 ) ), to( equal( 1 2 3 4 ) ));
+    @include should(expect( prepend( "c" "d", "a" "b" ) ), to( equal( "a" "b" "c" "d" ) ));
+  }
+}

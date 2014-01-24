@@ -1,0 +1,12 @@
+@include describe("The remove-nth function") {
+  @include it("should remove value at index") {
+    @include should(expect( remove-nth( 1 2 3 4 5, 1 ) ), to( equal( 2 3 4 5 ) ));
+    @include should(expect( remove-nth( "a" "b" "c" "d" "e" "f", 5 ) ), to( equal( "a" "b" "c" "d" "f" ) ));
+    @include should(expect( remove-nth( "a" "b" "c" "d" "e" "f", -1 ) ), to( equal( "a" "b" "c" "d" "e" ) ));
+  }
+
+  @include it("should diminish length") {
+    @include should(expect( length(remove-nth( 1 2 3 4 5, 1 ) ) ), to( equal( length(1 2 3 4 5) - 1 )));
+    @include should(expect( length(remove-nth( "a" "b" "c" "d" "e" "f", 5 ) ) ), to( equal( length("a" "b" "c" "d" "e" "f") - 1 )));
+  }
+}

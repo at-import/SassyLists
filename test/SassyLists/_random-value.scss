@@ -1,0 +1,5 @@
+@include describe("The random-value function") {
+  @include it("should return a random value from list") {
+    @include should(expect( not not index( 1 2 3 4 5 , random-value( 1 2 3 4 5 ) ) ), to( equal( true ) ));
+  }
+}

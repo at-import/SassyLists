@@ -2,9 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#debug
 // -------------------------------------------------------------------------------
-// @example debug(a b c d e)   => [ a, b, c, d, e ]
-// @example debug(a b (c d e)) => [ a, b, [ c, d, e ] ]
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $pre [Boolean] : enable/disable variables type and proper indentation
 // @param $level [Number] : internal variable for recursivity
@@ -12,64 +9,64 @@
 // @return [String]
 
 @function debug($list, $pre: false, $level: 1) {
-    @if length($list) == 0 {
-        @return "( )";
+  @if length($list) == 0 {
+    @return "( )";
+  }
+  
+  @if length($list) == 1 {
+    @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
+  }
+  
+  $tab: "    ";
+  $indent: "";
+  $break: if($pre, "\A ", "");
+  
+  @for $i from 1 to $level {
+    $indent: $indent + $tab;
+  }
+  
+  $result: "[" + $break;
+  
+  @for $i from 1 through length($list) {
+    $item: nth($list, $i);
+    $result: $result + if($pre, $indent + $tab, " ");
+  
+    @if length($item) > 1 {
+      $result: $result 
+        + if($pre, "(list: " + length($item) + ") ", "") 
+        + debug($item, $pre, $level + 1);
     }
   
-    @if length($list) == 1 {
-        @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
-    }
-
-    $tab: "    ";
-    $indent: "";
-    $break: if($pre, "\A ", "");
-
-    @for $i from 1 to $level {
-        $indent: $indent + $tab;
-    }
-
-    $result: "[" + $break;
-
-    @for $i from 1 through length($list) {
-        $item: nth($list, $i);
-        $result: $result + if($pre, $indent + $tab, " ");
-
-        @if length($item) > 1 {
-            $result: $result 
-                + if($pre, "(list: " + length($item) + ") ", "") 
-                + debug($item, $pre, $level + 1);
-        }
-
-        @else {
-            @if $pre {
-                $result: $result + "(" + type-of($item) + ") ";
-            }
-      
-            @if length($item) == 0 {
-                $result: $result + "( )";
-            }
-      
-            @else if type-of($item) == string {
-                $result: $result + quote($item);
-            }
-      
-            @else if $item == null {
-                $result: $result + "null";
-            }
-      
-            @else {
-                $result: $result + $item;
-            }
-        }
+    @else {
+      @if $pre {
+        $result: $result + "(" + type-of($item) + ") ";
+      }
     
-        @if $i != length($list) {
-            $result: $result + "," + $break;
-        }
+      @if length($item) == 0 {
+        $result: $result + "( )";
+      }
+    
+      @else if type-of($item) == string {
+        $result: $result + quote($item);
+      }
+    
+      @else if $item == null {
+        $result: $result + "null";
+      }
+    
+      @else {
+        $result: $result + $item;
+      }
     }
-
-    $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
-
-    @return quote($result);
+  
+    @if $i != length($list) {
+      $result: $result + "," + $break;
+    }
+  }
+  
+  $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
+  
+  @return quote($result);
 }
 
 // Mixin displaying clean debug
@@ -77,20 +74,20 @@
 // @param $list [List] : list
 
 @mixin debug($list) {
-    body:before {
-        content: debug($list, true)               !important;
+  body:before {
+    content: debug($list, true)               !important;
 
-        display: block                            !important;
-        margin: 1em                               !important;
-        padding: .5em                             !important; 
+    display: block                            !important;
+    margin: 1em                               !important;
+    padding: .5em                             !important; 
 
-        background: #EFEFEF                       !important;
-        border: 1px solid #DDD                    !important;
-        border-radius: .2em                       !important;
+    background: #EFEFEF                       !important;
+    border: 1px solid #DDD                    !important;
+    border-radius: .2em                       !important;
 
-        color: #333                               !important;
-        font: .75em/1.5 "Courier New", monospace  !important;
-        text-shadow: 0 1px white                  !important;
-        white-space: pre-wrap                     !important;
-    }
+    color: #333                               !important;
+    font: .75em/1.5 "Courier New", monospace  !important;
+    text-shadow: 0 1px white                  !important;
+    white-space: pre-wrap                     !important;
+  }
 }

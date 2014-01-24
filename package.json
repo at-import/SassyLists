@@ -1,0 +1,31 @@
+{
+  "name": "SassyLists",
+  "version": "1.0.0",
+  "description": "A Sass API for lists.",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Team-Sass/SassyLists"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "list",
+    "lists"
+  ],
+  "author": "Hugo Giraudel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Team-Sass/SassyLists/issues"
+  },
+  "homepage": "https://github.com/Team-Sass/SassyLists",
+  "devDependencies": {
+    "grunt-contrib-sass": "~0.6.0",
+    "grunt": "~0.4.2",
+    "bootcamp": "~1.1.2",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-concat": "~0.3.0"
+  }
+}

@@ -4,17 +4,19 @@
 // -------------------------------------------------------------------------------
 // @alias `head()`
 // -------------------------------------------------------------------------------
-// @example first(a b c) => a
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
-// @return [Literal]
+// @return [Literal] | false
 
 @function first($list) {
-    @return nth($list, 1);
+  @if length($list) < 1 { 
+    @return false; 
+  }
+
+  @return nth($list, 1);
 }
 
 // Alias
 @function head($list) {
-    @return first($list);
+  @return first($list);
 }

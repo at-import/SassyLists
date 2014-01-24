@@ -1,0 +1,12 @@
+@include describe("The str-compare function") {
+  $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z";
+
+  @include it("should return true if the first value comes before the second") {
+    @include should(expect( str-compare( 0, 1, $order ) ), to( equal( true ) ));
+    @include should(expect( str-compare( 1, 0, $order ) ), to( equal( false ) ));
+    @include should(expect( str-compare( a, b, $order ) ), to( equal( true ) ));
+    @include should(expect( str-compare( b, a, $order ) ), to( equal( false ) ));
+    @include should(expect( str-compare( 1, 1, $order ) ), to( equal( false ) ));
+    @include should(expect( str-compare( a, a, $order ) ), to( equal( false ) ));
+  }
+}

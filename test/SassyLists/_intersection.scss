@@ -1,0 +1,22 @@
+@include describe("The intersection function") {
+  @include it("should return a list of shared values across all given lists") {
+    @include should(expect( intersection( 1 2 3, 2 4 1, 6 2 1 ) ), to( equal( 1 2 ) ));
+    @include should(expect( intersection( "a" "b" "c", "b" "d" "c", "a" "c" "b" ) ), to( equal( "b" "c" ) ));
+  }
+
+  @include it("should return an empty list if there is no shared values") {
+    @include should(expect( intersection(  1 2 3, 2 4 5, 6 4 1 ) ), to( equal( () ) ));
+    @include should(expect( intersection( "a" "d" "c", "b" "d" "e", "a" "c" "b" ) ), to( equal( () ) ));
+  }
+
+  @include it("should return one item if all the items are the same") {
+    @include should(expect( intersection(1 1, 1 1, 1 1) ), to( equal( 1 ) ));
+    @include should(expect( intersection("a" "a", "a" "a", "a" "a") ), to( equal( "a" ) ));
+  }
+
+  @include it("should leave empty arrays alone") {
+    @include should(expect( intersection( () ) ), to( equal( () ) ));
+    @include should(expect( intersection( () ) ), to( equal( () ) ));
+    @include should(expect( intersection( () ) ), to( equal( () ) ));
+  }
+}

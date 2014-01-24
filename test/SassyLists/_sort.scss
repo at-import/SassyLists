@@ -1,0 +1,6 @@
+@include describe("The sort function") {
+  @include it("should sort unitless numeric values in list") {
+      @include should(expect( sort( 6 1 3 4 2 5 ) ), to( equal( 1 2 3 4 5 6 ) ));
+      @include should(expect( sort( oranges bananas strawberries avocados peaches ) ), to( equal(avocados bananas oranges peaches strawberries) ));
+  }
+}

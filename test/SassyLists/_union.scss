@@ -1,0 +1,11 @@
+@include describe("The union function") {
+  @include it("should merge all values from lists minus duplicates") {
+    @include should(expect( union( 1 2 3, 2 4 5, 6 2 1 ) ), to( equal( (1, 2, 3, 4, 5, 6) ) ));
+    @include should(expect( union( "a" "b" "c", "b" "d" "c", "a" "c" "b" ) ), to( equal( ("a", "b", "c", "d") ) ));
+  }
+
+  @include it("should return one item if all the items are the same") {
+    @include should(expect( union( 1 1 1 ) ), to( equal( 1 ) ));
+    @include should(expect( union( "a" "a" "a" ) ), to( equal( "a" ) ));
+  }
+}

@@ -1,0 +1,11 @@
+@include describe("The last-index function") {
+  @include it("should return the index of last occurrence of item in a list") {
+    @include should(expect( last-index( 1 2 2 3, 2 ) ), to( equal( 3 ) ));
+    @include should(expect( last-index( "a" "b" "c" "a", "a" ) ), to( equal( 4 ) ));
+  }
+
+  @include it("should return null if item is not found") {
+    @include should(expect( last-index( 1 2 2 3, "a" ) ), to( equal( null ) ));
+    @include should(expect( last-index( "a" "b" "c" "a", 1 ) ), to( equal( null ) ));
+  }
+}

@@ -2,11 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#insert-nth
 // -------------------------------------------------------------------------------
-// @example insert-nth(a b c,  2, z) => a z d c
-// @example insert-nth(a b c,  0, z) => error
-// @example insert-nth(a b c, -1, z) => error
-// @example insert-nth(a b c, 10, z) => a b c z
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $index [Number] : index to add
 // @param $value [Literal] : value to add
@@ -18,31 +13,31 @@
 // @return [List] | false
 
 @function insert-nth($list, $index, $value) {
-    @if type-of($index) != number {
-        @warn "List index #{$index} is not a number for `insert-nth`.";
-        @return false;
+  @if type-of($index) != number {
+    @warn "List index #{$index} is not a number for `insert-nth`.";
+    @return false;
+  }
+
+  @if $index < 1 {
+    @warn "List index #{$index} must be a non-zero integer for `insert-nth`";
+    @return false;
+  }
+
+  @if $index > length($list) {
+    @return append($list, $value, list-separator($list));
+  }
+
+  $result: ();
+
+  @for $i from 1 through length($list) {
+    @if $i == $index {
+      @if is-true($value) {
+        $result: append($result, $value, list-separator($list));
+      }
     }
 
-    @if $index < 1 {
-        @warn "List index #{$index} must be a non-zero integer for `insert-nth`";
-        @return false;
-    }
+    $result: append($result, nth($list, $i), list-separator($list));
+  }
 
-    @if $index > length($list) {
-        @return append($list, $value);
-    }
-
-    $result: ();
-
-    @for $i from 1 through length($list) {
-        @if $i == $index {
-            @if $value and $value != "" and $value != () {
-                $result: append($result, $value);
-            }
-        }
-
-        $result: append($result, nth($list, $i));
-    }
-
-    @return $result;
+  @return $result;
 }

@@ -4,33 +4,24 @@
 // -------------------------------------------------------------------------------
 // @alias `unique()`
 // -------------------------------------------------------------------------------
-// @example remove-duplicates(a b a c b d c e)   => a, b, c, d, e
-// @example remove-duplicates(a b (c c c), true) => a, b, c
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $recursive [Boolean] : enable / disable recursivity
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function remove-duplicates($list, $recursive: false) {
-    $result: ();
+@function remove-duplicates($list) {
+  $result: ();
 
-    @each $item in $list {
-        @if not index($result, $item) {
-            @if length($item) > 1 and $recursive {
-                $result: append($result, remove-duplicates($item, $recursive));
-            }
-
-            @else {
-                $result: append($result, $item);
-            }
-        }
+  @each $item in $list {
+    @if not index($result, $item) {
+      $result: append($result, $item, list-separator($list));
     }
+  }
 
-    @return $result;
+  @return $result;
 }
 
 // Alias
 @function unique($list, $recursive: false) {
-    @return remove-duplicates($list, $recursive);
+  @return remove-duplicates($list, $recursive);
 }

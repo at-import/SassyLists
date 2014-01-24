@@ -2,27 +2,26 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#intersection
 // -------------------------------------------------------------------------------
-// @example intersection(a b c d, a c d, e d a f) => a d
-// -------------------------------------------------------------------------------
 // @param $list [List] : first list
 // @param $lists [ArgList] : other lists
 // -------------------------------------------------------------------------------
 // @return [List]
 
 @function intersection($list, $lists...) {
-    $result: $list;
+  $result: $list;
 
-    @each $list in $lists {
-        $temp: ();
+  @each $list in $lists {
+    $temp: ();
 
-        @each $item in $result {
-            @if not not index($list, $item) {
-                $temp: append($temp, $item);
-            }
-        }
-
-        $result: $temp;
+    @each $item in $result {
+      @if not not index($list, $item) {
+        $temp: append($temp, $item, list-separator($list));
+      }
     }
 
-    @return $result;
+    $result: $temp;
+  }
+ 
+  $result: remove-duplicates($result);
+  @return if(length($result) == 1, nth($result, 1), $result);
 }

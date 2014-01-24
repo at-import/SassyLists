@@ -1,0 +1,11 @@
+@include describe("The debug") {
+  @include it("should return list as a string") {
+    @include should(expect( debug( 1 2 3 4 5 ) ), to( equal( ("[ 1, 2, 3, 4, 5 ]") ) ));
+    @include should(expect( debug( "a" "b" "c" "d" "e" "f" ) ), to( equal( ("[ a, b, c, d, e, f ]") ) ));
+  }
+
+  @include it("should return nested list as a string") {
+    @include should(expect( debug( 1 2 (3 4 (5 6)) ) ), to( equal( "[ 1, 2, [ 3, 4, [ 5, 6 ] ] ]" ) ));
+    @include should(expect( debug( "a" "b" ("c" "d") "e" "f" ) ), to( equal( "[ a, b, [ c, d ], e, f ]" ) ));
+  }
+}

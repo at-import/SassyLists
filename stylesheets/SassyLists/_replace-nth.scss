@@ -2,11 +2,7 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#replace-nth
 // -------------------------------------------------------------------------------
-// @example replace-nth(a b c,   2, z) => a, z, c
-// @example replace-nth(a b c,   0, z) => error
-// @example replace-nth(a b c,  10, z) => error
-// @example replace-nth(a b c,  -1, z) => a, b, z
-// @example replace-nth(a b c, -10, z) => error
+// @dependence `purge()`
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $index [Number] : index to update
@@ -19,29 +15,11 @@
 // @return [List] | false
 
 @function replace-nth($list, $index, $value) {
-    @if type-of($index) != number {
-        @warn "List index #{$index} is not a number for `replace-nth`/`remove-nth`.";
-        @return false;
-    }
+  @if type-of($index) != number or $index == 0 or abs($index) > length($list) {
+    @warn "Invalid index (#{$index}) for `replace-nth`.";
+    @return false;
+  }
 
-    @if $index == 0 {
-        @warn "List index 0 must be a non-zero integer for `replace-nth`/`remove-nth`.";
-        @return false;
-    }
-
-    @if abs($index) > length($list) {
-        @warn "List index is #{$index} but list is only #{length($list)} item long for `replace-nth`/`remove-nth`.";
-        @return false;
-    }
-
-    $result: ();
-    $index: if($index < 0, length($list) + $index + 1, $index);  
-
-    @for $i from 1 through length($list) {
-        @if $value and $value != "" and $value != () {
-            $result: append($result, if($i == $index, $value, nth($list, $i)));
-        }
-    }
-
-    @return $result;
+  $list: set-nth($list, $index, $value);
+  @return if(not is-true($value), purge($list), $list);
 }

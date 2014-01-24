@@ -2,31 +2,18 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#count-values
 // -------------------------------------------------------------------------------
-// @dependence `replace-nth()`
-// -------------------------------------------------------------------------------
-// @example count-values(a b c d e)       => a 1, b 1, c 1, d 1, e 1
-// @example count-values(a b c a d b a e) => a 3, b 2, c 1, d 1, e 1
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
-// @return [List]
+// @return [Map]
 
 @function count-values($list) {
-    $keys: ();
-    $counts: ();
+  $map: ();
 
-    @each $item in $list {
-        $index: index($keys, $item);
+  @each $item in $list {
+    $index: map-get($map, $item);
+    $value: if($index, $index + 1, 1);
+    $map: map-merge($map, ($item: $value));
+  }
 
-        @if not $index {
-            $keys: append($keys, $item);
-            $counts: append($counts, 1);
-        }
-
-        @else {
-            $counts: replace-nth($counts, $index, nth($counts, $index) + 1);
-        }
-    }
-
-    @return zip($keys, $counts);
+  @return $map;
 }

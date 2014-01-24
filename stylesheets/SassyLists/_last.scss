@@ -4,17 +4,19 @@
 // -------------------------------------------------------------------------------
 // @alias `tail()`
 // -------------------------------------------------------------------------------
-// @example last(a b c) => c
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
-// @return [Literal]
+// @return [Literal] | false
 
 @function last($list) {
-    @return nth($list, length($list));
+  @if length($list) < 1 { 
+    @return false; 
+  }
+  
+  @return nth($list, length($list));
 }
 
 // Alias
 @function tail($list) {
-    @return last($list);
+  @return last($list);
 }

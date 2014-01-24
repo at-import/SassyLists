@@ -4,10 +4,6 @@
 // -------------------------------------------------------------------------------
 // @alias `stringify()`
 // -------------------------------------------------------------------------------
-// @example to-string(a b c)      => abc
-// @example to-string(a (b c) d)  => abcd
-// @example to-string(a b c, '-') => a-b-c
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $glue [String] : value to use as a join string
 // @param $root [Boolean] : strictly internal boolean for recursivity
@@ -15,24 +11,24 @@
 // @return [String]
 
 @function to-string($list, $glue: '', $root: true) {
-    $result: '';
+  $result: '';
 
-    @for $i from 1 through length($list) {
-        $item: nth($list, $i);
+  @for $i from 1 through length($list) {
+    $item: nth($list, $i);
 
-        @if length($item) > 1 {
-            $result: $result + to-string($item, $glue, false);
-        }
-
-        @else {
-            $result: if($i != length($list) or not $root, $result + $item + $glue, $result + $item);
-        }
+    @if length($item) > 1 {
+      $result: $result + to-string($item, $glue, false);
     }
 
-    @return quote($result);
+    @else {
+      $result: if($i != length($list) or not $root, $result + $item + $glue, $result + $item);
+    }
+  }
+
+  @return quote($result);
 }
 
 // Alias
 @function stringify($list, $glue: '', $root: true) {
-    @return to-string($list, $glue, $root);
+  @return to-string($list, $glue, $root);
 }

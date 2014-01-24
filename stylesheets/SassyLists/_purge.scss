@@ -4,26 +4,25 @@
 // -------------------------------------------------------------------------------
 // @alias `clean()`
 // -------------------------------------------------------------------------------
-// @example purge(a null b false c) => a, b, c
-// @example purge(a b c '')         => a, b, c
+// @dependence `is-true()`
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
 // @return [List]
 
 @function purge($list) {
-    $result: ();
+  $result: ();
 
-    @each $item in $list {
-        @if $item and $item != "" and $item != () {
-            $result: append($result, $item);
-        }
+  @each $item in $list {
+    @if is-true($item) {
+      $result: append($result, $item, list-separator($list));
     }
+  }
 
-    @return $result;
+  @return $result;
 }
 
 // Alias
 @function clean($list) {
-    @return purge($list);
+  @return purge($list);
 }

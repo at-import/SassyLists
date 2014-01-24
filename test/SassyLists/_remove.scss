@@ -1,0 +1,24 @@
+@include describe("The remove function") {
+  $list     : ();
+  $numbers  : 1 2 3 4 5 6;
+  $strings  : "a" "b" "c" "b" "x";
+
+  @include it("should return a list without removed value") {
+    @include should(expect( remove( $numbers, 1     ) ), to( equal( 2 3 4 5 6 ) ));
+    @include should(expect( remove( $strings, "b"   ) ), to( equal( "a" "c" "x" ) ));
+  }
+
+  @include it("should return same list when no equaling values") {
+    @include should(expect( remove( $numbers, green ) ), to( equal( $numbers ) ));
+    @include should(expect( remove( $strings, green ) ), to( equal( $strings ) ));
+  }
+
+  @include it("should leave empty lists alone") {
+    @include should(expect( remove( $list, green ) ), to( equal( $list ) ));
+  }
+
+  @include it("should diminish length") {
+    @include should(expect( length(remove( $numbers, 1 ) ) ), to( equal( length($numbers) - 1 )));
+    @include should(expect( length(remove( $strings, "b" ) ) ), to( equal( length($strings) - 2 )));
+  }
+}

@@ -2,9 +2,6 @@
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#chunk
 // -------------------------------------------------------------------------------
-// @example chunk(a b c d e, 2) => a b, c d, e
-// @example chunk(a b c d e, 3) => a b c, d e
-// -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $size [Number] : length of lists
 // -------------------------------------------------------------------------------
@@ -13,35 +10,31 @@
 // @return [List] | false
 
 @function chunk($list, $size) {
-    @if $list == () {
-        @warn "Trying to chunk empty list in `chunk`.";
-        @return false;
+  @if $list == () {
+    @warn "Trying to chunk empty list in `chunk`.";
+    @return false;
+  }
+
+  @if $size >= length($list) {
+    @return $list;
+  }
+
+  $index: 1;
+  $result: ();
+
+  @for $i from 1 through ceil(length($list) / $size) {
+    $tmp: ();
+
+    @for $j from 1 through $size {
+      @if $index <= length($list) {
+        $is-orphan: length($list) % $size == 1 and $j == 1;
+        $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
+      }
+      $index: $index + 1;
     }
 
-    @if $size >= length($list) {
-        @return $list;
-    }
+    $result: append($result, $tmp);
+  }
 
-    $index: 1;
-    $result: ();
-
-    @for $i from 1 through ceil(length($list) / $size) {
-        $tmp: ();
-
-        @for $j from 1 through $size {
-
-            @if $index <= length($list) {
-
-                $is-orphan: length($list) % $size == 1 and $j == 1;
-                $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
-
-            }
-      
-            $index: $index + 1;
-        }
-
-        $result: append($result, $tmp);
-    }
-
-    @return $result;
+  @return $result;
 }

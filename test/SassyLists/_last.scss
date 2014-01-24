@@ -1,0 +1,15 @@
+@include describe("The last function") {
+  @include it("should return the last item in a list") {
+    @include should(expect( last( 1 2 3 ) ), to( equal( 3 ) ));
+    @include should(expect( last( "foo" "bar" "baz" ) ), to( equal( "baz" ) ));
+  }
+
+  @include it("should return the only item in an single item list") {
+    @include should(expect( last( 1 ) ), to( equal( 1 ) ));
+    @include should(expect( last( "foo" ) ), to( equal( "foo" ) ));
+  }
+
+  @include it("should return false if list is empty") {
+    @include should(expect( last( () ) ), to( equal( false ) ));
+  }
+}
