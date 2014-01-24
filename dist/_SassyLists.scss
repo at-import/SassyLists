@@ -48,16 +48,11 @@
 // @param $list [List] : list
 // @param $size [Number] : length of lists
 // -------------------------------------------------------------------------------
-// @raise [Error] if $list is empty
+// @raise [Error] if $size is not a number
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
 @function chunk($list, $size) {
-  @if length($list) == 0 {
-    @warn "List cannot be empty for `chunk`.";
-    @return false;
-  }
-
   @if type-of($size) != number {
     @warn "#{$size} is not a number for `chunk`.";
     @return false;
@@ -274,10 +269,13 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
+// @raise [Error] if either $list is empty
+// -------------------------------------------------------------------------------
 // @return [Literal] | false
 
 @function first($list) {
-  @if length($list) < 1 { 
+  @if length($list) == 0 { 
+    @warn "Cannot find first item of empty list.";
     @return false; 
   }
 
@@ -421,7 +419,6 @@
 // @return [Number] | null
 
 @function last-index($list, $value) {
-
   @for $i from length($list) * -1 through -1 {
     $i: abs($i);
     @if nth($list, $i) == $value {
@@ -440,10 +437,13 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // -------------------------------------------------------------------------------
+// @raise [Error] if list is empty
+// -------------------------------------------------------------------------------
 // @return [Literal] | false
 
 @function last($list) {
-  @if length($list) < 1 { 
+  @if length($list) == 0 { 
+    @warn "Cannot find last item of empty list.";
     @return false; 
   }
   
@@ -548,9 +548,16 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : List
 // -------------------------------------------------------------------------------
-// @return [Literal]
+// @raise [Error] if $list is empty
+// -------------------------------------------------------------------------------
+// @return [Literal] | false
 
 @function random-value($list) {
+  @if length($list) == 0 {
+    @warn "Cannot find a random value in an empty list.";
+    @return false;
+  }
+
   @return nth($list, random(length($list)) + 1);
 }
 
@@ -729,6 +736,10 @@
 // @return [List]
 
 @function shuffle($list) {
+  @if length($list) < 2 {
+    @return $list;
+  }
+  
   @for $i from -1 * length($list) through -1 {
     $i: abs($i);
     $j: random(length($list) - 1) + 1;

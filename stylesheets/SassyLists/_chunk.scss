@@ -10,13 +10,13 @@
 // @return [List] | false
 
 @function chunk($list, $size) {
-  @if $size >= length($list) {
-    @return $list;
-  }
-
   @if type-of($size) != number {
     @warn "#{$size} is not a number for `chunk`.";
     @return false;
+  }
+
+  @if $size >= length($list) {
+    @return $list;
   }
 
   $index: 1;
