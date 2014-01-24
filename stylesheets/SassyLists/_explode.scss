@@ -21,9 +21,10 @@
   }
   
   $result: ();
+  $length: str-length($string);
   
   @if str-length($delimiter) == 0 {
-    @for $i from 1 through str-length($string) {
+    @for $i from 1 through $length {
       $result: append($result, str-slice($string, $i, $i));
     }
     @return $result;

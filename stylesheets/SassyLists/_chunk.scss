@@ -21,13 +21,15 @@
 
   $index: 1;
   $result: ();
+  $length: length($list);
+  $end: ceil($length / $size);
 
-  @for $i from 1 through ceil(length($list) / $size) {
+  @for $i from 1 through $end {
     $tmp: ();
 
     @for $j from 1 through $size {
-      @if $index <= length($list) {
-        $is-orphan: length($list) % $size == 1 and $j == 1;
+      @if $index <= $length {
+        $is-orphan: $length % $size == 1 and $j == 1;
         $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
       }
       $index: $index + 1;

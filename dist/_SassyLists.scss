@@ -64,13 +64,15 @@
 
   $index: 1;
   $result: ();
+  $length: length($list);
+  $end: ceil($length / $size);
 
-  @for $i from 1 through ceil(length($list) / $size) {
+  @for $i from 1 through $end {
     $tmp: ();
 
     @for $j from 1 through $size {
-      @if $index <= length($list) {
-        $is-orphan: length($list) % $size == 1 and $j == 1;
+      @if $index <= $length {
+        $is-orphan: $length % $size == 1 and $j == 1;
         $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
       }
       $index: $index + 1;
@@ -141,6 +143,7 @@
   $tab: "    ";
   $indent: "";
   $break: if($pre, "\A ", "");
+  $length: length($list);
   
   @for $i from 1 to $level {
     $indent: $indent + $tab;
@@ -148,7 +151,7 @@
   
   $result: "[" + $break;
   
-  @for $i from 1 through length($list) {
+  @for $i from 1 through $length {
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
   
@@ -180,7 +183,7 @@
       }
     }
   
-    @if $i != length($list) {
+    @if $i != $length {
       $result: $result + "," + $break;
     }
   }
@@ -236,9 +239,10 @@
   }
   
   $result: ();
+  $length: str-length($string);
   
   @if str-length($delimiter) == 0 {
-    @for $i from 1 through str-length($string) {
+    @for $i from 1 through $length {
       $result: append($result, str-slice($string, $i, $i));
     }
     @return $result;
@@ -301,7 +305,8 @@
 
   @each $item in $list {
     @if length($item) > 1 {
-      @each $i in flatten($item) {
+      $flatten: flatten($item);
+      @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
       }
     }
@@ -333,6 +338,8 @@
 // @return [List] | false
 
 @function insert-nth($list, $index, $value) {
+  $length: length($list);
+  
   @if type-of($index) != number {
     @warn "List index #{$index} is not a number for `insert-nth`.";
     @return false;
@@ -343,13 +350,13 @@
     @return false;
   }
 
-  @if $index > length($list) {
+  @if $index > $length {
     @return append($list, $value, list-separator($list));
   }
 
   $result: ();
 
-  @for $i from 1 through length($list) {
+  @for $i from 1 through $length {
     @if $i == $index {
       @if is-true($value) {
         $result: append($result, $value, list-separator($list));
@@ -419,7 +426,9 @@
 // @return [Number] | null
 
 @function last-index($list, $value) {
-  @for $i from length($list) * -1 through -1 {
+  $length: length($list);
+  
+  @for $i from $length * -1 through -1 {
     $i: abs($i);
     @if nth($list, $i) == $value {
       @return $i;
@@ -471,6 +480,10 @@
   @if type-of($value) != number {
     @warn "#{$value} is not a number for `loop`.";
     @return false;
+  }
+
+  @if length($list) < 2 {
+    @return $list;
   }
 
   $result: ();
@@ -607,10 +620,6 @@
 // @param $list [List] : list
 // @param $index [Number] : index to remove
 // -------------------------------------------------------------------------------
-// @raise [Error] if $index isn't an integer
-// @raise [Error] if $index is 0
-// @raise [Error] if abs value of $index is strictly greater then length of $list
-// -------------------------------------------------------------------------------
 // @return [List] | false
 
 @function remove-nth($list, $index) {
@@ -708,11 +717,14 @@
 // @return [List]
 
 @function reverse($list) {
-  @if length($list) < 2 {
+  $length: length($list);
+  $end: floor($length/2);
+  
+  @if $length < 2 {
     @return $list;
   }
 
-  @for $i from 1 through floor(length($list)/2) {
+  @for $i from 1 through $end {
     $tmp: nth($list, $i);
     $list: set-nth($list, $i, nth($list, -$i));
     $list: set-nth($list, -$i, $tmp);
@@ -736,13 +748,15 @@
 // @return [List]
 
 @function shuffle($list) {
-  @if length($list) < 2 {
+  $length: length($list);
+
+  @if $length < 2 {
     @return $list;
   }
-  
-  @for $i from -1 * length($list) through -1 {
+
+  @for $i from -1 * $length through -1 {
     $i: abs($i);
-    $j: random(length($list) - 1) + 1;
+    $j: random($length - 1) + 1;
     $tmp: nth($list, $i);
     $list: set-nth($list, $i, nth($list, $j));
     $list: set-nth($list, $j, $tmp);
@@ -804,7 +818,7 @@
 
   @return $result;
 }
-// Sorts numeric values of $list
+// Sorts values of $list using quick-sort algorithm
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#sort
 // -------------------------------------------------------------------------------
@@ -813,9 +827,7 @@
 // @dependence `str-compare()`
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $ascending [Boolean] : ascending or descending
-// -------------------------------------------------------------------------------
-// @raise [Warning] if not-number found
+// @param $order [List] : order
 // -------------------------------------------------------------------------------
 // @return [List]
 
@@ -823,8 +835,10 @@
   $less:  ();
   $equal: ();
   $large: ();
-  @if length($list) > 1 {
-    $seed: nth($list, ceil(length($list) / 2));
+  $length: length($list);
+  
+  @if $length > 1 {
+    $seed: nth($list, ceil($length / 2));
     @each $item in $list {
       @if $item == $seed {
         $equal: append($equal, $item, list-separator($list));
@@ -846,7 +860,7 @@
   @return sort($list);
 }
 
-// Sums up all unitless values in $list
+// Sums up all numeric values in $list
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#sum
 // -------------------------------------------------------------------------------
@@ -883,31 +897,24 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $glue [String] : value to use as a join string
-// @param $root [Boolean] : strictly internal boolean for recursivity
 // -------------------------------------------------------------------------------
 // @return [String]
 
-@function to-string($list, $glue: '', $root: true) {
+@function to-string($list, $glue: '') {
   $result: '';
+  $length: length($list);
 
-  @for $i from 1 through length($list) {
+  @for $i from 1 through $length {
     $item: nth($list, $i);
-
-    @if length($item) > 1 {
-      $result: $result + to-string($item, $glue, false);
-    }
-
-    @else {
-      $result: if($i != length($list) or not $root, $result + $item + $glue, $result + $item);
-    }
+    $result: $result + if(length($item) > 1, to-string($item, $glue), $item + $glue);
   }
 
-  @return quote($result);
+  @return quote(str-slice($result, 1, str-length($glue) * -1 - 1));
 }
 
 // Alias
-@function stringify($list, $glue: '', $root: true) {
-  @return to-string($list, $glue, $root);
+@function stringify($list, $glue: '') {
+  @return to-string($list, $glue);
 }
 // Returns a list of values from $lists minus duplicates
 // -------------------------------------------------------------------------------

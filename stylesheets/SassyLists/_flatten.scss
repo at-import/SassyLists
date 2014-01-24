@@ -13,7 +13,8 @@
 
   @each $item in $list {
     @if length($item) > 1 {
-      @each $i in flatten($item) {
+      $flatten: flatten($item);
+      @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
       }
     }

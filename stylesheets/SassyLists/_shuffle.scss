@@ -9,13 +9,15 @@
 // @return [List]
 
 @function shuffle($list) {
-  @if length($list) < 2 {
+  $length: length($list);
+
+  @if $length < 2 {
     @return $list;
   }
-  
-  @for $i from -1 * length($list) through -1 {
+
+  @for $i from -1 * $length through -1 {
     $i: abs($i);
-    $j: random(length($list) - 1) + 1;
+    $j: random($length - 1) + 1;
     $tmp: nth($list, $i);
     $list: set-nth($list, $i, nth($list, $j));
     $list: set-nth($list, $j, $tmp);

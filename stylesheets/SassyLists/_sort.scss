@@ -1,4 +1,4 @@
-// Sorts numeric values of $list
+// Sorts values of $list using quick-sort algorithm
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#sort
 // -------------------------------------------------------------------------------
@@ -7,9 +7,7 @@
 // @dependence `str-compare()`
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
-// @param $ascending [Boolean] : ascending or descending
-// -------------------------------------------------------------------------------
-// @raise [Warning] if not-number found
+// @param $order [List] : order
 // -------------------------------------------------------------------------------
 // @return [List]
 
@@ -17,8 +15,10 @@
   $less:  ();
   $equal: ();
   $large: ();
-  @if length($list) > 1 {
-    $seed: nth($list, ceil(length($list) / 2));
+  $length: length($list);
+  
+  @if $length > 1 {
+    $seed: nth($list, ceil($length / 2));
     @each $item in $list {
       @if $item == $seed {
         $equal: append($equal, $item, list-separator($list));

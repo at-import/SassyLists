@@ -13,6 +13,8 @@
 // @return [List] | false
 
 @function insert-nth($list, $index, $value) {
+  $length: length($list);
+  
   @if type-of($index) != number {
     @warn "List index #{$index} is not a number for `insert-nth`.";
     @return false;
@@ -23,13 +25,13 @@
     @return false;
   }
 
-  @if $index > length($list) {
+  @if $index > $length {
     @return append($list, $value, list-separator($list));
   }
 
   $result: ();
 
-  @for $i from 1 through length($list) {
+  @for $i from 1 through $length {
     @if $i == $index {
       @if is-true($value) {
         $result: append($result, $value, list-separator($list));

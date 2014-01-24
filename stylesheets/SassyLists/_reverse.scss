@@ -9,11 +9,14 @@
 // @return [List]
 
 @function reverse($list) {
-  @if length($list) < 2 {
+  $length: length($list);
+  $end: floor($length/2);
+  
+  @if $length < 2 {
     @return $list;
   }
 
-  @for $i from 1 through floor(length($list)/2) {
+  @for $i from 1 through $end {
     $tmp: nth($list, $i);
     $list: set-nth($list, $i, nth($list, -$i));
     $list: set-nth($list, -$i, $tmp);

@@ -6,29 +6,22 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 // @param $glue [String] : value to use as a join string
-// @param $root [Boolean] : strictly internal boolean for recursivity
 // -------------------------------------------------------------------------------
 // @return [String]
 
-@function to-string($list, $glue: '', $root: true) {
+@function to-string($list, $glue: '') {
   $result: '';
+  $length: length($list);
 
-  @for $i from 1 through length($list) {
+  @for $i from 1 through $length {
     $item: nth($list, $i);
-
-    @if length($item) > 1 {
-      $result: $result + to-string($item, $glue, false);
-    }
-
-    @else {
-      $result: if($i != length($list) or not $root, $result + $item + $glue, $result + $item);
-    }
+    $result: $result + if(length($item) > 1, to-string($item, $glue), $item + $glue);
   }
 
-  @return quote($result);
+  @return quote(str-slice($result, 1, str-length($glue) * -1 - 1));
 }
 
 // Alias
-@function stringify($list, $glue: '', $root: true) {
-  @return to-string($list, $glue, $root);
+@function stringify($list, $glue: '') {
+  @return to-string($list, $glue);
 }

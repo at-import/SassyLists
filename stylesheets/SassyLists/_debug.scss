@@ -20,6 +20,7 @@
   $tab: "    ";
   $indent: "";
   $break: if($pre, "\A ", "");
+  $length: length($list);
   
   @for $i from 1 to $level {
     $indent: $indent + $tab;
@@ -27,7 +28,7 @@
   
   $result: "[" + $break;
   
-  @for $i from 1 through length($list) {
+  @for $i from 1 through $length {
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
   
@@ -59,7 +60,7 @@
       }
     }
   
-    @if $i != length($list) {
+    @if $i != $length {
       $result: $result + "," + $break;
     }
   }

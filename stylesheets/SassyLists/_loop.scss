@@ -17,6 +17,10 @@
     @return false;
   }
 
+  @if length($list) < 2 {
+    @return $list;
+  }
+
   $result: ();
   $length: length($list);
 

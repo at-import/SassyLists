@@ -9,10 +9,6 @@
 // @param $list [List] : list
 // @param $index [Number] : index to remove
 // -------------------------------------------------------------------------------
-// @raise [Error] if $index isn't an integer
-// @raise [Error] if $index is 0
-// @raise [Error] if abs value of $index is strictly greater then length of $list
-// -------------------------------------------------------------------------------
 // @return [List] | false
 
 @function remove-nth($list, $index) {

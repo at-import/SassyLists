@@ -1,5 +1,7 @@
 @include describe("The loop function") {
   @include it("should shift indexes from list") {
+    @include should(expect( loop( (), 2 ) ), to( equal( () ) ));
+    @include should(expect( loop( 1, 2 ) ), to( equal( 1 ) ));
     @include should(expect( loop( 1 2 3 4, 2 ) ), to( equal( 3 4 1 2 ) ));
     @include should(expect( loop( "a" "b" "c" "d", 2 ) ), to( equal( "c" "d" "a" "b" ) ));
   }
