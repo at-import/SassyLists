@@ -1,5 +1,5 @@
 {
   "name": "SassyLists",
   "description": "Here is a Compass Extension providing you all functions you need to manipulate your Sass lists",
-  "tags": ["lists", "dry", "performance", "code-quality"]
+  "tags": ["sass", "lists", "dry", "performance", "code-quality"]
 }

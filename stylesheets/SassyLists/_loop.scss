@@ -12,7 +12,7 @@
 // @return [List] | false
 
 @function loop($list, $value: 1) {
-  @if type-of($value) != number {
+  @if type-of($value) != "number" {
     @warn "#{$value} is not a number for `loop`.";
     @return false;
   }

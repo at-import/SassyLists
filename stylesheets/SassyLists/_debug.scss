@@ -12,61 +12,61 @@
   @if length($list) == 0 {
     @return "( )";
   }
-  
+
   @if length($list) == 1 {
     @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
   }
-  
+
   $tab: "    ";
   $indent: "";
   $break: if($pre, "\A ", "");
   $length: length($list);
-  
+
   @for $i from 1 to $level {
     $indent: $indent + $tab;
   }
-  
+
   $result: "[" + $break;
-  
+
   @for $i from 1 through $length {
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
-  
+
     @if length($item) > 1 {
-      $result: $result 
-        + if($pre, "(list: " + length($item) + ") ", "") 
+      $result: $result
+        + if($pre, "(list: " + length($item) + ") ", "")
         + debug($item, $pre, $level + 1);
     }
-  
+
     @else {
       @if $pre {
         $result: $result + "(" + type-of($item) + ") ";
       }
-    
+
       @if length($item) == 0 {
         $result: $result + "( )";
       }
-    
-      @else if type-of($item) == string {
+
+      @else if type-of($item) == "string" {
         $result: $result + quote($item);
       }
-    
+
       @else if $item == null {
         $result: $result + "null";
       }
-    
+
       @else {
         $result: $result + $item;
       }
     }
-  
+
     @if $i != $length {
       $result: $result + "," + $break;
     }
   }
-  
+
   $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
-  
+
   @return quote($result);
 }
 

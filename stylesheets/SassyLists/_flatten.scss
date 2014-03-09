@@ -11,6 +11,10 @@
 @function flatten($list) {
   $result: ();
 
+  @if length($list) == 1 {
+    @return $list;
+  }
+
   @each $item in $list {
     @if length($item) > 1 {
       $flatten: flatten($item);

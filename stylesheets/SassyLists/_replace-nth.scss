@@ -15,7 +15,7 @@
 // @return [List] | false
 
 @function replace-nth($list, $index, $value) {
-  @if type-of($index) != number or $index == 0 or abs($index) > length($list) {
+  @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
     @warn "Invalid index (#{$index}) for `replace-nth`.";
     @return false;
   }

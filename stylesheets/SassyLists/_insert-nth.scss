@@ -14,7 +14,7 @@
 
 @function insert-nth($list, $index, $value) {
   $length: length($list);
-  
+
   @if type-of($index) != number {
     @warn "List index #{$index} is not a number for `insert-nth`.";
     @return false;

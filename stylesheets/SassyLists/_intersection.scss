@@ -21,7 +21,7 @@
 
     $result: $temp;
   }
- 
+
   $result: remove-duplicates($result);
   @return if(length($result) == 1, nth($result, 1), $result);
 }

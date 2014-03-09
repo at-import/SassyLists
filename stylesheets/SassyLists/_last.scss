@@ -11,11 +11,11 @@
 // @return [Literal] | false
 
 @function last($list) {
-  @if length($list) == 0 { 
+  @if length($list) == 0 {
     @warn "Cannot find last item of empty list.";
-    @return false; 
+    @return false;
   }
-  
+
   @return nth($list, length($list));
 }
 

@@ -5,7 +5,7 @@
   }
 
   @include it("should return one item if all the items are the same") {
-    @include should(expect( union( 1 1 1 ) ), to( equal( 1 ) ));
-    @include should(expect( union( "a" "a" "a" ) ), to( equal( "a" ) ));
+    @include should(expect( union( 1, 1, 1 ) ), to( equal( 1 ) ));
+    @include should(expect( union( "a", "a", "a" ) ), to( equal( "a" ) ));
   }
 }

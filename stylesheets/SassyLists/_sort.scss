@@ -16,7 +16,7 @@
   $equal: ();
   $large: ();
   $length: length($list);
-  
+
   @if $length > 1 {
     $seed: nth($list, ceil($length / 2));
     @each $item in $list {

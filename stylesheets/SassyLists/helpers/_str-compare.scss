@@ -11,7 +11,7 @@
 // @return [Boolean]
 
 @function str-compare($a, $b, $order) {
-  @if type-of($a) == number and type-of($b) == number {
+  @if type-of($a) == "number" and type-of($b) == "number" {
     @return $a < $b;
   }
   $a: to-lower-case($a + unquote(""));

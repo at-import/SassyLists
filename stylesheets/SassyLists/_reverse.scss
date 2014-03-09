@@ -11,7 +11,7 @@
 @function reverse($list) {
   $length: length($list);
   $end: floor($length/2);
-  
+
   @if $length < 2 {
     @return $list;
   }
@@ -21,7 +21,7 @@
     $list: set-nth($list, $i, nth($list, -$i));
     $list: set-nth($list, -$i, $tmp);
   }
-  
+
   @return $list;
 }
 

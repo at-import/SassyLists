@@ -11,9 +11,9 @@
 // @return [Literal] | false
 
 @function first($list) {
-  @if length($list) == 0 { 
+  @if length($list) == 0 {
     @warn "Cannot find first item of empty list.";
-    @return false; 
+    @return false;
   }
 
   @return nth($list, 1);

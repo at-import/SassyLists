@@ -19,10 +19,10 @@
     @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
     @return false;
   }
-  
+
   $result: ();
   $length: str-length($string);
-  
+
   @if str-length($delimiter) == 0 {
     @for $i from 1 through $length {
       $result: append($result, str-slice($string, $i, $i));
@@ -32,7 +32,7 @@
 
   $running: true;
   $remaining: $string;
-  
+
   @while $running {
     $index: str-index($remaining, $delimiter);
     @if not $index or $index == 0 {
