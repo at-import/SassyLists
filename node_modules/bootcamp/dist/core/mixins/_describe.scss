@@ -1,0 +1,31 @@
+@mixin describe($bc-describe-new) {
+  @if not $bc-skipping {
+    $bc-describe-old: $bc-describe !global !default;
+    $bc-describe-old: append($bc-describe-old, $bc-describe-new) !global;
+
+    @if $bc-describe-depth > 0 {
+      $bc-describe: bc-util-list-join($bc-describe-old, " ", 2) !global;
+    } @else {
+      $bc-describe: "#{$bc-describe-new}" !global;
+    }
+
+    $bc-describe-depth: $bc-describe-depth + 1 !global;
+
+    @content;
+
+    $bc-describe: "" !global;
+
+    $_tmp: ();
+
+    @for $i from 1 through $bc-describe-depth {
+      $_tmp: append($_tmp, nth($bc-describe-old, $i));
+    }
+
+    $bc-describe-old: $_tmp !global;
+    $bc-describe: nth($bc-describe-old, 1) !global;
+    $bc-describe-depth: $bc-describe-depth - 1 !global;
+
+  } @else {
+    @content;
+  }
+}

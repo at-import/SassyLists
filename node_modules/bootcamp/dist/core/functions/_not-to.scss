@@ -1,0 +1,5 @@
+@function not-to($this) {
+  $bc-expect-text: "not to " + $bc-expect-text !global;
+
+  @return not $this;
+}

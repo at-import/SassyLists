@@ -1,0 +1,6 @@
+@function expect($this) {
+  $bc-actual: $this !global;
+  $bc-actual-text: "Expected" !global;
+
+  @return null;
+}

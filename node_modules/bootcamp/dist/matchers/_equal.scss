@@ -1,0 +1,3 @@
+@function equal($value) {
+  @return should("equal", $value, actual() == $value);
+}

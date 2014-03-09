@@ -1,0 +1,3 @@
+@function be-falsy() {
+  @return should("be", "falsy", not actual());
+}

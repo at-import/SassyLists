@@ -1,0 +1,35 @@
+@function bc-util-list-join($list, $separator, $slice-start: 1, $slice-end: 0) {
+  $result: "";
+
+  @if type-of($list) == list {
+    $length: length($list);
+
+    @if $slice-end == false {
+      $slice-end: length($list);
+    }
+
+    @if $slice-start < 0 {
+      $slice-start: length($list) + $slice-start + 1;
+    }
+
+    @if $slice-end < 0 {
+      $slice-end: length($list) + $slice-end + 1;
+    }
+
+    @for $i from $slice-start through $length - $slice-end {
+      @if $result == "" {
+        $result: nth($list, $i);
+      }
+
+      @else {
+        $result: $result + "#{$separator}" + nth($list, $i);
+      }
+    }
+  }
+
+  @else {
+    $result: $list;
+  }
+
+  @return $result;
+}

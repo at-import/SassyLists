@@ -1,0 +1,46 @@
+@mixin should($actual, $expect) {
+  @if $bc-error {
+    $expect: false !global;
+  }
+
+  $bc-asserts: $bc-asserts + 1 !global;
+
+  $bc-actual: bc-util-stringify($bc-actual) !global;
+  $bc-expect: bc-util-stringify($bc-expect) !global;
+
+  @if not $expect {
+    $bc-passing: false !global;
+  }
+
+  @if not $expect or $bc-setting-verbose {
+    $status: " ✗";
+
+    @if $bc-passing {
+      $status: " ✔";
+    }
+
+    @if $bc-error-text {
+      #{$status}:
+        #{$bc-error-text}
+        #{$bc-actual-text} #{$bc-actual}
+        #{$bc-expect-text} #{$bc-expect};
+    } @else {
+      #{$status}:
+        #{$bc-actual-text} #{$bc-actual}
+        #{$bc-expect-text} #{$bc-expect};
+    }
+  }
+
+  @if $bc-error-text {
+    @if not index($bc-errors, $bc-error-text) {
+      $bc-errors: append($bc-errors, $bc-error-text) !global;
+    }
+  }
+
+  $bc-actual-text: null !global;
+  $bc-expect-text: null !global;
+  $bc-actual:      null !global;
+  $bc-expect:      null !global;
+  $bc-error-text:  null !global;
+  $bc-error:      false !global;
+}

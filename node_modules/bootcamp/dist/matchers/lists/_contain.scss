@@ -1,0 +1,3 @@
+@function contain($value) {
+  @return should("deep contain", $value, bc-util-contain( actual(), $value ));
+}

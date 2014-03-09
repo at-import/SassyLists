@@ -1,0 +1,3 @@
+@function be-empty() {
+  @return should("be", "empty", actual() == ());
+}

@@ -1,0 +1,29 @@
+@function error($type, $message) {
+  $title: null;
+
+  @if $type == "type" {
+    $title: "TYPE ERROR";
+  }
+
+  @else if $type == "warn" {
+    $title: "WARNING"
+  }
+
+  @else if $type == "dep" {
+    $title: "DEPRECATED"
+  }
+
+  @else if $type == "fatal" {
+    $bc-error: true !global;
+    $title: "FATAL ERROR";
+  }
+
+  @else {
+    $bc-error: true !global;
+    $title: "ERROR";
+  }
+
+  $bc-error-text: "!#{$title}! #{$message}." !global;
+
+  @return false;
+}

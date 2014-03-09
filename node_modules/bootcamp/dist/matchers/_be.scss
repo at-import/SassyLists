@@ -1,0 +1,3 @@
+@function be($value) {
+  @return should("be", $value, bc-util-equal( actual(), $value ) );
+}

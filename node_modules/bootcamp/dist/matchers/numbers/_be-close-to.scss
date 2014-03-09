@@ -1,0 +1,12 @@
+@function be-close-to($this, $precision) {
+  $actual: actual();
+  $when: false;
+
+  @if type-of($actual) == "number" {
+    $when: abs($this - $actual) < (bc-util-power(10, -$precision) / 2);
+  } @else {
+    $when: error("type", "The `be-close-to` matcher is only for numbers");
+  }
+
+  @return should("be close to", $this, $when);
+}

@@ -1,0 +1,28 @@
+@mixin runner-start {
+  /* >> Bootcamp >> */
+}
+
+@mixin runner-end {
+
+  @if $bc-total == 0 {
+    $bc-stats: "No tests were found" !global;
+  }
+
+  Test Results {
+    Success: $bc-failed == 0;
+    Stats:   #{ $bc-stats   };
+    Tests:   #{ $bc-total   };
+    Asserts: #{ $bc-asserts };
+    Passed:  #{ $bc-passed  };
+    Failed:  #{ $bc-failed  };
+    Skipped: #{ $bc-skipped };
+
+    @if $bc-errors != () and $bc-setting-warnings {
+      @each $error in $bc-errors {
+        Error: #{$error};
+      }
+    }
+  }
+
+  /* << Bootcamp << */
+}

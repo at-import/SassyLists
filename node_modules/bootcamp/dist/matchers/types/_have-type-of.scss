@@ -1,0 +1,3 @@
+@function have-type-of($type) {
+  @return should("have type of", $type, type-of(actual()) == $type);
+}

@@ -1,0 +1,15 @@
+@function bc-util-contain($list, $value, $recursive: false) {
+  @each $item in $list {
+    @if type-of( $item ) == list and $recursive {
+      @if bc-util-contain($item, $value, $recursive) {
+        @return true;
+      }
+    }
+
+    @if $item == $value {
+      @return true;
+    }
+  }
+
+  @return false;
+}

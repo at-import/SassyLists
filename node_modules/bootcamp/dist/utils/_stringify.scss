@@ -1,0 +1,59 @@
+@function bc-util-stringify($value, $level: 0) {
+  $result: "";
+
+  // We open the bracket
+  @if $level != 0 or type-of($value) == list {
+    $result: unquote("( ");
+  }
+
+  // For each item in list
+  @for $i from 1 through length($value) {
+    $item: nth($value, $i);
+
+    // We test its length
+    // If it's more than one item long
+    @if length($item) > 1 {
+
+      // We deal with a nested list
+      $result: unquote("#{$result}#{bc-util-stringify($item, $level + 1)}");
+    }
+
+    // Else we append the item to $result
+    @else {
+
+      // we stringify `null` value
+      @if $item == null {
+        $result: unquote("#{$result}null");
+      }
+
+      // we wrap strings with single quotes
+      @else if type-of( $item ) == string {
+        $result: unquote("#{$result}'#{$item}'");
+      }
+
+      // we stringify empty lists
+      @else if $item == () {
+        $result: unquote("#{$result}( )");
+      }
+
+      // append all other values
+      @else {
+        $result: unquote("#{$result}#{$item}");
+      }
+    }
+
+    // If we are not dealing with the last item of the list
+    // We add a comma and a space
+    @if $i != length($value) {
+      $result: unquote("#{$result}, ");
+    }
+  }
+
+  // We close the bracket
+  // And return the string
+  @if $level != 0 or type-of($value) == list {
+    $result: unquote("#{$result} )");
+  }
+
+  @return quote($result);
+}

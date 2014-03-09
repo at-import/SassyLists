@@ -1,0 +1,13 @@
+@charset "CP850";
+/* >> Bootcamp >> */
+Test Results {
+  Success: true;
+  Stats:  ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔ ✔;
+  Tests: 68;
+  Asserts: 154;
+  Passed: 68;
+  Failed: 0;
+  Skipped: 0;
+}
+
+/* << Bootcamp << */

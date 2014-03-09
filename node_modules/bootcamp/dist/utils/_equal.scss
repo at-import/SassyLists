@@ -1,0 +1,23 @@
+@function bc-util-equal($value-1, $value-2, $recursive: true) {
+  @if length($value-1) != length($value-2) {
+    @return false;
+  }
+
+  @for $i from 1 through length($value-1) {
+
+    @if $recursive
+    and type-of( nth($value-1, $i) ) == list
+    and type-of( nth($value-2, $i) ) == list {
+
+      @if not bc-util-equal(nth($value-1, $i), nth($value-2, $i)) {
+        @return false;
+      }
+    }
+
+    @else if nth($value-1, $i) != nth($value-2, $i){
+      @return false;
+    }
+  }
+
+  @return true;
+}

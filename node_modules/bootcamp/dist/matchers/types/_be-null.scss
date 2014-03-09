@@ -1,0 +1,3 @@
+@function be-null() {
+  @return should("be", "null", actual() == null);
+}
