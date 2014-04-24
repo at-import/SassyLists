@@ -49,6 +49,7 @@ module.exports = function(grunt) {
           '<%= dir.src %>/SassyLists/_slice.scss',
           '<%= dir.src %>/SassyLists/_sort.scss',
           '<%= dir.src %>/SassyLists/_sum.scss',
+          '<%= dir.src %>/SassyLists/_tail.scss',
           '<%= dir.src %>/SassyLists/_to-string.scss',
           '<%= dir.src %>/SassyLists/_union.scss'
         ],
