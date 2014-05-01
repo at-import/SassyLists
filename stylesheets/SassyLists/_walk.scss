@@ -1,0 +1,24 @@
+// Apply $function to every item from $list passing $args as parameters
+// -------------------------------------------------------------------------------
+// @documentation http://sassylists.com/documentation/#walk
+// -------------------------------------------------------------------------------
+// @param $list [List] : list
+// @param $function [String] : function name
+// @param $args [ArgList] : function arguments
+// -------------------------------------------------------------------------------
+// @raise [Error] if $function isn't a function
+// -------------------------------------------------------------------------------
+// @return [List] | false
+
+@function walk($list, $function, $args...) {
+  @if not function-exists($function) {
+    @warn "There is no `#{$function}` function.";
+    @return false;
+  }
+
+  @for $i from 1 through length($list) {
+    $list: set-nth($list, $i, call($function, nth($list, $i), $args...));
+  }
+  
+  @return $list;
+}

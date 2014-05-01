@@ -52,6 +52,7 @@ module.exports = function(grunt) {
           '<%= dir.src %>/SassyLists/_tail.scss',
           '<%= dir.src %>/SassyLists/_to-string.scss',
           '<%= dir.src %>/SassyLists/_union.scss'
+          '<%= dir.src %>/SassyLists/_walk.scss'
         ],
         dest: '<%= dir.dist %>/_<%= pkg.name %>.scss',
       },
