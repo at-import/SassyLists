@@ -69,9 +69,11 @@
                                 <li><a href="#slice">slice</a></li>
                                 <li><a href="#sort">sort</a></li>
                                 <li><a href="#sum">sum</a></li>
+                                <li><a href="#tail">tail</a></li>
                                 <!--<li><a href="#to-map">to-map</a></li>-->
                                 <li><a href="#to-string">to-string</a></li>
                                 <li><a href="#union">union</a></li>
+                                <li><a href="#walk">walk</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -1420,6 +1422,46 @@ sum($list, $force: false)</pre>
 // 18</pre>
                     </section>
 
+                    <section class="function" id="tail">
+                        <h2 class="function-name"><code>tail <span class="function-aliases">(aliased as <code>rest</code>)</span></code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+tail($list)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_tail.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Returns the tail of <code>$list</code>: all items except the first (head).</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>tail(1 2 3 4 5)
+// 2 3 4 5
+tail(1 2)
+// 2</pre>
+                    </section>
+
                     <!--<section class="function" id="to-map">
                         <h2 class="function-name"><code>to-map</code> <span class="function-aliases">(aliased as <code>mapify</code>)</span></h2>
                         <div class="function-code  clearfix">
@@ -1559,6 +1601,66 @@ union($lists...)</pre>
                         <h3 class="function-example">Examples</h3>
                         <pre>union((a b), (b c), (a b c d))
 // a b c d</pre>
+                    </section>
+
+                    <section class="function" id="walk">
+                        <h2 class="function-name"><code>walk</code></h2>
+                        <div class="function-code  clearfix">
+                            <pre class="pull-left">
+walk($list, $function, $args...)</pre>
+                            <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_walk.scss" class="function-link  pull-right">View source</a>
+                        </div>
+                        <p class="function-role">Apply <code>$function</code> to every item from <code>$list</code> passing <code>$args</code> as arguments.</p>
+                        <h3 class="function-subheading">Parameters</h3>
+                        <table class="table  function-arguments">
+                            <thead>
+                                <tr>
+                                    <th>Argument</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code>$list</code>
+                                    </td>
+                                    <td>List</td>
+                                    <td>-</td>
+                                    <td>list</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$function</code>
+                                    </td>
+                                    <td>String</td>
+                                    <td>-</td>
+                                    <td>function name</td>
+                                </tr>
+                                <tr>
+                                    <td><code>$args</code>
+                                    </td>
+                                    <td>ArgList</td>
+                                    <td>-</td>
+                                    <td>function arguments</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <h3 class="function-return">Return</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span>  <code>List</code>
+                            </li>
+                        </ul>
+                        <h3 class="function-errors">Raise</h3>
+                        <ul class="list-unstyled">
+                            <li><span class="glyphicon  glyphicon-play"></span><code>[Error]</code> <code>$function</code> is not a function</li>
+                        </ul>
+                        <h3 class="function-example">Examples</h3>
+                        <pre>walk(red green blue, complement)
+// cyan purple yellow
+walk(red green blue, darken, 20%)
+// #990000 #001a00 #000099
+walk(one two three, to-upper-case)
+// ONE TWO THREE</pre>
                     </section>
 
                 </div>
