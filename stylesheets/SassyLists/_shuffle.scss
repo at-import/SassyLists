@@ -15,8 +15,7 @@
     @return $list;
   }
 
-  @for $i from -1 * $length through -1 {
-    $i: abs($i);
+  @for $i from $length through 1 {
     $j: random($length - 1) + 1;
     $tmp: nth($list, $i);
     $list: set-nth($list, $i, nth($list, $j));

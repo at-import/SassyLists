@@ -10,8 +10,7 @@
 @function last-index($list, $value) {
   $length: length($list);
 
-  @for $i from $length * -1 through -1 {
-    $i: abs($i);
+  @for $i from $length through 1 {
     @if nth($list, $i) == $value {
       @return $i;
     }
