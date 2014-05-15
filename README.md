@@ -10,7 +10,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 2. Add `require 'SassyLists'` to your `config.rb`
 3. Import it in your stylesheets with `@import 'SassyLists'`
 
-### Install With [Bower](http://bower.io/ "BOWER: A package manager for the web")
+### Install with [Bower](http://bower.io/ "BOWER: A package manager for the web")
 1. `bower install SassyLists --save-dev`
 2. Import the partial in your Sass files
 
