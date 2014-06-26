@@ -7,7 +7,7 @@
 // -------------------------------------------------------------------------------
 // @return [Number] | null
 
-@function last-index($list, $value) {
+@function list-last-index($list, $value) {
   $length: length($list);
 
   @for $i from $length through 1 {

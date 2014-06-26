@@ -11,11 +11,11 @@
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
-@function remove-nth($list, $index) {
-  @return replace-nth($list, $index, "");
+@function list-remove-nth($list, $index) {
+  @return list-replace-nth($list, $index, "");
 }
 
 // Alias
-@function without-nth($list, $index) {
-  @return remove-nth($list, $index);
+@function list-without-nth($list, $index) {
+  @return list-remove-nth($list, $index);
 }

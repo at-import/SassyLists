@@ -13,12 +13,12 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function union($lists...) {
+@function list-union($lists...) {
   $result: remove-duplicates(flatten($lists));
   @return if(length($result) == 1, nth($result, 1), $result);
 }
 
 // Alias
-@function merge($lists...) {
-  @return union($lists...);
+@function list-merge($lists...) {
+  @return list-union($lists...);
 }

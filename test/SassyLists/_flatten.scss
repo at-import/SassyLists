@@ -1,21 +1,21 @@
-@include describe("The flatten function") {
+@include describe("The list-flatten function") {
   @include it("should flatten nested lists") {
-    @include should(expect( flatten( 1 (2  3  4 5   6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
-    @include should(expect( flatten( 1 (2 (3  4 5)  6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
-    @include should(expect( flatten( 1 (2 (3 (4 5)) 6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
+    @include should(expect( list-flatten( 1 (2  3  4 5   6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
+    @include should(expect( list-flatten( 1 (2 (3  4 5)  6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
+    @include should(expect( list-flatten( 1 (2 (3 (4 5)) 6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
 
-    @include should(expect( flatten( "a" ("b"  "c"  "d" "e"   "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
-    @include should(expect( flatten( "a" ("b" ("c"  "d" "e")  "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
-    @include should(expect( flatten( "a" ("b" ("c" ("d" "e")) "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
+    @include should(expect( list-flatten( "a" ("b"  "c"  "d" "e"   "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
+    @include should(expect( list-flatten( "a" ("b" ("c"  "d" "e")  "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
+    @include should(expect( list-flatten( "a" ("b" ("c" ("d" "e")) "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
   }
 
   @include it("should leave normal lists alone") {
-    @include should(expect( flatten( 1 ) ), to( equal( 1 ) ));
-    @include should(expect( flatten( 1 2 3 4 5 6 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
-    @include should(expect( flatten( "a" "b" "c" "d" "e" "f" "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g" ) ));
+    @include should(expect( list-flatten( 1 ) ), to( equal( 1 ) ));
+    @include should(expect( list-flatten( 1 2 3 4 5 6 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
+    @include should(expect( list-flatten( "a" "b" "c" "d" "e" "f" "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g" ) ));
   }
 
   @include it("should leave empty lists alone") {
-    @include should(expect( flatten( () ) ), to( equal( () ) ));
+    @include should(expect( list-flatten( () ) ), to( equal( () ) ));
   }
 }

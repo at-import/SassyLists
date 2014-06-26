@@ -11,7 +11,7 @@
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
-@function loop($list, $value: 1) {
+@function list-loop($list, $value: 1) {
   @if type-of($value) != "number" {
     @warn "#{$value} is not a number for `loop`.";
     @return false;
@@ -32,6 +32,6 @@
 }
 
 // Alias
-@function shift-indexes($list, $value: 1) {
+@function list-shift-indexes($list, $value: 1) {
   @return loop($list, $value);
 }

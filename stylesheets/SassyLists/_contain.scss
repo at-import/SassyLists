@@ -9,11 +9,11 @@
 // -------------------------------------------------------------------------------
 // @return [Boolean]
 
-@function contain($list, $value) {
+@function list-contain($list, $value) {
   @return not not index($list, $value);
 }
 
 // Alias
-@function include($list, $value) {
+@function list-include($list, $value) {
   @return contain($list, $value);
 }

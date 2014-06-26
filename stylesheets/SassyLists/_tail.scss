@@ -10,11 +10,11 @@
 // -------------------------------------------------------------------------------
 // @return [Literal] | false
 
-@function tail($list) {
+@function list-tail($list) {
   @return slice($list, 2);
 }
 
 // Alias
-@function rest($list) {
-  @return tail($list);
+@function list-rest($list) {
+  @return list-tail($list);
 }

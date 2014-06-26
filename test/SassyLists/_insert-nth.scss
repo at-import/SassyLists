@@ -1,19 +1,19 @@
-@include describe("The insert-nth function") {
+@include describe("The list-insert-nth function") {
   @include it("should insert value at index") {
-    @include should(expect( insert-nth( 1 2 3 4, 2, 3 ) ), to( equal( 1 3 2 3 4 ) ));
-    @include should(expect( insert-nth( "a" "b" "c" "d", 3, "e" ) ), to( equal( "a" "b" "e" "c" "d" ) ));
+    @include should(expect( list-insert-nth( 1 2 3 4, 2, 3 ) ), to( equal( 1 3 2 3 4 ) ));
+    @include should(expect( list-insert-nth( "a" "b" "c" "d", 3, "e" ) ), to( equal( "a" "b" "e" "c" "d" ) ));
   }
 
   @include it("should append value if index is greater than list length") {
-    @include should(expect( insert-nth( 1 2 3 4, 10, 5 ) ), to( equal( 1 2 3 4 5 ) ));
-    @include should(expect( insert-nth( "a" "b" "c" "d", 10, "e" ) ), to( equal( "a" "b" "c" "d" "e" ) ));
+    @include should(expect( list-insert-nth( 1 2 3 4, 10, 5 ) ), to( equal( 1 2 3 4 5 ) ));
+    @include should(expect( list-insert-nth( "a" "b" "c" "d", 10, "e" ) ), to( equal( "a" "b" "c" "d" "e" ) ));
   }
 
   @include it("should return false when index is invalid") {
-    @include should(expect( insert-nth( 1 2 3 4, 0, 5 ) ), to( equal( false ) ));
-    @include should(expect( insert-nth( "a" "b" "c" "d", 0, "e" ) ), to( equal( false ) ));
-    @include should(expect( insert-nth( 1 2 3 4, -1, 5 ) ), to( equal( false ) ));
-    @include should(expect( insert-nth( "a" "b" "c" "d", -1, "e" ) ), to( equal( false ) ));
-    @include should(expect( insert-nth( "a" "b" "c" "d", "a", "e" ) ), to( equal( false ) ));
+    @include should(expect( list-insert-nth( 1 2 3 4, 0, 5 ) ), to( equal( false ) ));
+    @include should(expect( list-insert-nth( "a" "b" "c" "d", 0, "e" ) ), to( equal( false ) ));
+    @include should(expect( list-insert-nth( 1 2 3 4, -1, 5 ) ), to( equal( false ) ));
+    @include should(expect( list-insert-nth( "a" "b" "c" "d", -1, "e" ) ), to( equal( false ) ));
+    @include should(expect( list-insert-nth( "a" "b" "c" "d", "a", "e" ) ), to( equal( false ) ));
   }
 }

@@ -10,11 +10,11 @@
 // -------------------------------------------------------------------------------
 // @return [Boolean]
 
-@function is-symmetrical($list) {
+@function list-is-symmetrical($list) {
   @return $list == reverse($list);
 }
 
 // Alias
-@function is-mirror($list) {
-  @return is-symmetrical($list);
+@function list-is-mirrored($list) {
+  @return list-is-symmetrical($list);
 }

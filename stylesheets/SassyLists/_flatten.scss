@@ -8,7 +8,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function flatten($list) {
+@function list-flatten($list) {
   $result: ();
 
   @if length($list) == 1 {
@@ -32,6 +32,6 @@
 }
 
 // Alias
-@function unfold($list) {
+@function list-unfold($list) {
     @return flatten($list);
 }

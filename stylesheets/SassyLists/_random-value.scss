@@ -13,7 +13,7 @@
 // -------------------------------------------------------------------------------
 // @return [Literal] | false
 
-@function random-value($list) {
+@function list-random-value($list) {
   @if length($list) == 0 {
     @warn "Cannot find a random value in an empty list.";
     @return false;
@@ -23,10 +23,10 @@
 }
 
 // Aliases
-@function roll($list) {
-  @return random-value($list);
+@function list-roll($list) {
+  @return list-random-value($list);
 }
 
-@function luck($list) {
-  @return random-value($list);
+@function list-luck($list) {
+  @return list-random-value($list);
 }

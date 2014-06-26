@@ -1,16 +1,16 @@
-@include describe("The chunk function") {
+@include describe("The list-chunk function") {
   @include it("should explode list into several lists") {
-    @include should(expect( chunk( 1 2 3 4 5,  2 ) ), to( equal( (1 2) (3 4) (5) ) ));
-    @include should(expect( chunk( "a" "b" "c" "d" "e" "f",  3 ) ), to( equal( ("a" "b" "c") ("d" "e" "f") ) ));
+    @include should(expect( list-chunk( 1 2 3 4 5,  2 ) ), to( equal( (1 2) (3 4) (5) ) ));
+    @include should(expect( list-chunk( "a" "b" "c" "d" "e" "f",  3 ) ), to( equal( ("a" "b" "c") ("d" "e" "f") ) ));
   }
 
   @include it("should return initial list if size is equal or greater than the length of list") {
-    @include should(expect( chunk( (), 2) ), to( equal( () ) ));
-    @include should(expect( chunk( 1 2 3 4 5,  6 ) ), to( equal( 1 2 3 4 5 ) ));
-    @include should(expect( chunk( "a" "b" "c" "d" "e" "f",  7 ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
+    @include should(expect( list-chunk( (), 2) ), to( equal( () ) ));
+    @include should(expect( list-chunk( 1 2 3 4 5,  6 ) ), to( equal( 1 2 3 4 5 ) ));
+    @include should(expect( list-chunk( "a" "b" "c" "d" "e" "f",  7 ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
   }
 
   @include it("should return false if arguments are invalid") {
-    @include should(expect( chunk( 1 2 3, a) ), to( equal( false ) ));
+    @include should(expect( list-chunk( 1 2 3, a) ), to( equal( false ) ));
   }
 }

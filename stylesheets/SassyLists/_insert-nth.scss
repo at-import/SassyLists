@@ -12,7 +12,7 @@
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
-@function insert-nth($list, $index, $value) {
+@function list-insert-nth($list, $index, $value) {
   $length: length($list);
 
   @if type-of($index) != number {

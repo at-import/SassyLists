@@ -9,7 +9,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function prepend($list, $value) {
+@function list-prepend($list, $value) {
   @if is-true($value) {
     @return join($value, $list, list-separator($list));
   }

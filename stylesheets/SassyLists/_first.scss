@@ -10,7 +10,7 @@
 // -------------------------------------------------------------------------------
 // @return [Literal] | false
 
-@function first($list) {
+@function list-first($list) {
   @if length($list) == 0 {
     @warn "Cannot find first item of empty list.";
     @return false;
@@ -20,6 +20,6 @@
 }
 
 // Alias
-@function head($list) {
+@function list-head($list) {
   @return first($list);
 }

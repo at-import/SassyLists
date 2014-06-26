@@ -1,17 +1,17 @@
-@include describe("The loop function") {
+@include describe("The list-loop function") {
   @include it("should shift indexes from list") {
-    @include should(expect( loop( (), 2 ) ), to( equal( () ) ));
-    @include should(expect( loop( 1, 2 ) ), to( equal( 1 ) ));
-    @include should(expect( loop( 1 2 3 4, 2 ) ), to( equal( 3 4 1 2 ) ));
-    @include should(expect( loop( "a" "b" "c" "d", 2 ) ), to( equal( "c" "d" "a" "b" ) ));
+    @include should(expect( list-loop( (), 2 ) ), to( equal( () ) ));
+    @include should(expect( list-loop( 1, 2 ) ), to( equal( 1 ) ));
+    @include should(expect( list-loop( 1 2 3 4, 2 ) ), to( equal( 3 4 1 2 ) ));
+    @include should(expect( list-loop( "a" "b" "c" "d", 2 ) ), to( equal( "c" "d" "a" "b" ) ));
   }
 
   @include it("should shift indexes from 1 if second parameter is ommited") {
-    @include should(expect( loop( 1 2 3 4 ) ), to( equal( 4 1 2 3 ) ));
-    @include should(expect( loop( "a" "b" "c" "d" ) ), to( equal( "d" "a" "b" "c" ) ));
+    @include should(expect( list-loop( 1 2 3 4 ) ), to( equal( 4 1 2 3 ) ));
+    @include should(expect( list-loop( "a" "b" "c" "d" ) ), to( equal( "d" "a" "b" "c" ) ));
   }
 
   @include it("should return false if second parameter is not a number") {
-    @include should(expect( loop( "a" "b" "c" "d", "a" ) ), to( equal( false ) ));
+    @include should(expect( list-loop( "a" "b" "c" "d", "a" ) ), to( equal( false ) ));
   }
 }
