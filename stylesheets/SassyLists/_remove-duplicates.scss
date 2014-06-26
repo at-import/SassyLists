@@ -9,7 +9,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function remove-duplicates($list) {
+@function list-remove-duplicates($list) {
   $result: ();
 
   @each $item in $list {
@@ -22,6 +22,6 @@
 }
 
 // Alias
-@function unique($list, $recursive: false) {
-  @return remove-duplicates($list, $recursive);
+@function list-unique($list, $recursive: false) {
+  @return list-remove-duplicates($list, $recursive);
 }

@@ -9,7 +9,7 @@
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
-@function chunk($list, $size) {
+@function list-chunk($list, $size) {
   @if type-of($size) != "number" {
     @warn "#{$size} is not a number for `chunk`.";
     @return false;

@@ -8,7 +8,7 @@
 // -------------------------------------------------------------------------------
 // @return [String]
 
-@function debug($list, $pre: false, $level: 1) {
+@function list-debug($list, $pre: false, $level: 1) {
   @if length($list) == 0 {
     @return "( )";
   }
@@ -74,7 +74,7 @@
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
 
-@mixin debug($list) {
+@mixin list-debug($list) {
   body:before {
     content: debug($list, true)               !important;
 

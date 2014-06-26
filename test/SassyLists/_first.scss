@@ -1,15 +1,15 @@
-@include describe("The first function") {
+@include describe("The list-first function") {
   @include it("should return the first item in an array") {
-    @include should(expect( first( 1 2 3 ) ), to( equal( 1 ) ));
-    @include should(expect( first( "a" "b" "c" ) ), to( equal( "a" ) ));
+    @include should(expect( list-first( 1 2 3 ) ), to( equal( 1 ) ));
+    @include should(expect( list-first( "a" "b" "c" ) ), to( equal( "a" ) ));
   }
 
   @include it("should return the only item in an single item array") {
-    @include should(expect( first( 1 ) ), to( equal( 1 ) ));
-    @include should(expect( first( "a" ) ), to( equal( "a" ) ));
+    @include should(expect( list-first( 1 ) ), to( equal( 1 ) ));
+    @include should(expect( list-first( "a" ) ), to( equal( "a" ) ));
   }
 
   @include it("should return false if list is empty") {
-    @include should(expect( first( () ) ), to( equal( false ) ));
+    @include should(expect( list-first( () ) ), to( equal( false ) ));
   }
 }

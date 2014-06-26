@@ -8,7 +8,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function reverse($list) {
+@function list-reverse($list) {
   $length: length($list);
   $end: floor($length/2);
 
@@ -26,6 +26,6 @@
 }
 
 // Alias
-@function mirror($list) {
-  @return reverse($list);
+@function list-mirror($list) {
+  @return list-reverse($list);
 }

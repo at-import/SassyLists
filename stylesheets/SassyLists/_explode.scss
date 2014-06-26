@@ -9,7 +9,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function explode($string, $delimiter: '') {
+@function list-explode($string, $delimiter: '') {
   @if type-of($string) != "string" {
     @warn "`explode` function expecting a string; #{type-of($string)} given.";
     @return false;

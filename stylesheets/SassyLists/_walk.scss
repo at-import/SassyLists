@@ -10,7 +10,7 @@
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
-@function walk($list, $function, $args...) {
+@function list-walk($list, $function, $args...) {
   @if not function-exists($function) {
     @warn "There is no `#{$function}` function.";
     @return false;

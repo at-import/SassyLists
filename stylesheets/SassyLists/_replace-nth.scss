@@ -14,12 +14,12 @@
 // -------------------------------------------------------------------------------
 // @return [List] | false
 
-@function replace-nth($list, $index, $value) {
+@function list-replace-nth($list, $index, $value) {
   @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
     @warn "Invalid index (#{$index}) for `replace-nth`.";
     @return false;
   }
 
   $list: set-nth($list, $index, $value);
-  @return if(not is-true($value), purge($list), $list);
+  @return if(not is-true($value), list-purge($list), $list);
 }

@@ -10,7 +10,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function purge($list) {
+@function list-purge($list) {
   $result: ();
 
   @each $item in $list {
@@ -23,6 +23,6 @@
 }
 
 // Alias
-@function clean($list) {
-  @return purge($list);
+@function list-clean($list) {
+  @return list-purge($list);
 }

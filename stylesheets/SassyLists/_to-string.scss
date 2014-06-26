@@ -9,7 +9,7 @@
 // -------------------------------------------------------------------------------
 // @return [String]
 
-@function to-string($list, $glue: '') {
+@function list-to-string($list, $glue: '') {
   $result: '';
   $length: length($list);
 
@@ -22,6 +22,6 @@
 }
 
 // Alias
-@function stringify($list, $glue: '') {
-  @return to-string($list, $glue);
+@function list-stringify($list, $glue: '') {
+  @return list-to-string($list, $glue);
 }

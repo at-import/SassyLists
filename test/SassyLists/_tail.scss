@@ -1,15 +1,15 @@
-@include describe("The tail function") {
+@include describe("The list-tail function") {
   @include it("should return the rest of the list") {
-    @include should(expect( tail( 1 2 3 ) ), to( equal( 2 3 ) ));
-    @include should(expect( tail( "foo" "bar" "baz" ) ), to( equal( "bar" "baz" ) ));
+    @include should(expect( list-tail( 1 2 3 ) ), to( equal( 2 3 ) ));
+    @include should(expect( list-tail( "foo" "bar" "baz" ) ), to( equal( "bar" "baz" ) ));
   }
 
   @include it("should return false for a single item list") {
-    @include should(expect( tail( 1 ) ), to( equal( false ) ));
-    @include should(expect( tail( "foo" ) ), to( equal( false ) ));
+    @include should(expect( list-tail( 1 ) ), to( equal( false ) ));
+    @include should(expect( list-tail( "foo" ) ), to( equal( false ) ));
   }
 
   @include it("should return false if list is empty") {
-    @include should(expect( tail( () ) ), to( equal( false ) ));
+    @include should(expect( list-tail( () ) ), to( equal( false ) ));
   }
 }

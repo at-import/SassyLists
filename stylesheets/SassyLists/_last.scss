@@ -8,7 +8,7 @@
 // -------------------------------------------------------------------------------
 // @return [Literal] | false
 
-@function last($list) {
+@function list-last($list) {
   @if length($list) == 0 {
     @warn "Cannot find last item of empty list.";
     @return false;

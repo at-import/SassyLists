@@ -6,7 +6,7 @@
 // -------------------------------------------------------------------------------
 // @return [Map]
 
-@function count-values($list) {
+@function list-count-values($list) {
   $map: ();
 
   @each $item in $list {

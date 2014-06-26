@@ -8,7 +8,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function shuffle($list) {
+@function list-shuffle($list) {
   $length: length($list);
 
   @if $length < 2 {
@@ -25,6 +25,6 @@
 }
 
 // Alias
-@function randomize($list) {
-  @return shuffle($list);
+@function list-randomize($list) {
+  @return list-shuffle($list);
 }

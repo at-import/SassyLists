@@ -12,11 +12,11 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function remove($list, $value) {
-  @return replace($list, $value, null);
+@function list-remove($list, $value) {
+  @return list-replace($list, $value, null);
 }
 
 // Alias
-@function without($list, $value) {
-  @return remove($list, $value);
+@function list-without($list, $value) {
+  @return list-remove($list, $value);
 }

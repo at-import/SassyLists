@@ -7,7 +7,7 @@
 // -------------------------------------------------------------------------------
 // @return [Number]
 
-@function sum($list, $force: false) {
+@function list-sum($list, $force: false) {
   $result: 0;
 
   @each $item in $list {

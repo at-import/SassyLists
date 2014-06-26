@@ -7,7 +7,7 @@
 // -------------------------------------------------------------------------------
 // @return [List]
 
-@function intersection($list, $lists...) {
+@function list-intersection($list, $lists...) {
   $result: $list;
 
   @each $list in $lists {
