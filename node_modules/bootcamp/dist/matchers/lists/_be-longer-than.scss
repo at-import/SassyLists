@@ -1,3 +1,0 @@
-@function be-longer-than($this) {
-  @return should("be longer than", $this, length(actual()) > $this);
-}

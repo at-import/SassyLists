@@ -1,3 +1,0 @@
-@function be-truthy() {
-  @return should("be", "truthy", not not actual());
-}

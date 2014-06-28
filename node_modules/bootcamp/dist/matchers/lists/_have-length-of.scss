@@ -1,3 +1,0 @@
-@function have-length-of($this) {
-  @return should("have length of", $this, length(actual()) == $this );
-}

@@ -1,6 +1,0 @@
-@function should($be, $something, $when) {
-  $bc-expect: $something !global;
-  $bc-expect-text: $be !global;
-
-  @return $when;
-}
