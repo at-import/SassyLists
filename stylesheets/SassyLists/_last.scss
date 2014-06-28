@@ -11,7 +11,7 @@
 @function last($list) {
   @if length($list) == 0 {
     @warn "Cannot find last item of empty list.";
-    @return false;
+    @return null;
   }
 
   @return nth($list, -1);

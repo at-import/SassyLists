@@ -8,17 +8,17 @@
 // @throws $string is not a string for `explode`.
 // @throws $delimiter is not a string for `explode`.
 //
-// @return {List | Bool}
+// @return {List | Null}
 
 @function explode($string, $delimiter: '') {
   @if type-of($string) != "string" {
     @warn "`explode` function expecting a string; #{type-of($string)} given.";
-    @return false;
+    @return null;
   }
 
   @if type-of($delimiter) != "string" {
     @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
-    @return false;
+    @return null;
   }
 
   $result: ();

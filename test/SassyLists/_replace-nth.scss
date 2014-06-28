@@ -19,8 +19,8 @@
     @include should(expect( replace-nth( "bar" "foo" "bar" "baz"  , -2 , null ) ), to(equal( "bar" "foo" "baz" ) ));
   }
 
-  @include it("should return false for invalid indexes") {
-    @include should(expect( replace-nth( 1 2 3 4, 0 , null ) ), to( be( false ) ));
-    @include should(expect( replace-nth( "bar" "foo" "bar" "baz", "foo" , null ) ), to( be( false ) ));
+  @include it("should return null for invalid indexes") {
+    @include should(expect( replace-nth( 1 2 3 4, 0 , null ) ), to( be( null ) ));
+    @include should(expect( replace-nth( "bar" "foo" "bar" "baz", "foo" , null ) ), to( be( null ) ));
   }
 }

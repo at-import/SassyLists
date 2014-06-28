@@ -6,8 +6,8 @@
     @include should(expect( explode( $string, 'e' ) ), to( equal( 'Th' ' ' 'xplod' ' function should ' 'xplod' ' a string into a list using s' 'cond argum' 'nt as d' 'limit' 'r' ) ));
   }
 
-  @include it("should return false if arguments are invalid") {
-    @include should(expect( explode( 12345 ) ), to( equal( false ) ));
-    @include should(expect( explode( "string", 1 ) ), to( equal( false ) ));
+  @include it("should return null if arguments are invalid") {
+    @include should(expect( explode( 12345 ) ), to( equal( null ) ));
+    @include should(expect( explode( "string", 1 ) ), to( equal( null ) ));
   }
 } 

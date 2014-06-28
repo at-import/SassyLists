@@ -10,6 +10,6 @@
   }
 
   @include it("should return false if list is empty") {
-    @include should(expect( last( () ) ), to( equal( false ) ));
+    @include should(expect( last( () ) ), to( equal( null ) ));
   }
 }

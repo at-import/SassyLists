@@ -7,12 +7,12 @@
 //
 // @throws $size is not a number for `chunk`.
 //
-// @return {List | Bool}
+// @return {List | Null}
 
 @function chunk($list, $size) {
   @if type-of($size) != "number" {
     @warn "#{$size} is not a number for `chunk`.";
-    @return false;
+    @return null;
   }
 
   @if $size >= length($list) {

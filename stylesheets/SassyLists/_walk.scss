@@ -8,12 +8,12 @@
 //
 // @throws There is no $function function.
 //
-// @return {List | Bool}
+// @return {List | Null}
 
 @function walk($list, $function, $args...) {
   @if not function-exists($function) {
     @warn "There is no `#{$function}` function.";
-    @return false;
+    @return null;
   }
 
   @for $i from 1 through length($list) {

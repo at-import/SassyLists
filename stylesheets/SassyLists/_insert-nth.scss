@@ -11,19 +11,19 @@
 // @throws List index $index is not a number for `insert-nth`.
 // @throws List index $index must be a non-zero integer for `insert-nth`.
 //
-// @return {List | Bool}
+// @return {List | Null}
 
 @function insert-nth($list, $index, $value) {
   $length: length($list);
 
   @if type-of($index) != number {
     @warn "List index #{$index} is not a number for `insert-nth`.";
-    @return false;
+    @return null;
   }
 
   @if $index < 1 {
     @warn "List index #{$index} must be a non-zero integer for `insert-nth`.";
-    @return false;
+    @return null;
   }
 
   @if $index > $length {

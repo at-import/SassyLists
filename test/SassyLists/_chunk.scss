@@ -10,7 +10,7 @@
     @include should(expect( chunk( "a" "b" "c" "d" "e" "f",  7 ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
   }
 
-  @include it("should return false if arguments are invalid") {
-    @include should(expect( chunk( 1 2 3, a) ), to( equal( false ) ));
+  @include it("should return null if arguments are invalid") {
+    @include should(expect( chunk( 1 2 3, a) ), to( equal( null ) ));
   }
 }

@@ -11,7 +11,7 @@
 @function first($list) {
   @if length($list) == 0 {
     @warn "Cannot find first item of empty list.";
-    @return false;
+    @return null;
   }
 
   @return nth($list, 1);

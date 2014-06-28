@@ -11,7 +11,7 @@
 @function random-value($list) {
   @if length($list) == 0 {
     @warn "Cannot find a random value in an empty list.";
-    @return false;
+    @return null;
   }
 
   @return nth($list, random(length($list)) + 1);

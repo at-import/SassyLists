@@ -5,7 +5,7 @@
     @include should(expect( walk( one two three, to-upper-case ) ), to( equal( ONE TWO THREE ) ));
   }
 
-  @include it("should return false if function doesnt exist") {
-    @include should(expect( walk( a b c, gloubiboulga ) ), to( equal( false ) ));
+  @include it("should return null if function doesnt exist") {
+    @include should(expect( walk( a b c, gloubiboulga ) ), to( equal( null ) ));
   }
 }

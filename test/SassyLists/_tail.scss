@@ -4,12 +4,12 @@
     @include should(expect( tail( "foo" "bar" "baz" ) ), to( equal( "bar" "baz" ) ));
   }
 
-  @include it("should return false for a single item list") {
-    @include should(expect( tail( 1 ) ), to( equal( false ) ));
-    @include should(expect( tail( "foo" ) ), to( equal( false ) ));
+  @include it("should return null for a single item list") {
+    @include should(expect( tail( 1 ) ), to( equal( null ) ));
+    @include should(expect( tail( "foo" ) ), to( equal( null ) ));
   }
 
-  @include it("should return false if list is empty") {
-    @include should(expect( tail( () ) ), to( equal( false ) ));
+  @include it("should return null if list is empty") {
+    @include should(expect( tail( () ) ), to( equal( null ) ));
   }
 }

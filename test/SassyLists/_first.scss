@@ -9,7 +9,7 @@
     @include should(expect( first( "a" ) ), to( equal( "a" ) ));
   }
 
-  @include it("should return false if list is empty") {
-    @include should(expect( first( () ) ), to( equal( false ) ));
+  @include it("should return null if list is empty") {
+    @include should(expect( first( () ) ), to( equal( null ) ));
   }
 }

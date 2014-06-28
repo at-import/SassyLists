@@ -11,7 +11,7 @@
     @include should(expect( loop( "a" "b" "c" "d" ) ), to( equal( "d" "a" "b" "c" ) ));
   }
 
-  @include it("should return false if second parameter is not a number") {
-    @include should(expect( loop( "a" "b" "c" "d", "a" ) ), to( equal( false ) ));
+  @include it("should return null if second parameter is not a number") {
+    @include should(expect( loop( "a" "b" "c" "d", "a" ) ), to( equal( null ) ));
   }
 }

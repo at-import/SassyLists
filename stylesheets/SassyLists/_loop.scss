@@ -7,12 +7,12 @@
 //
 // @throws $value is not a number for `loop`.
 //
-// @return {List | Bool}
+// @return {List | Null}
 
 @function loop($list, $value: 1) {
   @if type-of($value) != "number" {
     @warn "#{$value} is not a number for `loop`.";
-    @return false;
+    @return null;
   }
 
   @if length($list) < 2 {

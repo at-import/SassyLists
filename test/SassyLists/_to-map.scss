@@ -7,8 +7,8 @@
     @include should(expect( to-map("a" "b" "c", 42) ), to( equal( (42: "a", 43: "b", 44: "c") ) ));
   }
 
-  @include it("should return false if any parameter is incorrect") {
-  	@include should(expect( to-map(()) ), to( equal(false)));
-  	@include should(expect( to-map("a" "b" "c", "string" )), to( equal(false)));
+  @include it("should return null if any parameter is incorrect") {
+  	@include should(expect( to-map(()) ), to( equal(null)));
+  	@include should(expect( to-map("a" "b" "c", "string" )), to( equal(null)));
   }
 }

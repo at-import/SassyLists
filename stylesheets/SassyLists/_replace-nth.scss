@@ -11,12 +11,12 @@
 //
 // @throws Invalid index $index for `replace-nth`.
 //
-// @return {List | Bool}
+// @return {List | Null}
 
 @function replace-nth($list, $index, $value) {
   @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
     @warn "Invalid index (#{$index}) for `replace-nth`.";
-    @return false;
+    @return null;
   }
 
   $list: set-nth($list, $index, $value);
