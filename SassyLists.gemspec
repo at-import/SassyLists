@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   #s.files = ["readme.md"]
 
   # CHANGELOG
-  s.files += ["CHANGELOG.md"]
+  s.files = ["CHANGELOG.md"]
 
   # Library Files
   s.files += Dir.glob("lib/**/*.*")
