@@ -42,8 +42,10 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `slice()`: slices list
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
+* `tail()`: returns anything but the first element in list
 * `to-string()`: casts list as string (JS `.join()`)
 * `union()`: returns a list of values from given lists minus duplicates
+* `walk()`: applies a function to every item of list
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 
