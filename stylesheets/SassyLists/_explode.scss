@@ -1,13 +1,14 @@
 // Explode $string into a list using $break as a breaker
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#explode
-// -------------------------------------------------------------------------------
-// @param $string [String] : string to explode
-// @param $separator [String] : string to use as the breaker
-// -------------------------------------------------------------------------------
-// @raise [Error] if either argument is not a string
-// -------------------------------------------------------------------------------
-// @return [List]
+//
+// @ignore Documentation: http://sassylists.com/documentation/#explode
+//
+// @param {String} $string         - string to explode
+// @param {String} $separator ('') - string to use as a delimiter
+//
+// @throws $string is not a string for `explode`.
+// @throws $delimiter is not a string for `explode`.
+//
+// @return {List | Bool}
 
 @function explode($string, $delimiter: '') {
   @if type-of($string) != "string" {

@@ -1,20 +1,19 @@
 // Returns the tail of $list: all items except the first (head)
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#tail
-// -------------------------------------------------------------------------------
-// @alias `rest()`
-// -------------------------------------------------------------------------------
-// @dependence `slice()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [Literal] | false
+//
+// @ignore Documentation: http://sassylists.com/documentation/#tail
+//
+// @requires slice
+//
+// @param {List} $list - list to retrieve tail from
+//
+// @return {List | Bool}
 
 @function tail($list) {
   @return slice($list, 2);
 }
 
-// Alias
+// @alias tail
+
 @function rest($list) {
   @return tail($list);
 }

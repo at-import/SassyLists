@@ -1,19 +1,18 @@
 // Returns whether $list contains $value
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#contain
-// -------------------------------------------------------------------------------
-// @alias `include()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $value [Literal] : value to look for
-// -------------------------------------------------------------------------------
-// @return [Boolean]
+//
+// @ignore Documentation: http://sassylists.com/documentation/#contain
+//
+// @param {List}    $list  - list to check
+// @param {*}       $value - value to look for
+//
+// @return {Bool}
 
 @function contain($list, $value) {
   @return not not index($list, $value);
 }
 
-// Alias
+// @alias contain
+
 @function include($list, $value) {
   @return contain($list, $value);
 }

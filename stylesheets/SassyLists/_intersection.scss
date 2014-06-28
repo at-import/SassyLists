@@ -1,11 +1,13 @@
 // Returns a list of shared value from $list and $lists minus duplicates
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#intersection
-// -------------------------------------------------------------------------------
-// @param $list [List] : first list
-// @param $lists [ArgList] : other lists
-// -------------------------------------------------------------------------------
-// @return [List]
+//
+// @ignore Documentation: http://sassylists.com/documentation/#intersection
+//
+// @requires remove-duplicates
+//
+// @param {List}    $list  - first list
+// @param {ArgList} $lists - other lists
+//
+// @return {List}
 
 @function intersection($list, $lists...) {
   $result: $list;

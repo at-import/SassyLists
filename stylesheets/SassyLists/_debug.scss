@@ -1,12 +1,12 @@
 // Returns $list as a string
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#debug
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $pre [Boolean] : enable/disable variables type and proper indentation
-// @param $level [Number] : internal variable for recursivity
-// -------------------------------------------------------------------------------
-// @return [String]
+//
+// @ignore Documentation: http://sassylists.com/documentation/#debug
+//
+// @param {List}   $list          - list to debug
+// @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+// @param {Number} $level (1)     - internal variable for recursion
+//
+// @return {String}
 
 @function debug($list, $pre: false, $level: 1) {
   @if length($list) == 0 {
@@ -71,8 +71,10 @@
 }
 
 // Mixin displaying clean debug
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
+//
+// @param {List} $list - list
+//
+// @requires {function} debug
 
 @mixin debug($list) {
   body:before {

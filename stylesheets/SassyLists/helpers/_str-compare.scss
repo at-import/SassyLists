@@ -1,14 +1,12 @@
 // Compares two values based on alphabetical order
-// -------------------------------------------------------------------------------
-// @private
-// -------------------------------------------------------------------------------
-// @usage sort()
-// -------------------------------------------------------------------------------
-// @param $a [Literal] : first value
-// @param $b [Literal] : second value
-// @param $matrix [List] : alphabetical order
-// -------------------------------------------------------------------------------
-// @return [Boolean]
+//
+// @access private
+//
+// @param {*}       $a      - first value
+// @param {*}       $b      - second value
+// @param {List}    $matrix - alphabetical order
+//
+// @return {Bool}
 
 @function str-compare($a, $b, $order) {
   @if type-of($a) == "number" and type-of($b) == "number" {

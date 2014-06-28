@@ -1,12 +1,10 @@
 // Shuffle function using Fisher-Yates method
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#shuffle
-// -------------------------------------------------------------------------------
-// @alias `randomize()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [List]
+//
+// @ignore Documentation: http://sassylists.com/documentation/#shuffle
+//
+// @param {List} $list - list to shuffle
+//
+// @return {List}
 
 @function shuffle($list) {
   $length: length($list);
@@ -24,7 +22,8 @@
   @return $list;
 }
 
-// Alias
+// @alias shuffle
+
 @function randomize($list) {
   @return shuffle($list);
 }

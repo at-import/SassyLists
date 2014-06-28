@@ -1,12 +1,10 @@
 // Turns multidimensional $list into a one-level list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation.html#flatten
-// -------------------------------------------------------------------------------
-// @alias `unfold()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [List]
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#flatten
+//
+// @param {List} $list - list to flatten
+//
+// @return {List}
 
 @function flatten($list) {
   $result: ();
@@ -31,7 +29,8 @@
   @return $result;
 }
 
-// Alias
+// @alias flatten
+
 @function unfold($list) {
     @return flatten($list);
 }
