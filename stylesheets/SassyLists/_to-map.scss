@@ -1,26 +1,45 @@
 // Cast a $list into a map, using indexes as keys
+// Useful for iterating through a list with an index variable:
+// `@each $i, $value in to-map($list)`
+// Indexes start with 1 by default.
 // -------------------------------------------------------------------------------
 // @documentation http://sassylists.com/documentation/#to-map
 // -------------------------------------------------------------------------------
+// @alias `enumerate()`
 // @alias `mapify()`
 // -------------------------------------------------------------------------------
 // @example to-map(a b c d e) => (1: a, 2: b, 3: c, 4: d, 5: e)
 // -------------------------------------------------------------------------------
 // @param $list [List] : list
+// @param $start [Number] : index to start with
 // -------------------------------------------------------------------------------
 // @return [Map]
 
-@function to-map($list) {
-    $result: ();
-
-    @for $i from 1 through length($list) {
-        $result: map-merge($result, ($i: nth($list, $i)));
+@function to-map($list, $start: 1) {
+    @if length($list) == 0 {
+        @warn "Empty list provided for `to-map`/`enumerate`.";
+        @return false;
+    }
+    @if type-of($start) != number {
+        @warn "$start provided to `to-map`/`enumerate` was #{type-of($start)}, but it should be a number.";
+        @return false;
     }
 
-    @return $result;
+    $map: ();
+
+    @for $index from 1 through length($list) {
+        $key: $index + $start - 1;
+        $value: nth($list, $index);
+        $map: map-merge($map, ($key: $value));
+    }
+
+    @return $map;
 }
 
-// Alias
-@function mapify($list) {
-    @return to-map($list);
+// Aliases
+@function enumerate($list, $start: 1) {
+    @return to-map($list, $start);
+}
+@function mapify($list, $start: 1) {
+    @return to-map($list, $start);
 }
