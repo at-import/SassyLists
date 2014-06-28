@@ -40,7 +40,12 @@
     @return null;
   }
 
+  @if $start == $end {
+    @return nth($list, $start);
+  }
+
   $result: ();
+  
   @for $i from $start through $end {
     $result: append($result, nth($list, $i), list-separator($list));
   }
