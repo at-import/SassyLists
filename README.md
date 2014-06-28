@@ -43,6 +43,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `sort()`: sorts list
 * `sum()`: sums all unitless values in list
 * `tail()`: returns anything but the first element in list
+* `to-map()`: casts list as map using indexes as keys
 * `to-string()`: casts list as string (JS `.join()`)
 * `union()`: returns a list of values from given lists minus duplicates
 * `walk()`: applies a function to every item of list
