@@ -1,39 +1,39 @@
-@include describe("The slice function") {
+@include describe("The sl-slice function") {
   @include it("should slice a list between 2 indexes") {
-  	@include should(expect(slice("a" "b" "c", 2, 3)), to(equal("b" "c")));
-  	@include should(expect(slice("a" "b" "c", 1, 2)), to(equal("a" "b")));
+  	@include should(expect(sl-slice("a" "b" "c", 2, 3)), to(equal("b" "c")));
+  	@include should(expect(sl-slice("a" "b" "c", 1, 2)), to(equal("a" "b")));
   }
 
   @include it("should leave a list as is if start and end are not specified") {
-  	@include should(expect(slice("a" "b" "c")), to(equal("a" "b" "c")));
+  	@include should(expect(sl-slice("a" "b" "c")), to(equal("a" "b" "c")));
   }
 
   @include it("should return a single value if start and end are the same") {
-  	@include should(expect(slice("a" "b" "c", 1, 1)), to(equal("a")));
-  	@include should(expect(slice("a" "b" "c", 2, 2)), to(equal("b")));
-  	@include should(expect(slice("a" "b" "c", 3, 3)), to(equal("c")));
+  	@include should(expect(sl-slice("a" "b" "c", 1, 1)), to(equal("a")));
+  	@include should(expect(sl-slice("a" "b" "c", 2, 2)), to(equal("b")));
+  	@include should(expect(sl-slice("a" "b" "c", 3, 3)), to(equal("c")));
   }
 
 
   @include it("should return null if start and.or end indexes are not numbers") {
-  	@include should(expect(slice("a" "b" "c", 1, "x")), to(equal(null)));
-  	@include should(expect(slice("a" "b" "c", "x", 1)), to(equal(null)));
-  	@include should(expect(slice("a" "b" "c", "x", "x")), to(equal(null)));
+  	@include should(expect(sl-slice("a" "b" "c", 1, "x")), to(equal(null)));
+  	@include should(expect(sl-slice("a" "b" "c", "x", 1)), to(equal(null)));
+  	@include should(expect(sl-slice("a" "b" "c", "x", "x")), to(equal(null)));
   }
 
   @include it("should return null if start is greater then end") {
-    @include should(expect(slice("a" "b" "c", 2, 1)), to(equal(null)));
+    @include should(expect(sl-slice("a" "b" "c", 2, 1)), to(equal(null)));
   }
 
   @include it("should return null if start and.or end indexes are 0") {
-    @include should(expect(slice("a" "b" "c", 1, 0)), to(equal(null)));
-    @include should(expect(slice("a" "b" "c", 0, 1)), to(equal(null)));
-    @include should(expect(slice("a" "b" "c", 0, 0)), to(equal(null)));
+    @include should(expect(sl-slice("a" "b" "c", 1, 0)), to(equal(null)));
+    @include should(expect(sl-slice("a" "b" "c", 0, 1)), to(equal(null)));
+    @include should(expect(sl-slice("a" "b" "c", 0, 0)), to(equal(null)));
   }
 
   @include it("should return null if start and.or end indexes are greater than length of list") {
-    @include should(expect(slice("a" "b" "c", 1, 4)), to(equal(null)));
-    @include should(expect(slice("a" "b" "c", 4, 5)), to(equal(null)));
+    @include should(expect(sl-slice("a" "b" "c", 1, 4)), to(equal(null)));
+    @include should(expect(sl-slice("a" "b" "c", 4, 5)), to(equal(null)));
   }
 
 }

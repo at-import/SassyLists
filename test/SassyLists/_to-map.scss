@@ -1,14 +1,14 @@
-@include describe("The to-map function") {
+@include describe("The sl-to-map function") {
   @include it("should return list as a map using indexes as keys") {
-    @include should(expect( to-map("a" "b" "c") ), to( equal( (1: "a", 2: "b", 3: "c") ) ));
+    @include should(expect( sl-to-map("a" "b" "c") ), to( equal( (1: "a", 2: "b", 3: "c") ) ));
   }
 
   @include it("should return list as a map using indexes as keys starting with second parameter if set") {
-    @include should(expect( to-map("a" "b" "c", 42) ), to( equal( (42: "a", 43: "b", 44: "c") ) ));
+    @include should(expect( sl-to-map("a" "b" "c", 42) ), to( equal( (42: "a", 43: "b", 44: "c") ) ));
   }
 
   @include it("should return null if any parameter is incorrect") {
-  	@include should(expect( to-map(()) ), to( equal(null)));
-  	@include should(expect( to-map("a" "b" "c", "string" )), to( equal(null)));
+  	@include should(expect( sl-to-map(()) ), to( equal(null)));
+  	@include should(expect( sl-to-map("a" "b" "c", "string" )), to( equal(null)));
   }
 }

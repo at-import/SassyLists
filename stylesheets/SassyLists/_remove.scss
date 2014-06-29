@@ -1,8 +1,8 @@
-// Removes value(s) $value from $list
+// Removes value(s) `$value` from `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#remove
 //
-// @requires replace
+// @requires sl-replace
 //
 // @param {List}    $list      - list to update
 // @param {*}       $value     - value to remove
@@ -10,14 +10,14 @@
 //
 // @return {List}
 
-@function remove($list, $value) {
-  @if missing-dependencies(replace) == true { @return null; }
+@function sl-remove($list, $value) {
+  @if sl-missing-dependencies(sl-replace) == true { @return null; }
 
-  @return replace($list, $value, null);
+  @return sl-replace($list, $value, null);
 }
 
-// @alias remove
+// @alias sl-remove
 
-@function without($list, $value) {
-  @return remove($list, $value);
+@function sl-without($list, $value) {
+  @return sl-remove($list, $value);
 }

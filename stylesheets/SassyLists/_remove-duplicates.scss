@@ -1,4 +1,4 @@
-// Removes duplicate values from $list
+// Removes duplicate values from `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#remove-duplicates
 //
@@ -6,7 +6,7 @@
 //
 // @return {List}
 
-@function remove-duplicates($list) {
+@function sl-remove-duplicates($list) {
   $result: ();
 
   @each $item in $list {
@@ -18,8 +18,8 @@
   @return $result;
 }
 
-// @alias remove-duplicates
+// @alias sl-remove-duplicates
 
-@function unique($list, $recursive: false) {
-  @return remove-duplicates($list, $recursive);
+@function sl-unique($list, $recursive: false) {
+  @return sl-remove-duplicates($list, $recursive);
 }

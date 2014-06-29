@@ -1,4 +1,4 @@
-// Counts the number of occurrences of each value of $list
+// Counts the number of occurrences of each value of `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#count-values
 //
@@ -6,7 +6,7 @@
 //
 // @return {Map} Values mapped to their count
 
-@function count-values($list) {
+@function sl-count-values($list) {
   $map: ();
 
   @each $item in $list {

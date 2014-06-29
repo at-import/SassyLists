@@ -1,21 +1,21 @@
-// Checks whether $list is symmetrical (one-level deep)
+// Checks whether `$list` is symmetrical.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#is-symmetrical
 //
-// @requires reverse
+// @requires sl-reverse
 //
 // @param {List} $list - list to check
 //
 // @return {Bool}
 
-@function is-symmetrical($list) {
-  @if missing-dependencies(reverse) == true { @return null; }
+@function sl-is-symmetrical($list) {
+  @if sl-missing-dependencies(sl-reverse) == true { @return null; }
   
-  @return $list == reverse($list);
+  @return $list == sl-reverse($list);
 }
 
-// @alias is-symmetrical
+// @alias sl-is-symmetrical
 
-@function is-mirror($list) {
-  @return is-symmetrical($list);
+@function sl-is-mirror($list) {
+  @return sl-is-symmetrical($list);
 }

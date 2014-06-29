@@ -1,4 +1,4 @@
-// Returns a random value of $list
+// Returns a random value of `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#random-value
 //
@@ -8,7 +8,7 @@
 //
 // @return {*}
 
-@function random-value($list) {
+@function sl-random-value($list) {
   @if length($list) == 0 {
     @warn "Cannot find a random value in an empty list.";
     @return null;
@@ -17,14 +17,14 @@
   @return nth($list, random(length($list) + 1));
 }
 
-// @alias random-value
+// @alias sl-random-value
 
-@function roll($list) {
-  @return random-value($list);
+@function sl-roll($list) {
+  @return sl-random-value($list);
 }
 
-// @alias random-value
+// @alias sl-random-value
 
-@function luck($list) {
-  @return random-value($list);
+@function sl-luck($list) {
+  @return sl-random-value($list);
 }

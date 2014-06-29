@@ -1,11 +1,11 @@
-@include describe("The walk function") {
+@include describe("The sl-walk function") {
   @include it("should apply given function to all items from list") {
-    @include should(expect( walk( red green blue, complement ) ), to( equal( cyan purple yellow ) ));
-    @include should(expect( walk( red green blue, darken, 20% ) ), to( equal( #990000 #001a00 #000099 ) ));
-    @include should(expect( walk( one two three, to-upper-case ) ), to( equal( ONE TWO THREE ) ));
+    @include should(expect( sl-walk( red green blue, complement ) ), to( equal( cyan purple yellow ) ));
+    @include should(expect( sl-walk( red green blue, darken, 20% ) ), to( equal( #990000 #001a00 #000099 ) ));
+    @include should(expect( sl-walk( one two three, to-upper-case ) ), to( equal( ONE TWO THREE ) ));
   }
 
   @include it("should return null if function doesnt exist") {
-    @include should(expect( walk( a b c, gloubiboulga ) ), to( equal( null ) ));
+    @include should(expect( sl-walk( a b c, gloubiboulga ) ), to( equal( null ) ));
   }
 }

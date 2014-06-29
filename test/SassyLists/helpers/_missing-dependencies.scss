@@ -1,11 +1,11 @@
 @function exist() { @return null; }
 
-@include describe("The missing-dependencies function") {
+@include describe("The sl-missing-dependencies function") {
   @include it("should return false when function exists in global scope") {
-  	@include should(expect(missing-dependencies(exist)), to(equal(false)));
+  	@include should(expect(sl-missing-dependencies(exist)), to(equal(false)));
   }
 
   @include it("should return true when function exists in global scope") {
-  	@include should(expect(missing-dependencies(unexist)), to(equal(true)));
+  	@include should(expect(sl-missing-dependencies(unexist)), to(equal(true)));
   }
 }

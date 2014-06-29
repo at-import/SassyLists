@@ -1,13 +1,13 @@
-// Returns last index of $value in $list
+// Returns last index of `$value` in `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#last-index
 //
-// @param {List}    $list  - list to search
-// @param {*}       $value - value to be searched for
+// @param {List} $list  - list to search
+// @param {*}    $value - value to be searched for
 //
 // @return {Number | Null}
 
-@function last-index($list, $value) {
+@function sl-last-index($list, $value) {
   $length: length($list);
 
   @for $i from $length through 1 {

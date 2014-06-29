@@ -1,12 +1,12 @@
-@include describe("The contain function") {
+@include describe("The sl-contain function") {
   @include it("should be true if collection contains value") {
-    @include should(expect( contain( 1 2 3, 1 ) ), to( equal( true ) ));
-    @include should(expect( contain( "foo" "bar" "baz", "foo" ) ), to( equal( true ) ));
+    @include should(expect( sl-contain( 1 2 3, 1 ) ), to( equal( true ) ));
+    @include should(expect( sl-contain( "foo" "bar" "baz", "foo" ) ), to( equal( true ) ));
   }
 
   @include it("should be false if collection doesnt contain value") {
-    @include should(expect( contain( (), 4 ) ), to( equal( false ) ));
-    @include should(expect( contain( 1 2 3, 4 ) ), to( equal( false ) ));
-    @include should(expect( contain( "foo" "bar" "baz", "fod" ) ), to( equal( false ) ));
+    @include should(expect( sl-contain( (), 4 ) ), to( equal( false ) ));
+    @include should(expect( sl-contain( 1 2 3, 4 ) ), to( equal( false ) ));
+    @include should(expect( sl-contain( "foo" "bar" "baz", "fod" ) ), to( equal( false ) ));
   }
 }

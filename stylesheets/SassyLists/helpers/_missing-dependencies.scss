@@ -6,7 +6,7 @@
 //
 // @return {Bool} Whether or not there are missing dependencies
 
-@function missing-dependencies($functions...) {
+@function sl-missing-dependencies($functions...) {
   $missing-dependencies: ();
   
   @each $function in $functions {

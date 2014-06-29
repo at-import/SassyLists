@@ -1,4 +1,4 @@
-// Returns whether $list contains $value
+// Returns whether `$list` contains `$value`.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#contain
 //
@@ -7,12 +7,12 @@
 //
 // @return {Bool}
 
-@function contain($list, $value) {
+@function sl-contain($list, $value) {
   @return not not index($list, $value);
 }
 
-// @alias contain
+// @alias sl-contain
 
-@function include($list, $value) {
-  @return contain($list, $value);
+@function sl-include($list, $value) {
+  @return sl-contain($list, $value);
 }

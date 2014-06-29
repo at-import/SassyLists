@@ -1,15 +1,15 @@
-@include describe("The first function") {
+@include describe("The sl-first function") {
   @include it("should return the first item in an array") {
-    @include should(expect( first( 1 2 3 ) ), to( equal( 1 ) ));
-    @include should(expect( first( "a" "b" "c" ) ), to( equal( "a" ) ));
+    @include should(expect( sl-first( 1 2 3 ) ), to( equal( 1 ) ));
+    @include should(expect( sl-first( "a" "b" "c" ) ), to( equal( "a" ) ));
   }
 
   @include it("should return the only item in an single item array") {
-    @include should(expect( first( 1 ) ), to( equal( 1 ) ));
-    @include should(expect( first( "a" ) ), to( equal( "a" ) ));
+    @include should(expect( sl-first( 1 ) ), to( equal( 1 ) ));
+    @include should(expect( sl-first( "a" ) ), to( equal( "a" ) ));
   }
 
   @include it("should return null if list is empty") {
-    @include should(expect( first( () ) ), to( equal( null ) ));
+    @include should(expect( sl-first( () ) ), to( equal( null ) ));
   }
 }

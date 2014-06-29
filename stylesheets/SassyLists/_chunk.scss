@@ -1,17 +1,17 @@
-// Chunks $list into $size large lists
+// Chunks `$list` into `$size` large lists.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#chunk
 //
 // @param {List}   $list  - list to chunk
 // @param {Number} $size  - length of lists
 //
-// @throws $size is not a number for `chunk`.
+// @throws $size is not a number for `sl-chunk`.
 //
 // @return {List | Null}
 
-@function chunk($list, $size) {
+@function sl-chunk($list, $size) {
   @if type-of($size) != "number" {
-    @warn "#{$size} is not a number for `chunk`.";
+    @warn "#{$size} is not a number for `sl-chunk`.";
     @return null;
   }
 

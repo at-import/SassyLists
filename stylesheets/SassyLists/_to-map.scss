@@ -9,19 +9,19 @@
 // @param {List}   $list      - list to turn into map
 // @param {Number} $start (1) - index to start with
 // 
-// @throws List cannot be empty for `to-map`.
-// @throws $start is not a number for `to-map`.
+// @throws List cannot be empty for `sl-to-map`.
+// @throws $start is not a number for `sl-to-map`.
 // 
 // @return {Map | Null}
 
-@function to-map($list, $start: 1) {
+@function sl-to-map($list, $start: 1) {
   @if length($list) == 0 {
-    @warn "List cannot be empty for `to-map`.";
+    @warn "List cannot be empty for `sl-to-map`.";
     @return null;
   }
 
   @if type-of($start) != "number" {
-    @warn "$start provided to `to-map` was #{type-of($start)}, but it should be a number.";
+    @warn "$start provided to `sl-to-map` was #{type-of($start)}, but it should be a number.";
     @return null;
   }
 
@@ -36,16 +36,16 @@
   @return $map;
 }
 
-// @requires to-map
-// @alias to-map
+// @requires sl-to-map
+// @alias sl-to-map
 
-@function enumerate($list, $start: 1) {
-    @return to-map($list, $start);
+@function sl-enumerate($list, $start: 1) {
+  @return sl-to-map($list, $start);
 }
 
-// @requires to-map
-// @alias to-map
+// @requires sl-to-map
+// @alias sl-to-map
 
-@function mapify($list, $start: 1) {
-    @return to-map($list, $start);
+@function sl-mapify($list, $start: 1) {
+  @return sl-to-map($list, $start);
 }

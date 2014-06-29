@@ -1,22 +1,22 @@
-// Removes value from $list at index $index
+// Removes value from `$list` at index `$index`.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#remove-nth
 //
-// @requires replace-nth
+// @requires sl-replace-nth
 //
 // @param {List}   $list  - list to remove value from
 // @param {Number} $index - index to remove
 //
 // @return {List | Null}
 
-@function remove-nth($list, $index) {
-  @if missing-dependencies(replace-nth) == true { @return null; }
+@function sl-remove-nth($list, $index) {
+  @if sl-missing-dependencies(sl-replace-nth) == true { @return null; }
 
-  @return replace-nth($list, $index, "");
+  @return sl-replace-nth($list, $index, "");
 }
 
-// @alias remove-nth
+// @alias sl-remove-nth
 
-@function without-nth($list, $index) {
-  @return remove-nth($list, $index);
+@function sl-without-nth($list, $index) {
+  @return sl-remove-nth($list, $index);
 }

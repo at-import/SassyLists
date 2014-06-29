@@ -1,20 +1,20 @@
-// Removes all false and null values from $list
+// Removes all false and null values from `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#purge
 //
-// @requires is-true
+// @requires sl-is-true
 //
 // @param {List} $list - list to purge
 //
 // @return {List}
 
-@function purge($list) {
-  @if missing-dependencies(is-true) == true { @return null; }
+@function sl-purge($list) {
+  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
   
   $result: ();
 
   @each $item in $list {
-    @if is-true($item) {
+    @if sl-is-true($item) {
       $result: append($result, $item, list-separator($list));
     }
   }
@@ -22,8 +22,8 @@
   @return $result;
 }
 
-// @alias purge
+// @alias sl-purge
 
-@function clean($list) {
-  @return purge($list);
+@function sl-clean($list) {
+  @return sl-purge($list);
 }

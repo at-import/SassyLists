@@ -1,4 +1,4 @@
-// Returns truthiness of a value
+// Returns truthiness of `$value`.
 //
 // @access private
 //
@@ -6,6 +6,6 @@
 //
 // @return {Bool}
 
-@function is-true($value) {
+@function sl-is-true($value) {
   @return if($value == null, false, $value and $value != null and $value != "" and $value != ());
 }

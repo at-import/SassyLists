@@ -1,23 +1,23 @@
-// Explode $string into a list using $break as a breaker
+// Explode `$string` into a list using `$delimiter` as a delimiter.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#explode
 //
 // @param {String} $string         - string to explode
 // @param {String} $separator ('') - string to use as a delimiter
 //
-// @throws $string is not a string for `explode`.
-// @throws $delimiter is not a string for `explode`.
+// @throws $string is not a string for `sl-explode`.
+// @throws $delimiter is not a string for `sl-explode`.
 //
 // @return {List | Null}
 
-@function explode($string, $delimiter: '') {
+@function sl-explode($string, $delimiter: '') {
   @if type-of($string) != "string" {
-    @warn "`explode` function expecting a string; #{type-of($string)} given.";
+    @warn "`sl-explode` function expecting a string; #{type-of($string)} given.";
     @return null;
   }
 
   @if type-of($delimiter) != "string" {
-    @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
+    @warn "`sl-explode` function expecting a string; #{type-of($delimiter)} given.";
     @return null;
   }
 
@@ -28,6 +28,7 @@
     @for $i from 1 through $length {
       $result: append($result, str-slice($string, $i, $i));
     }
+    
     @return $result;
   }
 
@@ -36,9 +37,11 @@
 
   @while $running {
     $index: str-index($remaining, $delimiter);
+    
     @if not $index or $index == 0 {
       $running: false;
     }
+
     @else {
       $slice: str-slice($remaining, 1, $index - 1);
       $result: append($result, $slice);

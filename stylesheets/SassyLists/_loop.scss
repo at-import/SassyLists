@@ -1,4 +1,6 @@
-// Shift indexes from $list of $value
+// Shift indexes from `$list` of `$value`.
+//
+// @author Ana Tudor
 //
 // @ignore Documentation: http://sassylists.com/documentation/#loop
 //
@@ -9,9 +11,9 @@
 //
 // @return {List | Null}
 
-@function loop($list, $value: 1) {
+@function sl-loop($list, $value: 1) {
   @if type-of($value) != "number" {
-    @warn "#{$value} is not a number for `loop`.";
+    @warn "#{$value} is not a number for `sl-loop`.";
     @return null;
   }
 
@@ -29,8 +31,8 @@
   @return $result;
 }
 
-// @alias shift-indexes
+// @alias sl-loop
 
-@function shift-indexes($list, $value: 1) {
-  @return loop($list, $value);
+@function sl-shift-indexes($list, $value: 1) {
+  @return sl-loop($list, $value);
 }

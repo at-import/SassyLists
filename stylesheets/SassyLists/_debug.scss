@@ -1,4 +1,4 @@
-// Returns $list as a string
+// Returns `$list` as a string, prettified if `$pre` is set to true.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#debug
 //
@@ -8,7 +8,7 @@
 //
 // @return {String}
 
-@function debug($list, $pre: false, $level: 1) {
+@function sl-debug($list, $pre: false, $level: 1) {
   @if length($list) == 0 {
     @return "( )";
   }
@@ -35,7 +35,7 @@
     @if length($item) > 1 {
       $result: $result
         + if($pre, "(list: " + length($item) + ") ", "")
-        + debug($item, $pre, $level + 1);
+        + sl-debug($item, $pre, $level + 1);
     }
 
     @else {
@@ -74,11 +74,11 @@
 //
 // @param {List} $list - list
 //
-// @requires {function} debug
+// @requires {function} sl-debug
 
-@mixin debug($list) {
+@mixin sl-debug($list) {
   body:before {
-    content: debug($list, true)               !important;
+    content: sl-debug($list, true)            !important;
 
     display: block                            !important;
     margin: 1em                               !important;

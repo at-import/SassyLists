@@ -1,18 +1,18 @@
-@include describe("The is-symmetrical function") {
+@include describe("The sl-is-symmetrical function") {
   @include it("should return true if list is symmetrical") {
-    @include should(expect( is-symmetrical( () ) ), to( equal( true ) ));
-    @include should(expect( is-symmetrical( 1 ) ), to( equal( true ) ));
-    @include should(expect( is-symmetrical( 1 2 3 2 1 ) ), to( equal( true ) ));
-    @include should(expect( is-symmetrical( "a" "b" "a" ) ), to( equal( true ) ));
+    @include should(expect( sl-is-symmetrical( () ) ), to( equal( true ) ));
+    @include should(expect( sl-is-symmetrical( 1 ) ), to( equal( true ) ));
+    @include should(expect( sl-is-symmetrical( 1 2 3 2 1 ) ), to( equal( true ) ));
+    @include should(expect( sl-is-symmetrical( "a" "b" "a" ) ), to( equal( true ) ));
   }
 
   @include it("should return false if list is not symmetrical") {
-    @include should(expect( is-symmetrical( 1 2 3 4 5 ) ), to( equal( false ) ));
-    @include should(expect( is-symmetrical( "a" "b" "c" ) ), to( equal( false ) ));
+    @include should(expect( sl-is-symmetrical( 1 2 3 4 5 ) ), to( equal( false ) ));
+    @include should(expect( sl-is-symmetrical( "a" "b" "c" ) ), to( equal( false ) ));
   }
 
   @include it("should not be recursive") {
-    @include should(expect( is-symmetrical( 1 (2 3 4) 1 ) ), to( equal( true ) ));
-    @include should(expect( is-symmetrical( "a" ("b" "c") "a" ) ), to( equal( true ) ));
+    @include should(expect( sl-is-symmetrical( 1 (2 3 4) 1 ) ), to( equal( true ) ));
+    @include should(expect( sl-is-symmetrical( "a" ("b" "c") "a" ) ), to( equal( true ) ));
   }
 }

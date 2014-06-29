@@ -1,16 +1,16 @@
-// Returns a list of shared value from $list and $lists minus duplicates
+// Returns a list of shared value from `$list` and `$lists` minus duplicates.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#intersection
 //
-// @requires remove-duplicates
+// @requires sl-remove-duplicates
 //
 // @param {List}    $list  - first list
 // @param {ArgList} $lists - other lists
 //
 // @return {List}
 
-@function intersection($list, $lists...) {
-  @if missing-dependencies(remove-duplicates) == true { @return null; }
+@function sl-intersection($list, $lists...) {
+  @if sl-missing-dependencies(sl-remove-duplicates) == true { @return null; }
 
   $result: $list;
 
@@ -26,6 +26,6 @@
     $result: $temp;
   }
 
-  $result: remove-duplicates($result);
+  $result: sl-remove-duplicates($result);
   @return if(length($result) == 1, nth($result, 1), $result);
 }

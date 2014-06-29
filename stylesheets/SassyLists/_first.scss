@@ -1,4 +1,4 @@
-// Returns first element of $list
+// Returns first element of `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#first
 //
@@ -8,7 +8,7 @@
 //
 // @return {*}
 
-@function first($list) {
+@function sl-first($list) {
   @if length($list) == 0 {
     @warn "Cannot find first item of empty list.";
     @return null;
@@ -17,8 +17,8 @@
   @return nth($list, 1);
 }
 
-// @alias first
+// @alias sl-first
 
-@function head($list) {
-  @return first($list);
+@function sl-head($list) {
+  @return sl-first($list);
 }

@@ -1,4 +1,4 @@
-// Shuffle function using Fisher-Yates method
+// Shuffle `$list` using Fisher-Yates method.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#shuffle
 //
@@ -6,7 +6,7 @@
 //
 // @return {List}
 
-@function shuffle($list) {
+@function sl-shuffle($list) {
   $length: length($list);
 
   @if $length < 2 {
@@ -23,8 +23,8 @@
   @return $list;
 }
 
-// @alias shuffle
+// @alias sl-shuffle
 
-@function randomize($list) {
-  @return shuffle($list);
+@function sl-randomize($list) {
+  @return sl-shuffle($list);
 }

@@ -16,37 +16,37 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 
 ## What's in there? 
 
-* `chunk()`: returns whether list contains $value
-* `contain()`: returns whether the list contains the value
-* `count-values()`: counts the number of occurrences of each value of list
-* `debug()`: returns list as a string
-* `explode()`: explodes a string into a list using a string as a delimiter
-* `first()`: returns first item in list
-* `flatten()`: turns multidimensional list into a one-level list
-* `insert-nth()`: inserts value at index
-* `intersection()`: returns a list of shared values across all given lists
-* `is-symmetrical()`: checks if list is symmetrical
-* `last()`: returns last item in list
-* `last-index()`: returns last index of value in list
-* `loop()`: shifts indexes in list
-* `prepend()`: prepends value to list
-* `purge()`: removes all `false` and `null` values from list
-* `random-value()`: returns random value from list
-* `remove()`: removes value in list
-* `remove-duplicates()`: removes duplicate values from list
-* `remove-nth()`: removes value at index
-* `replace()`: replaces value in list
-* `replace-nth()`: replaces value at index
-* `reverse()`: reverses list
-* `shuffle()`: shuffles list
-* `slice()`: slices list
-* `sort()`: sorts list
-* `sum()`: sums all unitless values in list
-* `tail()`: returns anything but the first element in list
-* `to-map()`: casts list as map using indexes as keys
-* `to-string()`: casts list as string (JS `.join()`)
-* `union()`: returns a list of values from given lists minus duplicates
-* `walk()`: applies a function to every item of list
+* `sl-chunk()`: returns whether list contains $value
+* `sl-contain()`: returns whether the list contains the value
+* `sl-count-values()`: counts the number of occurrences of each value of list
+* `sl-debug()`: returns list as a string
+* `sl-explode()`: explodes a string into a list using a string as a delimiter
+* `sl-first()`: returns first item in list
+* `sl-flatten()`: turns multidimensional list into a one-level list
+* `sl-insert-nth()`: inserts value at index
+* `sl-intersection()`: returns a list of shared values across all given lists
+* `sl-is-symmetrical()`: checks if list is symmetrical
+* `sl-last()`: returns last item in list
+* `sl-last-index()`: returns last index of value in list
+* `sl-loop()`: shifts indexes in list
+* `sl-prepend()`: prepends value to list
+* `sl-purge()`: removes all `false` and `null` values from list
+* `sl-random-value()`: returns random value from list
+* `sl-remove()`: removes value in list
+* `sl-remove-duplicates()`: removes duplicate values from list
+* `sl-remove-nth()`: removes value at index
+* `sl-replace()`: replaces value in list
+* `sl-replace-nth()`: replaces value at index
+* `sl-reverse()`: reverses list
+* `sl-shuffle()`: shuffles list
+* `sl-slice()`: slices list
+* `sl-sort()`: sorts list
+* `sl-sum()`: sums all unitless values in list
+* `sl-tail()`: returns anything but the first element in list
+* `sl-to-map()`: casts list as map using indexes as keys
+* `sl-to-string()`: casts list as string (JS `.join()`)
+* `sl-union()`: returns a list of values from given lists minus duplicates
+* `sl-walk()`: applies a function to every item of list
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 

@@ -1,4 +1,4 @@
-// Apply $function to every item from $list passing $args as parameters
+// Apply `$function` to every item from `$list` passing $args as parameters.
 //
 // @ignore Documentation: http://sassylists.com/documentation/#walk
 //
@@ -10,7 +10,7 @@
 //
 // @return {List | Null}
 
-@function walk($list, $function, $args...) {
+@function sl-walk($list, $function, $args...) {
   @if not function-exists($function) {
     @warn "There is no `#{$function}` function.";
     @return null;
