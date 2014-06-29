@@ -14,6 +14,8 @@
 // @return {List | Null}
 
 @function insert-nth($list, $index, $value) {
+  @if missing-dependencies(is-true) == true { @return null; }
+
   $length: length($list);
 
   @if type-of($index) != number {

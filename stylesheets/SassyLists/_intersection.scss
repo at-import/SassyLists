@@ -10,6 +10,8 @@
 // @return {List}
 
 @function intersection($list, $lists...) {
+  @if missing-dependencies(remove-duplicates) == true { @return null; }
+
   $result: $list;
 
   @each $list in $lists {

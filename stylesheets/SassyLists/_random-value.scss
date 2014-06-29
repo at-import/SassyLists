@@ -14,7 +14,7 @@
     @return null;
   }
 
-  @return nth($list, random(length($list)) + 1);
+  @return nth($list, random(length($list) + 1));
 }
 
 // @alias random-value

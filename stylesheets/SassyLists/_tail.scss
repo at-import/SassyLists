@@ -9,6 +9,8 @@
 // @return {List | Null}
 
 @function tail($list) {
+  @if missing-dependencies(slice) == true { @return null; }
+
   @return slice($list, 2);
 }
 

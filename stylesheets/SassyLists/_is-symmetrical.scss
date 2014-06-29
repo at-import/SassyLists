@@ -9,6 +9,8 @@
 // @return {Bool}
 
 @function is-symmetrical($list) {
+  @if missing-dependencies(reverse) == true { @return null; }
+  
   @return $list == reverse($list);
 }
 

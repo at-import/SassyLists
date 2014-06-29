@@ -10,6 +10,8 @@
 // @return {List}
 
 @function prepend($list, $value) {
+  @if missing-dependencies(is-true) == true { @return null; }
+  
   @if is-true($value) {
     @return join($value, $list, list-separator($list));
   }

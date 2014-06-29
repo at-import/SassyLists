@@ -10,7 +10,10 @@
 // @return {List}
 
 @function union($lists...) {
+  @if missing-dependencies(flatten, remove-duplicates) == true { @return null; }
+
   $result: remove-duplicates(flatten($lists));
+  
   @return if(length($result) == 1, nth($result, 1), $result);
 }
 

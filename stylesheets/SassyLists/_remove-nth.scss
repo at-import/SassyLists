@@ -10,6 +10,8 @@
 // @return {List | Null}
 
 @function remove-nth($list, $index) {
+  @if missing-dependencies(replace-nth) == true { @return null; }
+
   @return replace-nth($list, $index, "");
 }
 

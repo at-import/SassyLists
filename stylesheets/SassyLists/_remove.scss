@@ -11,6 +11,8 @@
 // @return {List}
 
 @function remove($list, $value) {
+  @if missing-dependencies(replace) == true { @return null; }
+
   @return replace($list, $value, null);
 }
 

@@ -9,6 +9,8 @@
 // @return {List}
 
 @function purge($list) {
+  @if missing-dependencies(is-true) == true { @return null; }
+  
   $result: ();
 
   @each $item in $list {
