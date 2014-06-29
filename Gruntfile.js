@@ -21,6 +21,7 @@ module.exports = function(grunt) {
       dist: {
         src: [
           // Decoder
+          '<%= dir.src %>/SassyLists/helpers/_missing-dependencies.scss',
           '<%= dir.src %>/SassyLists/helpers/_str-compare.scss',
           '<%= dir.src %>/SassyLists/helpers/_true.scss',
           '<%= dir.src %>/SassyLists/_chunk.scss',

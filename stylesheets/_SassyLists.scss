@@ -4,8 +4,9 @@
 // CodePen: http://codepen.io/HugoGiraudel/pen/loAgq
 // Repository: https://github.com/Team-Sass/SassyLists/
 
-@import "SassyLists/helpers/true";
+@import "SassyLists/helpers/missing-dependencies";
 @import "SassyLists/helpers/str-compare";
+@import "SassyLists/helpers/true";
 @import "SassyLists/chunk";
 @import "SassyLists/contain";
 @import "SassyLists/count-values";

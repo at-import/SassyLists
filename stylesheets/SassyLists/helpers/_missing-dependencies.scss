@@ -1,4 +1,4 @@
-// Check whether `$functions` exist in global scope.
+// Checks whether `$functions` exist in global scope.
 //
 // @access private
 //
@@ -6,7 +6,7 @@
 //
 // @return {Bool} Whether or not there are missing dependencies
 
-@function missing-dependencies ($functions...) {
+@function missing-dependencies($functions...) {
   $missing-dependencies: ();
   
   @each $function in $functions {
@@ -19,5 +19,5 @@
     @warn "Unmet dependencies! The following functions are required: #{$missing-dependencies}.";
   }
   
-  @return $missing-dependencies != 0;
+  @return length($missing-dependencies) != 0;
 }
