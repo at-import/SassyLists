@@ -1,14 +1,12 @@
 # SassyLists [![Gem Version](https://badge.fury.io/rb/SassyLists.png)](http://badge.fury.io/rb/SassyLists)
 
-Here is a [Compass Extension](http://compass-style.org/) providing you all functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
+Here is a powerful toolbox providing you all the functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
 ## How to use it
 
 ### Install with Gem 
 
 1. `gem install SassyLists`
-2. Add `require 'SassyLists'` to your `config.rb`
-3. Import it in your stylesheets with `@import 'SassyLists'`
 
 ### Install with [Bower](http://bower.io/ "BOWER: A package manager for the web")
 1. `bower install SassyLists --save-dev`
@@ -54,8 +52,7 @@ If you feel like an explorer, you can have a look at the code [here](https://git
 
 ## Requirements
 
-* Sass ~> 3.3.0
-* Compass ~> 1.0.0
+* Sass ~> 3.3
 
 If you are looking for the last version of SassyLists running on Sass 3.2, install `0.4.9`.
 
@@ -70,4 +67,4 @@ Some functions depend on other functions. If you include functions individually,
 
 ## Credits
 
-A million thanks to [Vinay Raghu](http://viii.in/) for making this Compass extension out of my original work and to [Team-Sass](https://github.com/Team-Sass) for their [Compass Extension template](https://github.com/Team-Sass/Compass-Extension-Template).
+A lot of thanks to all contributors and to [Team-Sass](https://github.com/Team-Sass) for their support.
