@@ -2939,25 +2939,14 @@
       
     
   
-    
-
-    
-      
-    
-
-    
-
-    
-      
-    
-  
 
   <div class="function-code  clearfix">
-    <pre class="pull-left">@function sl-sum ($list, $force: false) { ... }</pre>
+    <pre class="pull-left">@function sl-sum ($list) { ... }</pre>
     <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_sum.scss" class="function-link  pull-right">View source</a>
   </div>
 
-  <p class="function-role"><p>Sums up all numeric values in <code>$list</code>, stripping unit if <code>$force</code> set to <code>true</code>.</p></p>
+  <p class="function-role"><p>Sums up all numeric values in <code>$list</code>, stripping unit if <code>$force</code> set to <code>true</code>.
+@param {Boolean} $force (false) - enable/disable parseInt</p></p>
 
   <h3 class="function-subheading">Parameters</h3>
   
@@ -2977,13 +2966,6 @@
             <td><code>List</code></td>
             <td>&mdash;</td>
             <td>list</td>
-          </tr>
-        
-          <tr class="sassdoc__item-parameter">
-            <td><code>$force</code></td>
-            <td><code>Bool</code></td>
-            <td>false</td>
-            <td>enable/disable parseInt</td>
           </tr>
         
       </tbody>
