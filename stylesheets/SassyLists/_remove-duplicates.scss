@@ -20,6 +20,6 @@
 
 // @alias remove-duplicates
 
-@function unique($list, $recursive: false) {
-  @return remove-duplicates($list, $recursive);
+@function unique($list) {
+  @return remove-duplicates($list);
 }
