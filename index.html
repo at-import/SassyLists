@@ -1,262 +1,588 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <title>SassyLists - Index</title>
-    <link rel='stylesheet' href='stylesheets/main.css'>
-    <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
-    <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8">
+  <title>SassyLists - Documentation</title>
+  <link rel='stylesheet' href='assets/stylesheets/main.css'>
+  <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Ubuntu'>
+  <meta name="viewport" content="width=device-width">
 </head>
 
 <body>
-    <article>
+<article>
+<nav class="navbar" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="glyphicon  glyphicon-align-justify"></span>
+      </button>
+      <a class="navbar-brand" href="http://sassylists.com/">SassyLists</a>
+    </div>
 
-        <nav class="navbar" role="navigation">
-            <div class="container">
-                <div class="navbar-header"> 
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="glyphicon  glyphicon-align-justify"></span>
-                    </button>
-                    <a class="navbar-brand" href="http://sassylists.com/">SassyLists</a>
-                </div>
-                <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/documentation/">Documentation</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="https://twitter.com/hugogiraudel">@HugoGiraudel</a></li>
-                        <li><a href="https://github.com/Team-Sass/SassyLists">GitHub</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="documentation.html">Documentation</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://twitter.com/hugogiraudel">@HugoGiraudel</a></li>
+        <li><a href="https://github.com/Team-Sass/SassyLists">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
-        <div class="jumbotron">
-            <div class="container">
-                <h1>SassyLists <small>1.1.0</small></h1>
-                <p>SassyLists is a <a href="http://compass-style.org">Compass</a> Extension providing you all functions you need to manipulate your <a href="http://sass-lang.com">Sass</a> lists.</p>
-                <p><a class="btn btn-info" href="/documentation/">Read documentation</a> <a class="btn btn-warning" href="https://github.com/Team-Sass/SassyLists/blob/master/CHANGELOG.md">Read changelog</a></p>
-            </div>
+
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>SassyLists <small>2.0.0</small></h1>
+        <p>SassyLists is a <a href="http://compass-style.org">Compass</a> Extension providing you all functions you need to manipulate your <a href="http://sass-lang.com">Sass</a> lists.</p>
+        <p><a class="btn btn-info" href="/documentation/">Read documentation</a> <a class="btn btn-warning" href="https://github.com/Team-Sass/SassyLists/blob/master/CHANGELOG.md">Read changelog</a></p>
+    </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12"> 
+
+      <section class="row">
+        <div class="col-md-6">
+          <h2>What's the point?</h2>
+          <p>Sass lists is a very powerful features. Think of a world where JavaScript wouldn't have any array! Unfortunately, Sass doesn't provide much built-in tools to deal with lists, especially complicated ones.</p>
+          <p>Here comes SassyLists with about twenty functions to make it simple as a pie to deal with your Sass lists. Try it!</p>
         </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12"> 
+        <div class="col-md-6">
+          <h2>How does it work?</h2>
+          <p>SassyLists is pure Sass and Compass. No magic Ruby behind it or anything. All functions are built with Sass. Thus, some functions can be a little slow depending on what you're doing with it.</p>
+          <p>In any case, feel free to have a sneak peek at the code and improve it!</p>
+        </div>
+      </section>
 
-                    <section class="row">
-                        <div class="col-md-6">
-                            <h2>What's the point?</h2>
-                            <p>Sass lists is a very powerful features. Think of a world where JavaScript wouldn't have any array! Unfortunately, Sass doesn't provide much built-in tools to deal with lists, especially complicated ones.</p>
-                            <p>Here comes SassyLists with about twenty functions to make it simple as a pie to deal with your Sass lists. Try it!</p>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h2>How does it work?</h2>
-                            <p>SassyLists is pure Sass and Compass. No magic Ruby behind it or anything. All functions are built with Sass. Thus, some functions can be a little slow depending on what you're doing with it.</p>
-                            <p>In any case, feel free to have a sneak peek at the code and improve it!</p>
-                        </div>
-                    </section>
-
-                    <section class="row">
-                        <div class="col-md-6">
-                            <h2>How to use it?</h2>
-                            <ol>
-                                <li><code>gem install SassyLists</code></li>
-                                <li>Add <code>require 'SassyLists'</code> to your <code>config.rb</code></li>
-                                <li>Import it in your stylesheets with <code>@import 'SassyLists'</code></li>
-                            </ol>
-                            <p class="alert  alert-info">You can also use it directly on <a href="http://codepen.io">CodePen</a> by adding <a href="http://codepen.io/HugoGiraudel/pen/loAgq">this pen</a> as an external CSS resource.</p>
-                        </div>
-
-                        <div class="col-md-6">
-                            <h2>Requirements</h2>
-                            <ul>
-                                <li><a href="http://sass-lang.com/">Sass</a> ~> 3.3.0</li>
-                                <li><a href="http://compass-style.org/">Compass</a> ~> 1.0.0</li>
-                            </ul>
-                            <p class="alert  alert-warning">Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.</p>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2>What's in there?</h2>
-
-                        <table class="table">
-                            <tr>
-                                <th>Name</th>
-                                <th>Point</th>
-                                <th>Aliased as</th>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#chunk">#</a> <code>chunk</code></td>
-                                <td>chunks list into size large lists</td>
-                            	<td>-</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/documentation/#contain">#</a> <code>contain</code></td>
-                                <td>returns whether the list contains the value</td>
-                                <td><code>include</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#count-values">#</a> <code>count-values</code></td>
-                            	<td>counts the number of occurrences of each value of list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/documentation/#debug">#</a> <code>debug</code></td>
-                                <td>returns list as a string</td>
-                                <td>-</td>
-                            </tr><!--
-                            <tr>
-                            	<td><a href="/documentation/#explode">#</a> <code>explode</code></td>
-                            	<td>explodes a string into a list of fragments based on a delimiter</td>
-                                <td>-</td>
-                            </tr>-->
-                            <tr>
-                                <td><a href="/documentation/#first">#</a> <code>first</code></td>
-                                <td>returns first item in list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#flatten">#</a> <code>flatten</code></td>
-                            	<td>turns a multi-dimensional list into a one-level list</td>
-                                <td><code>unfold</code></td>
-                            </tr>
-                            <tr>
-                                <td><a href="/documentation/#insert-nth">#</a> <code>insert-nth</code></td>
-                                <td>inserts value at index</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#intersection">#</a> <code>intersection</code></td>
-                            	<td>returns a list of shared values across all given lists minus duplicates</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#is-symmetrical">#</a> <code>is-symmetrical</code></td>
-                            	<td>checks if list is symmetrical</td>
-                                <td><code>is-mirror</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#last">#</a> <code>last</code></td>
-                            	<td>returns last item in list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#last-index">#</a> <code>last-index</code></td>
-                            	<td>returns last index of value in list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#loop">#</a> <code>loop</code></td>
-                            	<td>shifts indexes in list</td>
-                                <td><code>shift-indexes</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#prepend">#</a> <code>prepend</code></td>
-                            	<td>prepends value to list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#purge">#</a> <code>purge</code></td>
-                            	<td>removes all false and null values from list</td>
-                                <td><code>clean</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#random-value">#</a> <code>random-value</code></td>
-                            	<td>returns a random value from list</td>
-                                <td><code>roll</code>, <code>luck</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#remove">#</a> <code>remove</code></td>
-                            	<td>removes value in list</td>
-                                <td><code>without</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#remove-duplicates">#</a> <code>remove-duplicates</code></td>
-                            	<td>removes duplicate values from list</td>
-                                <td><code>unique</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#remove-nth">#</a> <code>remove-nth</code></td>
-                            	<td>remove value at index</td>
-                                <td><code>without-nth</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#replace">#</a> <code>replace</code></td>
-                            	<td>replaces value in list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#replace-nth">#</a> <code>replace-nth</code></td>
-                            	<td>replaces value at index</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#reverse">#</a> <code>reverse</code></td>
-                            	<td>reverses list</td>
-                                <td><code>mirror</code></td>
-                            </tr>
-                            <tr></tr>
-                            	<td><a href="/documentation/#shuffle">#</a> <code>shuffle</code></td>
-                            	<td>shuffles list</td>
-                                <td><code>randomize</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#slice">#</a> <code>slice</code></td>
-                            	<td>slices list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#sort">#</a> <code>sort</code></td>
-                            	<td>sorts numeric values from list</td>
-                                <td><code>order</code></td>
-                            </tr>
-                            <tr>
-                            	<td><a href="/documentation/#sum">#</a> <code>sum</code></td>
-                            	<td>sums all unitless values in list</td>
-                                <td>-</td>
-                            </tr>
-                            <tr>
-                                <td><a href="/documentation/#to-string">#</a> <code>to-string</code></td>
-                                <td>casts list as string (JS .join)</td>
-                                <td><code>stringify</code></td>
-                            </tr><!--
-                            <tr>
-                            	<td><a href="/documentation/#to-map">#</a> <code>to-map</code></td>
-                            	<td>casts list as map using indexes as keys</td>
-                                <td><code>mapify</code></td>
-                            </tr>-->
-                            <tr>
-                                <td><a href="/documentation/#union">#</a> <code>union</code></td>
-                                <td>returns a list of all values from given lists minus duplicates</td>
-                                <td><code>merge</code></td>
-                            </tr>
-                        </table>
-                    </section>
-
-                    
-
-                </div>
-            </div>
+      <section class="row">
+        <div class="col-md-6">
+          <h2>How to use it?</h2>
+          <ul class="list-unstyled">
+              <li><code>gem install SassyLists</code></li>
+          </ul>
+          <p class="alert  alert-info">You can also use it directly on <a href="http://codepen.io">CodePen</a> by adding <a href="http://codepen.io/HugoGiraudel/pen/loAgq">this pen</a> as an external CSS resource.</p>
         </div>
 
-        <footer class="footer">
-            <div class="container">
-                <p class="pull-left">A million thanks to <a href="http://viii.in/">Vinay Raghu</a> for the help and to <a href="https://github.com/Team-Sass">Team-Sass</a> for their support.</p>
-                <ul class="pull-right  list-unstyled">
-                    <li class="pull-left"><a href="https://twitter.com/hugogiraudel">@HugoGiraudel</a></li>
-                    <li class="pull-left"><a href="https://github.com/Team-Sass/SassyLists">GitHub</a></li>
-                </ul>
-            </div>
-        </footer>
+        <div class="col-md-6">
+          <h2>Requirements</h2>
+          <ul>
+              <li><a href="http://sass-lang.com/">Sass</a> ~> 3.3</li>
+          </ul>
+          <p class="alert  alert-warning">Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.</p>
+        </div>
+      </section>
 
-    </article>
+      <section>
+        <h2>What's in there?</h2>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src='js/bootstrap.min.js'></script>
+        <table class="table">
+          <thead>
+            <tr>
+                <th>Name</th>
+                <th>Point</th>
+                <th>Aliased as</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-chunk">#</a> <code>sl-chunk</code></td>
+                  <td><p>Chunks <code>$list</code> into <code>$size</code> large lists.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-contain">#</a> <code>sl-contain</code></td>
+                  <td><p>Returns whether <code>$list</code> contains <code>$value</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-include</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-count-values">#</a> <code>sl-count-values</code></td>
+                  <td><p>Counts the number of occurrences of each value of <code>$list</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-debug">#</a> <code>sl-debug</code></td>
+                  <td><p>Returns <code>$list</code> as a string, prettified if <code>$pre</code> is set to true.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-every">#</a> <code>sl-every</code></td>
+                  <td><p>Tests whether all items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-explode">#</a> <code>sl-explode</code></td>
+                  <td><p>Explode <code>$string</code> into a list using <code>$delimiter</code> as a delimiter.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-first">#</a> <code>sl-first</code></td>
+                  <td><p>Returns first element of <code>$list</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-head</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-flatten">#</a> <code>sl-flatten</code></td>
+                  <td><p>Turns multidimensional <code>$list</code> into a one-level list.</p></td>
+                  <td>
+                  
+                    <code>sl-unfold</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-insert-nth">#</a> <code>sl-insert-nth</code></td>
+                  <td><p>Adds <code>$value</code> at <code>$index</code> in <code>$list</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-intersection">#</a> <code>sl-intersection</code></td>
+                  <td><p>Returns a list of shared value from <code>$list</code> and <code>$lists</code> minus duplicates.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-is-symmetrical">#</a> <code>sl-is-symmetrical</code></td>
+                  <td><p>Checks whether <code>$list</code> is symmetrical.</p></td>
+                  <td>
+                  
+                    <code>sl-is-mirror</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-is-true">#</a> <code>sl-is-true</code></td>
+                  <td><p>Returns truthiness of <code>$value</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-last">#</a> <code>sl-last</code></td>
+                  <td><p>Returns last element of <code>$list</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-last-index">#</a> <code>sl-last-index</code></td>
+                  <td><p>Returns last index of <code>$value</code> in <code>$list</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-loop">#</a> <code>sl-loop</code></td>
+                  <td><p>Shift indexes from <code>$list</code> of <code>$value</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-shift-indexes</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-missing-dependencies">#</a> <code>sl-missing-dependencies</code></td>
+                  <td><p>Checks whether <code>$functions</code> exist in global scope.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-prepend">#</a> <code>sl-prepend</code></td>
+                  <td><p>Adds <code>$value</code> as first index of <code>$list</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-purge">#</a> <code>sl-purge</code></td>
+                  <td><p>Removes all false and null values from <code>$list</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-clean</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-random-value">#</a> <code>sl-random-value</code></td>
+                  <td><p>Returns a random value of <code>$list</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-roll,sl-luck</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-remove">#</a> <code>sl-remove</code></td>
+                  <td><p>Removes value(s) <code>$value</code> from <code>$list</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-without</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-remove-duplicates">#</a> <code>sl-remove-duplicates</code></td>
+                  <td><p>Removes duplicate values from <code>$list</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-unique</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-remove-nth">#</a> <code>sl-remove-nth</code></td>
+                  <td><p>Removes value from <code>$list</code> at index <code>$index</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-without-nth</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-replace">#</a> <code>sl-replace</code></td>
+                  <td><p>Replaces <code>$old</code> by <code>$new</code> in <code>$list</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-replace-nth">#</a> <code>sl-replace-nth</code></td>
+                  <td><p>Replaces value at <code>$index</code> from <code>$list</code> by <code>$value</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-reverse">#</a> <code>sl-reverse</code></td>
+                  <td><p>Reverses the order of <code>$list</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-mirror</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-shuffle">#</a> <code>sl-shuffle</code></td>
+                  <td><p>Shuffle <code>$list</code> using Fisher-Yates method.</p></td>
+                  <td>
+                  
+                    <code>sl-randomize</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-slice">#</a> <code>sl-slice</code></td>
+                  <td><p>Slices <code>$list</code> between <code>$start</code> and <code>$end</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-some">#</a> <code>sl-some</code></td>
+                  <td><p>Tests whether some items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-sort">#</a> <code>sl-sort</code></td>
+                  <td><p>Sorts values of <code>$list</code> using quick-sort algorithm using <code>$order</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-order</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-str-compare">#</a> <code>sl-str-compare</code></td>
+                  <td><p>Compares <code>$a</code> and <code>$b</code> based on <code>$order</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-sum">#</a> <code>sl-sum</code></td>
+                  <td><p>Sums up all numeric values in <code>$list</code>, stripping unit if <code>$force</code> set to <code>true</code>.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-tail">#</a> <code>sl-tail</code></td>
+                  <td><p>Returns the tail of <code>$list</code>: all items except the first (head).</p></td>
+                  <td>
+                  
+                    <code>sl-rest</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-to-map">#</a> <code>sl-to-map</code></td>
+                  <td><p>Cast a <code>$list</code> into a map, using indexes as keys (starting with <code>$start</code>).
+Useful for iterating through a list with an index variable.
+e.g. <code>@each $i, $value in to-map($list)</code></p></td>
+                  <td>
+                  
+                    <code>sl-enumerate,sl-mapify</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-to-string">#</a> <code>sl-to-string</code></td>
+                  <td><p>Joins all elements of <code>$list</code> with <code>$glue</code>.</p></td>
+                  <td>
+                  
+                    <code>sl-stringify</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-union">#</a> <code>sl-union</code></td>
+                  <td><p>Returns a list of values from <code>$lists</code> minus duplicates.</p></td>
+                  <td>
+                  
+                    <code>sl-merge</code>
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+                <tr>
+                  <td><a href="documentation.html#sl-walk">#</a> <code>sl-walk</code></td>
+                  <td><p>Apply <code>$function</code> to every item from <code>$list</code> passing $args as parameters.</p></td>
+                  <td>
+                  
+                    &mdash;
+                  
+                  </td>
+                </tr>
+              
+            
+              
+            
+              
+            
+          </tbody>
+        </table>
+      </section>
+    </div>  
+  </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">Thanks to all contributors and to <a href="https://github.com/Team-Sass">Team-Sass</a> for their support.</p>
+        <ul class="pull-right  list-unstyled">
+            <li class="pull-left"><a href="https://twitter.com/hugogiraudel">@HugoGiraudel</a></li>
+            <li class="pull-left"><a href="https://github.com/Team-Sass/SassyLists">GitHub</a></li>
+        </ul>
+    </div>
+</footer>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src='assets/js/bootstrap.min.js'></script>
     <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -267,6 +593,6 @@
   ga('send', 'pageview');
 
 </script>
-
+</article>
 </body>
 </html>

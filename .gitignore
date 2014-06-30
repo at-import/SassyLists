@@ -1,3 +1,6 @@
 .sass-cache
 *.gem
 node_modules
+gems
+.bundle
+save
