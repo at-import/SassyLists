@@ -1,22 +1,45 @@
-/*! SassyLists - v1.0.0 - 2014-01-24 */
-// Compares two values based on alphabetical order
-// -------------------------------------------------------------------------------
-// @private
-// -------------------------------------------------------------------------------
-// @usage sort()
-// -------------------------------------------------------------------------------
-// @param $a [Literal] : first value
-// @param $b [Literal] : second value
-// @param $matrix [List] : alphabetical order
-// -------------------------------------------------------------------------------
-// @return [Boolean]
+/*! SassyLists - v1.1.0 - 2014-06-30 */
+// Checks whether `$functions` exist in global scope.
+//
+// @access private
+//
+// @param {ArgList} $functions - list of functions to check for
+//
+// @return {Bool} Whether or not there are missing dependencies
 
-@function str-compare($a, $b, $order) {
-  @if type-of($a) == number and type-of($b) == number {
+@function sl-missing-dependencies($functions...) {
+  $missing-dependencies: ();
+  
+  @each $function in $functions {
+    @if not function-exists($function) {
+      $missing-dependencies: append($missing-dependencies, $function, comma);
+    }
+  }
+  
+  @if length($missing-dependencies) > 0 {
+    @warn "Unmet dependencies! The following functions are required: #{$missing-dependencies}.";
+  }
+  
+  @return length($missing-dependencies) != 0;
+}
+// Compares `$a` and `$b` based on `$order`.
+//
+// @access private
+//
+// @param {*}       $a      - first value
+// @param {*}       $b      - second value
+// @param {List}    $matrix - alphabetical order
+//
+// @return {Bool}
+
+@function sl-str-compare($a, $b, $order) {
+  @if type-of($a) == "number" and type-of($b) == "number" {
     @return $a < $b;
   }
+
   $a: to-lower-case($a + unquote(""));
   $b: to-lower-case($b + unquote(""));
+  
   @for $i from 1 through min(str-length($a), str-length($b)) {
     $char-a: str-slice($a, $i, $i);
     $char-b: str-slice($b, $i, $i);
@@ -24,38 +47,35 @@
       @return index($order, $char-a) < index($order, $char-b);
     }
   }
+  
   @return str-length($a) < str-length($b);
 }
-// Returns truthiness of a value
-// -------------------------------------------------------------------------------
-// @private
-// -------------------------------------------------------------------------------
-// @usage `insert-nth()`
-// @usage `prepend()`
-// @usage `purge()`
-// -------------------------------------------------------------------------------
-// @param $value [Literal] : value
-// -------------------------------------------------------------------------------
-// @return [Boolean]
+// Returns truthiness of `$value`.
+//
+// @access private
+//
+// @param {*} $value - value to check
+//
+// @return {Bool}
 
-@function is-true($value) {
+@function sl-is-true($value) {
   @return if($value == null, false, $value and $value != null and $value != "" and $value != ());
 }
-// Chunks $list into $size large lists
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#chunk
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $size [Number] : length of lists
-// -------------------------------------------------------------------------------
-// @raise [Error] if $size is not a number
-// -------------------------------------------------------------------------------
-// @return [List] | false
+// Chunks `$list` into `$size` large lists.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#chunk
+//
+// @param {List}   $list  - list to chunk
+// @param {Number} $size  - length of lists
+//
+// @throws $size is not a number for `sl-chunk`.
+//
+// @return {List | Null}
 
-@function chunk($list, $size) {
-  @if type-of($size) != number {
-    @warn "#{$size} is not a number for `chunk`.";
-    @return false;
+@function sl-chunk($list, $size) {
+  @if type-of($size) != "number" {
+    @warn "#{$size} is not a number for `sl-chunk`.";
+    @return null;
   }
 
   @if $size >= length($list) {
@@ -83,34 +103,33 @@
 
   @return $result;
 }
-// Returns whether $list contains $value
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#contain
-// -------------------------------------------------------------------------------
-// @alias `include()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $value [Literal] : value to look for
-// -------------------------------------------------------------------------------
-// @return [Boolean]
+// Returns whether `$list` contains `$value`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#contain
+//
+// @param {List}    $list  - list to check
+// @param {*}       $value - value to look for
+//
+// @return {Bool}
 
-@function contain($list, $value) {
+@function sl-contain($list, $value) {
   @return not not index($list, $value);
 }
 
-// Alias
-@function include($list, $value) {
-  @return contain($list, $value);
-}
-// Counts the number of occurrences of each value of $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#count-values
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [Map]
+// @alias sl-contain
 
-@function count-values($list) {
+@function sl-include($list, $value) {
+  @return sl-contain($list, $value);
+}
+// Counts the number of occurrences of each value of `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#count-values
+//
+// @param {List} $list - list to count values from
+//
+// @return {Map} Values mapped to their count
+
+@function sl-count-values($list) {
   $map: ();
 
   @each $item in $list {
@@ -121,85 +140,87 @@
 
   @return $map;
 }
-// Returns $list as a string
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#debug
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $pre [Boolean] : enable/disable variables type and proper indentation
-// @param $level [Number] : internal variable for recursivity
-// -------------------------------------------------------------------------------
-// @return [String]
+// Returns `$list` as a string, prettified if `$pre` is set to true.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#debug
+//
+// @param {List}   $list          - list to debug
+// @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+// @param {Number} $level (1)     - internal variable for recursion
+//
+// @return {String}
 
-@function debug($list, $pre: false, $level: 1) {
+@function sl-debug($list, $pre: false, $level: 1) {
   @if length($list) == 0 {
     @return "( )";
   }
-  
+
   @if length($list) == 1 {
     @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
   }
-  
+
   $tab: "    ";
   $indent: "";
   $break: if($pre, "\A ", "");
   $length: length($list);
-  
+
   @for $i from 1 to $level {
     $indent: $indent + $tab;
   }
-  
+
   $result: "[" + $break;
-  
+
   @for $i from 1 through $length {
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
-  
+
     @if length($item) > 1 {
-      $result: $result 
-        + if($pre, "(list: " + length($item) + ") ", "") 
-        + debug($item, $pre, $level + 1);
+      $result: $result
+        + if($pre, "(list: " + length($item) + ") ", "")
+        + sl-debug($item, $pre, $level + 1);
     }
-  
+
     @else {
       @if $pre {
         $result: $result + "(" + type-of($item) + ") ";
       }
-    
+
       @if length($item) == 0 {
         $result: $result + "( )";
       }
-    
-      @else if type-of($item) == string {
+
+      @else if type-of($item) == "string" {
         $result: $result + quote($item);
       }
-    
+
       @else if $item == null {
         $result: $result + "null";
       }
-    
+
       @else {
         $result: $result + $item;
       }
     }
-  
+
     @if $i != $length {
       $result: $result + "," + $break;
     }
   }
-  
+
   $result: $result + $break + if($pre, if($level > 1, $indent, ""), " ") + "]";
-  
+
   @return quote($result);
 }
 
 // Mixin displaying clean debug
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
+//
+// @param {List} $list - list
+//
+// @requires {function} sl-debug
 
-@mixin debug($list) {
+@mixin sl-debug($list) {
   body:before {
-    content: debug($list, true)               !important;
+    content: sl-debug($list, true)            !important;
 
     display: block                            !important;
     margin: 1em                               !important;
@@ -216,46 +237,50 @@
   }
 }
 
-// Explode $string into a list using $break as a breaker
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#explode
-// -------------------------------------------------------------------------------
-// @param $string [String] : string to explode
-// @param $separator [String] : string to use as the breaker
-// -------------------------------------------------------------------------------
-// @raise [Error] if either argument is not a string
-// -------------------------------------------------------------------------------
-// @return [List]
+// Explode `$string` into a list using `$delimiter` as a delimiter.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#explode
+//
+// @param {String} $string         - string to explode
+// @param {String} $separator ('') - string to use as a delimiter
+//
+// @throws $string is not a string for `sl-explode`.
+// @throws $delimiter is not a string for `sl-explode`.
+//
+// @return {List | Null}
 
-@function explode($string, $delimiter: '') {
+@function sl-explode($string, $delimiter: '') {
   @if type-of($string) != "string" {
-    @warn "`explode` function expecting a string; #{type-of($string)} given.";
-    @return false;
+    @warn "`sl-explode` function expecting a string; #{type-of($string)} given.";
+    @return null;
   }
 
   @if type-of($delimiter) != "string" {
-    @warn "`explode` function expecting a string; #{type-of($delimiter)} given.";
-    @return false;
+    @warn "`sl-explode` function expecting a string; #{type-of($delimiter)} given.";
+    @return null;
   }
-  
+
   $result: ();
   $length: str-length($string);
-  
+
   @if str-length($delimiter) == 0 {
     @for $i from 1 through $length {
       $result: append($result, str-slice($string, $i, $i));
     }
+    
     @return $result;
   }
 
   $running: true;
   $remaining: $string;
-  
+
   @while $running {
     $index: str-index($remaining, $delimiter);
+    
     @if not $index or $index == 0 {
       $running: false;
     }
+
     @else {
       $slice: str-slice($remaining, 1, $index - 1);
       $result: append($result, $slice);
@@ -265,47 +290,66 @@
 
   @return append($result, $remaining);
 }
-// Returns first element of $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#first
-// -------------------------------------------------------------------------------
-// @alias `head()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @raise [Error] if either $list is empty
-// -------------------------------------------------------------------------------
-// @return [Literal] | false
+// Tests whether all items from `$list` pass the test implemented by `$function`.
+//
+// @param {List}    $list     - list to run test against
+// @param {String}  $function - function to run against every item from list
+// @param {ArgList} $args     - extra arguments to pass to the function
+//
+// @return {Bool}
+ 
+@function sl-every($list, $function, $args...) {
+  @each $item in $list {
+    @if not call($function, $item, $args...) {
+      @return false;
+    } 
+  }
+  
+  @return true;
+}
 
-@function first($list) {
-  @if length($list) == 0 { 
+// Returns first element of `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#first
+//
+// @param {List} $list - list to retrieve first item from
+//
+// @throws Cannot find first item of empty list.
+//
+// @return {*}
+
+@function sl-first($list) {
+  @if length($list) == 0 {
     @warn "Cannot find first item of empty list.";
-    @return false; 
+    @return null;
   }
 
   @return nth($list, 1);
 }
 
-// Alias
-@function head($list) {
-  @return first($list);
-}
-// Turns multidimensional $list into a one-level list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation.html#flatten
-// -------------------------------------------------------------------------------
-// @alias `unfold()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [List]
+// @alias sl-first
 
-@function flatten($list) {
+@function sl-head($list) {
+  @return sl-first($list);
+}
+// Turns multidimensional `$list` into a one-level list.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#flatten
+//
+// @param {List} $list - list to flatten
+//
+// @return {List}
+
+@function sl-flatten($list) {
   $result: ();
+
+  @if length($list) == 1 {
+    @return $list;
+  }
 
   @each $item in $list {
     @if length($item) > 1 {
-      $flatten: flatten($item);
+      $flatten: sl-flatten($item);
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
       }
@@ -319,35 +363,39 @@
   @return $result;
 }
 
-// Alias
-@function unfold($list) {
-    @return flatten($list);
-}
-// Adds $value at $index in $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#insert-nth
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $index [Number] : index to add
-// @param $value [Literal] : value to add
-// -------------------------------------------------------------------------------
-// @raise [Error] if $index isn't an integer
-// @raise [Error] if $index is strictly lesser than 1
-// @raise [Error] if $index is strictly greater than length of $list
-// -------------------------------------------------------------------------------
-// @return [List] | false
+// @alias sl-flatten
 
-@function insert-nth($list, $index, $value) {
+@function sl-unfold($list) {
+    @return sl-flatten($list);
+}
+// Adds `$value` at `$index` in `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#insert-nth
+//
+// @requires sl-is-true
+//
+// @param {List}    $list  - list to update
+// @param {Number}  $index - index to add
+// @param {*}       $value - value to add
+//
+// @throws List index $index is not a number for `sl-insert-nth`.
+// @throws List index $index must be a non-zero integer for `sl-insert-nth`.
+//
+// @return {List | Null}
+
+@function sl-insert-nth($list, $index, $value) {
+  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+
   $length: length($list);
-  
+
   @if type-of($index) != number {
-    @warn "List index #{$index} is not a number for `insert-nth`.";
-    @return false;
+    @warn "List index #{$index} is not a number for `sl-insert-nth`.";
+    @return null;
   }
 
   @if $index < 1 {
-    @warn "List index #{$index} must be a non-zero integer for `insert-nth`";
-    @return false;
+    @warn "List index #{$index} must be a non-zero integer for `sl-insert-nth`.";
+    @return null;
   }
 
   @if $index > $length {
@@ -358,7 +406,7 @@
 
   @for $i from 1 through $length {
     @if $i == $index {
-      @if is-true($value) {
+      @if sl-is-true($value) {
         $result: append($result, $value, list-separator($list));
       }
     }
@@ -369,16 +417,20 @@
   @return $result;
 }
 
-// Returns a list of shared value from $list and $lists minus duplicates
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#intersection
-// -------------------------------------------------------------------------------
-// @param $list [List] : first list
-// @param $lists [ArgList] : other lists
-// -------------------------------------------------------------------------------
-// @return [List]
+// Returns a list of shared value from `$list` and `$lists` minus duplicates.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#intersection
+//
+// @requires sl-remove-duplicates
+//
+// @param {List}    $list  - first list
+// @param {ArgList} $lists - other lists
+//
+// @return {List}
 
-@function intersection($list, $lists...) {
+@function sl-intersection($list, $lists...) {
+  @if sl-missing-dependencies(sl-remove-duplicates) == true { @return null; }
+
   $result: $list;
 
   @each $list in $lists {
@@ -392,44 +444,44 @@
 
     $result: $temp;
   }
- 
-  $result: remove-duplicates($result);
+
+  $result: sl-remove-duplicates($result);
   @return if(length($result) == 1, nth($result, 1), $result);
 }
-// Checks whether $list is symmetrical (one-level deep)
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#is-symmetrical
-// -------------------------------------------------------------------------------
-// @alias `unfold()`
-// -------------------------------------------------------------------------------
-// @dependence `reverse()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [Boolean]
+// Checks whether `$list` is symmetrical.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#is-symmetrical
+//
+// @requires sl-reverse
+//
+// @param {List} $list - list to check
+//
+// @return {Bool}
 
-@function is-symmetrical($list) {
-  @return $list == reverse($list); 
-}
-
-// Alias
-@function is-mirror($list) {
-  @return is-symmetrical($list);
-}
-// Returns last index of $value in $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#last-index
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $value [Literal] : value to be searched for
-// -------------------------------------------------------------------------------
-// @return [Number] | null
-
-@function last-index($list, $value) {
-  $length: length($list);
+@function sl-is-symmetrical($list) {
+  @if sl-missing-dependencies(sl-reverse) == true { @return null; }
   
-  @for $i from $length * -1 through -1 {
-    $i: abs($i);
+  @return $list == sl-reverse($list);
+}
+
+// @alias sl-is-symmetrical
+
+@function sl-is-mirror($list) {
+  @return sl-is-symmetrical($list);
+}
+// Returns last index of `$value` in `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#last-index
+//
+// @param {List} $list  - list to search
+// @param {*}    $value - value to be searched for
+//
+// @return {Number | Null}
+
+@function sl-last-index($list, $value) {
+  $length: length($list);
+
+  @for $i from $length through 1 {
     @if nth($list, $i) == $value {
       @return $i;
     }
@@ -438,48 +490,41 @@
   @return null;
 }
 
-// Returns last element of $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#last
-// -------------------------------------------------------------------------------
-// @alias `tail()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @raise [Error] if list is empty
-// -------------------------------------------------------------------------------
-// @return [Literal] | false
+// Returns last element of `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#last
+//
+// @param {List} $list - list to retrieve last value from
+//
+// @throws Cannot find last item of empty list.
+//
+// @return {*}
 
-@function last($list) {
-  @if length($list) == 0 { 
+@function sl-last($list) {
+  @if length($list) == 0 {
     @warn "Cannot find last item of empty list.";
-    @return false; 
+    @return null;
   }
-  
-  @return nth($list, length($list));
-}
 
-// Alias
-@function tail($list) {
-  @return last($list);
+  @return nth($list, -1);
 }
-// Shift indexes from $list of $value
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#loop
-// -------------------------------------------------------------------------------
-// @alias `shift-indexes()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $value [Number] : number of position between old and new indexes
-// -------------------------------------------------------------------------------
-// @raise [Error] if $value isn't an integer
-// -------------------------------------------------------------------------------
-// @return [List] | false
+// Shift indexes from `$list` of `$value`.
+//
+// @author Ana Tudor
+//
+// @ignore Documentation: http://sassylists.com/documentation/#loop
+//
+// @param {List}   $list      - list to update
+// @param {Number} $value (1) - number of position between old and new indexes
+//
+// @throws $value is not a number for `loop`.
+//
+// @return {List | Null}
 
-@function loop($list, $value: 1) {
-  @if type-of($value) != number {
-    @warn "#{$value} is not a number for `loop`.";
-    @return false;
+@function sl-loop($list, $value: 1) {
+  @if type-of($value) != "number" {
+    @warn "#{$value} is not a number for `sl-loop`.";
+    @return null;
   }
 
   @if length($list) < 2 {
@@ -496,23 +541,26 @@
   @return $result;
 }
 
-// Alias
-@function shift-indexes($list, $value: 1) {
-  @return loop($list, $value);
-}
-// Adds $value as first index of $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#prepend
-// -------------------------------------------------------------------------------
-// @dependence `is-true()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $value [Literal] : value to prepend to the list
-// -------------------------------------------------------------------------------
-// @return [List]
+// @alias sl-loop
 
-@function prepend($list, $value) {
-  @if is-true($value) {
+@function sl-shift-indexes($list, $value: 1) {
+  @return sl-loop($list, $value);
+}
+// Adds `$value` as first index of `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#prepend
+//
+// @requires sl-is-true
+//
+// @param {List} $list  - list to preprend value to
+// @param {*}    $value - value to prepend to the list
+//
+// @return {List}
+
+@function sl-prepend($list, $value) {
+  @if missing-dependencies(sl-is-true) == true { @return null; }
+  
+  @if sl-is-true($value) {
     @return join($value, $list, list-separator($list));
   }
 
@@ -521,23 +569,23 @@
   }
 }
 
-// Removes all false and null values from $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation.html#purge
-// -------------------------------------------------------------------------------
-// @alias `clean()`
-// -------------------------------------------------------------------------------
-// @dependence `is-true()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [List]
+// Removes all false and null values from `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#purge
+//
+// @requires sl-is-true
+//
+// @param {List} $list - list to purge
+//
+// @return {List}
 
-@function purge($list) {
+@function sl-purge($list) {
+  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+  
   $result: ();
 
   @each $item in $list {
-    @if is-true($item) {
+    @if sl-is-true($item) {
       $result: append($result, $item, list-separator($list));
     }
   }
@@ -545,55 +593,51 @@
   @return $result;
 }
 
-// Alias
-@function clean($list) {
-  @return purge($list);
+// @alias sl-purge
+
+@function sl-clean($list) {
+  @return sl-purge($list);
 }
 
-// Returns a random value of $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation.html#random-value
-// -------------------------------------------------------------------------------
-// @alias `roll()`
-// @alias `luck()`
-// -------------------------------------------------------------------------------
-// @dependence `random()` (Ruby)
-// -------------------------------------------------------------------------------
-// @param $list [List] : List
-// -------------------------------------------------------------------------------
-// @raise [Error] if $list is empty
-// -------------------------------------------------------------------------------
-// @return [Literal] | false
+// Returns a random value of `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#random-value
+//
+// @param {List} $list - list to random value from
+//
+// @throws Cannot find a random value in an empty list.
+//
+// @return {*}
 
-@function random-value($list) {
+@function sl-random-value($list) {
   @if length($list) == 0 {
     @warn "Cannot find a random value in an empty list.";
-    @return false;
+    @return null;
   }
 
-  @return nth($list, random(length($list)) + 1);
+  @return nth($list, random(length($list)));
 }
 
-// Aliases
-@function roll($list) {
-  @return random-value($list);
+// @alias sl-random-value
+
+@function sl-roll($list) {
+  @return sl-random-value($list);
 }
 
-@function luck($list) {
-  @return random-value($list);
-}
-// Removes duplicate values from $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#remove-duplicates
-// -------------------------------------------------------------------------------
-// @alias `unique()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $recursive [Boolean] : enable / disable recursivity
-// -------------------------------------------------------------------------------
-// @return [List]
+// @alias sl-random-value
 
-@function remove-duplicates($list) {
+@function sl-luck($list) {
+  @return sl-random-value($list);
+}
+// Removes duplicate values from `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#remove-duplicates
+//
+// @param {List} $list - list to remove duplicates from
+//
+// @return {List}
+
+@function sl-remove-duplicates($list) {
   $result: ();
 
   @each $item in $list {
@@ -605,90 +649,99 @@
   @return $result;
 }
 
-// Alias
-@function unique($list, $recursive: false) {
-  @return remove-duplicates($list, $recursive);
-}
-// Removes value from $list at index $index
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#remove-nth
-// -------------------------------------------------------------------------------
-// @alias `without-nth()`
-// -------------------------------------------------------------------------------
-// @dependence `replace-nth()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $index [Number] : index to remove
-// -------------------------------------------------------------------------------
-// @return [List] | false
+// @alias sl-remove-duplicates
 
-@function remove-nth($list, $index) {
-  @return replace-nth($list, $index, "");
+@function sl-unique($list, $recursive: false) {
+  @return sl-remove-duplicates($list, $recursive);
 }
+// Removes value from `$list` at index `$index`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#remove-nth
+//
+// @requires sl-replace-nth
+//
+// @param {List}   $list  - list to remove value from
+// @param {Number} $index - index to remove
+//
+// @return {List | Null}
 
-// Alias
-@function without-nth($list, $index) {
-  @return remove-nth($list, $index);
-}
-// Removes value(s) $value from $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#remove
-// -------------------------------------------------------------------------------
-// @alias `without()`
-// -------------------------------------------------------------------------------
-// @dependence `replace()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $value [Literal] : value to remove
-// @param $recursive [Boolean] : enable / disable recursivity
-// -------------------------------------------------------------------------------
-// @return [List]
+@function sl-remove-nth($list, $index) {
+  @if sl-missing-dependencies(sl-replace-nth) == true { @return null; }
 
-@function remove($list, $value) {
-  @return replace($list, $value, null);
+  @return sl-replace-nth($list, $index, "");
 }
 
-// Alias
-@function without($list, $value) {
-  @return remove($list, $value);
-}
-// Replaces value at $index from $list by $value
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#replace-nth
-// -------------------------------------------------------------------------------
-// @dependence `purge()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $index [Number] : index to update
-// @param $value [Literal] : new value for index $index
-// -------------------------------------------------------------------------------
-// @raise [Error] if $index isn't an integer
-// @raise [Error] if $index is 0
-// @raise [Error] if abs value of $index is strictly greater than length of $list
-// -------------------------------------------------------------------------------
-// @return [List] | false
+// @alias sl-remove-nth
 
-@function replace-nth($list, $index, $value) {
-  @if type-of($index) != number or $index == 0 or abs($index) > length($list) {
-    @warn "Invalid index (#{$index}) for `replace-nth`.";
-    @return false;
+@function sl-without-nth($list, $index) {
+  @return sl-remove-nth($list, $index);
+}
+// Removes value(s) `$value` from `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#remove
+//
+// @requires sl-replace
+//
+// @param {List}    $list      - list to update
+// @param {*}       $value     - value to remove
+// @param {Bool}    $recursive - enable/disable recursion
+//
+// @return {List}
+
+@function sl-remove($list, $value) {
+  @if sl-missing-dependencies(sl-replace) == true { @return null; }
+
+  @return sl-replace($list, $value, null);
+}
+
+// @alias sl-remove
+
+@function sl-without($list, $value) {
+  @return sl-remove($list, $value);
+}
+// Replaces value at `$index` from `$list` by `$value`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#replace-nth
+//
+// @requires sl-purge
+// @requires sl-is-true
+//
+// @param {List}   $list  - list to update
+// @param {Number} $index - index to update
+// @param {*}      $value - new value for index
+//
+// @throws Invalid index $index for `sl-replace-nth`.
+//
+// @return {List | Null}
+
+@function sl-replace-nth($list, $index, $value) {
+  @if sl-missing-dependencies(sl-purge, sl-is-true) == true { @return null; }
+
+  @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
+    @warn "Invalid index (#{$index}) for `sl-replace-nth`.";
+    @return null;
   }
 
   $list: set-nth($list, $index, $value);
-  @return if(not is-true($value), purge($list), $list);
+  @return if(not sl-is-true($value), sl-purge($list), $list);
 }
 
-// Replaces $old by $new in $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation.html#replace
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $old [Literal] : value to replace
-// @param $value [Literal] : new value for $old
-// -------------------------------------------------------------------------------
-// @return [List]
+// Replaces `$old` by `$new` in `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#replace
+//
+// @requires sl-is-true
+// @requires sl-purge
+//
+// @param {List}    $list  - list to update
+// @param {*}       $old   - value to replace
+// @param {*}       $value - new value for $old
+//
+// @return {List}
 
-@function replace($list, $old, $value) {
+@function sl-replace($list, $old, $value) {
+  @if sl-missing-dependencies(sl-is-true, sl-purge) == true { @return null; }
+
   $running: true;
 
   @while $running {
@@ -704,22 +757,20 @@
 
   }
 
-  @return if(not is-true($value), purge($list), $list);
+  @return if(not sl-is-true($value), sl-purge($list), $list);
 }
-// Reverses the order of $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#reverse
-// -------------------------------------------------------------------------------
-// @alias `mirror()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [List]
+// Reverses the order of `$list`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#reverse
+//
+// @param {List} $list - list to reverse
+//
+// @return {List}
 
-@function reverse($list) {
+@function sl-reverse($list) {
   $length: length($list);
   $end: floor($length/2);
-  
+
   @if $length < 2 {
     @return $list;
   }
@@ -729,147 +780,171 @@
     $list: set-nth($list, $i, nth($list, -$i));
     $list: set-nth($list, -$i, $tmp);
   }
-  
+
   @return $list;
 }
 
-// Alias
-@function mirror($list) {
-  @return reverse($list);
-}
-// Shuffle function using Fisher-Yates method
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#shuffle
-// -------------------------------------------------------------------------------
-// @alias `randomize()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// -------------------------------------------------------------------------------
-// @return [List]
+// @alias sl-reverse
 
-@function shuffle($list) {
+@function sl-mirror($list) {
+  @return sl-reverse($list);
+}
+// Shuffle `$list` using Fisher-Yates method.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#shuffle
+//
+// @param {List} $list - list to shuffle
+//
+// @return {List}
+
+@function sl-shuffle($list) {
   $length: length($list);
 
   @if $length < 2 {
     @return $list;
   }
 
-  @for $i from -1 * $length through -1 {
-    $i: abs($i);
+  @for $i from $length through 1 {
     $j: random($length - 1) + 1;
     $tmp: nth($list, $i);
     $list: set-nth($list, $i, nth($list, $j));
     $list: set-nth($list, $j, $tmp);
   }
+  
   @return $list;
 }
 
-// Alias
-@function randomize($list) {
-  @return shuffle($list);
+// @alias sl-shuffle
+
+@function sl-randomize($list) {
+  @return sl-shuffle($list);
 }
 
-// Slices $list between $start and $end
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#slice
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $start [Number] : start index
-// @param $end [Number] : end index
-// -------------------------------------------------------------------------------
-// @raise [Error] if $start or $end aren't integers
-// @raise [Error] if $start is greater than $end
-// @raise [Error] if $start or $end is strictly lesser than 1
-// @raise [Error] if $start is strictly greater than length of $list
-// @raise [Error] if $end is strictly greater than length of $list
-// -------------------------------------------------------------------------------
-// @return [List] | false
+// Slices `$list` between `$start` and `$end`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#slice
+//
+// @param {List}   $list                  - list to slice
+// @param {Number} $start (1)             - start index
+// @param {Number} $end   (length($list)) - end index
+//
+// @throws List indexes $start and $end must be numbers for `sl-slice`.
+// @throws Start index has to be lesser than or equals to the end index for `sl-slice`.
+// @throws List indexes must be non-zero integers for `sl-slice`.
+// @throws Start index has to be lesser than or equal to list length for `sl-slice`.
+// @throws End index has to be lesser than or equal to list length for `sl-slice`.
+//
+// @return {List | Null}
 
-@function slice($list, $start: 1, $end: length($list)) {
-  @if type-of($start) != number or type-of($end) != number {
-    @warn "List indexes #{$start} and #{$end} must be numbers for `slice`.";
-    @return false;
+@function sl-slice($list, $start: 1, $end: length($list)) {
+  @if type-of($start) != "number" or type-of($end) != "number" {
+    @warn "List indexes #{$start} and #{$end} must be numbers for `sl-slice`.";
+    @return null;
   }
 
   @if $start > $end {
-    @warn "Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `slice`.";
-    @return false;
+    @warn "Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `sl-slice`.";
+    @return null;
   }
 
   @if $start < 1 or $end < 1 {
-    @warn "List indexes must be non-zero integers for `slice`.";
-    @return false;
+    @warn "List indexes must be non-zero integers for `sl-slice`.";
+    @return null;
   }
 
   @if $start > length($list) {
-    @warn "Start index is #{$start} but list is only #{length($list)} items long for `slice`.";
-    @return false;
+    @warn "Start index is #{$start} but list is only #{length($list)} items long for `sl-slice`.";
+    @return null;
   }
 
   @if $end > length($list) {
-    @warn "End index is #{$end} but list is only #{length($list)} items long for `slice`.";
-    @return false;
+    @warn "End index is #{$end} but list is only #{length($list)} items long for `sl-slice`.";
+    @return null;
+  }
+
+  @if $start == $end {
+    @return nth($list, $start);
   }
 
   $result: ();
+  
   @for $i from $start through $end {
     $result: append($result, nth($list, $i), list-separator($list));
   }
 
   @return $result;
 }
-// Sorts values of $list using quick-sort algorithm
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#sort
-// -------------------------------------------------------------------------------
-// @alias `order()`
-// -------------------------------------------------------------------------------
-// @dependence `str-compare()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $order [List] : order
-// -------------------------------------------------------------------------------
-// @return [List]
+// Sorts values of `$list` using quick-sort algorithm using `$order`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#sort
+//
+// @requires sl-str-compare
+//
+// @param {List} $list  - list to sort
+// @param {List} $order - order to respect
+//
+// @return {List}
 
-@function sort($list, $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z") {
+@function sl-sort($list, $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z") {
+  @if sl-missing-dependencies(sl-str-compare) == true { @return null; }
+
   $less:  ();
   $equal: ();
   $large: ();
   $length: length($list);
-  
+
   @if $length > 1 {
     $seed: nth($list, ceil($length / 2));
     @each $item in $list {
       @if $item == $seed {
         $equal: append($equal, $item, list-separator($list));
       }
-      @else if str-compare($item, $seed, $order) {
+      @else if sl-str-compare($item, $seed, $order) {
         $less: append($less, $item, list-separator($list));
       }
-      @else if not str-compare($item, $seed, $order) {
+      @else if not sl-str-compare($item, $seed, $order) {
         $large: append($large, $item, list-separator($list));
       }
     }
-    @return join(join(sort($less, $order), $equal), sort($large, $order));
+    @return join(join(sl-sort($less, $order), $equal), sl-sort($large, $order));
   }
   @return $list;
 }
 
-// Alias
-@function order($list) {
-  @return sort($list);
+// @alias sl-sort
+
+@function sl-order($list) {
+  @return sl-sort($list);
 }
 
-// Sums up all numeric values in $list
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#sum
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $force [Boolean] : enable / disable parseInt
-// -------------------------------------------------------------------------------
-// @return [Number]
+// Tests whether some items from `$list` pass the test implemented by `$function`.
+//
+// @param {List}    $list     - list to run test against
+// @param {String}  $function - function to run against every item from list
+// @param {ArgList} $args     - extra arguments to pass to the function
+//
+// @return {Bool}
+ 
+@function sl-some($list, $function, $args...) {
+  @each $item in $list {
+    @if call($function, $item, $args...) {
+      @return true;
+    } 
+  }
+  
+  @return false;
+}
 
-@function sum($list, $force: false) {
+// Sums up all numeric values in `$list`, stripping unit if `$force` set to `true`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#sum
+//
+// @param {List}    $list          - list
+// @param {Boolean} $force (false) - enable/disable parseInt
+//
+// @return {Number}
+
+@function sl-sum($list, $force: false) {
   $result: 0;
 
   @each $item in $list {
@@ -889,54 +964,150 @@
   @return $result;
 }
 
-// Joins all elements of $list with $glue
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#to-string
-// -------------------------------------------------------------------------------
-// @alias `stringify()`
-// -------------------------------------------------------------------------------
-// @param $list [List] : list
-// @param $glue [String] : value to use as a join string
-// -------------------------------------------------------------------------------
-// @return [String]
+// Returns the tail of `$list`: all items except the first (head).
+//
+// @ignore Documentation: http://sassylists.com/documentation/#tail
+//
+// @requires sl-slice
+//
+// @param {List} $list - list to retrieve tail from
+//
+// @return {List | Null}
 
-@function to-string($list, $glue: '') {
+@function sl-tail($list) {
+  @if sl-missing-dependencies(sl-slice) == true { @return null; }
+
+  @return sl-slice($list, 2);
+}
+
+// @alias sl-tail
+
+@function sl-rest($list) {
+  @return sl-tail($list);
+}
+// Cast a `$list` into a map, using indexes as keys (starting with `$start`).
+// Useful for iterating through a list with an index variable.
+// e.g. `@each $i, $value in to-map($list)`
+//
+// @author Andrey "Lolmaus" Mikhaylov
+// 
+// @ignore Documentation: http://sassylists.com/documentation/#to-map
+// 
+// @param {List}   $list      - list to turn into map
+// @param {Number} $start (1) - index to start with
+// 
+// @throws List cannot be empty for `sl-to-map`.
+// @throws $start is not a number for `sl-to-map`.
+// 
+// @return {Map | Null}
+
+@function sl-to-map($list, $start: 1) {
+  @if length($list) == 0 {
+    @warn "List cannot be empty for `sl-to-map`.";
+    @return null;
+  }
+
+  @if type-of($start) != "number" {
+    @warn "$start provided to `sl-to-map` was #{type-of($start)}, but it should be a number.";
+    @return null;
+  }
+
+  $map: ();
+
+  @for $index from 1 through length($list) {
+    $key: $index + $start - 1;
+    $value: nth($list, $index);
+    $map: map-merge($map, ($key: $value));
+  }
+
+  @return $map;
+}
+
+// @requires sl-to-map
+// @alias sl-to-map
+
+@function sl-enumerate($list, $start: 1) {
+  @return sl-to-map($list, $start);
+}
+
+// @requires sl-to-map
+// @alias sl-to-map
+
+@function sl-mapify($list, $start: 1) {
+  @return sl-to-map($list, $start);
+}
+// Joins all elements of `$list` with `$glue`.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#to-string
+//
+// @param {List}   $list      - list to cast
+// @param {String} $glue ('') - value to use as a join string
+//
+// @return {String}
+
+@function sl-to-string($list, $glue: '') {
   $result: '';
   $length: length($list);
 
   @for $i from 1 through $length {
     $item: nth($list, $i);
-    $result: $result + if(length($item) > 1, to-string($item, $glue), $item + $glue);
+    $result: $result + if(length($item) > 1, sl-to-string($item, $glue), $item + $glue);
   }
 
   @return quote(str-slice($result, 1, str-length($glue) * -1 - 1));
 }
 
-// Alias
-@function stringify($list, $glue: '') {
-  @return to-string($list, $glue);
-}
-// Returns a list of values from $lists minus duplicates
-// -------------------------------------------------------------------------------
-// @documentation http://sassylists.com/documentation/#union
-// -------------------------------------------------------------------------------
-// @alias `merge()`
-// -------------------------------------------------------------------------------
-// @dependence `flatten()`
-// @dependence `remove-duplicates()`
-// -------------------------------------------------------------------------------
-// @example union((a b), (b c), (a b c d)) => a b c d
-// -------------------------------------------------------------------------------
-// @param $lists [ArgList] : lists
-// -------------------------------------------------------------------------------
-// @return [List]
+// @alias sl-to-string
 
-@function union($lists...) {
-  $result: remove-duplicates(flatten($lists));
+@function sl-stringify($list, $glue: '') {
+  @return sl-to-string($list, $glue);
+}
+// Returns a list of values from `$lists` minus duplicates.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#union
+//
+// @requires sl-flatten
+// @requires sl-remove-duplicates
+//
+// @param {ArgList} $lists - lists to unify
+//
+// @return {List}
+
+@function sl-union($lists...) {
+  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates) == true { @return null; }
+
+  $result: sl-remove-duplicates(sl-flatten($lists));
+  
   @return if(length($result) == 1, nth($result, 1), $result);
 }
 
-// Alias
-@function merge($lists...) {
-  @return union($lists...);
+// @alias sl-union
+
+@function sl-merge($lists...) {
+  @return sl-union($lists...);
+}
+
+// Apply `$function` to every item from `$list` passing $args as parameters.
+//
+// @ignore Documentation: http://sassylists.com/documentation/#walk
+//
+// @param {List}    $list     - list to update
+// @param {String}  $function - function to call on each value
+// @param {ArgList} $args     - optional function arguments
+//
+// @throws There is no $function function.
+//
+// @return {List | Null}
+
+@function sl-walk($list, $function, $args...) {
+  @if not function-exists($function) {
+    @warn "There is no `#{$function}` function.";
+    @return null;
+  }
+
+  @for $i from 1 through length($list) {
+    $list: set-nth($list, $i, call($function, nth($list, $i), $args...));
+  }
+  
+  @return $list;
 }

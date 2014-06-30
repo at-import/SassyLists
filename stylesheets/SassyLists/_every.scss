@@ -1,0 +1,17 @@
+// Tests whether all items from `$list` pass the test implemented by `$function`.
+//
+// @param {List}    $list     - list to run test against
+// @param {String}  $function - function to run against every item from list
+// @param {ArgList} $args     - extra arguments to pass to the function
+//
+// @return {Bool}
+ 
+@function sl-every($list, $function, $args...) {
+  @each $item in $list {
+    @if not call($function, $item, $args...) {
+      @return false;
+    } 
+  }
+  
+  @return true;
+}

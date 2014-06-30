@@ -1,7 +1,7 @@
 # Changelog
 
 * `2.0.0`: 
-    * added `to-map()`
+    * added `to-map()`, `every()` and `some()`
     * added and improved tests
     * prefixed all functions with `sl-`
     * changed all `false` returns into `null` in case of error

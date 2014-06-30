@@ -1,0 +1,9 @@
+@include describe("The sl-some function") {
+  @include it("should return true if some items from list pass given test") {
+    @include should(expect(sl-some(1 2 3px, unitless)), to(equal(true)));
+  }
+
+  @include it("should return false if no item from list pass given test") {
+    @include should(expect(sl-some(1em 2ch 3px, unitless)), to(equal(false)));
+  }
+}

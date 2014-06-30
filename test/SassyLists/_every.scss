@@ -1,0 +1,9 @@
+@include describe("The sl-every function") {
+  @include it("should return true if all items from list pass given test") {
+    @include should(expect(sl-every(1 2 3, unitless)), to(equal(true)));
+  }
+
+  @include it("should return false if not all items from list pass given test") {
+    @include should(expect(sl-every(1 2 3px, unitless)), to(equal(false)));
+  }
+}

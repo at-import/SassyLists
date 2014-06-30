@@ -20,6 +20,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `sl-contain()`: returns whether the list contains the value
 * `sl-count-values()`: counts the number of occurrences of each value of list
 * `sl-debug()`: returns list as a string
+* `sl-every()`: returns whether all items from list pass test from given function
 * `sl-explode()`: explodes a string into a list using a string as a delimiter
 * `sl-first()`: returns first item in list
 * `sl-flatten()`: turns multidimensional list into a one-level list
@@ -41,6 +42,7 @@ Here is a [Compass Extension](http://compass-style.org/) providing you all funct
 * `sl-shuffle()`: shuffles list
 * `sl-slice()`: slices list
 * `sl-sort()`: sorts list
+* `sl-some()`: returns whether some items from list pass test from given function
 * `sl-sum()`: sums all unitless values in list
 * `sl-tail()`: returns anything but the first element in list
 * `sl-to-map()`: casts list as map using indexes as keys
