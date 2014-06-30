@@ -1,12 +1,13 @@
 # Changelog
 
 * `2.0.0`: 
-    * added `to-map()`, `every()` and `some()`
-    * added and improved tests
-    * prefixed all functions with `sl-`
-    * fixed an issue with `random-value()` sometimes failing
-    * changed all `false` returns into `null` in case of error
-* `1.1.0`: added `walk()` and `tail()`, updated backward loops and fixed broken tests
+    * adding `to-map()`, `every()` and `some()`
+    * adding and improved tests
+    * prefixing all functions with `sl-`
+    * fixing an issue with `random-value()` sometimes failing
+    * changing all `false` returns into `null` in case of error
+    * removing Compass dependency
+* `1.1.0`: adding `walk()` and `tail()`, updated backward loops and fixed broken tests
 * `1.0.0`: moving code base to Sass 3.3 + adding a Grunt workflow
     * adding `explode`
     * making use of `list-separator()` and `set-nth()`

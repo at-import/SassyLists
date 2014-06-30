@@ -13,12 +13,13 @@ Gem::Specification.new do |s|
   s.authors = ["Hugo Giraudel"]
   s.email = ["hugo.giraudel@gmail.com"]
   s.homepage = "http://sassylists.com/"
+  s.licenses = ['MIT']
 
   # README file
-  #s.files = ["readme.md"]
+  s.files = ["README.md"]
 
   # CHANGELOG
-  s.files = ["CHANGELOG.md"]
+  s.files += ["CHANGELOG.md"]
 
   # Library Files
   s.files += Dir.glob("lib/**/*.*")
@@ -34,6 +35,5 @@ Gem::Specification.new do |s|
   s.rubygems_version = %q{1.3.6}
 
   # Gems Dependencies
-  s.add_dependency("sass",      [">=3.2.0"])
-  s.add_dependency("compass",   [">= 0.12.1"])
+  s.add_dependency("sass",      ["~> 3.3"])
 end

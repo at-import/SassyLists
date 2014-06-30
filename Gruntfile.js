@@ -68,6 +68,7 @@ module.exports = function(grunt) {
         options: {
           style: 'expanded',
           quiet: 'true',
+          compass: false,
           loadPath: './node_modules/bootcamp/dist' // or './bower_components/bootcamp/dist'
         },
         files: {
