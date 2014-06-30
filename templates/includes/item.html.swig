@@ -52,10 +52,10 @@
       <tbody>
         {% for parameter in item.parameters %}
           <tr class="sassdoc__item-parameter">
-            <td><code>${{ parameter.name }}</code></td>
-            <td>{% if parameter.type == "*" %}Any{% else %}<code>{{ parameter.type }}</code>{% endif %}</td>
-            <td>{% if parameter.default %}{{ parameter.default }}{% else %}&mdash;{% endif %}</td>
-            <td>{% if parameter.description %}{{ parameter.description }}{% else %}&mdash;{% endif %}</td>
+            <td data-small="name"><code>${{ parameter.name }}</code></td>
+            <td data-small="type">{% if parameter.type == "*" %}Any{% else %}<code>{{ parameter.type }}</code>{% endif %}</td>
+            <td data-small="default">{% if parameter.default %}{{ parameter.default }}{% else %}&mdash;{% endif %}</td>
+            <td data-small="desc">{% if parameter.description %}{{ parameter.description }}{% else %}&mdash;{% endif %}</td>
           </tr>
         {% endfor %}
       </tbody>

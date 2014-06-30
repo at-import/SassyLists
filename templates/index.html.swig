@@ -47,7 +47,7 @@
       <section>
         <h2>What's in there?</h2>
 
-        <table class="table">
+        <table class="table  table-home">
           <thead>
             <tr>
                 <th>Name</th>
@@ -59,9 +59,9 @@
             {% for item in data.functions %}
               {% if item.alias == false and item.access != "private" %}
                 <tr>
-                  <td><a href="documentation.html#{{ item.name }}">#</a> <code>{{ item.name }}</code></td>
-                  <td>{{ item.description | markdown }}</td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#{{ item.name }}">#</a> <code>{{ item.name }}</code></td>
+                  <td data-small="desc">{{ item.description | markdown }}</td>
+                  <td data-small="aliases">
                   {% if item.aliased.length > 0 %}
                     <code>{{ item.aliased }}</code>
                   {% else %}

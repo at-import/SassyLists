@@ -3625,7 +3625,6 @@ section {
   font-size: .8em; }
 
 .sidebar {
-  width: 220px;
   margin-top: 1.25em; }
 
 .sidebar-heading {
@@ -3669,3 +3668,24 @@ section {
 .navbar-nav > li > a:hover {
   background: none;
   color: #669999; }
+
+@media (max-width: 768px) {
+  table, tr, td, th, tbody {
+    display: block; }
+
+  thead {
+    display: none; }
+
+  td::before {
+    content: attr(data-small) ": ";
+    text-transform: capitalize;
+    font-weight: bold; }
+
+  tr {
+    margin-bottom: 2em; }
+
+  td:first-of-type {
+    border-top: none !important; }
+
+  .table-home td:nth-of-type(2) p {
+    display: inline; } }

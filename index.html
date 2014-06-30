@@ -15,7 +15,7 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
         <span class="sr-only">Toggle navigation</span>
-        <span class="glyphicon  glyphicon-align-justify"></span>
+        &#9776;
       </button>
       <a class="navbar-brand" href="http://sassylists.com/">SassyLists</a>
     </div>
@@ -79,7 +79,7 @@
       <section>
         <h2>What's in there?</h2>
 
-        <table class="table">
+        <table class="table  table-home">
           <thead>
             <tr>
                 <th>Name</th>
@@ -91,9 +91,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-chunk">#</a> <code>sl-chunk</code></td>
-                  <td><p>Chunks <code>$list</code> into <code>$size</code> large lists.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-chunk">#</a> <code>sl-chunk</code></td>
+                  <td data-small="desc"><p>Chunks <code>$list</code> into <code>$size</code> large lists.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -105,9 +105,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-contain">#</a> <code>sl-contain</code></td>
-                  <td><p>Returns whether <code>$list</code> contains <code>$value</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-contain">#</a> <code>sl-contain</code></td>
+                  <td data-small="desc"><p>Returns whether <code>$list</code> contains <code>$value</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-include</code>
                   
@@ -117,9 +117,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-count-values">#</a> <code>sl-count-values</code></td>
-                  <td><p>Counts the number of occurrences of each value of <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-count-values">#</a> <code>sl-count-values</code></td>
+                  <td data-small="desc"><p>Counts the number of occurrences of each value of <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -129,9 +129,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-debug">#</a> <code>sl-debug</code></td>
-                  <td><p>Returns <code>$list</code> as a string, prettified if <code>$pre</code> is set to true.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-debug">#</a> <code>sl-debug</code></td>
+                  <td data-small="desc"><p>Returns <code>$list</code> as a string, prettified if <code>$pre</code> is set to true.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -143,9 +143,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-every">#</a> <code>sl-every</code></td>
-                  <td><p>Tests whether all items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-every">#</a> <code>sl-every</code></td>
+                  <td data-small="desc"><p>Tests whether all items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -155,9 +155,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-explode">#</a> <code>sl-explode</code></td>
-                  <td><p>Explode <code>$string</code> into a list using <code>$delimiter</code> as a delimiter.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-explode">#</a> <code>sl-explode</code></td>
+                  <td data-small="desc"><p>Explode <code>$string</code> into a list using <code>$delimiter</code> as a delimiter.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -167,9 +167,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-first">#</a> <code>sl-first</code></td>
-                  <td><p>Returns first element of <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-first">#</a> <code>sl-first</code></td>
+                  <td data-small="desc"><p>Returns first element of <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-head</code>
                   
@@ -179,9 +179,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-flatten">#</a> <code>sl-flatten</code></td>
-                  <td><p>Turns multidimensional <code>$list</code> into a one-level list.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-flatten">#</a> <code>sl-flatten</code></td>
+                  <td data-small="desc"><p>Turns multidimensional <code>$list</code> into a one-level list.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-unfold</code>
                   
@@ -195,9 +195,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-insert-nth">#</a> <code>sl-insert-nth</code></td>
-                  <td><p>Adds <code>$value</code> at <code>$index</code> in <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-insert-nth">#</a> <code>sl-insert-nth</code></td>
+                  <td data-small="desc"><p>Adds <code>$value</code> at <code>$index</code> in <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -207,9 +207,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-intersection">#</a> <code>sl-intersection</code></td>
-                  <td><p>Returns a list of shared value from <code>$list</code> and <code>$lists</code> minus duplicates.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-intersection">#</a> <code>sl-intersection</code></td>
+                  <td data-small="desc"><p>Returns a list of shared value from <code>$list</code> and <code>$lists</code> minus duplicates.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -221,9 +221,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-is-symmetrical">#</a> <code>sl-is-symmetrical</code></td>
-                  <td><p>Checks whether <code>$list</code> is symmetrical.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-is-symmetrical">#</a> <code>sl-is-symmetrical</code></td>
+                  <td data-small="desc"><p>Checks whether <code>$list</code> is symmetrical.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-is-mirror</code>
                   
@@ -235,9 +235,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-last">#</a> <code>sl-last</code></td>
-                  <td><p>Returns last element of <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-last">#</a> <code>sl-last</code></td>
+                  <td data-small="desc"><p>Returns last element of <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -247,9 +247,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-last-index">#</a> <code>sl-last-index</code></td>
-                  <td><p>Returns last index of <code>$value</code> in <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-last-index">#</a> <code>sl-last-index</code></td>
+                  <td data-small="desc"><p>Returns last index of <code>$value</code> in <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -259,9 +259,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-loop">#</a> <code>sl-loop</code></td>
-                  <td><p>Shift indexes from <code>$list</code> of <code>$value</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-loop">#</a> <code>sl-loop</code></td>
+                  <td data-small="desc"><p>Shift indexes from <code>$list</code> of <code>$value</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-shift-indexes</code>
                   
@@ -283,9 +283,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-prepend">#</a> <code>sl-prepend</code></td>
-                  <td><p>Adds <code>$value</code> as first index of <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-prepend">#</a> <code>sl-prepend</code></td>
+                  <td data-small="desc"><p>Adds <code>$value</code> as first index of <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -295,9 +295,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-purge">#</a> <code>sl-purge</code></td>
-                  <td><p>Removes all false and null values from <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-purge">#</a> <code>sl-purge</code></td>
+                  <td data-small="desc"><p>Removes all false and null values from <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-clean</code>
                   
@@ -307,9 +307,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-random-value">#</a> <code>sl-random-value</code></td>
-                  <td><p>Returns a random value of <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-random-value">#</a> <code>sl-random-value</code></td>
+                  <td data-small="desc"><p>Returns a random value of <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-roll,sl-luck</code>
                   
@@ -321,9 +321,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-remove">#</a> <code>sl-remove</code></td>
-                  <td><p>Removes value(s) <code>$value</code> from <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-remove">#</a> <code>sl-remove</code></td>
+                  <td data-small="desc"><p>Removes value(s) <code>$value</code> from <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-without</code>
                   
@@ -333,9 +333,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-remove-duplicates">#</a> <code>sl-remove-duplicates</code></td>
-                  <td><p>Removes duplicate values from <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-remove-duplicates">#</a> <code>sl-remove-duplicates</code></td>
+                  <td data-small="desc"><p>Removes duplicate values from <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-unique</code>
                   
@@ -345,9 +345,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-remove-nth">#</a> <code>sl-remove-nth</code></td>
-                  <td><p>Removes value from <code>$list</code> at index <code>$index</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-remove-nth">#</a> <code>sl-remove-nth</code></td>
+                  <td data-small="desc"><p>Removes value from <code>$list</code> at index <code>$index</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-without-nth</code>
                   
@@ -357,9 +357,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-replace">#</a> <code>sl-replace</code></td>
-                  <td><p>Replaces <code>$old</code> by <code>$new</code> in <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-replace">#</a> <code>sl-replace</code></td>
+                  <td data-small="desc"><p>Replaces <code>$old</code> by <code>$new</code> in <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -369,9 +369,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-replace-nth">#</a> <code>sl-replace-nth</code></td>
-                  <td><p>Replaces value at <code>$index</code> from <code>$list</code> by <code>$value</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-replace-nth">#</a> <code>sl-replace-nth</code></td>
+                  <td data-small="desc"><p>Replaces value at <code>$index</code> from <code>$list</code> by <code>$value</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -383,9 +383,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-reverse">#</a> <code>sl-reverse</code></td>
-                  <td><p>Reverses the order of <code>$list</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-reverse">#</a> <code>sl-reverse</code></td>
+                  <td data-small="desc"><p>Reverses the order of <code>$list</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-mirror</code>
                   
@@ -399,9 +399,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-shuffle">#</a> <code>sl-shuffle</code></td>
-                  <td><p>Shuffle <code>$list</code> using Fisher-Yates method.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-shuffle">#</a> <code>sl-shuffle</code></td>
+                  <td data-small="desc"><p>Shuffle <code>$list</code> using Fisher-Yates method.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-randomize</code>
                   
@@ -411,9 +411,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-slice">#</a> <code>sl-slice</code></td>
-                  <td><p>Slices <code>$list</code> between <code>$start</code> and <code>$end</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-slice">#</a> <code>sl-slice</code></td>
+                  <td data-small="desc"><p>Slices <code>$list</code> between <code>$start</code> and <code>$end</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -423,9 +423,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-some">#</a> <code>sl-some</code></td>
-                  <td><p>Tests whether some items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-some">#</a> <code>sl-some</code></td>
+                  <td data-small="desc"><p>Tests whether some items from <code>$list</code> pass the test implemented by <code>$function</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -435,9 +435,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-sort">#</a> <code>sl-sort</code></td>
-                  <td><p>Sorts values of <code>$list</code> using quick-sort algorithm using <code>$order</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-sort">#</a> <code>sl-sort</code></td>
+                  <td data-small="desc"><p>Sorts values of <code>$list</code> using quick-sort algorithm using <code>$order</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-order</code>
                   
@@ -451,9 +451,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-sum">#</a> <code>sl-sum</code></td>
-                  <td><p>Sums up all numeric values in <code>$list</code>, stripping unit if <code>$force</code> set to <code>true</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-sum">#</a> <code>sl-sum</code></td>
+                  <td data-small="desc"><p>Sums up all numeric values in <code>$list</code>, stripping unit if <code>$force</code> set to <code>true</code>.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   
@@ -463,9 +463,9 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-tail">#</a> <code>sl-tail</code></td>
-                  <td><p>Returns the tail of <code>$list</code>: all items except the first (head).</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-tail">#</a> <code>sl-tail</code></td>
+                  <td data-small="desc"><p>Returns the tail of <code>$list</code>: all items except the first (head).</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-rest</code>
                   
@@ -475,11 +475,11 @@
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-to-map">#</a> <code>sl-to-map</code></td>
-                  <td><p>Cast a <code>$list</code> into a map, using indexes as keys (starting with <code>$start</code>).
+                  <td data-small="name"><a href="documentation.html#sl-to-map">#</a> <code>sl-to-map</code></td>
+                  <td data-small="desc"><p>Cast a <code>$list</code> into a map, using indexes as keys (starting with <code>$start</code>).
 Useful for iterating through a list with an index variable.
 e.g. <code>@each $i, $value in to-map($list)</code></p></td>
-                  <td>
+                  <td data-small="aliases">
                   
                     <code>sl-enumerate,sl-mapify</code>
                   
@@ -489,9 +489,9 @@ e.g. <code>@each $i, $value in to-map($list)</code></p></td>
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-to-string">#</a> <code>sl-to-string</code></td>
-                  <td><p>Joins all elements of <code>$list</code> with <code>$glue</code>.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-to-string">#</a> <code>sl-to-string</code></td>
+                  <td data-small="desc"><p>Joins all elements of <code>$list</code> with <code>$glue</code>.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-stringify</code>
                   
@@ -503,9 +503,9 @@ e.g. <code>@each $i, $value in to-map($list)</code></p></td>
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-union">#</a> <code>sl-union</code></td>
-                  <td><p>Returns a list of values from <code>$lists</code> minus duplicates.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-union">#</a> <code>sl-union</code></td>
+                  <td data-small="desc"><p>Returns a list of values from <code>$lists</code> minus duplicates.</p></td>
+                  <td data-small="aliases">
                   
                     <code>sl-merge</code>
                   
@@ -517,9 +517,9 @@ e.g. <code>@each $i, $value in to-map($list)</code></p></td>
             
               
                 <tr>
-                  <td><a href="documentation.html#sl-walk">#</a> <code>sl-walk</code></td>
-                  <td><p>Apply <code>$function</code> to every item from <code>$list</code> passing $args as parameters.</p></td>
-                  <td>
+                  <td data-small="name"><a href="documentation.html#sl-walk">#</a> <code>sl-walk</code></td>
+                  <td data-small="desc"><p>Apply <code>$function</code> to every item from <code>$list</code> passing $args as parameters.</p></td>
+                  <td data-small="aliases">
                   
                     &mdash;
                   

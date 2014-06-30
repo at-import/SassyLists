@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-md-3">
+      <div class="col-md-3  col-sm-12">
         <div class="sidebar  affix-top">
           <h4 class="sidebar-heading">Choose your weapon</h4>
           <nav>
@@ -20,7 +20,7 @@
         </div>
       </div>
 
-      <div class="col-md-9">
+      <div class="col-md-9  col-sm-12">
 
       {% for item in data.functions %}
         {% include 'includes/item.html.swig' with item %}
