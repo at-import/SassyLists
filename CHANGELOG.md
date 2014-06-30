@@ -1,6 +1,7 @@
 # Changelog
 
-* `1.1.0`: added `walk()` and `tail()`, updated backward loops and fixed broken tests
+* `1.1.1`: fixing an issue with `unique()` 
+* `1.1.0`: adding `walk()` and `tail()`, updated backward loops and fixed broken tests
 * `1.0.0`: moving code base to Sass 3.3 + adding a Grunt workflow
     * adding `explode`
     * making use of `list-separator()` and `set-nth()`
