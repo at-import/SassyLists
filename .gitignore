@@ -2,3 +2,6 @@
 *.gem
 node_modules
 tmp
+gems
+.bundle
+save
