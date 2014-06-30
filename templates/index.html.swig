@@ -5,7 +5,7 @@
 <div class="jumbotron">
     <div class="container">
         <h1>SassyLists <small>{{ version }}</small></h1>
-        <p>SassyLists is a <a href="http://compass-style.org">Compass</a> Extension providing you all functions you need to manipulate your <a href="http://sass-lang.com">Sass</a> lists.</p>
+        <p>SassyLists is a toolbox providing you all the functions you need to manipulate your <a href="http://sass-lang.com">Sass</a> lists.</p>
         <p><a class="btn btn-info" href="/documentation/">Read documentation</a> <a class="btn btn-warning" href="https://github.com/Team-Sass/SassyLists/blob/master/CHANGELOG.md">Read changelog</a></p>
     </div>
 </div>
@@ -23,7 +23,7 @@
 
         <div class="col-md-6">
           <h2>How does it work?</h2>
-          <p>SassyLists is pure Sass and Compass. No magic Ruby behind it or anything. All functions are built with Sass. Thus, some functions can be a little slow depending on what you're doing with it.</p>
+          <p>SassyLists is pure Sass. No magic Ruby behind it or anything. All functions are built with Sass. Thus, some functions can be a little slow depending on what you're doing with it.</p>
           <p>In any case, feel free to have a sneak peek at the code and improve it!</p>
         </div>
       </section>
@@ -34,15 +34,13 @@
           <ul class="list-unstyled">
               <li><code>gem install SassyLists</code></li>
           </ul>
-          <p class="alert  alert-info">You can also use it directly on <a href="http://codepen.io">CodePen</a> by adding <a href="http://codepen.io/HugoGiraudel/pen/loAgq">this pen</a> as an external CSS resource.</p>
         </div>
 
         <div class="col-md-6">
           <h2>Requirements</h2>
-          <ul>
-              <li><a href="http://sass-lang.com/">Sass</a> ~> 3.3</li>
+          <ul class="list-unstyled">
+            <li><a href="http://sass-lang.com/">Sass</a> ~> 3.3</li>
           </ul>
-          <p class="alert  alert-warning">Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.</p>
         </div>
       </section>
 
