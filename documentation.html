@@ -98,8 +98,6 @@
               
               
               
-                <li><a href="#sl-is-true">sl-is-true</a></li>
-              
               
               
                 <li><a href="#sl-last">sl-last</a></li>
@@ -121,8 +119,6 @@
               
               
               
-              
-                <li><a href="#sl-missing-dependencies">sl-missing-dependencies</a></li>
               
               
               
@@ -187,8 +183,6 @@
                 <li><a href="#sl-sort">sl-sort</a></li>
               
               
-              
-                <li><a href="#sl-str-compare">sl-str-compare</a></li>
               
               
               
@@ -2939,14 +2933,25 @@
       
     
   
+    
+
+    
+      
+    
+
+    
+
+    
+      
+    
+  
 
   <div class="function-code  clearfix">
-    <pre class="pull-left">@function sl-sum ($list) { ... }</pre>
+    <pre class="pull-left">@function sl-sum ($list, $force: false) { ... }</pre>
     <a href="https://github.com/Team-Sass/SassyLists/blob/master/stylesheets/SassyLists/_sum.scss" class="function-link  pull-right">View source</a>
   </div>
 
-  <p class="function-role"><p>Sums up all numeric values in <code>$list</code>, stripping unit if <code>$force</code> set to <code>true</code>.
-@param {Boolean} $force (false) - enable/disable parseInt</p></p>
+  <p class="function-role"><p>Sums up all numeric values in <code>$list</code>, stripping unit if <code>$force</code> set to <code>true</code>.</p></p>
 
   <h3 class="function-subheading">Parameters</h3>
   
@@ -2966,6 +2971,13 @@
             <td><code>List</code></td>
             <td>&mdash;</td>
             <td>list</td>
+          </tr>
+        
+          <tr class="sassdoc__item-parameter">
+            <td><code>$force</code></td>
+            <td><code>Bool</code></td>
+            <td>false</td>
+            <td>enable/disable parseInt</td>
           </tr>
         
       </tbody>

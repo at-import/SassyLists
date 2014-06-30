@@ -57,7 +57,7 @@
           </thead>
           <tbody>
             {% for item in data.functions %}
-              {% if item.alias == false %}
+              {% if item.alias == false and item.access != "private" %}
                 <tr>
                   <td><a href="documentation.html#{{ item.name }}">#</a> <code>{{ item.name }}</code></td>
                   <td>{{ item.description | markdown }}</td>

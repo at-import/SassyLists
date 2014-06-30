@@ -11,7 +11,7 @@
           <nav>
             <ul class="list-unstyled  nav  sidebar-nav">
               {% for item in data.functions %}
-              {% if item.alias == false %}
+              {% if item.alias == false and item.access != "private" %}
                 <li><a href="#{{ item.name }}">{{ item.name }}</a></li>
               {% endif %}
               {% endfor %}
