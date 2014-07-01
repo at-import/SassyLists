@@ -1,0 +1,13 @@
+// Tests whether $list contains any items
+//
+// @param {List}    $list     - list to run test against
+//
+// @return {Bool}
+
+@function sl-empty($list) {
+    @if length($list) == 0 {
+        @return true;
+    } @else {
+        @return false;
+    }
+}
