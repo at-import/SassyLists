@@ -1,7 +1,8 @@
 # Changelog
 
+* `2.1.0`: adding `sl-is-empty()`, `sl-to-list()` and `sl-comma-list()`
 * `2.0.0`: 
-    * adding `to-map()`, `every()` and `some()`
+    * adding `sl-to-map()`, `sl-every()` and `sl-some()`
     * adding and improved tests
     * prefixing all functions with `sl-`
     * fixing an issue with `random-value()` sometimes failing

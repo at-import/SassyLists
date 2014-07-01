@@ -1,0 +1,18 @@
+// Casts `$value` into a list.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
+//
+// @param {*} $value - value to cast to list
+//
+// @return {List}
+
+@function sl-to-list($value) {
+  @return if(type-of($value) == "list", $value, ($value,));
+}
+
+// @requires sl-to-list
+// @alias sl-to-list
+
+@function sl-listify($value) {
+  @return sl-to-list($value);
+}

@@ -1,0 +1,12 @@
+@include describe("The sl-to-list function") {
+  @include it("should return a list in any case") {
+  	@include should(expect(type-of(sl-to-list(1))), to(equal(list)));
+  	@include should(expect(type-of(sl-to-list(a))), to(equal(list)));
+  	@include should(expect(type-of(sl-to-list(true))), to(equal(list)));
+  	@include should(expect(type-of(sl-to-list(false))), to(equal(list)));
+  	@include should(expect(type-of(sl-to-list(null))), to(equal(list)));
+  	@include should(expect(type-of(sl-to-list(1 2 3))), to(equal(list)));
+  	@include should(expect(type-of(sl-to-list((a: b)))), to(equal(list)));
+  	@include should(expect(type-of(sl-to-list(red))), to(equal(list)));
+  }
+}

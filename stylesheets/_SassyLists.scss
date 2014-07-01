@@ -8,6 +8,7 @@
 @import "SassyLists/helpers/str-compare";
 @import "SassyLists/helpers/true";
 @import "SassyLists/chunk";
+@import "SassyLists/comma-list";
 @import "SassyLists/contain";
 @import "SassyLists/count-values";
 @import "SassyLists/debug";
@@ -17,6 +18,7 @@
 @import "SassyLists/flatten";
 @import "SassyLists/insert-nth";
 @import "SassyLists/intersection";
+@import "SassyLists/is-empty";
 @import "SassyLists/is-symmetrical";
 @import "SassyLists/last";
 @import "SassyLists/last-index";
@@ -36,6 +38,7 @@
 @import "SassyLists/some";
 @import "SassyLists/sum";
 @import "SassyLists/tail";
+@import "SassyLists/to-list";
 @import "SassyLists/to-map";
 @import "SassyLists/to-string";
 @import "SassyLists/union";

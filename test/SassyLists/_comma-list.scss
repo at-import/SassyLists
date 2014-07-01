@@ -1,0 +1,13 @@
+@include describe("The sl-comma-list function") {
+  @include it("should be comma separated") {
+  	$comma-list: sl-comma-list();
+  	$comma-list: append($comma-list, a);
+  	$comma-list: append($comma-list, b);
+  	@include should(expect($comma-list), to(equal((a, b))));
+  	@include should(expect($comma-list), not-to(equal((a b))));
+  }
+
+  @include it("should be empty") {
+  	@include should(expect(length(sl-comma-list())), to(equal(0)));
+  }
+}

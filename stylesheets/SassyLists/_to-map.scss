@@ -1,4 +1,4 @@
-// Cast a `$list` into a map, using indexes as keys (starting with `$start`).
+// Casts `$list` into a map, using indexes as keys (starting with `$start`).
 // Useful for iterating through a list with an index variable.
 // e.g. `@each $i, $value in to-map($list)`
 //

@@ -15,6 +15,7 @@ Here is a powerful toolbox providing you all the functions you need to manipulat
 ## What's in there? 
 
 * `sl-chunk()`: returns whether list contains $value
+* `sl-comma-list()`: initializes an empty comma-separated list
 * `sl-contain()`: returns whether the list contains the value
 * `sl-count-values()`: counts the number of occurrences of each value of list
 * `sl-debug()`: returns list as a string
@@ -24,6 +25,7 @@ Here is a powerful toolbox providing you all the functions you need to manipulat
 * `sl-flatten()`: turns multidimensional list into a one-level list
 * `sl-insert-nth()`: inserts value at index
 * `sl-intersection()`: returns a list of shared values across all given lists
+* `sl-is-empty()`: checks if list is empty
 * `sl-is-symmetrical()`: checks if list is symmetrical
 * `sl-last()`: returns last item in list
 * `sl-last-index()`: returns last index of value in list
@@ -43,6 +45,7 @@ Here is a powerful toolbox providing you all the functions you need to manipulat
 * `sl-some()`: returns whether some items from list pass test from given function
 * `sl-sum()`: sums all unitless values in list
 * `sl-tail()`: returns anything but the first element in list
+* `sl-to-list()`: casts value as list
 * `sl-to-map()`: casts list as map using indexes as keys
 * `sl-to-string()`: casts list as string (JS `.join()`)
 * `sl-union()`: returns a list of values from given lists minus duplicates
