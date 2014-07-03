@@ -1,39 +1,28 @@
 // Casts `$list` into a map, using indexes as keys (starting with `$start`).
 // Useful for iterating through a list with an index variable.
-// e.g. `@each $i, $value in to-map($list)`
+// e.g. `@each $index, $value in to-map($list)`
 //
-// @author Andrey "Lolmaus" Mikhaylov
+// @author Andrey "Lolmaus" Mikhaylov and Chris Eppstein
 // 
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-to-map
 // 
-// @param {List}   $list      - list to turn into map
-// @param {Number} $start (1) - index to start with
+// @param {List} $list - list to turn into map
+//
+// @requires sl-range
 // 
 // @throws List cannot be empty for `sl-to-map`.
-// @throws $start is not a number for `sl-to-map`.
 // 
 // @return {Map | Null}
 
-@function sl-to-map($list, $start: 1) {
+@function sl-to-map($list) {
+  @if sl-missing-dependencies(sl-range) { @return null; }
+
   @if length($list) == 0 {
     @warn "List cannot be empty for `sl-to-map`.";
     @return null;
   }
 
-  @if type-of($start) != "number" {
-    @warn "$start provided to `sl-to-map` was #{type-of($start)}, but it should be a number.";
-    @return null;
-  }
-
-  $map: ();
-
-  @for $index from 1 through length($list) {
-    $key: $index + $start - 1;
-    $value: nth($list, $index);
-    $map: map-merge($map, ($key: $value));
-  }
-
-  @return $map;
+  @return zip(sl-range(length($list)), $list);
 }
 
 // @requires sl-to-map
