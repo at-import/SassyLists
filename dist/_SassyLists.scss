@@ -1,4 +1,4 @@
-/*! SassyLists - v2.1.0 - 2014-07-01 */
+/*! SassyLists - v2.2.0 - 2014-07-03 */
 // Checks whether `$functions` exist in global scope.
 //
 // @access private
@@ -105,6 +105,8 @@
 }
 // Initialize an empty comma-separated list.
 // 
+// @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
+//
 // @return {List}
 
 @function sl-comma-list() {
@@ -244,7 +246,7 @@
   }
 }
 
-// Explode `$string` into a list using `$delimiter` as a delimiter.
+// Explodes `$string` into a list using `$delimiter` as a delimiter.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
 //
@@ -583,7 +585,7 @@
 // @return {List}
 
 @function sl-prepend($list, $value) {
-  @if missing-dependencies(sl-is-true) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
   
   @if sl-is-true($value) {
     @return join($value, $list, list-separator($list));
@@ -653,6 +655,46 @@
 
 @function sl-luck($list) {
   @return sl-random-value($list);
+}
+// Build a list of values from 1 through `$n`.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#sl-range
+//
+// @param {Number} $n - maximum value
+//
+// @throws `$n` is not a number for `sl-range`.
+// @throws `$n` is not unitless for `sl-range`.
+// @throws `$n` is not greater than 0 for `sl-range`.
+//
+// @return {List | Number | Null}
+
+@function sl-range($n) {
+  @if type-of($n) != "number" {
+    @warn "`#{inspect($n)}` is not a number for `sl-range`.";
+    @return null;
+  }
+
+  @if not unitless($n) {
+    @warn "`#{$n}` is not unitless for `sl-range`.";
+    @return null;
+  }
+
+  @if $n < 1 {
+    @warn "`#{$n}` is not greater than 0 for `sl-range`.";
+    @return null;
+  }
+
+  @if $n == 1 { 
+    @return $n;
+  }
+
+  $range: ();
+
+  @for $i from 1 through $n {
+    $range: append($range, $i);
+  }
+
+  @return $range;
 }
 // Removes duplicate values from `$list`.
 //
@@ -1010,7 +1052,7 @@
 @function sl-rest($list) {
   @return sl-tail($list);
 }
-// Cast `$value` into list
+// Casts `$value` into a list.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
 //
@@ -1029,7 +1071,7 @@
   @return sl-to-list($value);
 }
 
-// Cast a `$list` into a map, using indexes as keys (starting with `$start`).
+// Casts `$list` into a map, using indexes as keys (starting with `$start`).
 // Useful for iterating through a list with an index variable.
 // e.g. `@each $i, $value in to-map($list)`
 //

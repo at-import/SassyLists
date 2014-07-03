@@ -43,6 +43,7 @@ module.exports = function(grunt) {
           '<%= dir.src %>/SassyLists/_prepend.scss',
           '<%= dir.src %>/SassyLists/_purge.scss',
           '<%= dir.src %>/SassyLists/_random-value.scss',
+          '<%= dir.src %>/SassyLists/_range.scss',
           '<%= dir.src %>/SassyLists/_remove-duplicates.Scss',
           '<%= dir.src %>/SassyLists/_remove-nth.scss',
           '<%= dir.src %>/SassyLists/_remove.scss',

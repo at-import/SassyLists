@@ -1,5 +1,6 @@
 # Changelog
 
+* `2.2.0`: adding `sl-range()`
 * `2.1.1`: fixing a tiny issue with dependency checker in `preprend()`
 * `2.1.0`: adding `sl-is-empty()`, `sl-to-list()` and `sl-comma-list()`
 * `2.0.0`: 

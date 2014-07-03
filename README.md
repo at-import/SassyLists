@@ -33,6 +33,7 @@ Here is a powerful toolbox providing you all the functions you need to manipulat
 * `sl-prepend()`: prepends value to list
 * `sl-purge()`: removes all `false` and `null` values from list
 * `sl-random-value()`: returns random value from list
+* `sl-range()`: returns a list of values between 1 and given value
 * `sl-remove()`: removes value in list
 * `sl-remove-duplicates()`: removes duplicate values from list
 * `sl-remove-nth()`: removes value at index
