@@ -402,6 +402,38 @@
 @function sl-unfold($list) {
     @return sl-flatten($list);
 }
+// Tests whether `$list` is not empty.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#sl-has-values
+//
+// @param {List} $list - list to run test against
+//
+// @requires sl-is-empty
+//
+// @return {Bool}
+
+@function sl-has-values($list) {
+  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
+
+  @return not sl-is-empty($list);
+}
+// Tests whether `$list` has at least 2 values.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#sl-has-multiple-values
+//
+// @param {List} $list - list to run test against
+//
+// @requires sl-has-values
+// @requires sl-is-single
+//
+// @return {Bool}
+
+@function sl-has-multiple-values($list) {
+  @if sl-missing-dependencies(sl-has-values, sl-is-single) == true { @return null; }
+
+  @return sl-has-values($list) and not sl-is-single($list);
+}
+
 // Adds `$value` at `$index` in `$list`.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-insert-nth
@@ -503,6 +535,7 @@
 @function sl-empty($list) {
   @return sl-is-empty($list);
 }
+
 // Tests whether `$list` has a single item.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single

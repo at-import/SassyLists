@@ -1,0 +1,16 @@
+@include describe("The sl-has-multiple-values function") {
+  @include it("should return false if the list has at only one item") {
+    @include should(expect( sl-has-multiple-values( a )), to( equal( false ) ));
+    @include should(expect( sl-has-multiple-values( 42 )), to( equal( false ) ));
+  }
+
+  @include it("should return true if the list has at least two items") {
+    @include should(expect( sl-has-multiple-values(1 2 3) ), to( equal( true ) ));
+    @include should(expect( sl-has-multiple-values(' ' ' ') ), to( equal( true ) ));
+    @include should(expect( sl-has-multiple-values(0 0) ), to( equal( true ) ));
+  }
+
+  @include it("should return false if list is empty") {
+    @include should(expect( sl-has-multiple-values( () ) ), to( equal( false ) ));
+  }
+}

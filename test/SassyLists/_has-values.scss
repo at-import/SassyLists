@@ -1,0 +1,13 @@
+@include describe("The sl-has-values function") {
+  @include it("should return true if the list has at least one item") {
+    @include should(expect( sl-has-values( a )), to( equal( true ) ));
+    @include should(expect( sl-has-values( 42 )), to( equal( true ) ));
+    @include should(expect( sl-has-values(1 2 3) ), to( equal( true ) ));
+    @include should(expect( sl-has-values(' ' ' ') ), to( equal( true ) ));
+    @include should(expect( sl-has-values(0 0) ), to( equal( true ) ));
+  }
+
+  @include it("should return false if list is empty") {
+    @include should(expect( sl-has-values( () ) ), to( equal( false ) ));
+  }
+}

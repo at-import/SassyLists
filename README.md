@@ -21,14 +21,16 @@ Here is a powerful toolbox providing you all the functions you need to manipulat
 * `sl-debug()`: returns list as a string
 * `sl-every()`: returns whether all items from list pass test from given function
 * `sl-explode()`: explodes a string into a list using a string as a delimiter
-* `sl-first()`: returns first item in list
+* `sl-first()`: returns first value in list
 * `sl-flatten()`: turns multidimensional list into a one-level list
+* `sl-has-values()`: checks if list is not empty
+* `sl-has-multiple-values()`: checks if list has more than one value
 * `sl-insert-nth()`: inserts value at index
 * `sl-intersection()`: returns a list of shared values across all given lists
 * `sl-is-empty()`: checks if list is empty
-* `sl-is-single()`: checks if list has a single item
+* `sl-is-single()`: checks if list has a single value
 * `sl-is-symmetrical()`: checks if list is symmetrical
-* `sl-last()`: returns last item in list
+* `sl-last()`: returns last value in list
 * `sl-last-index()`: returns last index of value in list
 * `sl-loop()`: shifts indexes in list
 * `sl-prepend()`: prepends value to list
@@ -44,14 +46,14 @@ Here is a powerful toolbox providing you all the functions you need to manipulat
 * `sl-shuffle()`: shuffles list
 * `sl-slice()`: slices list
 * `sl-sort()`: sorts list
-* `sl-some()`: returns whether some items from list pass test from given function
+* `sl-some()`: returns whether some values from list pass test from given function
 * `sl-sum()`: sums all unitless values in list
 * `sl-tail()`: returns anything but the first element in list
 * `sl-to-list()`: casts value as list
 * `sl-to-map()`: casts list as map using indexes as keys
 * `sl-to-string()`: casts list as string (JS `.join()`)
 * `sl-union()`: returns a list of values from given lists minus duplicates
-* `sl-walk()`: applies a function to every item of list
+* `sl-walk()`: applies a function to every value of list
 
 If you feel like an explorer, you can have a look at the code [here](https://github.com/Team-Sass/SassyLists/tree/master/stylesheets).
 
