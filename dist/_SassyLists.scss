@@ -136,6 +136,7 @@
   @return not not index($list, $value);
 }
 
+// @requires sl-contain
 // @alias sl-contain
 
 @function sl-include($list, $value) {
@@ -170,11 +171,12 @@
 //
 // @requires sl-is-empty
 // @requires sl-is-single
+// @requires sl-has-multiple-values
 // 
 // @return {String}
 
 @function sl-debug($list, $pre: false, $level: 1) {
-  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single, sl-has-multiple-values) == true { @return null; }
 
   @if sl-is-empty($list) {
     @return "( )";
@@ -199,7 +201,7 @@
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
 
-    @if not sl-is-empty($item) and not sl-is-single($item) {
+    @if sl-has-multiple-values($item) {
       $result: $result
         + if($pre, "(list: " + length($item) + ") ", "")
         + sl-debug($item, $pre, $level + 1);
@@ -302,7 +304,7 @@
   @while $running {
     $index: str-index($remaining, $delimiter);
     
-    @if not $index or $index == 0 {
+    @if not $index {
       $running: false;
     }
 
@@ -356,6 +358,7 @@
   @return nth($list, 1);
 }
 
+// @requires sl-first
 // @alias sl-first
 
 @function sl-head($list) {
@@ -367,13 +370,13 @@
 //
 // @param {List} $list - list to flatten
 // 
-// @requires sl-is-empty
+// @requires sl-has-multiple-values
 // @requires sl-is-single
 // 
 // @return {List}
 
 @function sl-flatten($list) {
-  @if sl-missing-dependencies(sl-is-single, sl-is-empty) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-single, sl-has-multiple-values) == true { @return null; }
 
   $result: ();
 
@@ -382,7 +385,7 @@
   }
 
   @each $item in $list {
-    @if not sl-is-empty($item) and not sl-is-single($item) {
+    @if sl-has-multiple-values($item) {
       $flatten: sl-flatten($item);
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
@@ -397,6 +400,7 @@
   @return $result;
 }
 
+// @requires sl-flatten
 // @alias sl-flatten
 
 @function sl-unfold($list) {
@@ -564,6 +568,7 @@
   @return $list == sl-reverse($list);
 }
 
+// @requires sl-is-symmetrical
 // @alias sl-is-symmetrical
 
 @function sl-is-mirror($list) {
@@ -621,20 +626,19 @@
 //
 // @throws $value is not a number for `loop`.
 //
-// @requires sl-is-empty
-// @requires sl-is-single
+// @requires sl-has-multiple-values
 // 
 // @return {List | Null}
 
 @function sl-loop($list, $value: 1) {
-  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
 
   @if type-of($value) != "number" {
     @warn "#{inspect($value)} is not a number for `sl-loop`.";
     @return null;
   }
 
-  @if sl-is-empty($list) or sl-is-single($list) {
+  @if not sl-has-multiple-values($list) {
     @return $list;
   }
 
@@ -648,6 +652,7 @@
   @return $result;
 }
 
+// @requires sl-loop
 // @alias sl-loop
 
 @function sl-shift-indexes($list, $value: 1) {
@@ -700,6 +705,7 @@
   @return $result;
 }
 
+// @requires sl-purge
 // @alias sl-purge
 
 @function sl-clean($list) {
@@ -729,12 +735,14 @@
   @return nth($list, random(length($list) - 1) + 1);
 }
 
+// @requires sl-random-value
 // @alias sl-random-value
 
 @function sl-roll($list) {
   @return sl-random-value($list);
 }
 
+// @requires sl-random-value
 // @alias sl-random-value
 
 @function sl-luck($list) {
@@ -800,10 +808,11 @@
   @return $result;
 }
 
+// @requires sl-remove-duplicates
 // @alias sl-remove-duplicates
 
-@function sl-unique($list, $recursive: false) {
-  @return sl-remove-duplicates($list, $recursive);
+@function sl-unique($list) {
+  @return sl-remove-duplicates($list);
 }
 // Removes value from `$list` at index `$index`.
 //
@@ -822,6 +831,7 @@
   @return sl-replace-nth($list, $index, "");
 }
 
+// @requires sl-remove-nth
 // @alias sl-remove-nth
 
 @function sl-without-nth($list, $index) {
@@ -845,6 +855,7 @@
   @return sl-replace($list, $value, null);
 }
 
+// @requires sl-remove
 // @alias sl-remove
 
 @function sl-without($list, $value) {
@@ -935,6 +946,7 @@
   @return $list;
 }
 
+// @requires sl-reverse
 // @alias sl-reverse
 
 @function sl-mirror($list) {
@@ -965,6 +977,7 @@
   @return $list;
 }
 
+// @requires sl-shuffle
 // @alias sl-shuffle
 
 @function sl-randomize($list) {
@@ -1030,6 +1043,7 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-sort
 //
 // @requires sl-str-compare
+// @requires sl-has-multiple-values
 //
 // @param {List} $list  - list to sort
 // @param {List} $order - order to respect
@@ -1037,31 +1051,36 @@
 // @return {List}
 
 @function sl-sort($list, $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z") {
-  @if sl-missing-dependencies(sl-str-compare) == true { @return null; }
+  @if sl-missing-dependencies(sl-str-compare, sl-has-multiple-values) == true { @return null; }
 
   $less:  ();
   $equal: ();
   $large: ();
-  $length: length($list);
 
-  @if $length > 1 {
-    $seed: nth($list, ceil($length / 2));
+  @if sl-has-multiple-values($list) {
+    $seed: nth($list, ceil(length($list) / 2));
+    
     @each $item in $list {
       @if $item == $seed {
         $equal: append($equal, $item, list-separator($list));
       }
+
       @else if sl-str-compare($item, $seed, $order) {
         $less: append($less, $item, list-separator($list));
       }
+      
       @else if not sl-str-compare($item, $seed, $order) {
         $large: append($large, $item, list-separator($list));
       }
     }
+
     @return join(join(sl-sort($less, $order), $equal), sl-sort($large, $order));
   }
+
   @return $list;
 }
 
+// @requires sl-sort
 // @alias sl-sort
 
 @function sl-order($list) {
@@ -1136,6 +1155,7 @@
   @return sl-slice($list, 2);
 }
 
+// @requires sl-tail
 // @alias sl-tail
 
 @function sl-rest($list) {
@@ -1208,25 +1228,28 @@
 // @param {List}   $list      - list to cast
 // @param {String} $glue ('') - value to use as a join string
 //
-// @requires sl-is-empty
-// @requires sl-is-single
+// @requires sl-has-multiple-values
+// @requires sl-last
 // 
 // @return {String}
 
 @function sl-to-string($list, $glue: '') {
-  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
 
   $result: '';
-  $length: length($list);
 
-  @for $i from 1 through $length {
-    $item: nth($list, $i);
-    $result: $result + if(not sl-is-empty($item) and not sl-is-single($item), sl-to-string($item, $glue), $item + $glue);
+  @each $item in $list {
+    $result: $result + if(sl-has-multiple-values($item), sl-to-string($item, $glue), $item);
+
+    @if $item != sl-last($list) {
+      $result: $result + $glue;
+    }
   }
 
-  @return quote(str-slice($result, 1, str-length($glue) * -1 - 1));
+  @return quote($result);
 }
 
+// @requires sl-to-string
 // @alias sl-to-string
 
 @function sl-stringify($list, $glue: '') {
@@ -1267,18 +1290,22 @@
 // @param {String}  $function - function to call on each value
 // @param {ArgList} $args     - optional function arguments
 //
-// @throws There is no $function function.
+// @throws There is no `$function` function for `sl-walk`.
+//
+// @requires sl-to-map
 //
 // @return {List | Null}
 
 @function sl-walk($list, $function, $args...) {
+  @if sl-missing-dependencies(sl-to-map) == true { @return null; }
+  
   @if not function-exists($function) {
-    @warn "There is no `#{$function}` function.";
+    @warn "There is no `#{$function}` function for `sl-walk`.";
     @return null;
   }
 
-  @for $i from 1 through length($list) {
-    $list: set-nth($list, $i, call($function, nth($list, $i), $args...));
+  @each $index, $value in sl-to-map($list) {
+  	$list: set-nth($list, $index, call($function, $value, $args...));
   }
   
   @return $list;

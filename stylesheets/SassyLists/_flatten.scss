@@ -4,13 +4,13 @@
 //
 // @param {List} $list - list to flatten
 // 
-// @requires sl-is-empty
+// @requires sl-has-multiple-values
 // @requires sl-is-single
 // 
 // @return {List}
 
 @function sl-flatten($list) {
-  @if sl-missing-dependencies(sl-is-single, sl-is-empty) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-single, sl-has-multiple-values) == true { @return null; }
 
   $result: ();
 
@@ -19,7 +19,7 @@
   }
 
   @each $item in $list {
-    @if not sl-is-empty($item) and not sl-is-single($item) {
+    @if sl-has-multiple-values($item) {
       $flatten: sl-flatten($item);
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
@@ -34,6 +34,7 @@
   @return $result;
 }
 
+// @requires sl-flatten
 // @alias sl-flatten
 
 @function sl-unfold($list) {

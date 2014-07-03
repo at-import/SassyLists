@@ -14,6 +14,7 @@
   @return $list == sl-reverse($list);
 }
 
+// @requires sl-is-symmetrical
 // @alias sl-is-symmetrical
 
 @function sl-is-mirror($list) {

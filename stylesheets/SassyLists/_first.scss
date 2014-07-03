@@ -21,6 +21,7 @@
   @return nth($list, 1);
 }
 
+// @requires sl-first
 // @alias sl-first
 
 @function sl-head($list) {

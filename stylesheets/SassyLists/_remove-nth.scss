@@ -15,6 +15,7 @@
   @return sl-replace-nth($list, $index, "");
 }
 
+// @requires sl-remove-nth
 // @alias sl-remove-nth
 
 @function sl-without-nth($list, $index) {

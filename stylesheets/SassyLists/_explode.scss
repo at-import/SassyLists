@@ -38,7 +38,7 @@
   @while $running {
     $index: str-index($remaining, $delimiter);
     
-    @if not $index or $index == 0 {
+    @if not $index {
       $running: false;
     }
 

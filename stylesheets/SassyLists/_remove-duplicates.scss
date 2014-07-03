@@ -18,8 +18,9 @@
   @return $result;
 }
 
+// @requires sl-remove-duplicates
 // @alias sl-remove-duplicates
 
-@function sl-unique($list, $recursive: false) {
-  @return sl-remove-duplicates($list, $recursive);
+@function sl-unique($list) {
+  @return sl-remove-duplicates($list);
 }

@@ -16,6 +16,7 @@
   @return sl-replace($list, $value, null);
 }
 
+// @requires sl-remove
 // @alias sl-remove
 
 @function sl-without($list, $value) {

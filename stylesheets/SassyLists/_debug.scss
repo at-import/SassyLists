@@ -8,11 +8,12 @@
 //
 // @requires sl-is-empty
 // @requires sl-is-single
+// @requires sl-has-multiple-values
 // 
 // @return {String}
 
 @function sl-debug($list, $pre: false, $level: 1) {
-  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single, sl-has-multiple-values) == true { @return null; }
 
   @if sl-is-empty($list) {
     @return "( )";
@@ -37,7 +38,7 @@
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
 
-    @if not sl-is-empty($item) and not sl-is-single($item) {
+    @if sl-has-multiple-values($item) {
       $result: $result
         + if($pre, "(list: " + length($item) + ") ", "")
         + sl-debug($item, $pre, $level + 1);

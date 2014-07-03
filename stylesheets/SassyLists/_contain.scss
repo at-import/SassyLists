@@ -11,6 +11,7 @@
   @return not not index($list, $value);
 }
 
+// @requires sl-contain
 // @alias sl-contain
 
 @function sl-include($list, $value) {
