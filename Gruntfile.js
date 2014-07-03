@@ -36,6 +36,7 @@ module.exports = function(grunt) {
           '<%= dir.src %>/SassyLists/_insert-nth.scss',
           '<%= dir.src %>/SassyLists/_intersection.scss',
           '<%= dir.src %>/SassyLists/_is-empty.scss',
+          '<%= dir.src %>/SassyLists/_is-single.scss',
           '<%= dir.src %>/SassyLists/_is-symmetrical.scss',
           '<%= dir.src %>/SassyLists/_last-index.scss',
           '<%= dir.src %>/SassyLists/_last.scss',

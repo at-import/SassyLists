@@ -3,18 +3,23 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#flatten
 //
 // @param {List} $list - list to flatten
-//
+// 
+// @requires sl-is-empty
+// @requires sl-is-single
+// 
 // @return {List}
 
 @function sl-flatten($list) {
+  @if sl-missing-dependencies(sl-is-single, sl-is-empty) == true { @return null; }
+
   $result: ();
 
-  @if length($list) == 1 {
+  @if sl-is-single($list) {
     @return $list;
   }
 
   @each $item in $list {
-    @if length($item) > 1 {
+    @if not sl-is-empty($item) and not sl-is-single($item) {
       $flatten: sl-flatten($item);
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));

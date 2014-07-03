@@ -168,14 +168,19 @@
 // @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
 // @param {Number} $level (1)     - internal variable for recursion
 //
+// @requires sl-is-empty
+// @requires sl-is-single
+// 
 // @return {String}
 
 @function sl-debug($list, $pre: false, $level: 1) {
-  @if length($list) == 0 {
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @return "( )";
   }
 
-  @if length($list) == 1 {
+  @if sl-is-single($list) {
     @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
   }
 
@@ -194,7 +199,7 @@
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
 
-    @if length($item) > 1 {
+    @if not sl-is-empty($item) and not sl-is-single($item) {
       $result: $result
         + if($pre, "(list: " + length($item) + ") ", "")
         + sl-debug($item, $pre, $level + 1);
@@ -205,7 +210,7 @@
         $result: $result + "(" + type-of($item) + ") ";
       }
 
-      @if length($item) == 0 {
+      @if sl-is-empty($item) {
         $result: $result + "( )";
       }
 
@@ -336,10 +341,14 @@
 //
 // @throws Cannot find first item of empty list.
 //
+// @requires sl-is-empty
+// 
 // @return {*}
 
 @function sl-first($list) {
-  @if length($list) == 0 {
+  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @warn "Cannot find first item of empty list.";
     @return null;
   }
@@ -357,18 +366,23 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#flatten
 //
 // @param {List} $list - list to flatten
-//
+// 
+// @requires sl-is-empty
+// @requires sl-is-single
+// 
 // @return {List}
 
 @function sl-flatten($list) {
+  @if sl-missing-dependencies(sl-is-single, sl-is-empty) == true { @return null; }
+
   $result: ();
 
-  @if length($list) == 1 {
+  @if sl-is-single($list) {
     @return $list;
   }
 
   @each $item in $list {
-    @if length($item) > 1 {
+    @if not sl-is-empty($item) and not sl-is-single($item) {
       $flatten: sl-flatten($item);
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
@@ -442,6 +456,8 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
 //
 // @requires sl-remove-duplicates
+// @requires sl-first
+// @requires sl-is-single
 //
 // @param {List}    $list  - first list
 // @param {ArgList} $lists - other lists
@@ -449,7 +465,7 @@
 // @return {List}
 
 @function sl-intersection($list, $lists...) {
-  @if sl-missing-dependencies(sl-remove-duplicates) == true { @return null; }
+  @if sl-missing-dependencies(sl-remove-duplicates, sl-first, sl-is-single) == true { @return null; }
 
   $result: $list;
 
@@ -466,7 +482,8 @@
   }
 
   $result: sl-remove-duplicates($result);
-  @return if(length($result) == 1, nth($result, 1), $result);
+  
+  @return if(sl-is-single($result), sl-first($result), $result);
 }
 // Tests whether `$list` is empty.
 //
@@ -486,6 +503,18 @@
 @function sl-empty($list) {
   @return sl-is-empty($list);
 }
+// Tests whether `$list` has a single item.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single
+//
+// @param {List} $list - list to run test against
+//
+// @return {Bool}
+
+@function sl-is-single($list) {
+  @return length($list) == 1;
+}
+
 // Checks whether `$list` is symmetrical.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-is-symmetrical
@@ -534,10 +563,14 @@
 //
 // @throws Cannot find last item of empty list.
 //
+// @requires sl-is-empty
+// 
 // @return {*}
 
 @function sl-last($list) {
-  @if length($list) == 0 {
+  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @warn "Cannot find last item of empty list.";
     @return null;
   }
@@ -555,15 +588,20 @@
 //
 // @throws $value is not a number for `loop`.
 //
+// @requires sl-is-empty
+// @requires sl-is-single
+// 
 // @return {List | Null}
 
 @function sl-loop($list, $value: 1) {
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+
   @if type-of($value) != "number" {
     @warn "#{inspect($value)} is not a number for `sl-loop`.";
     @return null;
   }
 
-  @if length($list) < 2 {
+  @if sl-is-empty($list) or sl-is-single($list) {
     @return $list;
   }
 
@@ -643,10 +681,14 @@
 //
 // @throws Cannot find a random value in an empty list.
 //
+// @requires sl-is-empty
+// 
 // @return {*}
 
 @function sl-random-value($list) {
-  @if length($list) == 0 {
+  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @warn "Cannot find a random value in an empty list.";
     @return null;
   }
@@ -845,7 +887,7 @@
 
 @function sl-reverse($list) {
   $length: length($list);
-  $end: floor($length/2);
+  $end: floor($length / 2);
 
   @if $length < 2 {
     @return $list;
@@ -1103,7 +1145,7 @@
 // @return {Map | Null}
 
 @function sl-to-map($list) {
-  @if sl-missing-dependencies(sl-range) == true { @return null; }
+  @if sl-missing-dependencies(sl-range, sl-is-empty) == true { @return null; }
 
   @if sl-is-empty($list) {
     @warn "List cannot be empty for `sl-to-map`.";
@@ -1133,15 +1175,20 @@
 // @param {List}   $list      - list to cast
 // @param {String} $glue ('') - value to use as a join string
 //
+// @requires sl-is-empty
+// @requires sl-is-single
+// 
 // @return {String}
 
 @function sl-to-string($list, $glue: '') {
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+
   $result: '';
   $length: length($list);
 
   @for $i from 1 through $length {
     $item: nth($list, $i);
-    $result: $result + if(length($item) > 1, sl-to-string($item, $glue), $item + $glue);
+    $result: $result + if(not sl-is-empty($item) and not sl-is-single($item), sl-to-string($item, $glue), $item + $glue);
   }
 
   @return quote(str-slice($result, 1, str-length($glue) * -1 - 1));
@@ -1158,17 +1205,19 @@
 //
 // @requires sl-flatten
 // @requires sl-remove-duplicates
+// @requires sl-is-single
+// @requires sl-first
 //
 // @param {ArgList} $lists - lists to unify
 //
 // @return {List}
 
 @function sl-union($lists...) {
-  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates) == true { @return null; }
+  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates, sl-is-single, sl-first) == true { @return null; }
 
   $result: sl-remove-duplicates(sl-flatten($lists));
   
-  @return if(length($result) == 1, nth($result, 1), $result);
+  @return if(sl-is-single($result), sl-first($result), $result);
 }
 
 // @alias sl-union

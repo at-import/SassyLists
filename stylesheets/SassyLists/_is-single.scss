@@ -1,0 +1,11 @@
+// Tests whether `$list` has a single item.
+//
+// @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single
+//
+// @param {List} $list - list to run test against
+//
+// @return {Bool}
+
+@function sl-is-single($list) {
+  @return length($list) == 1;
+}

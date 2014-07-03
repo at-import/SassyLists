@@ -1,0 +1,16 @@
+@include describe("The sl-is-single function") {
+  @include it("should return true if the list has a single item") {
+    @include should(expect( sl-is-single( a )), to( equal( true ) ));
+    @include should(expect( sl-is-single( 42 )), to( equal( true ) ));
+  }
+
+  @include it("should return false if there are more than one item in list") {
+    @include should(expect( sl-is-single(1 2 3) ), to( equal( false ) ));
+    @include should(expect( sl-is-single(' ' ' ') ), to( equal( false ) ));
+    @include should(expect( sl-is-single(0 0) ), to( equal( false ) ));
+  }
+
+  @include it("should return false if list is empty") {
+    @include should(expect( sl-is-single( () ) ), to( equal( false ) ));
+  }
+}

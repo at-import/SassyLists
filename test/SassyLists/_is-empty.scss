@@ -1,11 +1,11 @@
-@include describe("The sl-empty function") {
+@include describe("The sl-is-empty function") {
   @include it("should return true if there list is empty") {
-    @include should(expect( sl-empty(()) ), to( equal( true ) ));
+    @include should(expect( sl-is-empty(()) ), to( equal( true ) ));
   }
 
   @include it("should return false if there are items in list") {
-    @include should(expect( sl-empty(1 2 3) ), to( equal( false ) ));
-    @include should(expect( sl-empty(' ' ' ') ), to( equal( false ) ));
-    @include should(expect( sl-empty(0 0) ), to( equal( false ) ));
+    @include should(expect( sl-is-empty(1 2 3) ), to( equal( false ) ));
+    @include should(expect( sl-is-empty(' ' ' ') ), to( equal( false ) ));
+    @include should(expect( sl-is-empty(0 0) ), to( equal( false ) ));
   }
 }

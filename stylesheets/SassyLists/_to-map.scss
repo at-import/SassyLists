@@ -16,7 +16,7 @@
 // @return {Map | Null}
 
 @function sl-to-map($list) {
-  @if sl-missing-dependencies(sl-range) == true { @return null; }
+  @if sl-missing-dependencies(sl-range, sl-is-empty) == true { @return null; }
 
   @if sl-is-empty($list) {
     @warn "List cannot be empty for `sl-to-map`.";

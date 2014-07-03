@@ -6,14 +6,19 @@
 // @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
 // @param {Number} $level (1)     - internal variable for recursion
 //
+// @requires sl-is-empty
+// @requires sl-is-single
+// 
 // @return {String}
 
 @function sl-debug($list, $pre: false, $level: 1) {
-  @if length($list) == 0 {
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @return "( )";
   }
 
-  @if length($list) == 1 {
+  @if sl-is-single($list) {
     @return if($pre,  "(" + type-of($list) + ") ", "") + $list;
   }
 
@@ -32,7 +37,7 @@
     $item: nth($list, $i);
     $result: $result + if($pre, $indent + $tab, " ");
 
-    @if length($item) > 1 {
+    @if not sl-is-empty($item) and not sl-is-single($item) {
       $result: $result
         + if($pre, "(list: " + length($item) + ") ", "")
         + sl-debug($item, $pre, $level + 1);
@@ -43,7 +48,7 @@
         $result: $result + "(" + type-of($item) + ") ";
       }
 
-      @if length($item) == 0 {
+      @if sl-is-empty($item) {
         $result: $result + "( )";
       }
 

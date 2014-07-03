@@ -9,15 +9,20 @@
 //
 // @throws $value is not a number for `loop`.
 //
+// @requires sl-is-empty
+// @requires sl-is-single
+// 
 // @return {List | Null}
 
 @function sl-loop($list, $value: 1) {
+  @if sl-missing-dependencies(sl-is-empty, sl-is-single) == true { @return null; }
+
   @if type-of($value) != "number" {
     @warn "#{inspect($value)} is not a number for `sl-loop`.";
     @return null;
   }
 
-  @if length($list) < 2 {
+  @if sl-is-empty($list) or sl-is-single($list) {
     @return $list;
   }
 

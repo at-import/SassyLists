@@ -6,10 +6,14 @@
 //
 // @throws Cannot find last item of empty list.
 //
+// @requires sl-is-empty
+// 
 // @return {*}
 
 @function sl-last($list) {
-  @if length($list) == 0 {
+  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
+
+  @if sl-is-empty($list) {
     @warn "Cannot find last item of empty list.";
     @return null;
   }

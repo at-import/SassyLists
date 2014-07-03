@@ -26,6 +26,7 @@ Here is a powerful toolbox providing you all the functions you need to manipulat
 * `sl-insert-nth()`: inserts value at index
 * `sl-intersection()`: returns a list of shared values across all given lists
 * `sl-is-empty()`: checks if list is empty
+* `sl-is-single()`: checks if list has a single item
 * `sl-is-symmetrical()`: checks if list is symmetrical
 * `sl-last()`: returns last item in list
 * `sl-last-index()`: returns last index of value in list
