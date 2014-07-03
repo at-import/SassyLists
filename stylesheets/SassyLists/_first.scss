@@ -11,8 +11,6 @@
 // @return {*}
 
 @function sl-first($list) {
-  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
-
   @if sl-is-empty($list) {
     @warn "Cannot find first item of empty list.";
     @return null;

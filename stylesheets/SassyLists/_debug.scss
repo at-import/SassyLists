@@ -13,8 +13,6 @@
 // @return {String}
 
 @function sl-debug($list, $pre: false, $level: 1) {
-  @if sl-missing-dependencies(sl-is-empty, sl-is-single, sl-has-multiple-values) == true { @return null; }
-
   @if sl-is-empty($list) {
     @return "( )";
   }

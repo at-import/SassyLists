@@ -9,8 +9,6 @@
 // @return {List | Null}
 
 @function sl-tail($list) {
-  @if sl-missing-dependencies(sl-slice) == true { @return null; }
-
   @return sl-slice($list, 2);
 }
 

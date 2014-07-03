@@ -11,8 +11,6 @@
 // @return {List}
 
 @function sl-prepend($list, $value) {
-  @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
-  
   @if sl-is-true($value) {
   	$list: join($value, $list, list-separator($list));
   }

@@ -9,8 +9,6 @@
 // @return {List}
 
 @function sl-reverse($list) {
-  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
-
   $length: length($list);
   $end: floor($length / 2);
 

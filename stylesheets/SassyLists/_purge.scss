@@ -10,8 +10,6 @@
 // @return {List}
 
 @function sl-purge($list) {
-  @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
-  
   $result: ();
 
   @each $item in $list {

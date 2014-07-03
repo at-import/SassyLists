@@ -11,8 +11,6 @@
 // @return {String}
 
 @function sl-to-string($list, $glue: '') {
-  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
-
   $result: '';
 
   @each $item in $list {

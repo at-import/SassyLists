@@ -9,8 +9,6 @@
 // @return {List}
 
 @function sl-shuffle($list) {
-  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
-
   $length: length($list);
 
   @if $length < 2 {

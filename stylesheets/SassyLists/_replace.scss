@@ -13,8 +13,6 @@
 // @return {List}
 
 @function sl-replace($list, $old, $value) {
-  @if sl-missing-dependencies(sl-is-true, sl-purge, sl-to-list) == true { @return null; }
-
   $running: true;
 
   @while $running {

@@ -14,8 +14,6 @@
 // @return {List | Null}
 
 @function sl-insert-nth($list, $index, $value) {
-  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
-
   $length: length($list);
 
   @if type-of($index) != "number" {

@@ -11,8 +11,6 @@
 // @return {List}
 
 @function sl-intersection($list, $lists...) {
-  @if sl-missing-dependencies(sl-remove-duplicates) == true { @return null; }
-
   $result: $list;
 
   @each $list in $lists {

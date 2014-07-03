@@ -10,8 +10,6 @@
 // @return {List | Null}
 
 @function sl-remove-nth($list, $index) {
-  @if sl-missing-dependencies(sl-replace-nth) == true { @return null; }
-
   @return sl-replace-nth($list, $index, "");
 }
 

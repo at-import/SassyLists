@@ -12,8 +12,6 @@
 // @return {List | Null}
 
 @function sl-chunk($list, $size) {
-  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
-
   @if type-of($size) != "number" {
     @warn "#{inspect($size)} is not a number for `sl-chunk`.";
     @return null;

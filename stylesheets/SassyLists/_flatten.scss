@@ -9,8 +9,6 @@
 // @return {List}
 
 @function sl-flatten($list) {
-  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
-
   $result: ();
 
   @each $item in $list {

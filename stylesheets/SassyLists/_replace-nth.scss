@@ -15,8 +15,6 @@
 // @return {List | Null}
 
 @function sl-replace-nth($list, $index, $value) {
-  @if sl-missing-dependencies(sl-purge, sl-is-true, sl-to-list) == true { @return null; }
-
   @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
     @warn "Invalid index (#{inspect($index)}) for `sl-replace-nth`.";
     @return null;
