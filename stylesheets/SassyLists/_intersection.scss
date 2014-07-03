@@ -11,7 +11,7 @@
 // @return {List}
 
 @function sl-intersection($list, $lists...) {
-  @if sl-missing-dependencies(sl-remove-duplicates, sl-to-list) == true { @return null; }
+  @if sl-missing-dependencies(sl-remove-duplicates) == true { @return null; }
 
   $result: $list;
 
@@ -27,7 +27,5 @@
     $result: $temp;
   }
 
-  $result: sl-remove-duplicates($result);
-  
-  @return sl-to-list($result);
+  @return sl-remove-duplicates($result);
 }

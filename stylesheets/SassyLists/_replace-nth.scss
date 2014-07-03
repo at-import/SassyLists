@@ -23,5 +23,7 @@
   }
 
   $list: set-nth($list, $index, $value);
-  @return sl-to-list(if(not sl-is-true($value), sl-purge($list), $list));
+  $list: if(sl-is-true($value), $list, sl-purge($list));
+  
+  @return sl-to-list($list);
 }

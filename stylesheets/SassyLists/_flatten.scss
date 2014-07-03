@@ -16,6 +16,7 @@
   @each $item in $list {
     @if sl-has-multiple-values($item) {
       $flatten: sl-flatten($item);
+      
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
       }

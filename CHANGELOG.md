@@ -4,6 +4,7 @@
     * adding `sl-range()`, `sl-is-single()`, `sl-has-values()`, `sl-has-multiple-values()`
     * updating `sl-sum()` and `sl-to-map()`
     * making the whole library depending on most of the previously created helpers
+    * making most functions returning `list` type, even when returning a single value
 * `2.1.1`: fixing a tiny issue with dependency checker in `preprend()`
 * `2.1.0`: adding `sl-is-empty()`, `sl-to-list()` and `sl-comma-list()`
 * `2.0.0`: 

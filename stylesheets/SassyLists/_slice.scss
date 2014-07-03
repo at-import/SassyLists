@@ -12,13 +12,9 @@
 // @throws Start index has to be lesser than or equal to list length for `sl-slice`.
 // @throws End index has to be lesser than or equal to list length for `sl-slice`.
 //
-// @require sl-to-list
-//
 // @return {List | Null}
 
 @function sl-slice($list, $start: 1, $end: length($list)) {
-  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
-
   @if type-of($start) != "number" or type-of($end) != "number" {
     @warn "List indexes #{$start} and #{$end} must be numbers for `sl-slice`.";
     @return null;
@@ -44,15 +40,11 @@
     @return null;
   }
 
-  @if $start == $end {
-    @return nth($list, $start);
-  }
-
   $result: ();
   
   @for $i from $start through $end {
     $result: append($result, nth($list, $i), list-separator($list));
   }
 
-  @return sl-to-list($result);
+  @return $result;
 }
