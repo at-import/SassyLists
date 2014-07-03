@@ -1,5 +1,6 @@
 # Changelog
 
+* `2.2.1`: improving `sl-to-list()`'s performance
 * `2.2.0`: 
     * adding `sl-range()`, `sl-is-single()`, `sl-has-values()`, `sl-has-multiple-values()`
     * updating `sl-sum()` and `sl-to-map()`

@@ -9,13 +9,7 @@
 
 @function sl-to-list($value, $separator: list-separator($value)) {
   @if type-of($value) != "list" or list-separator($value) != $separator {
-    $new-list: if($separator == "comma", sl-comma-list(), ());
-
-    @each $item in $value {
-      $new-list: append($new-list, $item, $separator);
-    }
-
-    @return $new-list;
+    @return join((), $value, $separator);
   }
 
   @return $value;
