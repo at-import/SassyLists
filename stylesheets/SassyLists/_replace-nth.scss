@@ -17,7 +17,7 @@
   @if sl-missing-dependencies(sl-purge, sl-is-true) == true { @return null; }
 
   @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
-    @warn "Invalid index (#{$index}) for `sl-replace-nth`.";
+    @warn "Invalid index (#{inspect($index)}) for `sl-replace-nth`.";
     @return null;
   }
 

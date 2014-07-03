@@ -11,7 +11,7 @@
 
 @function sl-chunk($list, $size) {
   @if type-of($size) != "number" {
-    @warn "#{$size} is not a number for `sl-chunk`.";
+    @warn "#{inspect($size)} is not a number for `sl-chunk`.";
     @return null;
   }
 

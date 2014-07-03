@@ -18,8 +18,8 @@
 
   $length: length($list);
 
-  @if type-of($index) != number {
-    @warn "List index #{$index} is not a number for `sl-insert-nth`.";
+  @if type-of($index) != "number" {
+    @warn "List index #{inspect($index)} is not a number for `sl-insert-nth`.";
     @return null;
   }
 

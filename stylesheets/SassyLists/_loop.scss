@@ -13,7 +13,7 @@
 
 @function sl-loop($list, $value: 1) {
   @if type-of($value) != "number" {
-    @warn "#{$value} is not a number for `sl-loop`.";
+    @warn "#{inspect($value)} is not a number for `sl-loop`.";
     @return null;
   }
 
