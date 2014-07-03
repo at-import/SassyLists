@@ -49,8 +49,8 @@
 
     @else {
       $slice: str-slice($remaining, 1, $index - 1);
-      $result: append($result, $slice);
-      $remaining: str-slice($remaining, $index + str-length($delimiter), $separator);
+      $result: append($result, $slice, $separator);
+      $remaining: str-slice($remaining, $index + str-length($delimiter));
     }
   }
 

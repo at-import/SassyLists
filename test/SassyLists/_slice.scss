@@ -9,9 +9,9 @@
   }
 
   @include it("should return a single value if start and end are the same") {
-  	@include should(expect(sl-slice("a" "b" "c", 1, 1)), to(equal("a")));
-  	@include should(expect(sl-slice("a" "b" "c", 2, 2)), to(equal("b")));
-  	@include should(expect(sl-slice("a" "b" "c", 3, 3)), to(equal("c")));
+  	@include should(expect(sl-slice("a" "b" "c", 1, 1)), to(equal(sl-to-list("a"))));
+  	@include should(expect(sl-slice("a" "b" "c", 2, 2)), to(equal(sl-to-list("b"))));
+  	@include should(expect(sl-slice("a" "b" "c", 3, 3)), to(equal(sl-to-list("c"))));
   }
 
 

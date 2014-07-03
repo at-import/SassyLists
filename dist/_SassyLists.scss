@@ -81,16 +81,20 @@
 //
 // @throws $size is not a number for `sl-chunk`.
 //
+// @requires sl-to-list
+//
 // @return {List | Null}
 
 @function sl-chunk($list, $size) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   @if type-of($size) != "number" {
     @warn "#{inspect($size)} is not a number for `sl-chunk`.";
     @return null;
   }
 
   @if $size >= length($list) {
-    @return $list;
+    @return sl-to-list($list);
   }
 
   $index: 1;
@@ -104,8 +108,16 @@
     @for $j from 1 through $size {
       @if $index <= $length {
         $is-orphan: $length % $size == 1 and $j == 1;
-        $tmp: if($is-orphan, nth($list, $index), append($tmp, nth($list, $index)));
+        
+        @if $is-orphan {
+          $tmp: nth($list, $index);
+        }
+
+        @else {
+          $tmp: append($tmp, nth($list, $index), list-separator($list));
+        }
       }
+
       $index: $index + 1;
     }
 
@@ -268,15 +280,16 @@
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
 //
-// @param {String} $string         - string to explode
-// @param {String} $separator ('') - string to use as a delimiter
+// @param {String} $string              - string to explode
+// @param {String} $delimiter ('')      - string to use as a delimiter
+// @param {String} $separator ('space') - list separator
 //
 // @throws $string is not a string for `sl-explode`.
 // @throws $delimiter is not a string for `sl-explode`.
 //
 // @return {List | Null}
 
-@function sl-explode($string, $delimiter: '') {
+@function sl-explode($string, $delimiter: '', $separator: "space") {
   @if type-of($string) != "string" {
     @warn "`sl-explode` function expecting a string; #{type-of($string)} given.";
     @return null;
@@ -289,6 +302,10 @@
 
   $result: ();
   $length: str-length($string);
+  
+  @if not index("space" "comma", $separator) {
+    $separator: "space";
+  }
 
   @if str-length($delimiter) == 0 {
     @for $i from 1 through $length {
@@ -310,12 +327,12 @@
 
     @else {
       $slice: str-slice($remaining, 1, $index - 1);
-      $result: append($result, $slice);
+      $result: append($result, $slice, $separator);
       $remaining: str-slice($remaining, $index + str-length($delimiter));
     }
   }
 
-  @return append($result, $remaining);
+  @return append($result, $remaining, $separator);
 }
 // Tests whether all items from `$list` pass the test implemented by `$function`.
 //
@@ -382,6 +399,7 @@
   @each $item in $list {
     @if sl-has-multiple-values($item) {
       $flatten: sl-flatten($item);
+      
       @each $i in $flatten {
         $result: append($result, $i, list-separator($list));
       }
@@ -486,7 +504,7 @@
 // @return {List}
 
 @function sl-intersection($list, $lists...) {
-  @if sl-missing-dependencies(sl-remove-duplicates, sl-to-list) == true { @return null; }
+  @if sl-missing-dependencies(sl-remove-duplicates) == true { @return null; }
 
   $result: $list;
 
@@ -502,10 +520,9 @@
     $result: $temp;
   }
 
-  $result: sl-remove-duplicates($result);
-  
-  @return sl-to-list($result);
+  @return sl-remove-duplicates($result);
 }
+
 // Tests whether `$list` is empty.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-is-empty
@@ -875,7 +892,9 @@
   }
 
   $list: set-nth($list, $index, $value);
-  @return sl-to-list(if(not sl-is-true($value), sl-purge($list), $list));
+  $list: if(sl-is-true($value), $list, sl-purge($list));
+  
+  @return sl-to-list($list);
 }
 
 // Replaces `$old` by `$new` in `$list`.
@@ -910,7 +929,9 @@
 
   }
 
-  @return sl-to-list(if(not sl-is-true($value), sl-purge($list), $list));
+  $list: if(sl-is-true($value), $list, sl-purge($list));
+  
+  @return sl-to-list($list);
 }
 // Reverses the order of `$list`.
 //
@@ -997,13 +1018,9 @@
 // @throws Start index has to be lesser than or equal to list length for `sl-slice`.
 // @throws End index has to be lesser than or equal to list length for `sl-slice`.
 //
-// @require sl-to-list
-//
 // @return {List | Null}
 
 @function sl-slice($list, $start: 1, $end: length($list)) {
-  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
-
   @if type-of($start) != "number" or type-of($end) != "number" {
     @warn "List indexes #{$start} and #{$end} must be numbers for `sl-slice`.";
     @return null;
@@ -1029,17 +1046,13 @@
     @return null;
   }
 
-  @if $start == $end {
-    @return nth($list, $start);
-  }
-
   $result: ();
   
   @for $i from $start through $end {
     $result: append($result, nth($list, $i), list-separator($list));
   }
 
-  @return sl-to-list($result);
+  @return $result;
 }
 // Sorts values of `$list` using quick-sort algorithm using `$order`.
 //
