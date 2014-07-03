@@ -8,9 +8,7 @@
 // @return {Number | Null}
 
 @function sl-last-index($list, $value) {
-  $length: length($list);
-
-  @for $i from $length through 1 {
+  @for $i from length($list) through 1 {
     @if nth($list, $i) == $value {
       @return $i;
     }

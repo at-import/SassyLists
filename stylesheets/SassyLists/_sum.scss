@@ -2,25 +2,31 @@
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-sum
 //
-// @param {List}    $list          - list
+// @param {List} $list          - list
 // @param {Bool} $force (false) - enable/disable parseInt
 //
+// @requires sl-every
+// @requires sl-is-number
+//
+// @throws All items from list are not numbers for `sl-sum`.
+// 
 // @return {Number}
 
 @function sl-sum($list, $force: false) {
   $result: 0;
 
+  @if not sl-every($list, sl-is-number) {
+    @warn "All items from list are not numbers for `sl-sum`.";
+    @return null;
+  }
+
   @each $item in $list {
-    @if type-of($item) == number {
+    @if not unitless($item) and $force {
+      $item: $item / ($item * 0 + 1);
+    }
 
-      @if $force and not unitless($item) {
-        $item: $item / ($item * 0 + 1);
-      }
-
-      @if unitless($item) {
-        $result: $result + $item;
-      }
-
+    @if unitless($item) {
+      $result: $result + $item;
     }
   }
 

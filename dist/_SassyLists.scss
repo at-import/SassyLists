@@ -61,6 +61,17 @@
 @function sl-is-true($value) {
   @return if($value == null, false, $value and $value != null and $value != "" and $value != ());
 }
+// Check whether value is a number
+//
+// @access private
+//
+// @param {*} $value - value to run test against
+//
+// @return {Bool}
+
+@function sl-is-number($value) {
+  @return type-of($value) == "number";
+}
 // Chunks `$list` into `$size` large lists.
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
@@ -506,9 +517,7 @@
 // @return {Number | Null}
 
 @function sl-last-index($list, $value) {
-  $length: length($list);
-
-  @for $i from $length through 1 {
+  @for $i from length($list) through 1 {
     @if nth($list, $i) == $value {
       @return $i;
     }
@@ -642,7 +651,7 @@
     @return null;
   }
 
-  @return nth($list, random(length($list)));
+  @return nth($list, random(length($list) - 1) + 1);
 }
 
 // @alias sl-random-value
@@ -1006,31 +1015,36 @@
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-sum
 //
-// @param {List}    $list          - list
+// @param {List} $list          - list
 // @param {Bool} $force (false) - enable/disable parseInt
 //
+// @requires sl-every
+// @requires sl-is-number
+//
+// @throws All items from list are not numbers for `sl-sum`.
+// 
 // @return {Number}
 
 @function sl-sum($list, $force: false) {
   $result: 0;
 
+  @if not sl-every($list, sl-is-number) {
+    @warn "All items from list are not numbers for `sl-sum`.";
+    @return null;
+  }
+
   @each $item in $list {
-    @if type-of($item) == number {
+    @if not unitless($item) and $force {
+      $item: $item / ($item * 0 + 1);
+    }
 
-      @if $force and not unitless($item) {
-        $item: $item / ($item * 0 + 1);
-      }
-
-      @if unitless($item) {
-        $result: $result + $item;
-      }
-
+    @if unitless($item) {
+      $result: $result + $item;
     }
   }
 
   @return $result;
 }
-
 // Returns the tail of `$list`: all items except the first (head).
 //
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
@@ -1082,15 +1096,16 @@
 // @param {List} $list - list to turn into map
 //
 // @requires sl-range
+// @requires sl-is-empty
 // 
 // @throws List cannot be empty for `sl-to-map`.
 // 
 // @return {Map | Null}
 
 @function sl-to-map($list) {
-  @if sl-missing-dependencies(sl-range) { @return null; }
+  @if sl-missing-dependencies(sl-range) == true { @return null; }
 
-  @if length($list) == 0 {
+  @if sl-is-empty($list) {
     @warn "List cannot be empty for `sl-to-map`.";
     @return null;
   }

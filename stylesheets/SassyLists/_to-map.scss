@@ -9,15 +9,16 @@
 // @param {List} $list - list to turn into map
 //
 // @requires sl-range
+// @requires sl-is-empty
 // 
 // @throws List cannot be empty for `sl-to-map`.
 // 
 // @return {Map | Null}
 
 @function sl-to-map($list) {
-  @if sl-missing-dependencies(sl-range) { @return null; }
+  @if sl-missing-dependencies(sl-range) == true { @return null; }
 
-  @if length($list) == 0 {
+  @if sl-is-empty($list) {
     @warn "List cannot be empty for `sl-to-map`.";
     @return null;
   }
