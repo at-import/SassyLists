@@ -4,19 +4,17 @@
 //
 // @requires sl-flatten
 // @requires sl-remove-duplicates
-// @requires sl-is-single
-// @requires sl-first
 //
 // @param {ArgList} $lists - lists to unify
 //
 // @return {List}
 
 @function sl-union($lists...) {
-  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates, sl-is-single, sl-first) == true { @return null; }
+  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates) == true { @return null; }
 
   $result: sl-remove-duplicates(sl-flatten($lists));
   
-  @return if(sl-is-single($result), sl-first($result), $result);
+  @return $result;
 }
 
 // @alias sl-union

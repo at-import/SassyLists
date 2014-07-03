@@ -9,9 +9,9 @@
     @include should(expect( sl-intersection( "a" "d" "c", "b" "d" "e", "a" "c" "b" ) ), to( equal( () ) ));
   }
 
-  @include it("should return one item if all the items are the same") {
-    @include should(expect( sl-intersection(1 1, 1 1, 1 1) ), to( equal( 1 ) ));
-    @include should(expect( sl-intersection("a" "a", "a" "a", "a" "a") ), to( equal( "a" ) ));
+  @include it("should return a list of one item if all the items are the same") {
+    @include should(expect( sl-intersection(1 1, 1 1, 1 1) ), to( equal( sl-to-list(1) ) ));
+    @include should(expect( sl-intersection("a" "a", "a" "a", "a" "a") ), to( equal( sl-to-list("a") ) ));
   }
 
   @include it("should leave empty arrays alone") {

@@ -3,6 +3,7 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-prepend
 //
 // @requires sl-is-true
+// @requires sl-to-list
 //
 // @param {List} $list  - list to preprend value to
 // @param {*}    $value - value to prepend to the list
@@ -10,13 +11,11 @@
 // @return {List}
 
 @function sl-prepend($list, $value) {
-  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
   
   @if sl-is-true($value) {
-    @return join($value, $list, list-separator($list));
+  	$list: join($value, $list, list-separator($list));
   }
 
-  @else {
-    @return $list;
-  }
+  @return sl-to-list($list);
 }

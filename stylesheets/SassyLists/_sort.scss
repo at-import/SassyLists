@@ -4,6 +4,7 @@
 //
 // @requires sl-str-compare
 // @requires sl-has-multiple-values
+// @requires sl-to-list
 //
 // @param {List} $list  - list to sort
 // @param {List} $order - order to respect
@@ -11,7 +12,7 @@
 // @return {List}
 
 @function sl-sort($list, $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z") {
-  @if sl-missing-dependencies(sl-str-compare, sl-has-multiple-values) == true { @return null; }
+  @if sl-missing-dependencies(sl-str-compare, sl-has-multiple-values, sl-to-list) == true { @return null; }
 
   $less:  ();
   $equal: ();
@@ -37,7 +38,7 @@
     @return join(join(sl-sort($less, $order), $equal), sl-sort($large, $order));
   }
 
-  @return $list;
+  @return sl-to-list($list);
 }
 
 // @requires sl-sort

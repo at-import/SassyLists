@@ -4,13 +4,8 @@
 //
 // @param {List} $list - list to run test against
 //
-// @requires sl-has-values
-// @requires sl-is-single
-//
 // @return {Bool}
 
 @function sl-has-multiple-values($list) {
-  @if sl-missing-dependencies(sl-has-values, sl-is-single) == true { @return null; }
-
-  @return sl-has-values($list) and not sl-is-single($list);
+  @return length($list) > 1;
 }

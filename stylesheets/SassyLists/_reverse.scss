@@ -4,9 +4,13 @@
 //
 // @param {List} $list - list to reverse
 //
+// @requires sl-to-list
+//
 // @return {List}
 
 @function sl-reverse($list) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   $length: length($list);
   $end: floor($length / 2);
 
@@ -20,7 +24,7 @@
     $list: set-nth($list, -$i, $tmp);
   }
 
-  @return $list;
+  @return sl-to-list($list);
 }
 
 // @requires sl-reverse

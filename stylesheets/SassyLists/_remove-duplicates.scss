@@ -4,9 +4,13 @@
 //
 // @param {List} $list - list to remove duplicates from
 //
+// @requires sl-to-list
+//
 // @return {List}
 
 @function sl-remove-duplicates($list) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   $result: ();
 
   @each $item in $list {
@@ -15,7 +19,7 @@
     }
   }
 
-  @return $result;
+  @return sl-to-list($result);
 }
 
 // @requires sl-remove-duplicates

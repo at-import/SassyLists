@@ -10,7 +10,7 @@
   }
 
   @include it("should leave normal lists alone") {
-    @include should(expect( sl-flatten( 1 ) ), to( equal( 1 ) ));
+    @include should(expect( sl-flatten( 1 ) ), to( equal( sl-to-list(1) ) ));
     @include should(expect( sl-flatten( 1 2 3 4 5 6 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
     @include should(expect( sl-flatten( "a" "b" "c" "d" "e" "f" "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g" ) ));
   }

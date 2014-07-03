@@ -3,13 +3,14 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#purge
 //
 // @requires sl-is-true
+// @requires sl-to-list
 //
 // @param {List} $list - list to purge
 //
 // @return {List}
 
 @function sl-purge($list) {
-  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
   
   $result: ();
 
@@ -19,7 +20,7 @@
     }
   }
 
-  @return $result;
+  @return sl-to-list($result);
 }
 
 // @requires sl-purge

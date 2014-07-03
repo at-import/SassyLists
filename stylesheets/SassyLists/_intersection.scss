@@ -3,8 +3,7 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
 //
 // @requires sl-remove-duplicates
-// @requires sl-first
-// @requires sl-is-single
+// @requires sl-to-list
 //
 // @param {List}    $list  - first list
 // @param {ArgList} $lists - other lists
@@ -12,7 +11,7 @@
 // @return {List}
 
 @function sl-intersection($list, $lists...) {
-  @if sl-missing-dependencies(sl-remove-duplicates, sl-first, sl-is-single) == true { @return null; }
+  @if sl-missing-dependencies(sl-remove-duplicates, sl-to-list) == true { @return null; }
 
   $result: $list;
 
@@ -30,5 +29,5 @@
 
   $result: sl-remove-duplicates($result);
   
-  @return if(sl-is-single($result), sl-first($result), $result);
+  @return sl-to-list($result);
 }

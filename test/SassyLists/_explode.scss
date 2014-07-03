@@ -4,6 +4,11 @@
   @include it("should explode a string into a list using second argument as delimiter") {
     @include should(expect( sl-explode( $string ) ), to( equal( 'T' 'h' 'e' ' ' 's' 'l' '-' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'f' 'u' 'n' 'c' 't' 'i' 'o' 'n' ' ' 's' 'h' 'o' 'u' 'l' 'd' ' ' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'a' ' ' 's' 't' 'r' 'i' 'n' 'g' ' ' 'i' 'n' 't' 'o' ' ' 'a' ' ' 'l' 'i' 's' 't' ' ' 'u' 's' 'i' 'n' 'g' ' ' 's' 'e' 'c' 'o' 'n' 'd' ' ' 'a' 'r' 'g' 'u' 'm' 'e' 'n' 't' ' ' 'a' 's' ' ' 'd' 'e' 'l' 'i' 'm' 'i' 't' 'e' 'r' ) ));
     @include should(expect( sl-explode( $string, 'e' ) ), to( equal( 'Th' ' sl-' 'xplod' ' function should ' 'xplod' ' a string into a list using s' 'cond argum' 'nt as d' 'limit' 'r' ) ));
+    
+    $a: sl-to-list('e');
+    $b: sl-explode( 'e', ' ' );
+    @include should(expect( $b ), to( equal( $a ) ));
+    @include should(expect( type-of( $b ) ), to( equal( type-of( $a ) ) ));
   }
 
   @include it("should return null if arguments are invalid") {

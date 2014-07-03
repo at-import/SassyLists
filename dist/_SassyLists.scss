@@ -371,18 +371,13 @@
 // @param {List} $list - list to flatten
 // 
 // @requires sl-has-multiple-values
-// @requires sl-is-single
 // 
 // @return {List}
 
 @function sl-flatten($list) {
-  @if sl-missing-dependencies(sl-is-single, sl-has-multiple-values) == true { @return null; }
+  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
 
   $result: ();
-
-  @if sl-is-single($list) {
-    @return $list;
-  }
 
   @each $item in $list {
     @if sl-has-multiple-values($item) {
@@ -412,14 +407,10 @@
 //
 // @param {List} $list - list to run test against
 //
-// @requires sl-is-empty
-//
 // @return {Bool}
 
 @function sl-has-values($list) {
-  @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
-
-  @return not sl-is-empty($list);
+  @return length($list) > 0;
 }
 // Tests whether `$list` has at least 2 values.
 //
@@ -427,15 +418,10 @@
 //
 // @param {List} $list - list to run test against
 //
-// @requires sl-has-values
-// @requires sl-is-single
-//
 // @return {Bool}
 
 @function sl-has-multiple-values($list) {
-  @if sl-missing-dependencies(sl-has-values, sl-is-single) == true { @return null; }
-
-  @return sl-has-values($list) and not sl-is-single($list);
+  @return length($list) > 1;
 }
 
 // Adds `$value` at `$index` in `$list`.
@@ -492,8 +478,7 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
 //
 // @requires sl-remove-duplicates
-// @requires sl-first
-// @requires sl-is-single
+// @requires sl-to-list
 //
 // @param {List}    $list  - first list
 // @param {ArgList} $lists - other lists
@@ -501,7 +486,7 @@
 // @return {List}
 
 @function sl-intersection($list, $lists...) {
-  @if sl-missing-dependencies(sl-remove-duplicates, sl-first, sl-is-single) == true { @return null; }
+  @if sl-missing-dependencies(sl-remove-duplicates, sl-to-list) == true { @return null; }
 
   $result: $list;
 
@@ -519,7 +504,7 @@
 
   $result: sl-remove-duplicates($result);
   
-  @return if(sl-is-single($result), sl-first($result), $result);
+  @return sl-to-list($result);
 }
 // Tests whether `$list` is empty.
 //
@@ -663,6 +648,7 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-prepend
 //
 // @requires sl-is-true
+// @requires sl-to-list
 //
 // @param {List} $list  - list to preprend value to
 // @param {*}    $value - value to prepend to the list
@@ -670,15 +656,13 @@
 // @return {List}
 
 @function sl-prepend($list, $value) {
-  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
   
   @if sl-is-true($value) {
-    @return join($value, $list, list-separator($list));
+  	$list: join($value, $list, list-separator($list));
   }
 
-  @else {
-    @return $list;
-  }
+  @return sl-to-list($list);
 }
 
 // Removes all false and null values from `$list`.
@@ -686,13 +670,14 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#purge
 //
 // @requires sl-is-true
+// @requires sl-to-list
 //
 // @param {List} $list - list to purge
 //
 // @return {List}
 
 @function sl-purge($list) {
-  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
   
   $result: ();
 
@@ -702,7 +687,7 @@
     }
   }
 
-  @return $result;
+  @return sl-to-list($result);
 }
 
 // @requires sl-purge
@@ -794,9 +779,13 @@
 //
 // @param {List} $list - list to remove duplicates from
 //
+// @requires sl-to-list
+//
 // @return {List}
 
 @function sl-remove-duplicates($list) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   $result: ();
 
   @each $item in $list {
@@ -805,7 +794,7 @@
     }
   }
 
-  @return $result;
+  @return sl-to-list($result);
 }
 
 // @requires sl-remove-duplicates
@@ -867,6 +856,7 @@
 //
 // @requires sl-purge
 // @requires sl-is-true
+// @requires sl-to-list
 //
 // @param {List}   $list  - list to update
 // @param {Number} $index - index to update
@@ -877,7 +867,7 @@
 // @return {List | Null}
 
 @function sl-replace-nth($list, $index, $value) {
-  @if sl-missing-dependencies(sl-purge, sl-is-true) == true { @return null; }
+  @if sl-missing-dependencies(sl-purge, sl-is-true, sl-to-list) == true { @return null; }
 
   @if type-of($index) != "number" or $index == 0 or abs($index) > length($list) {
     @warn "Invalid index (#{inspect($index)}) for `sl-replace-nth`.";
@@ -885,7 +875,7 @@
   }
 
   $list: set-nth($list, $index, $value);
-  @return if(not sl-is-true($value), sl-purge($list), $list);
+  @return sl-to-list(if(not sl-is-true($value), sl-purge($list), $list));
 }
 
 // Replaces `$old` by `$new` in `$list`.
@@ -894,6 +884,7 @@
 //
 // @requires sl-is-true
 // @requires sl-purge
+// @requires sl-to-list
 //
 // @param {List}    $list  - list to update
 // @param {*}       $old   - value to replace
@@ -902,7 +893,7 @@
 // @return {List}
 
 @function sl-replace($list, $old, $value) {
-  @if sl-missing-dependencies(sl-is-true, sl-purge) == true { @return null; }
+  @if sl-missing-dependencies(sl-is-true, sl-purge, sl-to-list) == true { @return null; }
 
   $running: true;
 
@@ -919,7 +910,7 @@
 
   }
 
-  @return if(not sl-is-true($value), sl-purge($list), $list);
+  @return sl-to-list(if(not sl-is-true($value), sl-purge($list), $list));
 }
 // Reverses the order of `$list`.
 //
@@ -927,9 +918,13 @@
 //
 // @param {List} $list - list to reverse
 //
+// @requires sl-to-list
+//
 // @return {List}
 
 @function sl-reverse($list) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   $length: length($list);
   $end: floor($length / 2);
 
@@ -943,7 +938,7 @@
     $list: set-nth($list, -$i, $tmp);
   }
 
-  @return $list;
+  @return sl-to-list($list);
 }
 
 // @requires sl-reverse
@@ -958,9 +953,13 @@
 //
 // @param {List} $list - list to shuffle
 //
+// @requires sl-to-list
+// 
 // @return {List}
 
 @function sl-shuffle($list) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   $length: length($list);
 
   @if $length < 2 {
@@ -974,7 +973,7 @@
     $list: set-nth($list, $j, $tmp);
   }
   
-  @return $list;
+  @return sl-to-list($list);
 }
 
 // @requires sl-shuffle
@@ -998,9 +997,13 @@
 // @throws Start index has to be lesser than or equal to list length for `sl-slice`.
 // @throws End index has to be lesser than or equal to list length for `sl-slice`.
 //
+// @require sl-to-list
+//
 // @return {List | Null}
 
 @function sl-slice($list, $start: 1, $end: length($list)) {
+  @if sl-missing-dependencies(sl-to-list) == true { @return null; }
+
   @if type-of($start) != "number" or type-of($end) != "number" {
     @warn "List indexes #{$start} and #{$end} must be numbers for `sl-slice`.";
     @return null;
@@ -1036,7 +1039,7 @@
     $result: append($result, nth($list, $i), list-separator($list));
   }
 
-  @return $result;
+  @return sl-to-list($result);
 }
 // Sorts values of `$list` using quick-sort algorithm using `$order`.
 //
@@ -1044,6 +1047,7 @@
 //
 // @requires sl-str-compare
 // @requires sl-has-multiple-values
+// @requires sl-to-list
 //
 // @param {List} $list  - list to sort
 // @param {List} $order - order to respect
@@ -1051,7 +1055,7 @@
 // @return {List}
 
 @function sl-sort($list, $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z") {
-  @if sl-missing-dependencies(sl-str-compare, sl-has-multiple-values) == true { @return null; }
+  @if sl-missing-dependencies(sl-str-compare, sl-has-multiple-values, sl-to-list) == true { @return null; }
 
   $less:  ();
   $equal: ();
@@ -1077,7 +1081,7 @@
     @return join(join(sl-sort($less, $order), $equal), sl-sort($large, $order));
   }
 
-  @return $list;
+  @return sl-to-list($list);
 }
 
 // @requires sl-sort
@@ -1166,11 +1170,22 @@
 // @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
 //
 // @param {*} $value - value to cast to list
+// @param {String} $separator (space) - separator to use
 //
 // @return {List}
 
-@function sl-to-list($value) {
-  @return if(type-of($value) == "list", $value, ($value,));
+@function sl-to-list($value, $separator: list-separator($value)) {
+  @if type-of($value) != "list" or list-separator($value) != $separator {
+    $new-list: if($separator == "comma", sl-comma-list(), ());
+
+    @each $item in $value {
+      $new-list: append($new-list, $item, $separator);
+    }
+
+    @return $new-list;
+  }
+
+  @return $value;
 }
 
 // @requires sl-to-list
@@ -1261,19 +1276,17 @@
 //
 // @requires sl-flatten
 // @requires sl-remove-duplicates
-// @requires sl-is-single
-// @requires sl-first
 //
 // @param {ArgList} $lists - lists to unify
 //
 // @return {List}
 
 @function sl-union($lists...) {
-  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates, sl-is-single, sl-first) == true { @return null; }
+  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates) == true { @return null; }
 
   $result: sl-remove-duplicates(sl-flatten($lists));
   
-  @return if(sl-is-single($result), sl-first($result), $result);
+  @return $result;
 }
 
 // @alias sl-union
@@ -1293,11 +1306,12 @@
 // @throws There is no `$function` function for `sl-walk`.
 //
 // @requires sl-to-map
+// @requires sl-to-list
 //
 // @return {List | Null}
 
 @function sl-walk($list, $function, $args...) {
-  @if sl-missing-dependencies(sl-to-map) == true { @return null; }
+  @if sl-missing-dependencies(sl-to-map, sl-to-list) == true { @return null; }
   
   @if not function-exists($function) {
     @warn "There is no `#{$function}` function for `sl-walk`.";
@@ -1308,5 +1322,5 @@
   	$list: set-nth($list, $index, call($function, $value, $args...));
   }
   
-  @return $list;
+  @return sl-to-list($list);
 }

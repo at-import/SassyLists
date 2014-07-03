@@ -9,11 +9,12 @@
 // @throws There is no `$function` function for `sl-walk`.
 //
 // @requires sl-to-map
+// @requires sl-to-list
 //
 // @return {List | Null}
 
 @function sl-walk($list, $function, $args...) {
-  @if sl-missing-dependencies(sl-to-map) == true { @return null; }
+  @if sl-missing-dependencies(sl-to-map, sl-to-list) == true { @return null; }
   
   @if not function-exists($function) {
     @warn "There is no `#{$function}` function for `sl-walk`.";
@@ -24,5 +25,5 @@
   	$list: set-nth($list, $index, call($function, $value, $args...));
   }
   
-  @return $list;
+  @return sl-to-list($list);
 }
