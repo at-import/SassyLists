@@ -1,4 +1,4 @@
-# SassyLists [![Gem Version](https://badge.fury.io/rb/SassyLists.png)](http://badge.fury.io/rb/SassyLists)
+# SassyLists [![Gem Version](https://badge.fury.io/rb/SassyLists.svg)](http://badge.fury.io/rb/SassyLists)
 
 Here is a powerful toolbox providing you all the functions you need to manipulate your [Sass](http://sass-lang.com/) lists. See complete documentation [here](http://sassylists.com/).
 
