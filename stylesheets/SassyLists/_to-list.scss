@@ -1,22 +1,22 @@
-// Casts `$value` into a list.
-//
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
-//
-// @param {*} $value - value to cast to list
-// @param {String} $separator (space) - separator to use
-//
-// @return {List}
+/**
+ * Casts `$value` into a list.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
+ *
+ * @param {*} $value - value to cast to list
+ * @param {String} $separator (space) - separator to use
+ *
+ * @return {List}
+ */
 
 @function sl-to-list($value, $separator: list-separator($value)) {
-  @if type-of($value) != "list" or list-separator($value) != $separator {
-    @return join((), $value, $separator);
-  }
-
-  @return $value;
+  @return join((), $value, $separator);
 }
 
-// @requires sl-to-list
-// @alias sl-to-list
+/**
+ * @requires sl-to-list
+ * @alias sl-to-list
+ */
 
 @function sl-listify($value) {
   @return sl-to-list($value);

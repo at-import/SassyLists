@@ -1,16 +1,18 @@
-// Chunks `$list` into `$size` large lists.
-//
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
-//
-// @param {List}   $list  - list to chunk
-// @param {Number} $size  - length of lists
-//
-// @throws $size is not a number for `sl-chunk`.
-//
-// @requires sl-to-list
-//
-// @return {List | Null}
-
+/**
+ * Chunks `$list` into `$size` large lists.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
+ *
+ * @param {List}   $list  - list to chunk
+ * @param {Number} $size  - length of lists
+ *
+ * @throws $size is not a number for `sl-chunk`.
+ *
+ * @requires sl-to-list
+ *
+ * @return {List | Null}
+ */
+ 
 @function sl-chunk($list, $size) {
   @if sl-missing-dependencies(sl-to-list) == true { @return null; }
 

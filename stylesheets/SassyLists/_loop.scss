@@ -1,17 +1,19 @@
-// Shift indexes from `$list` of `$value`.
-//
-// @author Ana Tudor
-//
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-loop
-//
-// @param {List}   $list      - list to update
-// @param {Number} $value (1) - number of position between old and new indexes
-//
-// @throws $value is not a number for `loop`.
-//
-// @requires sl-has-multiple-values
-// 
-// @return {List | Null}
+/**
+ * Shift indexes from `$list` of `$value`.
+ *
+ * @author Ana Tudor
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-loop
+ *
+ * @param {List}   $list      - list to update
+ * @param {Number} $value (1) - number of position between old and new indexes
+ *
+ * @throws $value is not a number for `loop`.
+ *
+ * @requires sl-has-multiple-values
+ * 
+ * @return {List | Null}
+ */
 
 @function sl-loop($list, $value: 1) {
   @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
@@ -35,9 +37,11 @@
   @return $result;
 }
 
-// @requires sl-loop
-// @alias sl-loop
-
+/**
+ * @requires sl-loop
+ * @alias sl-loop
+ */
+ 
 @function sl-shift-indexes($list, $value: 1) {
   @return sl-loop($list, $value);
 }

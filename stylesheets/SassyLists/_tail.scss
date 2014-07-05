@@ -1,21 +1,25 @@
-// Returns the tail of `$list`: all items except the first (head).
-//
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
-//
-// @requires sl-slice
-//
-// @param {List} $list - list to retrieve tail from
-//
-// @return {List | Null}
-
+/**
+ * Returns the tail of `$list`: all items except the first (head).
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
+ *
+ * @requires sl-slice
+ *
+ * @param {List} $list - list to retrieve tail from
+ *
+ * @return {List | Null}
+ */
+ 
 @function sl-tail($list) {
   @if sl-missing-dependencies(sl-slice) == true { @return null; }
 
   @return sl-slice($list, 2);
 }
 
-// @requires sl-tail
-// @alias sl-tail
+/**
+ * @requires sl-tail
+ * @alias sl-tail
+ */
 
 @function sl-rest($list) {
   @return sl-tail($list);

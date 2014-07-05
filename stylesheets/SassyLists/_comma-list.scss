@@ -1,8 +1,10 @@
-// Initialize an empty comma-separated list.
-// 
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
-//
-// @return {List}
+/**
+ * Initialize an empty comma-separated list.
+ * 
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
+ *
+ * @return {List}
+ */
 
 @function sl-comma-list() {
   @return zip((), ());

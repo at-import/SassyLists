@@ -1,14 +1,16 @@
-// Returns a list of values from `$lists` minus duplicates.
-//
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-union
-//
-// @requires sl-flatten
-// @requires sl-remove-duplicates
-//
-// @param {ArgList} $lists - lists to unify
-//
-// @return {List}
-
+/**
+ * Returns a list of values from `$lists` minus duplicates.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-union
+ *
+ * @requires sl-flatten
+ * @requires sl-remove-duplicates
+ *
+ * @param {ArgList} $lists - lists to unify
+ *
+ * @return {List}
+ */
+ 
 @function sl-union($lists...) {
   @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates) == true { @return null; }
 
@@ -17,7 +19,10 @@
   @return $result;
 }
 
-// @alias sl-union
+/**
+ * @requires sl-union
+ * @alias sl-union
+ */
 
 @function sl-merge($lists...) {
   @return sl-union($lists...);

@@ -1,16 +1,18 @@
-// Returns `$list` as a string, prettified if `$pre` is set to true.
-//
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
-//
-// @param {List}   $list          - list to debug
-// @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
-// @param {Number} $level (1)     - internal variable for recursion
-//
-// @requires sl-is-empty
-// @requires sl-is-single
-// @requires sl-has-multiple-values
-// 
-// @return {String}
+/**
+ * Returns `$list` as a string, prettified if `$pre` is set to true.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
+ *
+ * @param {List}   $list          - list to debug
+ * @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
+ * @param {Number} $level (1)     - internal variable for recursion
+ *
+ * @requires sl-is-empty
+ * @requires sl-is-single
+ * @requires sl-has-multiple-values
+ * 
+ * @return {String}
+ */
 
 @function sl-debug($list, $pre: false, $level: 1) {
   @if sl-missing-dependencies(sl-is-empty, sl-is-single, sl-has-multiple-values) == true { @return null; }
@@ -76,11 +78,13 @@
   @return quote($result);
 }
 
-// Mixin displaying clean debug
-//
-// @param {List} $list - list
-//
-// @requires {function} sl-debug
+/**
+ * Mixin displaying clean debug
+ *
+ * @param {List} $list - list
+ *
+ * @requires sl-debug
+ */
 
 @mixin sl-debug($list) {
   body:before {

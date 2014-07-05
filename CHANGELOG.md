@@ -1,5 +1,6 @@
 # Changelog
 
+* `2.2.2`: fixing a bug with aliases for `sl-to-list()` and moved all comments to C-like
 * `2.2.1`: improving `sl-to-list()`'s performance
 * `2.2.0`: 
     * adding `sl-range()`, `sl-is-single()`, `sl-has-values()`, `sl-has-multiple-values()`
