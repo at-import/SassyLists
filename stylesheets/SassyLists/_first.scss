@@ -7,6 +7,18 @@
  * @throws Cannot find first item of empty list.
  *
  * @requires sl-is-empty
+ *
+ * @example
+ * sl-first(a b c)
+ * // a
+ *
+ * @example
+ * sl-first(a)
+ * // a
+ *
+ * @example
+ * sl-first(())
+ * // null
  * 
  * @return {*}
  */

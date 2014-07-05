@@ -12,7 +12,23 @@
  * @throws List indexes must be non-zero integers for `sl-slice`.
  * @throws Start index has to be lesser than or equal to list length for `sl-slice`.
  * @throws End index has to be lesser than or equal to list length for `sl-slice`.
+ * 
+ * @example
+ * sl-slice(a b c d e, 2, 4)
+ * // b c d
  *
+ * @example
+ * sl-slice(a b c d e, 2, 2)
+ * // b
+ *
+ * @example
+ * sl-slice(a b c d e, 4, 2)
+ * // null
+ *
+ * @example
+ * sl-slice(a b c d e, -1, 6)
+ * // null
+ * 
  * @return {List | Null}
  */
  

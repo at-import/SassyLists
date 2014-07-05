@@ -9,6 +9,10 @@
  * @param {List} $list  - list to preprend value to
  * @param {*}    $value - value to prepend to the list
  *
+ * @example
+ * sl-prepend(a b c, z)
+ * // z a b c
+ * 
  * @return {List}
  */
  

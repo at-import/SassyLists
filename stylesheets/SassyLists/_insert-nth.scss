@@ -11,6 +11,18 @@
  * @throws List index $index is not a number for `sl-insert-nth`.
  * @throws List index $index must be a non-zero integer for `sl-insert-nth`.
  *
+ * @example
+ * sl-insert-nth(a b c, 2, z)
+ * // a z b c
+ *
+ * @example
+ * sl-insert-nth(a b c, 42, z)
+ * // a b c z
+ *
+ * @example 
+ * sl-insert-nth(a b c, -42, z)
+ * // null
+ * 
  * @return {List | Null}
  */
  

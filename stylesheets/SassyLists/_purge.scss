@@ -7,6 +7,10 @@
  *
  * @param {List} $list - list to purge
  *
+ * @example
+ * sl-purge(null a false b)
+ * // a b
+ *
  * @return {List}
  */
 

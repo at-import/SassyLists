@@ -5,6 +5,14 @@
  *
  * @param {List} $list - list to run test against
  *
+ * @example 
+ * sl-has-multiple-values(a)
+ * // false
+ *
+ * @example 
+ * sl-has-multiple-values(a b)
+ * // true
+ * 
  * @return {Bool}
  */
  

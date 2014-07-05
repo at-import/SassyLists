@@ -8,6 +8,10 @@
  *
  * @param {ArgList} $lists - lists to unify
  *
+ * @example
+ * sl-union(a b c, b e d, a c b)
+ * // a b c e d
+ * 
  * @return {List}
  */
  

@@ -6,7 +6,11 @@
  * @param {List} $list - list to flatten
  * 
  * @requires sl-has-multiple-values
- * 
+ *
+ * @example
+ * sl-flatten(a b c, d e f, g h i)
+ * // a b c d e f g h i
+ *
  * @return {List}
  */
 

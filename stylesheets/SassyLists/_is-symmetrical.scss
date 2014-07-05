@@ -7,6 +7,15 @@
  *
  * @param {List} $list - list to check
  *
+ * @example
+ * sl-is-symmetrical(a b c)
+ * // false
+ *
+ * 
+ * @example
+ * sl-is-symmetrical(a b a)
+ * // true
+ *
  * @return {Bool}
  */
 

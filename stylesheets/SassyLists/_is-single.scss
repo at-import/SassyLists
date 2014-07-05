@@ -5,6 +5,18 @@
  *
  * @param {List} $list - list to run test against
  *
+ * @example
+ * sl-is-single(())
+ * // false
+ *
+ * @example
+ * sl-is-single(a)
+ * // true
+ *
+ * @example
+ * sl-is-single(a b)
+ * // false
+ *
  * @return {Bool}
  */
  

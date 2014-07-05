@@ -6,6 +6,14 @@
  * @param {List} $list  - list to search
  * @param {*}    $value - value to be searched for
  *
+ * @example
+ * sl-last-index(a b a, a)
+ * // 3
+ *
+ * @example
+ * sl-last-index(a b a, z)
+ * // null
+ *
  * @return {Number | Null}
  */
  

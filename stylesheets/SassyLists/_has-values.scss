@@ -4,6 +4,14 @@
  *
  * @param {List} $list - list to run test against
  *
+ * @example 
+ * sl-has-values(a)
+ * // true
+ *
+ * @example 
+ * sl-has-values(())
+ * // false
+ * 
  * @return {Bool}
  */
  

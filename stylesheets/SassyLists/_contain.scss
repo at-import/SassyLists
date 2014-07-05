@@ -6,6 +6,14 @@
  * @param {List}    $list  - list to check
  * @param {*}       $value - value to look for
  *
+ * @example
+ * sl-contain(a b c, a)
+ * // true
+ *
+ * @example
+ * sl-contain(a b c, z)
+ * // false
+ *
  * @return {Bool}
  */
 

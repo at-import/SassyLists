@@ -8,6 +8,14 @@
  * @param {List}   $list  - list to remove value from
  * @param {Number} $index - index to remove
  *
+ * @example
+ * sl-remove-nth(a b c, 2)
+ * // a c
+ *
+ * @example
+ * sl-remove-nth(a b c, 42)
+ * // null
+ *
  * @return {List | Null}
  */
 

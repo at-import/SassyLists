@@ -9,6 +9,10 @@
  * @param {*}       $value     - value to remove
  * @param {Bool}    $recursive - enable/disable recursion
  *
+ * @example
+ * sl-remove(a b c, a)
+ * // b c
+ *
  * @return {List}
  */
 

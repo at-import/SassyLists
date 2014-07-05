@@ -11,6 +11,14 @@
  * @param {*}       $old   - value to replace
  * @param {*}       $value - new value for $old
  *
+ * @example
+ * sl-replace(a b c, b, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace(a b c, y, z)
+ * // a b c
+ * 
  * @return {List}
  */
  

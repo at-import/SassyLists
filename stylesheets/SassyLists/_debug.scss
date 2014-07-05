@@ -11,6 +11,10 @@
  * @requires sl-is-single
  * @requires sl-has-multiple-values
  * 
+ * @example
+ * sl-debug(a b c)
+ * // '("a", "b", "c")'
+ *
  * @return {String}
  */
 

@@ -9,6 +9,10 @@
  * @param {List}    $list  - first list
  * @param {ArgList} $lists - other lists
  *
+ * @example
+ * sl-intersection(a b c, b e d, a c b)
+ * // b
+ * 
  * @return {List}
  */
  

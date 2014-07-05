@@ -6,6 +6,10 @@
  * @param {*} $value - value to cast to list
  * @param {String} $separator (space) - separator to use
  *
+ * @example
+ * sl-to-list(a b c, comma)
+ * // a, b, c
+ * 
  * @return {List}
  */
 

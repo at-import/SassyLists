@@ -9,6 +9,18 @@
  * @throws `$n` is not unitless for `sl-range`.
  * @throws `$n` is not greater than 0 for `sl-range`.
  *
+ * @example
+ * sl-range(5)
+ * // 1 2 3 4 5
+ *
+ * @example
+ * sl-range(1)
+ * // 1
+ *
+ * @example
+ * sl-range(-42)
+ * // null
+ *
  * @return {List | Number | Null}
  */
  

@@ -11,7 +11,15 @@
  * @throws $value is not a number for `loop`.
  *
  * @requires sl-has-multiple-values
+ *
+ * @example
+ * sl-loop(a b c)
+ * // c a b
  * 
+ * @example
+ * sl-loop(a b c, 2)
+ * // b c a
+ *
  * @return {List | Null}
  */
 

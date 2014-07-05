@@ -12,6 +12,10 @@
  * @requires sl-to-map
  * @requires sl-to-list
  *
+ * @example
+ * sl-walk(a b c, to-upper-case)
+ * // A B C
+ *
  * @return {List | Null}
  */
  

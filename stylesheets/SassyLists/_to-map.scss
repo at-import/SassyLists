@@ -14,6 +14,10 @@
  * @requires sl-is-empty
  * 
  * @throws List cannot be empty for `sl-to-map`.
+ *
+ * @example
+ * sl-to-map(a b c)
+ * // 1 a, 2 b, 3 c
  * 
  * @return {Map | Null}
  */

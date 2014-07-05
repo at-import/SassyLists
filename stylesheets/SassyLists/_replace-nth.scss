@@ -13,6 +13,14 @@
  *
  * @throws Invalid index $index for `sl-replace-nth`.
  *
+ * @example
+ * sl-replace-nth(a b c, 2, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace-nth(a b c, 100, z)
+ * // null
+ *
  * @return {List | Null}
  */
  

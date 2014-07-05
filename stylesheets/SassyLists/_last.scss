@@ -8,6 +8,18 @@
  * @throws Cannot find last item of empty list.
  *
  * @requires sl-is-empty
+ *
+ * @example
+ * sl-last(a b c)
+ * // c
+ * 
+ * @example
+ * sl-last(a)
+ * // a
+ *
+ * @example
+ * sl-last(())
+ * // null
  * 
  * @return {*}
  */

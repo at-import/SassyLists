@@ -5,6 +5,14 @@
  *
  * @param {List} $list - list to run test against
  *
+ * @example
+ * sl-is-empty(())
+ * // true
+ *
+ * @example
+ * sl-is-empty(a)
+ * // false
+ *
  * @return {Bool}
  */
 

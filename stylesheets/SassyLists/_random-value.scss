@@ -8,6 +8,10 @@
  * @throws Cannot find a random value in an empty list.
  *
  * @requires sl-is-empty
+ *
+ * @example
+ * sl-random-value(a b c)
+ * // a
  * 
  * @return {*}
  */

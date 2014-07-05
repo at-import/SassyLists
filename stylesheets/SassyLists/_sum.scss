@@ -10,6 +10,18 @@
  * @requires sl-is-number
  *
  * @throws All items from list are not numbers for `sl-sum`.
+ *
+ * @example
+ * sl-sum(1 2 3)
+ * // 6
+ *
+ * @example
+ * sl-sum(a b 1)
+ * null
+ *
+ * @example
+ * sl-sum(1 2 3px, true)
+ * // 6
  * 
  * @return {Number}
  */

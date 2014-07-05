@@ -10,6 +10,14 @@
  * @param {List} $list  - list to sort
  * @param {List} $order - order to respect
  *
+ * @example
+ * sl-sort(b a c)
+ * // a b c
+ *
+ * @example
+ * sl-sort(3 5 1)
+ * // 1 3 5 
+ *
  * @return {List}
  */
 

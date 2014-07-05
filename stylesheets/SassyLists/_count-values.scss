@@ -5,6 +5,10 @@
  *
  * @param {List} $list - list to count values from
  *
+ * @example
+ * sl-count-values(a b c a)
+ * // (a: 2, b: 1, c: 1) 
+ *
  * @return {Map} Values mapped to their count
  */
  
