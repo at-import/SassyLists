@@ -4,3 +4,4 @@ node_modules
 gems
 .bundle
 save
+.DS_Store

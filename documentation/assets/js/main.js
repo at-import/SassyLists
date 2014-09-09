@@ -1,114 +1,56 @@
-/* global document, Fuse */
-'use strict';
+/* global document */
 
-var search = (function () {
-  var getItems = function () {
-    return Array.prototype.slice.call(document.querySelectorAll('.js-sassdoc__item')).map(function (item) {
-      return {
-        name: item.dataset.name,
-        type: item.dataset.type,
-        node: item
-      };
+(function ($, global) {
+  'use strict';
+
+  // Constructor
+  var App = function (conf) {
+    this.conf = $.extend({
+      // Search module
+      search: new global.Search(),
+
+      // Sidebar module
+      sidebar: new global.Sidebar(),
+
+      // Initialisation
+      init: true
+    }, conf || {});
+
+    // Launch the module
+    if (this.conf.init !== false) {
+      this.initialize();
+    }
+  };
+
+  // Initialisation method
+  App.prototype.initialize = function () {
+    this.codePreview();
+  };
+
+  // Toggle code preview collapsed/expanded modes
+  App.prototype.codePreview = function () {
+    var $item;
+    var $code;
+    var switchTo;
+
+    $('.item__code--togglable').on('click', function () {
+      $item = $(this);
+      $code = $item.find('code');
+      switchTo = $item.attr('data-current-state') === 'expanded' ? 'collapsed' : 'expanded';
+
+      $item.attr('data-current-state', switchTo);
+      $code.html($item.attr('data-' + switchTo));
+      Prism.highlightElement($code[0]);
     });
   };
 
-  var options = {
-    keys: ['name'],
-    threshold : 0.3
-  };
+  global.App = App;
+}(window.jQuery, window));
 
-  var items = getItems();
-  var index = new Fuse(items, options);
+(function ($, global) {
 
-  return index.search.bind(index);
-})();
-
-
-(function (search) {
-  var searchForm = document.querySelector('#js-search');
-  var searchInput = document.querySelector('#js-search-input');
-  var searchSuggestions = document.querySelector('#js-search-suggestions');
-
-  var currentSelection = -1;
-  var selected;
-  var suggestions = [];
-
-  var fillSuggestions = function (items) {
-    searchSuggestions.innerHTML = '';
-    suggestions = items.slice(0, 10).map(function (item) {
-      var li = document.createElement('li');
-      
-      li.dataset.type = item.type;
-      li.dataset.name = item.name;
-      li.innerHTML = '<a href="#' + item.type + '-' + item.name + '"><code>' + item.type.slice(0, 3) + '</code> ' + item.name + '</a>';
-
-      searchSuggestions.appendChild(li);
-      return li;
-    });
-  };
-
-  var performSearch = function (term) {
-    var result = search(term);
-    fillSuggestions(result);
-  };
-
-  searchSuggestions.addEventListener('click', function (e) {
-    if (e.target.nodeName === 'A') {
-      searchInput.value = e.target.parentNode.dataset.name;
-      fillSuggestions([]);
-    }
+  $(document).ready(function () {
+    var app = new global.App();
   });
 
-  searchForm.addEventListener('keyup', function (e) {
-    e.preventDefault();
-
-    // Enter
-    if (e.keyCode === 13) {
-      if (selected) {
-        fillSuggestions([]);
-        searchInput.value = selected.dataset.name;
-        window.location = selected.childNodes[0].href;
-      }
-
-      e.stopPropagation();
-    }
-
-    // KeyDown
-    if (e.keyCode === 40) {
-      currentSelection = (currentSelection + 1) % suggestions.length;
-    }
-
-    // KeyUp
-    if (e.keyCode === 38) {
-      currentSelection = currentSelection - 1;
-      if (currentSelection < 0) {
-        currentSelection =  suggestions.length - 1;
-      }
-    }
-
-    if (suggestions[currentSelection]) {
-      if (selected) {
-        selected.classList.remove('selected');
-      }
-
-      selected = suggestions[currentSelection];
-      selected.classList.add('selected');
-    }
-
-  });
-
-  searchInput.addEventListener('keyup', function (e) {
-    if (e.keyCode !== 40 && e.keyCode !== 38) {
-      currentSelection = -1;
-      performSearch(searchInput.value);
-    } 
-
-    else {
-      e.preventDefault();
-    }
-  });
-
-  searchInput.addEventListener('search', function () {
-    performSearch(searchInput.value);
-  });
-})(search);
+}(window.jQuery, window));
