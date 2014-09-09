@@ -1,5 +1,6 @@
 {
   "name": "SassyLists",
+  "title": "SassyLists",
   "version": "2.2.3",
   "description": "A Sass API for lists.",
   "scripts": {

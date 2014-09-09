@@ -1,0 +1,12 @@
+{
+  "display": {
+    "access": ["public"],
+    "alias": true,
+    "watermark": true
+  },
+  "package": "package.json",
+  "basePath": "https://github.com/Team-Sass/SassyLists/tree/master/stylesheets",
+  "groups": {
+    "undefined": "SassyLists"
+  }
+}
