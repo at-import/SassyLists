@@ -1,16 +1,17 @@
 # Changelog
 
+* `2.2.4`: fixing a documentation error
 * `2.2.3`: adding examples to documentation
 * `2.2.2`: fixing a bug with aliases for `sl-to-list()` and moved all comments to C-like
 * `2.2.1`: improving `sl-to-list()`'s performance
-* `2.2.0`: 
+* `2.2.0`:
     * adding `sl-range()`, `sl-is-single()`, `sl-has-values()`, `sl-has-multiple-values()`
     * updating `sl-sum()` and `sl-to-map()`
     * making the whole library depending on most of the previously created helpers
     * making most functions returning `list` type, even when returning a single value
 * `2.1.1`: fixing a tiny issue with dependency checker in `preprend()`
 * `2.1.0`: adding `sl-is-empty()`, `sl-to-list()` and `sl-comma-list()`
-* `2.0.0`: 
+* `2.0.0`:
     * adding `sl-to-map()`, `sl-every()` and `sl-some()`
     * adding and improved tests
     * prefixing all functions with `sl-`

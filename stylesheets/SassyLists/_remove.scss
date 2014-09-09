@@ -7,7 +7,6 @@
  *
  * @param {List}    $list      - list to update
  * @param {*}       $value     - value to remove
- * @param {Bool}    $recursive - enable/disable recursion
  *
  * @example
  * sl-remove(a b c, a)
@@ -26,7 +25,7 @@
  * @requires sl-remove
  * @alias sl-remove
  */
- 
+
 @function sl-without($list, $value) {
   @return sl-remove($list, $value);
 }
