@@ -27,7 +27,7 @@
     * making `count-values()` return a map
     * minor fixes and improvements
     * improving overall performances
-* `0.4.9`: removing `compact()` alias for `purge()` (ref [#23](https://github.com/Team-Sass/SassyLists/issues/23))
+* `0.4.9`: removing `compact()` alias for `purge()` (ref [#23](https://github.com/at-import/SassyLists/issues/23))
 * `0.4.8`: adding `shuffle()`
 * `0.4.7`: dramatically improving `sort()` performances and removing all its dependencies
 * `0.4.6`: fixing an issue when passing an empty list to `chunk()` and improved code quality

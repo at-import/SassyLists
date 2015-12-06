@@ -74,7 +74,7 @@
 }
 // Chunks `$list` into `$size` large lists.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-chunk
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-chunk
 //
 // @param {List}   $list  - list to chunk
 // @param {Number} $size  - length of lists
@@ -128,7 +128,7 @@
 }
 // Initialize an empty comma-separated list.
 // 
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-comma-list
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-comma-list
 //
 // @return {List}
 
@@ -137,7 +137,7 @@
 }
 // Returns whether `$list` contains `$value`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-contain
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-contain
 //
 // @param {List}    $list  - list to check
 // @param {*}       $value - value to look for
@@ -156,7 +156,7 @@
 }
 // Counts the number of occurrences of each value of `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-count-values
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-count-values
 //
 // @param {List} $list - list to count values from
 //
@@ -175,7 +175,7 @@
 }
 // Returns `$list` as a string, prettified if `$pre` is set to true.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-debug
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-debug
 //
 // @param {List}   $list          - list to debug
 // @param {Bool}   $pre   (false) - enable/disable variables type and proper indentation
@@ -278,7 +278,7 @@
 
 // Explodes `$string` into a list using `$delimiter` as a delimiter.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-explode
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-explode
 //
 // @param {String} $string              - string to explode
 // @param {String} $delimiter ('')      - string to use as a delimiter
@@ -354,7 +354,7 @@
 
 // Returns first element of `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-first
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-first
 //
 // @param {List} $list - list to retrieve first item from
 //
@@ -383,7 +383,7 @@
 }
 // Turns multidimensional `$list` into a one-level list.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#flatten
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-flatten
 //
 // @param {List} $list - list to flatten
 // 
@@ -421,7 +421,7 @@
 }
 // Tests whether `$list` is not empty.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-has-values
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-has-values
 //
 // @param {List} $list - list to run test against
 //
@@ -432,7 +432,7 @@
 }
 // Tests whether `$list` has at least 2 values.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-has-multiple-values
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-has-multiple-values
 //
 // @param {List} $list - list to run test against
 //
@@ -444,7 +444,7 @@
 
 // Adds `$value` at `$index` in `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-insert-nth
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-insert-nth
 //
 // @requires sl-is-true
 //
@@ -493,7 +493,7 @@
 
 // Returns a list of shared value from `$list` and `$lists` minus duplicates.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-intersection
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-intersection
 //
 // @requires sl-remove-duplicates
 // @requires sl-to-list
@@ -525,7 +525,7 @@
 
 // Tests whether `$list` is empty.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-is-empty
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-is-empty
 //
 // @param {List} $list - list to run test against
 //
@@ -544,7 +544,7 @@
 
 // Tests whether `$list` has a single item.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-is-single
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-is-single
 //
 // @param {List} $list - list to run test against
 //
@@ -556,7 +556,7 @@
 
 // Checks whether `$list` is symmetrical.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-is-symmetrical
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-is-symmetrical
 //
 // @requires sl-reverse
 //
@@ -578,7 +578,7 @@
 }
 // Returns last index of `$value` in `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-last-index
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-last-index
 //
 // @param {List} $list  - list to search
 // @param {*}    $value - value to be searched for
@@ -597,7 +597,7 @@
 
 // Returns last element of `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-last
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-last
 //
 // @param {List} $list - list to retrieve last value from
 //
@@ -621,7 +621,7 @@
 //
 // @author Ana Tudor
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-loop
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-loop
 //
 // @param {List}   $list      - list to update
 // @param {Number} $value (1) - number of position between old and new indexes
@@ -662,7 +662,7 @@
 }
 // Adds `$value` as first index of `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-prepend
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-prepend
 //
 // @requires sl-is-true
 // @requires sl-to-list
@@ -684,7 +684,7 @@
 
 // Removes all false and null values from `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#purge
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-purge
 //
 // @requires sl-is-true
 // @requires sl-to-list
@@ -716,7 +716,7 @@
 
 // Returns a random value of `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#random-value
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-random-value
 //
 // @param {List} $list - list to random value from
 //
@@ -752,7 +752,7 @@
 }
 // Build a list of values from 1 through `$n`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-range
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-range
 //
 // @param {Number} $n - maximum value
 //
@@ -792,7 +792,7 @@
 }
 // Removes duplicate values from `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-duplicates
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-remove-duplicates
 //
 // @param {List} $list - list to remove duplicates from
 //
@@ -822,7 +822,7 @@
 }
 // Removes value from `$list` at index `$index`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-remove-nth
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-remove-nth
 //
 // @requires sl-replace-nth
 //
@@ -845,7 +845,7 @@
 }
 // Removes value(s) `$value` from `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-remove
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-remove
 //
 // @requires sl-replace
 //
@@ -869,7 +869,7 @@
 }
 // Replaces value at `$index` from `$list` by `$value`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-replace-nth
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-replace-nth
 //
 // @requires sl-purge
 // @requires sl-is-true
@@ -899,7 +899,7 @@
 
 // Replaces `$old` by `$new` in `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#replace
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-replace
 //
 // @requires sl-is-true
 // @requires sl-purge
@@ -935,7 +935,7 @@
 }
 // Reverses the order of `$list`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-reverse
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-reverse
 //
 // @param {List} $list - list to reverse
 //
@@ -970,7 +970,7 @@
 }
 // Shuffle `$list` using Fisher-Yates method.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-shuffle
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-shuffle
 //
 // @param {List} $list - list to shuffle
 //
@@ -1006,7 +1006,7 @@
 
 // Slices `$list` between `$start` and `$end`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-slice
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-slice
 //
 // @param {List}   $list                  - list to slice
 // @param {Number} $start (1)             - start index
@@ -1056,7 +1056,7 @@
 }
 // Sorts values of `$list` using quick-sort algorithm using `$order`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-sort
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-sort
 //
 // @requires sl-str-compare
 // @requires sl-has-multiple-values
@@ -1124,7 +1124,7 @@
 
 // Sums up all numeric values in `$list`, stripping unit if `$force` set to `true`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-sum
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-sum
 //
 // @param {List} $list          - list
 // @param {Bool} $force (false) - enable/disable parseInt
@@ -1158,7 +1158,7 @@
 }
 // Returns the tail of `$list`: all items except the first (head).
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-tail
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-tail
 //
 // @requires sl-slice
 //
@@ -1180,7 +1180,7 @@
 }
 // Casts `$value` into a list.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-to-list
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-to-list
 //
 // @param {*} $value - value to cast to list
 // @param {String} $separator (space) - separator to use
@@ -1214,7 +1214,7 @@
 //
 // @author Andrey "Lolmaus" Mikhaylov and Chris Eppstein
 // 
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-to-map
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-to-map
 // 
 // @param {List} $list - list to turn into map
 //
@@ -1251,7 +1251,7 @@
 }
 // Joins all elements of `$list` with `$glue`.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-to-string
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-to-string
 //
 // @param {List}   $list      - list to cast
 // @param {String} $glue ('') - value to use as a join string
@@ -1285,7 +1285,7 @@
 }
 // Returns a list of values from `$lists` minus duplicates.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-union
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-union
 //
 // @requires sl-flatten
 // @requires sl-remove-duplicates
@@ -1310,7 +1310,7 @@
 
 // Apply `$function` to every item from `$list` passing $args as parameters.
 //
-// @ignore Documentation: http://sassylists.com/documentation.html#sl-walk
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-walk
 //
 // @param {List}    $list     - list to update
 // @param {String}  $function - function to call on each value
