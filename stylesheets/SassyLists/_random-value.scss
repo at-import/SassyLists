@@ -12,7 +12,7 @@
  * @example
  * sl-random-value(a b c)
  * // a
- * 
+ *
  * @return {*}
  */
 
@@ -24,7 +24,7 @@
     @return null;
   }
 
-  @return nth($list, random(length($list) - 1) + 1);
+  @return nth($list, random(length($list)));
 }
 
 /**
@@ -40,7 +40,7 @@
  * @requires sl-random-value
  * @alias sl-random-value
  */
- 
+
 @function sl-luck($list) {
   @return sl-random-value($list);
 }
