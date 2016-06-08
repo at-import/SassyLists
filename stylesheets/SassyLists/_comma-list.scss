@@ -1,14 +1,14 @@
-/**
- * Initialize an empty comma-separated list.
- * 
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-comma-list
- *
- * @example
- * sl-comma-list()
- * // ()
- *
- * @return {List}
- */
+///
+/// Initialize an empty comma-separated list.
+/// 
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-comma-list
+///
+/// @example
+/// sl-comma-list()
+/// // ()
+///
+/// @return {List}
+///
 
 @function sl-comma-list() {
   @return zip((), ());

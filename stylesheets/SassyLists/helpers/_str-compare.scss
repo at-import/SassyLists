@@ -1,14 +1,14 @@
-/**
- * Compares `$a` and `$b` based on `$order`.
- *
- * @access private
- *
- * @param {*}       $a      - first value
- * @param {*}       $b      - second value
- * @param {List}    $matrix - alphabetical order
- *
- * @return {Bool}
- */
+///
+/// Compares `$a` and `$b` based on `$order`.
+///
+/// @access private
+///
+/// @param {*}       $a      - first value
+/// @param {*}       $b      - second value
+/// @param {List}    $matrix - alphabetical order
+///
+/// @return {Bool}
+///
  
 @function sl-str-compare($a, $b, $order) {
   @if type-of($a) == "number" and type-of($b) == "number" {

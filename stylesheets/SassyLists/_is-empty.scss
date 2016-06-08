@@ -1,29 +1,29 @@
-/** 
- * Tests whether `$list` is empty.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-is-empty
- *
- * @param {List} $list - list to run test against
- *
- * @example
- * sl-is-empty(())
- * // true
- *
- * @example
- * sl-is-empty(a)
- * // false
- *
- * @return {Bool}
- */
+/// 
+/// Tests whether `$list` is empty.
+///
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-is-empty
+///
+/// @param {List} $list - list to run test against
+///
+/// @example
+/// sl-is-empty(())
+/// // true
+///
+/// @example
+/// sl-is-empty(a)
+/// // false
+///
+/// @return {Bool}
+///
 
 @function sl-is-empty($list) {
   @return length($list) == 0;
 }
 
-/**
- * @requires sl-is-empty
- * @alias sl-is-empty
- */
+///
+/// @requires sl-is-empty
+/// @alias sl-is-empty
+///
  
 @function sl-empty($list) {
   @return sl-is-empty($list);

@@ -1,20 +1,20 @@
-/**
- * Tests whether `$list` has at least 2 values.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-has-multiple-values
- *
- * @param {List} $list - list to run test against
- *
- * @example 
- * sl-has-multiple-values(a)
- * // false
- *
- * @example 
- * sl-has-multiple-values(a b)
- * // true
- * 
- * @return {Bool}
- */
+///
+/// Tests whether `$list` has at least 2 values.
+///
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-has-multiple-values
+///
+/// @param {List} $list - list to run test against
+///
+/// @example 
+/// sl-has-multiple-values(a)
+/// // false
+///
+/// @example 
+/// sl-has-multiple-values(a b)
+/// // true
+/// 
+/// @return {Bool}
+///
  
 @function sl-has-multiple-values($list) {
   @return length($list) > 1;

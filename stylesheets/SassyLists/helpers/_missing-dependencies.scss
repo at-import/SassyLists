@@ -1,12 +1,12 @@
-/**
- * Checks whether `$functions` exist in global scope.
- *
- * @access private
- *
- * @param {ArgList} $functions - list of functions to check for
- *
- * @return {Bool} Whether or not there are missing dependencies
- */
+///
+/// Checks whether `$functions` exist in global scope.
+///
+/// @access private
+///
+/// @param {ArgList} $functions - list of functions to check for
+///
+/// @return {Bool} Whether or not there are missing dependencies
+///
  
 @function sl-missing-dependencies($functions...) {
   $missing-dependencies: ();

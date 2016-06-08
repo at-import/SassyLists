@@ -1,18 +1,18 @@
-/**
- * Reverses the order of `$list`.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-reverse
- *
- * @param {List} $list - list to reverse
- *
- * @requires sl-to-list
- *
- * @example
- * sl-reverse(a b c)
- * // c b a
- * 
- * @return {List}
- */
+///
+/// Reverses the order of `$list`.
+///
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-reverse
+///
+/// @param {List} $list - list to reverse
+///
+/// @requires sl-to-list
+///
+/// @example
+/// sl-reverse(a b c)
+/// // c b a
+/// 
+/// @return {List}
+///
 
 @function sl-reverse($list) {
   @if sl-missing-dependencies(sl-to-list) == true { @return null; }
@@ -33,10 +33,10 @@
   @return sl-to-list($list);
 }
 
-/**
- * @requires sl-reverse
- * @alias sl-reverse
- */
+///
+/// @requires sl-reverse
+/// @alias sl-reverse
+///
  
 @function sl-mirror($list) {
   @return sl-reverse($list);
