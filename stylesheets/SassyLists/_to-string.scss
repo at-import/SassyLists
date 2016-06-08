@@ -1,24 +1,24 @@
-/**
- * Joins all elements of `$list` with `$glue`.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-to-string
- *
- * @param {List}   $list      - list to cast
- * @param {String} $glue ('') - value to use as a join string
- *
- * @requires sl-has-multiple-values
- * @requires sl-last
- * 
- * @example
- * sl-to-string(a b c)
- * // abc
- *
- * @example
- * sl-to-string(a b c, '-')
- * // a-b-c
- * 
- * @return {String}
- */
+///
+/// Joins all elements of `$list` with `$glue`.
+///
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-to-string
+///
+/// @param {List}   $list      - list to cast
+/// @param {String} $glue [''] - value to use as a join string
+///
+/// @requires sl-has-multiple-values
+/// @requires sl-last
+/// 
+/// @example
+/// sl-to-string(a b c)
+/// // abc
+///
+/// @example
+/// sl-to-string(a b c, '-')
+/// // a-b-c
+/// 
+/// @return {String}
+///
 
 @function sl-to-string($list, $glue: '') {
   @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
@@ -36,10 +36,10 @@
   @return quote($result);
 }
 
-/**
- * @requires sl-to-string
- * @alias sl-to-string
- */
+///
+/// @requires sl-to-string
+/// @alias sl-to-string
+///
  
 @function sl-stringify($list, $glue: '') {
   @return sl-to-string($list, $glue);

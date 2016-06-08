@@ -1,18 +1,18 @@
-/**
- * Shuffle `$list` using Fisher-Yates method.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-shuffle
- *
- * @param {List} $list - list to shuffle
- *
- * @requires sl-to-list
- * 
- * @example
- * sl-shuffle(a b c)
- * // b a c
- * 
- * @return {List}
- */
+///
+/// Shuffle `$list` using Fisher-Yates method.
+///
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-shuffle
+///
+/// @param {List} $list - list to shuffle
+///
+/// @requires sl-to-list
+/// 
+/// @example
+/// sl-shuffle(a b c)
+/// // b a c
+/// 
+/// @return {List}
+///
 
 @function sl-shuffle($list) {
   @if sl-missing-dependencies(sl-to-list) == true { @return null; }
@@ -33,10 +33,10 @@
   @return sl-to-list($list);
 }
 
-/**
- * @requires sl-shuffle
- * @alias sl-shuffle
- */
+///
+/// @requires sl-shuffle
+/// @alias sl-shuffle
+///
  
 @function sl-randomize($list) {
   @return sl-shuffle($list);

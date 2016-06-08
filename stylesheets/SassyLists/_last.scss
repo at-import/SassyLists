@@ -1,28 +1,28 @@
-/**
- * Returns last element of `$list`.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-last
- *
- * @param {List} $list - list to retrieve last value from
- *
- * @throws Cannot find last item of empty list.
- *
- * @requires sl-is-empty
- *
- * @example
- * sl-last(a b c)
- * // c
- * 
- * @example
- * sl-last(a)
- * // a
- *
- * @example
- * sl-last(())
- * // null
- * 
- * @return {*}
- */
+///
+/// Returns last element of `$list`.
+///
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-last
+///
+/// @param {List} $list - list to retrieve last value from
+///
+/// @throws Cannot find last item of empty list.
+///
+/// @requires sl-is-empty
+///
+/// @example
+/// sl-last(a b c)
+/// // c
+/// 
+/// @example
+/// sl-last(a)
+/// // a
+///
+/// @example
+/// sl-last(())
+/// // null
+/// 
+/// @return {*}
+///
  
 @function sl-last($list) {
   @if sl-missing-dependencies(sl-is-empty) == true { @return null; }

@@ -1,21 +1,21 @@
-/**
- * Returns last index of `$value` in `$list`.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-last-index
- *
- * @param {List} $list  - list to search
- * @param {*}    $value - value to be searched for
- *
- * @example
- * sl-last-index(a b a, a)
- * // 3
- *
- * @example
- * sl-last-index(a b a, z)
- * // null
- *
- * @return {Number | Null}
- */
+///
+/// Returns last index of `$value` in `$list`.
+///
+/// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-last-index
+///
+/// @param {List} $list  - list to search
+/// @param {*}    $value - value to be searched for
+///
+/// @example
+/// sl-last-index(a b a, a)
+/// // 3
+///
+/// @example
+/// sl-last-index(a b a, z)
+/// // null
+///
+/// @return {Number | Null}
+///
  
 @function sl-last-index($list, $value) {
   @for $i from length($list) through 1 {
