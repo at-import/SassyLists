@@ -1,27 +1,26 @@
-/** Returns first element of `$list`.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-first
- *
- * @param {List} $list - list to retrieve first item from
- *
- * @throws Cannot find first item of empty list.
- *
- * @requires sl-is-empty
- *
- * @example
- * sl-first(a b c)
- * // a
- *
- * @example
- * sl-first(a)
- * // a
- *
- * @example
- * sl-first(())
- * // null
- * 
- * @return {*}
- */
+// Returns first element of `$list`.
+//
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-first
+//
+// @param {List} $list - list to retrieve first item from
+//
+// @throws Cannot find first item of empty list.
+//
+// @requires sl-is-empty
+//
+// @example
+// sl-first(a b c)
+// // a
+//
+// @example
+// sl-first(a)
+// // a
+//
+// @example
+// sl-first(())
+// // null
+//
+// @return {*}
 
 @function sl-first($list) {
   @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
@@ -34,11 +33,9 @@
   @return nth($list, 1);
 }
 
-/**
- * @requires sl-first
- * @alias sl-first
- */
- 
+// @requires sl-first
+// @alias sl-first
+
 @function sl-head($list) {
   @return sl-first($list);
 }

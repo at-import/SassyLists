@@ -1,25 +1,23 @@
-/**
- * Sorts values of `$list` using quick-sort algorithm using `$order`.
- *
- * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-sort
- *
- * @requires sl-str-compare
- * @requires sl-has-multiple-values
- * @requires sl-to-list
- *
- * @param {List} $list  - list to sort
- * @param {List} $order - order to respect
- *
- * @example
- * sl-sort(b a c)
- * // a b c
- *
- * @example
- * sl-sort(3 5 1)
- * // 1 3 5 
- *
- * @return {List}
- */
+// Sorts values of `$list` using quick-sort algorithm using `$order`.
+//
+// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-sort
+//
+// @requires sl-str-compare
+// @requires sl-has-multiple-values
+// @requires sl-to-list
+//
+// @param {List} $list  - list to sort
+// @param {List} $order - order to respect
+//
+// @example
+// sl-sort(b a c)
+// // a b c
+//
+// @example
+// sl-sort(3 5 1)
+// // 1 3 5
+//
+// @return {List}
 
 @function sl-sort($list, $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z") {
   @if sl-missing-dependencies(sl-str-compare, sl-has-multiple-values, sl-to-list) == true { @return null; }
@@ -30,7 +28,7 @@
 
   @if sl-has-multiple-values($list) {
     $seed: nth($list, ceil(length($list) / 2));
-    
+
     @each $item in $list {
       @if $item == $seed {
         $equal: append($equal, $item, list-separator($list));
@@ -39,7 +37,7 @@
       @else if sl-str-compare($item, $seed, $order) {
         $less: append($less, $item, list-separator($list));
       }
-      
+
       @else if not sl-str-compare($item, $seed, $order) {
         $large: append($large, $item, list-separator($list));
       }
@@ -51,11 +49,9 @@
   @return sl-to-list($list);
 }
 
-/**
- * @requires sl-sort
- * @alias sl-sort
- */
- 
+// @requires sl-sort
+// @alias sl-sort
+
 @function sl-order($list) {
   @return sl-sort($list);
 }
