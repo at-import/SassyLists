@@ -1,5 +1,6 @@
 # Changelog
 
+* `2.2.5`: changing C-style comments to inline comments
 * `2.2.4`: fixing a documentation error
 * `2.2.3`: adding examples to documentation
 * `2.2.2`: fixing a bug with aliases for `sl-to-list()` and moved all comments to C-like

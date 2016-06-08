@@ -1,7 +1,7 @@
 {
   "name": "SassyLists",
   "title": "SassyLists",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "A Sass API for lists.",
   "scripts": {
     "test": "grunt test"
