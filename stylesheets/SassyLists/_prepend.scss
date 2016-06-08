@@ -1,22 +1,24 @@
-// Adds `$value` as first index of `$list`.
-//
-// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-prepend
-//
-// @requires sl-is-true
-// @requires sl-to-list
-//
-// @param {List} $list  - list to preprend value to
-// @param {*}    $value - value to prepend to the list
-//
-// @example
-// sl-prepend(a b c, z)
-// // z a b c
-//
-// @return {List}
-
+/**
+ * Adds `$value` as first index of `$list`.
+ *
+ * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-prepend
+ *
+ * @requires sl-is-true
+ * @requires sl-to-list
+ *
+ * @param {List} $list  - list to preprend value to
+ * @param {*}    $value - value to prepend to the list
+ *
+ * @example
+ * sl-prepend(a b c, z)
+ * // z a b c
+ * 
+ * @return {List}
+ */
+ 
 @function sl-prepend($list, $value) {
   @if sl-missing-dependencies(sl-is-true, sl-to-list) == true { @return null; }
-
+  
   @if sl-is-true($value) {
   	$list: join($value, $list, list-separator($list));
   }

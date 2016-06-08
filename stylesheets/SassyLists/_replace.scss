@@ -1,25 +1,27 @@
-// Replaces `$old` by `$new` in `$list`.
-//
-// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-replace
-//
-// @requires sl-is-true
-// @requires sl-purge
-// @requires sl-to-list
-//
-// @param {List}    $list  - list to update
-// @param {*}       $old   - value to replace
-// @param {*}       $value - new value for $old
-//
-// @example
-// sl-replace(a b c, b, z)
-// // a z c
-//
-// @example
-// sl-replace(a b c, y, z)
-// // a b c
-//
-// @return {List}
-
+/**
+ * Replaces `$old` by `$new` in `$list`.
+ *
+ * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-replace
+ *
+ * @requires sl-is-true
+ * @requires sl-purge
+ * @requires sl-to-list
+ *
+ * @param {List}    $list  - list to update
+ * @param {*}       $old   - value to replace
+ * @param {*}       $value - new value for $old
+ *
+ * @example
+ * sl-replace(a b c, b, z)
+ * // a z c
+ *
+ * @example
+ * sl-replace(a b c, y, z)
+ * // a b c
+ * 
+ * @return {List}
+ */
+ 
 @function sl-replace($list, $old, $value) {
   @if sl-missing-dependencies(sl-is-true, sl-purge, sl-to-list) == true { @return null; }
 
@@ -39,6 +41,6 @@
   }
 
   $list: if(sl-is-true($value), $list, sl-purge($list));
-
+  
   @return sl-to-list($list);
 }

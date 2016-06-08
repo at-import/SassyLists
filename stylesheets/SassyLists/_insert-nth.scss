@@ -1,30 +1,31 @@
-// Adds `$value` at `$index` in `$list`.
-//
-// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-insert-nth
-//
-// @requires sl-is-true
-//
-// @param {List}    $list  - list to update
-// @param {Number}  $index - index to add
-// @param {*}       $value - value to add
-//
-// @throws List index $index is not a number for `sl-insert-nth`.
-// @throws List index $index must be a non-zero integer for `sl-insert-nth`.
-//
-// @example
-// sl-insert-nth(a b c, 2, z)
-// // a z b c
-//
-// @example
-// sl-insert-nth(a b c, 42, z)
-// // a b c z
-//
-// @example
-// sl-insert-nth(a b c, -42, z)
-// // null
-//
-// @return {List | Null}
-
+/** Adds `$value` at `$index` in `$list`.
+ *
+ * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-insert-nth
+ *
+ * @requires sl-is-true
+ *
+ * @param {List}    $list  - list to update
+ * @param {Number}  $index - index to add
+ * @param {*}       $value - value to add
+ *
+ * @throws List index $index is not a number for `sl-insert-nth`.
+ * @throws List index $index must be a non-zero integer for `sl-insert-nth`.
+ *
+ * @example
+ * sl-insert-nth(a b c, 2, z)
+ * // a z b c
+ *
+ * @example
+ * sl-insert-nth(a b c, 42, z)
+ * // a b c z
+ *
+ * @example 
+ * sl-insert-nth(a b c, -42, z)
+ * // null
+ * 
+ * @return {List | Null}
+ */
+ 
 @function sl-insert-nth($list, $index, $value) {
   @if sl-missing-dependencies(sl-is-true) == true { @return null; }
 

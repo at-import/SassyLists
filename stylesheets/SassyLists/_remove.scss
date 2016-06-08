@@ -1,17 +1,19 @@
-// Removes value(s) `$value` from `$list`.
-//
-// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-remove
-//
-// @requires sl-replace
-//
-// @param {List}    $list      - list to update
-// @param {*}       $value     - value to remove
-//
-// @example
-// sl-remove(a b c, a)
-// // b c
-//
-// @return {List}
+/**
+ * Removes value(s) `$value` from `$list`.
+ *
+ * @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-remove
+ *
+ * @requires sl-replace
+ *
+ * @param {List}    $list      - list to update
+ * @param {*}       $value     - value to remove
+ *
+ * @example
+ * sl-remove(a b c, a)
+ * // b c
+ *
+ * @return {List}
+ */
 
 @function sl-remove($list, $value) {
   @if sl-missing-dependencies(sl-replace) == true { @return null; }
@@ -19,8 +21,10 @@
   @return sl-replace($list, $value, null);
 }
 
-// @requires sl-remove
-// @alias sl-remove
+/**
+ * @requires sl-remove
+ * @alias sl-remove
+ */
 
 @function sl-without($list, $value) {
   @return sl-remove($list, $value);
