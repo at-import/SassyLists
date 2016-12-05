@@ -21,20 +21,20 @@
 /// @return {List | Null}
 ///
  
-@function sl-explode($string, $delimiter: '', $separator: "space") {
-  @if type-of($string) != "string" {
-    @error "`sl-explode` function expecting a string; #{type-of($string)} given.";
+@function sl-explode($string, $delimiter: '', $separator: 'space') {
+  @if type-of($string) != 'string' {
+    @error '`sl-explode` function expecting a string; #{type-of($string)} given.';
   }
 
-  @if type-of($delimiter) != "string" {
-    @error "`sl-explode` function expecting a string; #{type-of($delimiter)} given.";
+  @if type-of($delimiter) != 'string' {
+    @error '`sl-explode` function expecting a string; #{type-of($delimiter)} given.';
   }
 
   $result: ();
   $length: str-length($string);
   
-  @if not index("space" "comma", $separator) {
-    $separator: "space";
+  @if not index('space' 'comma', $separator) {
+    $separator: 'space';
   }
 
   @if str-length($delimiter) == 0 {

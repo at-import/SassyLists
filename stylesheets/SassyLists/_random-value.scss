@@ -20,7 +20,7 @@
   @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
 
   @if sl-is-empty($list) {
-    @error "Cannot find a random value in an empty list.";
+    @error 'Cannot find a random value in an empty list.';
   }
 
   @return nth($list, random(length($list)));

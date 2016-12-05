@@ -23,7 +23,7 @@
   @if sl-missing-dependencies(sl-to-map, sl-to-list) == true { @return null; }
   
   @if not function-exists($function) {
-    @error "There is no `#{$function}` function for `sl-walk`.";
+    @error 'There is no `#{$function}` function for `sl-walk`.';
   }
 
   @each $index, $value in sl-to-map($list) {

@@ -33,24 +33,24 @@
 ///
  
 @function sl-slice($list, $start: 1, $end: length($list)) {
-  @if type-of($start) != "number" or type-of($end) != "number" {
-    @error "List indexes #{$start} and #{$end} must be numbers for `sl-slice`.";
+  @if type-of($start) != 'number' or type-of($end) != 'number' {
+    @error 'List indexes #{$start} and #{$end} must be numbers for `sl-slice`.';
   }
 
   @if $start > $end {
-    @error "Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `sl-slice`.";
+    @error 'Start index is #{$start} but has to be lesser than or equals to the end index (#{$end}) for `sl-slice`.';
   }
 
   @if $start < 1 or $end < 1 {
-    @error "List indexes must be non-zero integers for `sl-slice`.";
+    @error 'List indexes must be non-zero integers for `sl-slice`.';
   }
 
   @if $start > length($list) {
-    @error "Start index is #{$start} but list is only #{length($list)} items long for `sl-slice`.";
+    @error 'Start index is #{$start} but list is only #{length($list)} items long for `sl-slice`.';
   }
 
   @if $end > length($list) {
-    @error "End index is #{$end} but list is only #{length($list)} items long for `sl-slice`.";
+    @error 'End index is #{$end} but list is only #{length($list)} items long for `sl-slice`.';
   }
 
   $result: ();

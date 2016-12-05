@@ -20,8 +20,8 @@
 @function sl-chunk($list, $size) {
   @if sl-missing-dependencies(sl-to-list) == true { @return null; }
 
-  @if type-of($size) != "number" {
-    @error "#{inspect($size)} is not a number for `sl-chunk`.";
+  @if type-of($size) != 'number' {
+    @error '#{inspect($size)} is not a number for `sl-chunk`.';
   }
 
   @if $size >= length($list) {

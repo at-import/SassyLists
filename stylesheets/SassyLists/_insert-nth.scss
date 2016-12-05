@@ -31,12 +31,12 @@
 
   $length: length($list);
 
-  @if type-of($index) != "number" {
-    @error "List index #{inspect($index)} is not a number for `sl-insert-nth`.";
+  @if type-of($index) != 'number' {
+    @error 'List index #{inspect($index)} is not a number for `sl-insert-nth`.';
   }
 
   @if $index < 1 {
-    @error "List index #{$index} must be a non-zero integer for `sl-insert-nth`.";
+    @error 'List index #{$index} must be a non-zero integer for `sl-insert-nth`.';
   }
 
   @if $index > $length {

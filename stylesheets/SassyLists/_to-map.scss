@@ -3,7 +3,7 @@
 /// Useful for iterating through a list with an index variable.
 /// e.g. `@each $index, $value in to-map($list)`
 ///
-/// @author Andrey "Lolmaus" Mikhaylov
+/// @author Andrey “Lolmaus” Mikhaylov
 /// @author Chris Eppstein
 /// 
 /// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-to-map
@@ -26,7 +26,7 @@
   @if sl-missing-dependencies(sl-range, sl-is-empty) == true { @return null; }
 
   @if sl-is-empty($list) {
-    @error "List cannot be empty for `sl-to-map`.";
+    @error 'List cannot be empty for `sl-to-map`.';
   }
 
   @return zip(sl-range(length($list)), $list);

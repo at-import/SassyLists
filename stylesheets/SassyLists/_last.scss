@@ -28,7 +28,7 @@
   @if sl-missing-dependencies(sl-is-empty) == true { @return null; }
 
   @if sl-is-empty($list) {
-    @error "Cannot find last item of empty list.";
+    @error 'Cannot find last item of empty list.';
   }
 
   @return nth($list, -1);
