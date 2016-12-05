@@ -23,13 +23,11 @@
  
 @function sl-explode($string, $delimiter: '', $separator: "space") {
   @if type-of($string) != "string" {
-    @warn "`sl-explode` function expecting a string; #{type-of($string)} given.";
-    @return null;
+    @error "`sl-explode` function expecting a string; #{type-of($string)} given.";
   }
 
   @if type-of($delimiter) != "string" {
-    @warn "`sl-explode` function expecting a string; #{type-of($delimiter)} given.";
-    @return null;
+    @error "`sl-explode` function expecting a string; #{type-of($delimiter)} given.";
   }
 
   $result: ();

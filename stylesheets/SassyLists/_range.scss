@@ -26,18 +26,15 @@
  
 @function sl-range($n) {
   @if type-of($n) != "number" {
-    @warn "`#{inspect($n)}` is not a number for `sl-range`.";
-    @return null;
+    @error "`#{inspect($n)}` is not a number for `sl-range`.";
   }
 
   @if not unitless($n) {
-    @warn "`#{$n}` is not unitless for `sl-range`.";
-    @return null;
+    @error "`#{$n}` is not unitless for `sl-range`.";
   }
 
   @if $n < 1 {
-    @warn "`#{$n}` is not greater than 0 for `sl-range`.";
-    @return null;
+    @error "`#{$n}` is not greater than 0 for `sl-range`.";
   }
 
   @if $n == 1 { 

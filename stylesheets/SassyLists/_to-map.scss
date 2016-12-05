@@ -26,8 +26,7 @@
   @if sl-missing-dependencies(sl-range, sl-is-empty) == true { @return null; }
 
   @if sl-is-empty($list) {
-    @warn "List cannot be empty for `sl-to-map`.";
-    @return null;
+    @error "List cannot be empty for `sl-to-map`.";
   }
 
   @return zip(sl-range(length($list)), $list);

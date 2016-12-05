@@ -30,8 +30,7 @@
   $result: 0;
 
   @if not sl-every($list, sl-is-number) {
-    @warn "All items from list are not numbers for `sl-sum`.";
-    @return null;
+    @error "All items from list are not numbers for `sl-sum`.";
   }
 
   @each $item in $list {

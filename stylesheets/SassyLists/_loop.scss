@@ -27,8 +27,7 @@
   @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
 
   @if type-of($value) != "number" {
-    @warn "#{inspect($value)} is not a number for `sl-loop`.";
-    @return null;
+    @error "#{inspect($value)} is not a number for `sl-loop`.";
   }
 
   @if not sl-has-multiple-values($list) {
