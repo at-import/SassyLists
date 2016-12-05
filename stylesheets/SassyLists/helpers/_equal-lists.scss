@@ -1,0 +1,32 @@
+/** Tests whether all `$lists` have equal length.
+ *
+ * @ignore Documentation: http://sassylists.com/documentation.html#sl-equal-lists
+ *
+ * @param {List} $lists - lists to compare
+ *
+ * @example
+ * sl-equal-lists((a, b, c), (1, 2, 3))
+ * // true
+ *
+ * @example
+ * sl-equal-lists((a, b, c, d), (1, 2))
+ * // false
+ *
+ * @return {Bool}
+ */
+
+@function equal-lists($lists...) {
+  @if length($lists) < 2 {
+    @return true;
+  }
+
+  $length: length(nth($lists, 1));
+
+  @for $i from 2 through length($lists) {
+    @if length(nth($lists, $i)) != $length {
+      @return false;
+    }
+  }
+
+  @return true;
+}
