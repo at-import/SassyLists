@@ -6,3 +6,6 @@ gems
 .bundle
 save
 docs
+.DS_Store
+*.log
+sassdoc
