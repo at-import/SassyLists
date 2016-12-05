@@ -1,49 +1,50 @@
 // SassyLists - A couple of advanced Sass list functions
 //
-// Official site: http://at-import.github.io/SassyLists/
-// Repository: https://github.com/at-import/SassyLists/
+// Official site: http://at-import.github.io/functions/
+// Repository: https://github.com/at-import/functions/
 
-@import 'SassyLists/helpers/missing-dependencies';
-@import 'SassyLists/helpers/str-compare';
-@import 'SassyLists/helpers/true';
-@import 'SassyLists/helpers/is-number';
-@import 'SassyLists/chunk';
-@import 'SassyLists/comma-list';
-@import 'SassyLists/contain';
-@import 'SassyLists/count-values';
-@import 'SassyLists/debug';
-@import 'SassyLists/every';
-@import 'SassyLists/explode';
-@import 'SassyLists/first';
-@import 'SassyLists/flatten';
-@import 'SassyLists/has-values';
-@import 'SassyLists/has-multiple-values';
-@import 'SassyLists/insert-nth';
-@import 'SassyLists/intersection';
-@import 'SassyLists/is-empty';
-@import 'SassyLists/is-single';
-@import 'SassyLists/is-symmetrical';
-@import 'SassyLists/last';
-@import 'SassyLists/last-index';
-@import 'SassyLists/loop';
-@import 'SassyLists/prepend';
-@import 'SassyLists/purge';
-@import 'SassyLists/random-value';
-@import 'SassyLists/range';
-@import 'SassyLists/remove';
-@import 'SassyLists/remove-duplicates';
-@import 'SassyLists/remove-nth';
-@import 'SassyLists/replace';
-@import 'SassyLists/replace-nth';
-@import 'SassyLists/reverse';
-@import 'SassyLists/shuffle';
-@import 'SassyLists/slice';
-@import 'SassyLists/sort';
-@import 'SassyLists/some';
-@import 'SassyLists/sum';
-@import 'SassyLists/tail';
-@import 'SassyLists/to-list';
-@import 'SassyLists/to-map';
-@import 'SassyLists/to-string';
-@import 'SassyLists/union';
-@import 'SassyLists/walk';
+@import 'helpers/missing-dependencies';
+@import 'helpers/str-compare';
+@import 'helpers/true';
+@import 'helpers/is-number';
+
+@import 'functions/chunk';
+@import 'functions/comma-list';
+@import 'functions/contain';
+@import 'functions/count-values';
+@import 'functions/debug';
+@import 'functions/every';
+@import 'functions/explode';
+@import 'functions/first';
+@import 'functions/flatten';
+@import 'functions/has-values';
+@import 'functions/has-multiple-values';
+@import 'functions/insert-nth';
+@import 'functions/intersection';
+@import 'functions/is-empty';
+@import 'functions/is-single';
+@import 'functions/is-symmetrical';
+@import 'functions/last';
+@import 'functions/last-index';
+@import 'functions/loop';
+@import 'functions/prepend';
+@import 'functions/purge';
+@import 'functions/random-value';
+@import 'functions/range';
+@import 'functions/remove';
+@import 'functions/remove-duplicates';
+@import 'functions/remove-nth';
+@import 'functions/replace';
+@import 'functions/replace-nth';
+@import 'functions/reverse';
+@import 'functions/shuffle';
+@import 'functions/slice';
+@import 'functions/sort';
+@import 'functions/some';
+@import 'functions/sum';
+@import 'functions/tail';
+@import 'functions/to-list';
+@import 'functions/to-map';
+@import 'functions/to-string';
+@import 'functions/union';
+@import 'functions/walk';
