@@ -59,9 +59,11 @@ If you feel like an explorer, you can have a look at the code [here](https://git
 
 ## Requirements
 
-* Sass ~> 3.3
+* Sass ~> 3.4
 
 If you are looking for the last version of SassyLists running on Sass 3.2, install `0.4.9`.
+
+If you are looking for the last version of SassyLists running on Sass 3.3, install `2.2.5`.
 
 Some functions depend on other functions. If you include functions individually, make sure to check for these dependencies in their respective docs.
 
