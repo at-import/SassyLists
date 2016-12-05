@@ -1,15 +1,18 @@
-@include describe("The sl-first function") {
-  @include it("should return the first item in an array") {
-    @include should(expect( sl-first( 1 2 3 ) ), to( equal( 1 ) ));
-    @include should(expect( sl-first( "a" "b" "c" ) ), to( equal( "a" ) ));
-  }
+@include test('The sl-first function') {
+  $__TESTS__: (
+    'Should return the first item in a list.': (
+      ( 1 2 3, ): 1,
+      ( 'a' 'b' 'c', ): 'a',
+    ),
+    'Should return the only item in an single item list.': (
+      ( 1, ): 1,
+      ( 'a', ): 'a',
+    )
+  );
 
-  @include it("should return the only item in an single item array") {
-    @include should(expect( sl-first( 1 ) ), to( equal( 1 ) ));
-    @include should(expect( sl-first( "a" ) ), to( equal( "a" ) ));
-  }
-
-  @include it("should return null if list is empty") {
-    @include should(expect( sl-first( () ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-first($arguments...), $expect, $suite);
+    }
   }
 }

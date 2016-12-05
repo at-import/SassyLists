@@ -1,15 +1,18 @@
-@include describe("The sl-last function") {
-  @include it("should return the last item in a list") {
-    @include should(expect( sl-last( 1 2 3 ) ), to( equal( 3 ) ));
-    @include should(expect( sl-last( "foo" "bar" "baz" ) ), to( equal( "baz" ) ));
-  }
+@include test('The sl-last function') {
+  $__TESTS__: (
+    'Should return the last item in a list.': (
+      ( 1 2 3, ): 3,
+      ( 'foo' 'bar' 'baz', ): 'baz',
+    ),
+    'Should return the only item in an single item list.': (
+      ( 1, ): 1,
+      ( 'foo', ): 'foo',
+    ),
+  );
 
-  @include it("should return the only item in an single item list") {
-    @include should(expect( sl-last( 1 ) ), to( equal( 1 ) ));
-    @include should(expect( sl-last( "foo" ) ), to( equal( "foo" ) ));
-  }
-
-  @include it("should return false if list is empty") {
-    @include should(expect( sl-last( () ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-last($arguments...), $expect, $suite);
+    }
   }
 }

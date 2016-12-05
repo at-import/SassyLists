@@ -1,15 +1,14 @@
-@include describe("The sl-tail function") {
-  @include it("should return the rest of the list") {
-    @include should(expect( sl-tail( 1 2 3 ) ), to( equal( 2 3 ) ));
-    @include should(expect( sl-tail( "foo" "bar" "baz" ) ), to( equal( "bar" "baz" ) ));
-  }
+@include test('The sl-tail function') {
+  $__TESTS__: (
+    'Should return the rest of the list.': (
+      ( 1 2 3, ): ( 2 3 ),
+      ( 'foo' 'bar' 'baz', ): ( 'bar' 'baz' ),
+    ),
+  );
 
-  @include it("should return null for a single item list") {
-    @include should(expect( sl-tail( 1 ) ), to( equal( null ) ));
-    @include should(expect( sl-tail( "foo" ) ), to( equal( null ) ));
-  }
-
-  @include it("should return null if list is empty") {
-    @include should(expect( sl-tail( () ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-tail($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,26 +1,26 @@
-@include describe("The sl-replace-nth function") {
-  @include it("should replace nth in a list") {
-    @include should(expect( sl-replace-nth( 1 2 3 4, 2 , 1 ) ), to(equal( 1 1 3 4 ) ));
-    @include should(expect( sl-replace-nth( "bar" "foo" "bar" "baz"  , 2 , "tah" ) ), to(equal( "bar" "tah" "bar" "baz" ) ));
-  }
+@include test('The sl-replace-nth function') {
+  $__TESTS__: (
+    'Should replace nth in a list.': (
+      ( 1 2 3 4, 2 , 1, ): ( 1 1 3 4 ),
+      ( 'bar' 'foo' 'bar' 'baz'  , 2 , 'tah', ): ( 'bar' 'tah' 'bar' 'baz' ),
+    ),
+    'Should remove nth from a list if no value is provided.': (
+      ( 1 2 3 4, 2 , null, ): ( 1 3 4 ),
+      ( 'bar' 'foo' 'bar' 'baz'  , 2 , null, ): ( 'bar' 'bar' 'baz' ),
+    ),
+    'Should replace negative nth in a list.': (
+      ( 1 2 3 4, -2 , 1, ): ( 1 2 1 4 ),
+      ( 'bar' 'foo' 'bar' 'baz'  , -2 , 'tah', ): ( 'bar' 'foo' 'tah' 'baz' ),
+    ),
+    'Should remove negative nth from a list if no value is provided.': (
+      ( 1 2 3 4, -2 , null, ): ( 1 2 4 ),
+      ( 'bar' 'foo' 'bar' 'baz'  , -2 , null, ): ( 'bar' 'foo' 'baz' ),
+    ),
+  );
 
-  @include it("should remove nth from a list if no value is provided") {
-    @include should(expect( sl-replace-nth( 1 2 3 4, 2 , null ) ), to(equal( 1 3 4 ) ));
-    @include should(expect( sl-replace-nth( "bar" "foo" "bar" "baz"  , 2 , null ) ), to(equal( "bar" "bar" "baz" ) ));
-  }
-
-  @include it("should replace negative nth in a list") {
-    @include should(expect( sl-replace-nth( 1 2 3 4, -2 , 1 ) ), to(equal( 1 2 1 4 ) ));
-    @include should(expect( sl-replace-nth( "bar" "foo" "bar" "baz"  , -2 , "tah" ) ), to(equal( "bar" "foo" "tah" "baz" ) ));
-  }
-
-  @include it("should remove negative nth from a list if no value is provided") {
-    @include should(expect( sl-replace-nth( 1 2 3 4, -2 , null ) ), to(equal( 1 2 4 ) ));
-    @include should(expect( sl-replace-nth( "bar" "foo" "bar" "baz"  , -2 , null ) ), to(equal( "bar" "foo" "baz" ) ));
-  }
-
-  @include it("should return null for invalid indexes") {
-    @include should(expect( sl-replace-nth( 1 2 3 4, 0 , null ) ), to( be( null ) ));
-    @include should(expect( sl-replace-nth( "bar" "foo" "bar" "baz", "foo" , null ) ), to( be( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-replace-nth($arguments...), $expect, $suite);
+    }
   }
 }

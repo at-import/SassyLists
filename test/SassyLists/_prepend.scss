@@ -1,11 +1,18 @@
-@include describe("The sl-prepend function") {
-  @include it("should prepend a value to a list") {
-    @include should(expect( sl-prepend( 2 3 4, 1 ) ), to( equal( 1 2 3 4 ) ));
-    @include should(expect( sl-prepend( "b" "c" "d", "a" ) ), to( equal( "a" "b" "c" "d" ) ));
-  }
+@include test('The sl-prepend function') {
+  $__TESTS__: (
+    'Should prepend a value to a list.': (
+      ( 2 3 4, 1, ): ( 1 2 3 4 ),
+      ( 'b' 'c' 'd', 'a', ): ( 'a' 'b' 'c' 'd' ),
+    ),
+    'Should prepend a list to a list.': (
+      ( 3 4, 1 2, ): ( 1 2 3 4 ),
+      ( 'c' 'd', 'a' 'b', ): ( 'a' 'b' 'c' 'd' ),
+    ),
+  );
 
-  @include it("should prepend a list to a list") {
-    @include should(expect( sl-prepend( 3 4, 1 2 ) ), to( equal( 1 2 3 4 ) ));
-    @include should(expect( sl-prepend( "c" "d", "a" "b" ) ), to( equal( "a" "b" "c" "d" ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-prepend($arguments...), $expect, $suite);
+    }
   }
 }

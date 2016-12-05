@@ -1,11 +1,18 @@
-@include describe("The sl-to-string function") {
-  @include it("should return list as a string using glue") {
-    @include should(expect( sl-to-string( 1 2 3 4 5, "-") ), to( equal( "1-2-3-4-5" ) ));
-    @include should(expect( sl-to-string( "a" "b" "c" "d" "e" "f", "/") ), to( equal( "a/b/c/d/e/f" ) ));
-  }
+@include test('The sl-to-string function') {
+  $__TESTS__: (
+    'Should return list as a string using glue.': (
+      ( 1 2 3 4 5, '-', ): '1-2-3-4-5',
+      ( 'a' 'b' 'c' 'd' 'e' 'f', '/', ): 'a/b/c/d/e/f',
+    ),
+    'Should return list with no glue if omitted.': (
+      ( 1 2 3 4 5, ): '12345',
+      ( 'a' 'b' 'c' 'd' 'e' 'f', ): 'abcdef',
+    ),
+  );
 
-  @include it("should return list with no glue if omitted") {
-    @include should(expect( sl-to-string( 1 2 3 4 5 ) ), to( equal( "12345"  )));
-    @include should(expect( sl-to-string( "a" "b" "c" "d" "e" "f" ) ), to( equal( "abcdef" )));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-to-string($arguments...), $expect, $suite);
+    }
   }
 }

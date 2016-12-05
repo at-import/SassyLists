@@ -1,19 +1,26 @@
-@include describe("The sl-is-number function") {
-  @include it("should return true if the value is a number") {
-    @include should(expect( sl-is-number( 0 ) ), to( equal( true ) ));
-    @include should(expect( sl-is-number( 1 ) ), to( equal( true ) ));
-    @include should(expect( sl-is-number( 42px ) ), to( equal( true ) ));
-    @include should(expect( sl-is-number( 10% ) ), to( equal( true ) ));
-    @include should(expect( sl-is-number( 1337.5 ) ), to( equal( true ) ));
-    @include should(expect( sl-is-number( -42 ) ), to( equal( true ) ));
-  }
+@include test('The sl-is-number function') {
+  $__TESTS__: (
+    'Should return true if the value is a number.': (
+      ( 0 ): true,
+      ( 1 ): true,
+      ( 42px ): true,
+      ( 10% ): true,
+      ( 1337.5 ): true,
+      ( -42 ): true,
+    ),
+    'Should return false if the value is not a number.': (
+      ( false ): false,
+      ( null ): false,
+      ( append((), ()) ): false,
+      ( true ): false,
+      ( 'string' ): false,
+      ( 'a' 'b' 'c' ): false,
+    ),
+  );
 
-  @include it("should return false if the value is not a number") {
-    @include should(expect( sl-is-number( false ) ), to( equal( false ) ));
-    @include should(expect( sl-is-number( null ) ), to( equal( false ) ));
-    @include should(expect( sl-is-number( () ) ), to( equal( false ) ));
-    @include should(expect( sl-is-number( true ) ), to( equal( false ) ));
-    @include should(expect( sl-is-number( string ) ), to( equal( false ) ));
-    @include should(expect( sl-is-number( a b c ) ), to( equal( false ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-is-number($arguments...), $expect, $suite);
+    }
   }
 }

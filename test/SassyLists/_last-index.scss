@@ -1,11 +1,18 @@
-@include describe("The sl-last-index function") {
-  @include it("should return the index of last occurrence of item in a list") {
-    @include should(expect( sl-last-index( 1 2 2 3, 2 ) ), to( equal( 3 ) ));
-    @include should(expect( sl-last-index( "a" "b" "c" "a", "a" ) ), to( equal( 4 ) ));
-  }
+@include test('The sl-last-index function') {
+  $__TESTS__: (
+    'Should return the index of last occurrence of item in a list.': (
+      ( 1 2 2 3, 2, ): 3,
+      ( 'a' 'b' 'c' 'a', 'a', ): 4,
+    ),
+    'Should return null if item is not found.': (
+      ( 1 2 2 3, 'a', ): null,
+      ( 'a' 'b' 'c' 'a', 1, ): null,
+    ),
+  );
 
-  @include it("should return null if item is not found") {
-    @include should(expect( sl-last-index( 1 2 2 3, "a" ) ), to( equal( null ) ));
-    @include should(expect( sl-last-index( "a" "b" "c" "a", 1 ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-last-index($arguments...), $expect, $suite);
+    }
   }
 }

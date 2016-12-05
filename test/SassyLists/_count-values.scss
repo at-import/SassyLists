@@ -1,7 +1,15 @@
-@include describe("The sl-count-values function") {
-  @include it("should count the number of occurrences of each value in list") {
-    @include should(expect( sl-count-values( a )  ), to( equal( ("a": 1) ) ));
-    @include should(expect( sl-count-values( 1 2 3 1 4 3 5 2 )  ), to( equal( (1: 2, 2: 2, 3: 2, 4: 1, 5: 1) ) ));
-    @include should(expect( sl-count-values( "a" "b" "c" "d" "e" "f" )  ), to( equal( ("a": 1, "b": 1, "c": 1, "d": 1, "e": 1, "f": 1) ) ));
+@include test('The sl-count-values function') {
+  $__TESTS__: (
+    'Should count the number of occurrences of each value in list.': (
+      ( 'a', ): ( 'a': 1 ),
+      ( 1 2 3 1 4 3 5 2, ): ( 1: 2, 2: 2, 3: 2, 4: 1, 5: 1 ),
+      ( 'a' 'b' 'c' 'd' 'e' 'f', ): ( 'a': 1, 'b': 1, 'c': 1, 'd': 1, 'e': 1, 'f': 1 ),
+    ),
+  );
+
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-count-values($arguments...), $expect, $suite);
+    }
   }
 }

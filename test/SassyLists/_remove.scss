@@ -1,24 +1,21 @@
-@include describe("The sl-remove function") {
-  $list     : ();
-  $numbers  : 1 2 3 4 5 6;
-  $strings  : "a" "b" "c" "b" "x";
+@include test('The sl-remove function') {
+  $__TESTS__: (
+    'Should return a list without removed value.': (
+      ( 1 2 3 4 5 6, 1, ): ( 2 3 4 5 6 ),
+      ( 'a' 'b' 'c' 'b' 'x', 'b', ): ( 'a' 'c' 'x' ),
+    ),
+    'Should return same list when no equaling values.': (
+      ( 1 2 3 4 5 6, green, ): ( 1 2 3 4 5 6 ),
+      ( 'a' 'b' 'c' 'b' 'x', green, ): ( 'a' 'b' 'c' 'b' 'x' ),
+    ),
+    'Should leave empty lists alone.': (
+      ( (), green, ): (),
+    ),
+  );
 
-  @include it("should return a list without removed value") {
-    @include should(expect( sl-remove( $numbers, 1     ) ), to( equal( 2 3 4 5 6 ) ));
-    @include should(expect( sl-remove( $strings, "b"   ) ), to( equal( "a" "c" "x" ) ));
-  }
-
-  @include it("should return same list when no equaling values") {
-    @include should(expect( sl-remove( $numbers, green ) ), to( equal( $numbers ) ));
-    @include should(expect( sl-remove( $strings, green ) ), to( equal( $strings ) ));
-  }
-
-  @include it("should leave empty lists alone") {
-    @include should(expect( sl-remove( $list, green ) ), to( equal( $list ) ));
-  }
-
-  @include it("should diminish length") {
-    @include should(expect( length(sl-remove( $numbers, 1 ) ) ), to( equal( length($numbers) - 1 )));
-    @include should(expect( length(sl-remove( $strings, "b" ) ) ), to( equal( length($strings) - 2 )));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-remove($arguments...), $expect, $suite);
+    }
   }
 }

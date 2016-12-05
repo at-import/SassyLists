@@ -1,5 +1,7 @@
-@include describe("The sl-random-value function") {
-  @include it("should return a random value from list") {
-    @include should(expect( not not index( 1 2 3 4 5 , sl-random-value( 1 2 3 4 5 ) ) ), to( equal( true ) ));
-  }
+@include test('The sl-random-value function') {
+  @include assert-equal(
+    not not index( 1 2 3 4 5 , sl-random-value( 1 2 3 4 5 ) ),
+    true,
+    'Should return a random value from list.'
+  );
 }

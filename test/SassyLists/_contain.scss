@@ -1,12 +1,19 @@
-@include describe("The sl-contain function") {
-  @include it("should be true if collection contains value") {
-    @include should(expect( sl-contain( 1 2 3, 1 ) ), to( equal( true ) ));
-    @include should(expect( sl-contain( "foo" "bar" "baz", "foo" ) ), to( equal( true ) ));
-  }
+@include test('The sl-contain function') {
+  $__TESTS__: (
+    'Should be true if collection contains value.': (
+      ( 1 2 3, 1, ): true,
+      ( 'foo' 'bar' 'baz', 'foo', ): true,
+    ),
+    'Should be false if collection doesn’t contain value.': (
+      ( (), 4, ): false,
+      ( 1 2 3, 4, ): false,
+      ( 'foo' 'bar' 'baz', 'fod', ): false,
+    ),
+  );
 
-  @include it("should be false if collection doesnt contain value") {
-    @include should(expect( sl-contain( (), 4 ) ), to( equal( false ) ));
-    @include should(expect( sl-contain( 1 2 3, 4 ) ), to( equal( false ) ));
-    @include should(expect( sl-contain( "foo" "bar" "baz", "fod" ) ), to( equal( false ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-contain($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,21 +1,26 @@
-@include describe("The sl-flatten function") {
-  @include it("should flatten nested lists") {
-    @include should(expect( sl-flatten( 1 (2  3  4 5   6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
-    @include should(expect( sl-flatten( 1 (2 (3  4 5)  6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
-    @include should(expect( sl-flatten( 1 (2 (3 (4 5)) 6) 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
+@include test('The sl-flatten function') {
+  $__TESTS__: (
+    'Should flatten nested lists.': (
+      ( 1 ( 2 3 4 5 6 ) 7, ): ( 1 2 3 4 5 6 7 ),
+      ( 1 ( 2 ( 3 4 5 ) 6 ) 7, ): ( 1 2 3 4 5 6 7 ),
+      ( 1 ( 2 ( 3 ( 4 5 ) ) 6 ) 7, ): ( 1 2 3 4 5 6 7 ),
+      ( 'a' ('b' 'c' 'd' 'e' 'f') 'g', ): ( 'a' 'b' 'c' 'd' 'e' 'f' 'g' ),
+      ( 'a' ('b' ('c' 'd' 'e') 'f') 'g', ): ( 'a' 'b' 'c' 'd' 'e' 'f' 'g' ),
+      ( 'a' ('b' ('c' ('d' 'e')) 'f') 'g', ): ( 'a' 'b' 'c' 'd' 'e' 'f' 'g' ),
+    ),
+    'Should leave normal lists alone.': (
+      ( 1, ): ( 1, ),
+      ( 1 2 3 4 5 6 7, ): ( 1 2 3 4 5 6 7 ),
+      ( 'a' 'b' 'c' 'd' 'e' 'f' 'g', ): ( 'a' 'b' 'c' 'd' 'e' 'f' 'g' ),
+    ),
+    'Should leave empty lists alone.': (
+      ( (), ): ()
+    )
+  );
 
-    @include should(expect( sl-flatten( "a" ("b"  "c"  "d" "e"   "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
-    @include should(expect( sl-flatten( "a" ("b" ("c"  "d" "e")  "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
-    @include should(expect( sl-flatten( "a" ("b" ("c" ("d" "e")) "f") "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g"  ) ));
-  }
-
-  @include it("should leave normal lists alone") {
-    @include should(expect( sl-flatten( 1 ) ), to( equal( sl-to-list(1) ) ));
-    @include should(expect( sl-flatten( 1 2 3 4 5 6 7 ) ), to( equal( 1 2 3 4 5 6 7 ) ));
-    @include should(expect( sl-flatten( "a" "b" "c" "d" "e" "f" "g" ) ), to( equal( "a" "b" "c" "d" "e" "f" "g" ) ));
-  }
-
-  @include it("should leave empty lists alone") {
-    @include should(expect( sl-flatten( () ) ), to( equal( () ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-flatten($arguments...), $expect, $suite);
+    }
   }
 }

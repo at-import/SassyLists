@@ -1,22 +1,15 @@
-@include describe("The sl-range function") {
-  @include it("should return a list containing values from 1 through n") {
-    @include should(expect(sl-range(1)), to(equal(1)));
-    @include should(expect(sl-range(2)), to(equal(1 2)));
-    @include should(expect(sl-range(10)), to(equal(1 2 3 4 5 6 7 8 9 10)));
-  }
+@include test('The sl-range function') {
+  $__TESTS__: (
+    'Should return a list containing values from 1 through n.': (
+      ( 1, ): 1,
+      ( 2, ): ( 1 2 ),
+      ( 10, ): ( 1 2 3 4 5 6 7 8 9 10 ),
+    ),
+  );
 
-  @include it("should return null if value is falsy") {
-    @include should(expect(sl-range(string)), to(equal(null)));
-    @include should(expect(sl-range(true)), to(equal(null)));
-    @include should(expect(sl-range(false)), to(equal(null)));
-    @include should(expect(sl-range(1 2)), to(equal(null)));
-    @include should(expect(sl-range((1: 2))), to(equal(null)));
-    @include should(expect(sl-range(red)), to(equal(null)));
-  }
-
-  @include it("should return null if value is lesser than 1") {
-    @include should(expect(sl-range(0)), to(equal(null)));
-    @include should(expect(sl-range(-1)), to(equal(null)));
-    @include should(expect(sl-range(-42)), to(equal(null)));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-range($arguments...), $expect, $suite);
+    }
   }
 }

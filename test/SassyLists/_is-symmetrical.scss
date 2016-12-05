@@ -1,18 +1,24 @@
-@include describe("The sl-is-symmetrical function") {
-  @include it("should return true if list is symmetrical") {
-    @include should(expect( sl-is-symmetrical( () ) ), to( equal( true ) ));
-    @include should(expect( sl-is-symmetrical( 1 ) ), to( equal( true ) ));
-    @include should(expect( sl-is-symmetrical( 1 2 3 2 1 ) ), to( equal( true ) ));
-    @include should(expect( sl-is-symmetrical( "a" "b" "a" ) ), to( equal( true ) ));
-  }
+@include test('The sl-is-symmetrical function') {
+  $__TESTS__: (
+    'Should return true if list is symmetrical.': (
+      ( (), ): true,
+      ( 1, ): true,
+      ( 1 2 3 2 1, ): true,
+      ( 'a' 'b' 'a', ): true,
+    ),
+    'Should return false if list is not symmetrical.': (
+      ( 1 2 3 4 5, ): false,
+      ( 'a' 'b' 'c', ): false,
+    ),
+    'Should not be recursive.': (
+      ( 1 ( 2 3 4 ) 1, ): true,
+      ( 'a' ( 'b' 'c' ) 'a', ): true,
+    ),
+  );
 
-  @include it("should return false if list is not symmetrical") {
-    @include should(expect( sl-is-symmetrical( 1 2 3 4 5 ) ), to( equal( false ) ));
-    @include should(expect( sl-is-symmetrical( "a" "b" "c" ) ), to( equal( false ) ));
-  }
-
-  @include it("should not be recursive") {
-    @include should(expect( sl-is-symmetrical( 1 (2 3 4) 1 ) ), to( equal( true ) ));
-    @include should(expect( sl-is-symmetrical( "a" ("b" "c") "a" ) ), to( equal( true ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-is-symmetrical($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,16 +1,22 @@
-@include describe("The sl-is-single function") {
-  @include it("should return true if the list has a single item") {
-    @include should(expect( sl-is-single( a )), to( equal( true ) ));
-    @include should(expect( sl-is-single( 42 )), to( equal( true ) ));
-  }
+@include test('The sl-is-single function') {
+  $__TESTS__: (
+    'Should return true if the list has a single item.': (
+      ( a, ): true,
+      ( 42, ): true,
+    ),
+    'Should return false if there are more than one item in list.': (
+      ( 1 2 3, ): false,
+      ( ' ' ' ', ): false,
+      ( 0 0, ): false,
+    ),
+    'Should return false if list is empty.': (
+      ( (), ): false,
+    ),
+  );
 
-  @include it("should return false if there are more than one item in list") {
-    @include should(expect( sl-is-single(1 2 3) ), to( equal( false ) ));
-    @include should(expect( sl-is-single(' ' ' ') ), to( equal( false ) ));
-    @include should(expect( sl-is-single(0 0) ), to( equal( false ) ));
-  }
-
-  @include it("should return false if list is empty") {
-    @include should(expect( sl-is-single( () ) ), to( equal( false ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-is-single($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,14 +1,20 @@
-@include describe("The sl-purge function") {
-  @include it("should remove all falsy values from list") {
-    @include should(expect( sl-purge( 0 1 2 false 3 null 4 "" ) ), to( equal( 0 1 2 3 4 ) ));
-    @include should(expect( sl-purge( "a" "b" false "c" null "d" "" ) ), to( equal( "a" "b" "c" "d" ) ));
-  }
+@include test('The sl-purge function') {
+  $__TESTS__: (
+    'Should remove all falsy values from list.': (
+      ( 0 1 2 false 3 null 4 '', ): ( 0 1 2 3 4 ),
+      ( 'a' 'b' false 'c' null 'd' '', ): ( 'a' 'b' 'c' 'd' ),
+    ),
+    'Should leave lists without falsy values alone.': (
+      ( 1 2 3 4, ): ( 1 2 3 4 ),
+    ),
+    'Should leave empty lists alone.': (
+      ( (), ): (),
+    ),
+  );
 
-  @include it("should leave lists without falsy values alone") {
-    @include should(expect( sl-purge( 1 2 3 4 ) ), to( equal( 1 2 3 4 ) ));
-  }
-
-  @include it("should leave empty lists alone") {
-    @include should(expect( sl-purge( () ) ), to( equal( () ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-purge($arguments...), $expect, $suite);
+    }
   }
 }

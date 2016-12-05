@@ -1,11 +1,18 @@
-@include describe("The sl-remove-duplicates function") {
-  @include it("should remove duplicated values from list") {
-    @include should(expect( sl-remove-duplicates( 1 2 3 2 4 1 5 ) ), to( equal( 1 2 3 4 5 ) ));
-    @include should(expect( sl-remove-duplicates( "a" "b" "a" "c" "c" "d" "b" "e" "f" ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
-  }
+@include test('The sl-remove-duplicates function') {
+  $__TESTS__: (
+    'Should remove duplicated values from list.': (
+      ( 1 2 3 2 4 1 5, ): ( 1 2 3 4 5 ),
+      ( 'a' 'b' 'a' 'c' 'c' 'd' 'b' 'e' 'f', ): ( 'a' 'b' 'c' 'd' 'e' 'f' ),
+    ),
+    'Should leave a list without duplicated values alone.': (
+      ( 1 2 3 4 5, ): ( 1 2 3 4 5 ),
+      ( 'a' 'b' 'c' 'd' 'e' 'f', ): ( 'a' 'b' 'c' 'd' 'e' 'f' ),
+    ),
+  );
 
-  @include it("should leave a list without duplicated values alone") {
-    @include should(expect( sl-remove-duplicates( 1 2 3 4 5 ) ), to( equal( 1 2 3 4 5 ) ));
-    @include should(expect( sl-remove-duplicates( "a" "b" "c" "d" "e" "f" ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-remove-duplicates($arguments...), $expect, $suite);
+    }
   }
 }

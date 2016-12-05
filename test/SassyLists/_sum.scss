@@ -1,16 +1,18 @@
-@include describe("The sl-sum function") {
-  @include it("should return the sum of unitless numbers in list") {
-    @include should(expect( sl-sum( 1 2 3 4 5 ) ), to( equal( 15 )));
-    @include should(expect( sl-sum( 1px 2in 3pc 4 5px 6 ) ), to( equal( 10 )));
-  }
+@include test('The sl-sum function') {
+  $__TESTS__: (
+    'Should return the sum of unitless numbers in list.': (
+      ( 1 2 3 4 5, ): 15,
+      ( 1px 2in 3pc 4 5px 6, ): 10,
+    ),
+    'Should return the sum of numbers included those with units when force flag is used.': (
+      ( 1 2 3 4 5, true, ): 15,
+      ( 1px 2in 3pc 4 5px 6, true, ): 21,
+    ),
+  );
 
-  @include it("should return the sum of numbers included those with units when force flag is used") {
-    @include should(expect( sl-sum( 1 2 3 4 5, true ) ), to( equal( 15 )));
-    @include should(expect( sl-sum( 1px 2in 3pc 4 5px 6, true ) ), to( equal( 21 )));
-  }
-
-  @include it("should return null if all values are not numbers") {
-    @include should(expect( sl-sum( 1 2 "a" )), to(equal(null)));
-    @include should(expect( sl-sum( "a" "b" "c" "d" "e" "f" ) ), to( equal( null )));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-sum($arguments...), $expect, $suite);
+    }
   }
 }

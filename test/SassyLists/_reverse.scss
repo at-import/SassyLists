@@ -1,11 +1,18 @@
-@include describe("The sl-reverse function") {
-  @include it("should reverse the values of a list") {
-    @include should(expect( sl-reverse( 1 2 3 4 ) ), to( equal( 4 3 2 1 ) ));
-    @include should(expect( sl-reverse( "foo" "bar" "baz" ) ), to( equal( "baz" "bar" "foo" ) ));
-  }
+@include test('The sl-reverse function') {
+  $__TESTS__: (
+    'Should reverse the values of a list.': (
+      ( 1 2 3 4, ): ( 4 3 2 1 ),
+      ( 'foo' 'bar' 'baz', ): ( 'baz' 'bar' 'foo' ),
+    ),
+    'Should reverse the values of a list non-recursively.': (
+      ( 1 2 ( 3 4 ), ): ( ( 3 4 ) 2 1 ),
+      ( 'foo' ( 'bar' 'baz' ), ): ( ( 'bar' 'baz' ) 'foo' ),
+    ),
+  );
 
-  @include it("should reverse the values of a list non-recursively") {
-    @include should(expect( sl-reverse( 1 2 (3 4) ) ), to( equal( (3 4) 2 1 ) ));
-    @include should(expect( sl-reverse( "foo" ("bar" "baz") ) ), to( equal( ("bar" "baz") "foo" ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-reverse($arguments...), $expect, $suite);
+    }
   }
 }

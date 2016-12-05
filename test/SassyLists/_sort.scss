@@ -1,6 +1,14 @@
-@include describe("The sl-sort function") {
-  @include it("should sort unitless numeric values in list") {
-      @include should(expect( sl-sort( 6 1 3 4 2 5 ) ), to( equal( 1 2 3 4 5 6 ) ));
-      @include should(expect( sl-sort( oranges bananas strawberries avocados peaches ) ), to( equal(avocados bananas oranges peaches strawberries) ));
+@include test('The sl-sort function') {
+  $__TESTS__: (
+    'Should sort unitless numeric values in list.': (
+      ( 6 1 3 4 2 5, ): ( 1 2 3 4 5 6 ),
+      ( oranges bananas strawberries avocados peaches, ): ( avocados bananas oranges peaches strawberries ),
+    ),
+  );
+
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-sort($arguments...), $expect, $suite);
+    }
   }
 }

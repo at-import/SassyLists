@@ -1,12 +1,20 @@
-@include describe("The sl-to-list function") {
-  @include it("should return a list in any case") {
-  	@include should(expect(type-of(sl-to-list(1))), to(equal(list)));
-  	@include should(expect(type-of(sl-to-list(a))), to(equal(list)));
-  	@include should(expect(type-of(sl-to-list(true))), to(equal(list)));
-  	@include should(expect(type-of(sl-to-list(false))), to(equal(list)));
-  	@include should(expect(type-of(sl-to-list(null))), to(equal(list)));
-  	@include should(expect(type-of(sl-to-list(1 2 3))), to(equal(list)));
-  	@include should(expect(type-of(sl-to-list((a: b)))), to(equal(list)));
-  	@include should(expect(type-of(sl-to-list(red))), to(equal(list)));
+@include test('The sl-to-list function') {
+  $__TESTS__: (
+    'Should return a list in any case.': (
+      ( 1, ): 'list',
+      ( a, ): 'list',
+      ( true, ): 'list',
+      ( false, ): 'list',
+      ( null, ): 'list',
+      ( 1 2 3, ): 'list',
+      ( (a: b), ): 'list',
+      ( red, ): 'list',
+    ),
+  );
+
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(type-of(sl-to-list($arguments...)), $expect, $suite);
+    }
   }
 }

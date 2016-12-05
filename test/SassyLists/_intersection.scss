@@ -1,22 +1,25 @@
-@include describe("The sl-intersection function") {
-  @include it("should return a list of shared values across all given lists") {
-    @include should(expect( sl-intersection( 1 2 3, 2 4 1, 6 2 1 ) ), to( equal( 1 2 ) ));
-    @include should(expect( sl-intersection( "a" "b" "c", "b" "d" "c", "a" "c" "b" ) ), to( equal( "b" "c" ) ));
-  }
+@include test('The sl-intersection function') {
+  $__TESTS__: (
+    'Should return a list of shared values across all given lists.': (
+      ( 1 2 3, 2 4 1, 6 2 1, ): ( 1 2 ),
+      ( 'a' 'b' 'c', 'b' 'd' 'c', 'a' 'c' 'b', ): ( 'b' 'c' ),
+    ),
+    'Should return an empty list if there is no shared values.': (
+      ( 1 2 3, 2 4 5, 6 4 1, ): ( () ),
+      ( 'a' 'd' 'c', 'b' 'd' 'e', 'a' 'c' 'b', ): ( () ),
+    ),
+    'Should return a list of one item if all the items are the same.': (
+      ( 1 1, 1 1, 1 1, ): ( sl-to-list(1) ),
+      ( 'a' 'a', 'a' 'a', 'a' 'a', ): ( sl-to-list('a') ),
+    ),
+    'Should leave empty arrays alone.': (
+      ( (), ): (),
+    ),
+  );
 
-  @include it("should return an empty list if there is no shared values") {
-    @include should(expect( sl-intersection(  1 2 3, 2 4 5, 6 4 1 ) ), to( equal( () ) ));
-    @include should(expect( sl-intersection( "a" "d" "c", "b" "d" "e", "a" "c" "b" ) ), to( equal( () ) ));
-  }
-
-  @include it("should return a list of one item if all the items are the same") {
-    @include should(expect( sl-intersection(1 1, 1 1, 1 1) ), to( equal( sl-to-list(1) ) ));
-    @include should(expect( sl-intersection("a" "a", "a" "a", "a" "a") ), to( equal( sl-to-list("a") ) ));
-  }
-
-  @include it("should leave empty arrays alone") {
-    @include should(expect( sl-intersection( () ) ), to( equal( () ) ));
-    @include should(expect( sl-intersection( () ) ), to( equal( () ) ));
-    @include should(expect( sl-intersection( () ) ), to( equal( () ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-intersection($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,12 +1,19 @@
-@include describe("The sl-str-compare function") {
-  $order: "!" "#" "$" "%" "&" "'" "(" ")" "*" "+" "," "-" "." "/" "[" "\\" "]" "^" "_" "{" "|" "}" "~" "0" "1" "2" "3" "4" "5" "6" "7" "8" "9" "a" "b" "c" "d" "e" "f" "g" "h" "i" "j" "k" "l" "m" "n" "o" "p" "q" "r" "s" "t" "u" "v" "w" "x" "y" "z";
+@include test('The sl-str-compare function') {
+  $__ORDER__: '!' '#' '$' '%' '&' '\'' '(' ')' '*' '+' ',' '-' '.' '/' '[' '\\' ']' '^' '_' '{' '|' '}' '~' '0' '1' '2' '3' '4' '5' '6' '7' '8' '9' 'a' 'b' 'c' 'd' 'e' 'f' 'g' 'h' 'i' 'j' 'k' 'l' 'm' 'n' 'o' 'p' 'q' 'r' 's' 't' 'u' 'v' 'w' 'x' 'y' 'z';
+  $__TESTS__: (
+    'Should return true if the first value comes before the second.': (
+      ( 0, 1, $__ORDER__ ): true,
+      ( 1, 0, $__ORDER__ ): false,
+      ( 'a', 'b', $__ORDER__ ): true,
+      ( 'b', 'a', $__ORDER__ ): false,
+      ( 1, 1, $__ORDER__ ): false,
+      ( 'a', 'a', $__ORDER__ ): false,
+    ),
+  );
 
-  @include it("should return true if the first value comes before the second") {
-    @include should(expect( sl-str-compare( 0, 1, $order ) ), to( equal( true ) ));
-    @include should(expect( sl-str-compare( 1, 0, $order ) ), to( equal( false ) ));
-    @include should(expect( sl-str-compare( a, b, $order ) ), to( equal( true ) ));
-    @include should(expect( sl-str-compare( b, a, $order ) ), to( equal( false ) ));
-    @include should(expect( sl-str-compare( 1, 1, $order ) ), to( equal( false ) ));
-    @include should(expect( sl-str-compare( a, a, $order ) ), to( equal( false ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-str-compare($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,18 +1,17 @@
-@include describe("The sl-explode function") {
-  $string: "The sl-explode function should explode a string into a list using second argument as delimiter";
-  
-  @include it("should explode a string into a list using second argument as delimiter") {
-    @include should(expect( sl-explode( $string ) ), to( equal( 'T' 'h' 'e' ' ' 's' 'l' '-' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'f' 'u' 'n' 'c' 't' 'i' 'o' 'n' ' ' 's' 'h' 'o' 'u' 'l' 'd' ' ' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'a' ' ' 's' 't' 'r' 'i' 'n' 'g' ' ' 'i' 'n' 't' 'o' ' ' 'a' ' ' 'l' 'i' 's' 't' ' ' 'u' 's' 'i' 'n' 'g' ' ' 's' 'e' 'c' 'o' 'n' 'd' ' ' 'a' 'r' 'g' 'u' 'm' 'e' 'n' 't' ' ' 'a' 's' ' ' 'd' 'e' 'l' 'i' 'm' 'i' 't' 'e' 'r' ) ));
-    @include should(expect( sl-explode( $string, 'e' ) ), to( equal( 'Th' ' sl-' 'xplod' ' function should ' 'xplod' ' a string into a list using s' 'cond argum' 'nt as d' 'limit' 'r' ) ));
-    
-    $a: sl-to-list('e');
-    $b: sl-explode( 'e', ' ' );
-    @include should(expect( $b ), to( equal( $a ) ));
-    @include should(expect( type-of( $b ) ), to( equal( type-of( $a ) ) ));
-  }
+@include test('The sl-explode function') {
+  $__FIXTURE__: 'The sl-explode function should explode a string into a list using second argument as delimiter';
+  $__TESTS__: (
+    'Should explode a string into a list using second argument as delimiter.': (
+      ( $__FIXTURE__, ): ( 'T' 'h' 'e' ' ' 's' 'l' '-' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'f' 'u' 'n' 'c' 't' 'i' 'o' 'n' ' ' 's' 'h' 'o' 'u' 'l' 'd' ' ' 'e' 'x' 'p' 'l' 'o' 'd' 'e' ' ' 'a' ' ' 's' 't' 'r' 'i' 'n' 'g' ' ' 'i' 'n' 't' 'o' ' ' 'a' ' ' 'l' 'i' 's' 't' ' ' 'u' 's' 'i' 'n' 'g' ' ' 's' 'e' 'c' 'o' 'n' 'd' ' ' 'a' 'r' 'g' 'u' 'm' 'e' 'n' 't' ' ' 'a' 's' ' ' 'd' 'e' 'l' 'i' 'm' 'i' 't' 'e' 'r' ),
+    ),
+    'Should return false if not all items from list pass given test.': (
+      ( $__FIXTURE__, 'e', ): ( 'Th' ' sl-' 'xplod' ' function should ' 'xplod' ' a string into a list using s' 'cond argum' 'nt as d' 'limit' 'r' ),
+    )
+  );
 
-  @include it("should return null if arguments are invalid") {
-    @include should(expect( sl-explode( 12345 ) ), to( equal( null ) ));
-    @include should(expect( sl-explode( "string", 1 ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-explode($arguments...), $expect, $suite);
+    }
   }
-} 
+}

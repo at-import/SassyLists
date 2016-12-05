@@ -1,21 +1,26 @@
-@include describe("The sl-replace function") {
-  @include it("should replace a value in a list") {
-    @include should(expect( sl-replace( 1 2 3 4, 2 , 3 ) ), to(equal( 1 3 3 4 ) ));
-    @include should(expect( sl-replace( "bar" "foo" "bar" "baz", "bar", "tah" ) ), to(equal( "tah" "foo" "tah" "baz" ) ));
-  }
+@include test('The sl-replace function') {
+  $__TESTS__: (
+    'Should replace a value in a list.': (
+      ( 1 2 3 4, 2 , 3, ): ( 1 3 3 4 ),
+      ( 'bar' 'foo' 'bar' 'baz', 'bar', 'tah', ): ( 'tah' 'foo' 'tah' 'baz' ),
+    ),
+    'Should remove a value from a list if no new value is provided.': (
+      ( 1 2 3 4, 2, null, ): ( 1 3 4 ),
+      ( 'bar' 'foo' 'bar' 'baz', 'bar', null, ): ( 'foo' 'baz' ),
+    ),
+    'Should not replace items recursively.': (
+      ( 1 2 3 ( 1 2 3 ), 2 , 3, ): ( 1 3 3 ( 1 2 3 ) ),
+      ( 'bar' 'foo' ( 'bar' 'baz' ), 'bar' , 'tah', ): ( 'tah' 'foo' ( 'bar' 'baz' ) ),
+    ),
+    'Should not remove items recursively.': (
+      ( 1 2 3 ( 1 2 3 ), 2, null, ): ( 1 3 ( 1 2 3 ) ),
+      ( 'bar' 'foo' ( 'bar' 'baz' ), 'bar', null, ): ( 'foo' ('bar' 'baz' ) ),
+    ),
+  );
 
-  @include it("should remove a value from a list if no new value is provided") {
-    @include should(expect( sl-replace( 1 2 3 4, 2, null ) ), to(equal( 1 3 4 ) ));
-    @include should(expect( sl-replace( "bar" "foo" "bar" "baz", "bar", null ) ), to(equal( "foo" "baz" ) ));
-  }
-
-  @include it("should not replace items recursively") {
-    @include should(expect( sl-replace( 1 2 3 (1 2 3), 2 , 3 ) ), to(equal( 1 3 3 (1 2 3) ) ));
-    @include should(expect( sl-replace( "bar" "foo" ("bar" "baz")  , "bar" , "tah" ) ), to(equal( "tah" "foo" ("bar" "baz") ) ));
-  }
-
-  @include it("should not remove items recursively") {
-    @include should(expect( sl-replace( 1 2 3 (1 2 3), 2, null ) ), to(equal( 1 3 (1 2 3) ) ));
-    @include should(expect( sl-replace( "bar" "foo" ("bar" "baz"), "bar", null ) ), to(equal( "foo" ("bar" "baz") ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-replace($arguments...), $expect, $suite);
+    }
   }
 }

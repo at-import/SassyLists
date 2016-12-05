@@ -1,9 +1,16 @@
-@include describe("The sl-some function") {
-  @include it("should return true if some items from list pass given test") {
-    @include should(expect(sl-some(1 2 3px, unitless)), to(equal(true)));
-  }
+@include test('The sl-some function') {
+  $__TESTS__: (
+    'Should return true if some items from list pass given test.': (
+      ( 1 2 3px, 'unitless', ): true,
+    ),
+    'Should return false if no item from list pass given test.': (
+      ( 1em 2ch 3px, 'unitless', ): false,
+    ),
+  );
 
-  @include it("should return false if no item from list pass given test") {
-    @include should(expect(sl-some(1em 2ch 3px, unitless)), to(equal(false)));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-some($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,11 +1,15 @@
-@include describe("The sl-walk function") {
-  @include it("should apply given function to all items from list") {
-    @include should(expect( sl-walk( red green blue, complement ) ), to( equal( cyan purple yellow ) ));
-    @include should(expect( sl-walk( red green blue, darken, 20% ) ), to( equal( #990000 #001a00 #000099 ) ));
-    @include should(expect( sl-walk( one two three, to-upper-case ) ), to( equal( ONE TWO THREE ) ));
-  }
+@include test('The sl-walk function') {
+  $__TESTS__: (
+    'Should apply given function to all items from list.': (
+      ( red green blue, 'complement', ): ( cyan purple yellow ),
+      ( red green blue, 'darken', 20%, ): ( #990000 #001a00 #000099 ),
+      ( 'one' 'two' 'three', 'to-upper-case', ): ( 'ONE' 'TWO' 'THREE' ),
+    ),
+  );
 
-  @include it("should return null if function doesnt exist") {
-    @include should(expect( sl-walk( a b c, gloubiboulga ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-walk($arguments...), $expect, $suite);
+    }
   }
 }

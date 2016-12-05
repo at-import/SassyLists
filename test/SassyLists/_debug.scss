@@ -1,11 +1,18 @@
-@include describe("The sl-debug") {
-  @include it("should return list as a string") {
-    @include should(expect( sl-debug( 1 2 3 4 5 ) ), to( equal( ("[ 1, 2, 3, 4, 5 ]") ) ));
-    @include should(expect( sl-debug( "a" "b" "c" "d" "e" "f" ) ), to( equal( ("[ a, b, c, d, e, f ]") ) ));
-  }
+@include test('The sl-debug function') {
+  $__TESTS__: (
+    'Should return list as a string.': (
+      ( 1 2 3 4 5, ): '[ 1, 2, 3, 4, 5 ]',
+      ( 'a' 'b' 'c' 'd' 'e' 'f', ): '[ a, b, c, d, e, f ]',
+    ),
+    'Should return nested list as a string.': (
+      ( 1 2 ( 3 4 ( 5 6 ) ), ): '[ 1, 2, [ 3, 4, [ 5, 6 ] ] ]',
+      ( 'a' 'b' ( 'c' 'd' ) 'e' 'f', ): '[ a, b, [ c, d ], e, f ]',
+    )
+  );
 
-  @include it("should return nested list as a string") {
-    @include should(expect( sl-debug( 1 2 (3 4 (5 6)) ) ), to( equal( "[ 1, 2, [ 3, 4, [ 5, 6 ] ] ]" ) ));
-    @include should(expect( sl-debug( "a" "b" ("c" "d") "e" "f" ) ), to( equal( "[ a, b, [ c, d ], e, f ]" ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-debug($arguments...), $expect, $suite);
+    }
   }
 }

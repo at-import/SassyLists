@@ -1,19 +1,18 @@
-@include describe("The sl-insert-nth function") {
-  @include it("should insert value at index") {
-    @include should(expect( sl-insert-nth( 1 2 3 4, 2, 3 ) ), to( equal( 1 3 2 3 4 ) ));
-    @include should(expect( sl-insert-nth( "a" "b" "c" "d", 3, "e" ) ), to( equal( "a" "b" "e" "c" "d" ) ));
-  }
+@include test('The sl-insert-nth function') {
+  $__TESTS__: (
+    'Should insert value at index.': (
+      ( 1 2 3 4, 2, 3, ): ( 1 3 2 3 4 ),
+      ( 'a' 'b' 'c' 'd', 3, 'e', ): ( 'a' 'b' 'e' 'c' 'd' ),
+    ),
+    'Should append value if index is greater than list length.': (
+      ( 1 2 3 4, 10, 5, ): ( 1 2 3 4 5 ),
+      ( 'a' 'b' 'c' 'd', 10, 'e', ): ( 'a' 'b' 'c' 'd' 'e' ),
+    ),
+  );
 
-  @include it("should append value if index is greater than list length") {
-    @include should(expect( sl-insert-nth( 1 2 3 4, 10, 5 ) ), to( equal( 1 2 3 4 5 ) ));
-    @include should(expect( sl-insert-nth( "a" "b" "c" "d", 10, "e" ) ), to( equal( "a" "b" "c" "d" "e" ) ));
-  }
-
-  @include it("should return null when index is invalid") {
-    @include should(expect( sl-insert-nth( 1 2 3 4, 0, 5 ) ), to( equal( null ) ));
-    @include should(expect( sl-insert-nth( "a" "b" "c" "d", 0, "e" ) ), to( equal( null ) ));
-    @include should(expect( sl-insert-nth( 1 2 3 4, -1, 5 ) ), to( equal( null ) ));
-    @include should(expect( sl-insert-nth( "a" "b" "c" "d", -1, "e" ) ), to( equal( null ) ));
-    @include should(expect( sl-insert-nth( "a" "b" "c" "d", "a", "e" ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-insert-nth($arguments...), $expect, $suite);
+    }
   }
 }

@@ -1,11 +1,18 @@
-@include describe("The sl-union function") {
-  @include it("should merge all values from lists minus duplicates") {
-    @include should(expect( sl-union( 1 2 3, 2 4 5, 6 2 1 ) ), to( equal( (1, 2, 3, 4, 5, 6) ) ));
-    @include should(expect( sl-union( "a" "b" "c", "b" "d" "c", "a" "c" "b" ) ), to( equal( ("a", "b", "c", "d") ) ));
-  }
+@include test('The sl-union function') {
+  $__TESTS__: (
+    'Should merge all values from lists minus duplicates.': (
+      ( 1 2 3, 2 4 5, 6 2 1, ): (1, 2, 3, 4, 5, 6),
+      ( 'a' 'b' 'c', 'b' 'd' 'c', 'a' 'c' 'b', ): ('a', 'b', 'c', 'd'),
+    ),
+    'Should return one item if all the items are the same.': (
+      ( 1, 1, 1, ): sl-to-list(1, 'comma'),
+      ( 'a', 'a', 'a', ): sl-to-list('a', 'comma'),
+    ),
+  );
 
-  @include it("should return one item if all the items are the same") {
-    @include should(expect( sl-union( 1, 1, 1 ) ), to( equal( sl-to-list(1, comma) ) ));
-    @include should(expect( sl-union( "a", "a", "a" ) ), to( equal( sl-to-list("a", comma) ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-union($arguments...), $expect, $suite);
+    }
   }
 }

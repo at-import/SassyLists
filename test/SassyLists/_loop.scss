@@ -1,17 +1,20 @@
-@include describe("The sl-loop function") {
-  @include it("should shift indexes from list") {
-    @include should(expect( sl-loop( (), 2 ) ), to( equal( () ) ));
-    @include should(expect( sl-loop( 1, 2 ) ), to( equal( 1 ) ));
-    @include should(expect( sl-loop( 1 2 3 4, 2 ) ), to( equal( 3 4 1 2 ) ));
-    @include should(expect( sl-loop( "a" "b" "c" "d", 2 ) ), to( equal( "c" "d" "a" "b" ) ));
-  }
+@include test('The sl-loop function') {
+  $__TESTS__: (
+    'Should shift indexes from list.': (
+      ( (), 2, ): (),
+      ( 1, 2, ): 1,
+      ( 1 2 3 4, 2, ): ( 3 4 1 2 ),
+      ( 'a' 'b' 'c' 'd', 2, ): ( 'c' 'd' 'a' 'b' ),
+    ),
+    'Should shift indexes from 1 if second parameter is ommited.': (
+      ( 1 2 3 4, ): ( 4 1 2 3 ),
+      ( 'a' 'b' 'c' 'd', ): ( 'd' 'a' 'b' 'c' ),
+    ),
+  );
 
-  @include it("should shift indexes from 1 if second parameter is ommited") {
-    @include should(expect( sl-loop( 1 2 3 4 ) ), to( equal( 4 1 2 3 ) ));
-    @include should(expect( sl-loop( "a" "b" "c" "d" ) ), to( equal( "d" "a" "b" "c" ) ));
-  }
-
-  @include it("should return null if second parameter is not a number") {
-    @include should(expect( sl-loop( "a" "b" "c" "d", "a" ) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-loop($arguments...), $expect, $suite);
+    }
   }
 }

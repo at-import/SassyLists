@@ -1,11 +1,18 @@
-@include describe("The sl-is-empty function") {
-  @include it("should return true if there list is empty") {
-    @include should(expect( sl-is-empty(()) ), to( equal( true ) ));
-  }
+@include test('The sl-is-empty function') {
+  $__TESTS__: (
+    'Should return true if there list is empty.': (
+      ( (), ): true,
+    ),
+    'Should return false if there are items in list.': (
+      ( 1 2 3, ): false,
+      ( ' ' ' ', ): false,
+      ( 0 0, ): false,
+    ),
+  );
 
-  @include it("should return false if there are items in list") {
-    @include should(expect( sl-is-empty(1 2 3) ), to( equal( false ) ));
-    @include should(expect( sl-is-empty(' ' ' ') ), to( equal( false ) ));
-    @include should(expect( sl-is-empty(0 0) ), to( equal( false ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-is-empty($arguments...), $expect, $suite);
+    }
   }
 }

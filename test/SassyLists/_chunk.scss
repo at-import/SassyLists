@@ -1,16 +1,19 @@
-@include describe("The sl-chunk function") {
-  @include it("should explode list into several lists") {
-    @include should(expect( sl-chunk( 1 2 3 4 5,  2 ) ), to( equal( (1 2) (3 4) (5) ) ));
-    @include should(expect( sl-chunk( "a" "b" "c" "d" "e" "f",  3 ) ), to( equal( ("a" "b" "c") ("d" "e" "f") ) ));
-  }
+@include test('The sl-chunk function') {
+  $__TESTS__: (
+    'Should explode list into several lists.': (
+      ( 1 2 3 4 5, 2, ): ( 1 2 ) ( 3 4 ) ( 5 ),
+      ( 'a' 'b' 'c' 'd' 'e' 'f',  3, ): ( 'a' 'b' 'c' ) ( 'd' 'e' 'f' ),
+    ),
+    'Should return initial list if size is equal or greater than the length of list.': (
+      ( (), 2, ): (),
+      ( 1 2 3 4 5, 6, ): ( 1 2 3 4 5 ),
+      ( 'a' 'b' 'c' 'd' 'e' 'f',  7, ): ( 'a' 'b' 'c' 'd' 'e' 'f' ),
+    ),
+  );
 
-  @include it("should return initial list if size is equal or greater than the length of list") {
-    @include should(expect( sl-chunk( (), 2) ), to( equal( () ) ));
-    @include should(expect( sl-chunk( 1 2 3 4 5,  6 ) ), to( equal( 1 2 3 4 5 ) ));
-    @include should(expect( sl-chunk( "a" "b" "c" "d" "e" "f",  7 ) ), to( equal( "a" "b" "c" "d" "e" "f" ) ));
-  }
-
-  @include it("should return null if arguments are invalid") {
-    @include should(expect( sl-chunk( 1 2 3, a) ), to( equal( null ) ));
+  @each $suite, $tests in $__TESTS__ {
+    @each $arguments, $expect in $tests {
+      @include assert-equal(sl-chunk($arguments...), $expect, $suite);
+    }
   }
 }
