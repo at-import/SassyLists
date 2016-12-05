@@ -20,4 +20,6 @@
   @if length($missing-dependencies) > 0 {
     @error 'Unmet dependencies! The following functions are required: #{$missing-dependencies}.';
   }
+
+  @return length($missing-dependencies) > 0;
 }
