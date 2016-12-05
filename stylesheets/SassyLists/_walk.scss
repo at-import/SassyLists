@@ -27,7 +27,7 @@
   }
 
   @each $index, $value in sl-to-map($list) {
-  	$list: set-nth($list, $index, call($function, $value, $args...));
+    $list: set-nth($list, $index, call($function, $value, $args...));
   }
   
   @return sl-to-list($list);

@@ -20,7 +20,7 @@
   $_: sl-missing-dependencies('sl-is-true', 'sl-to-list');
   
   @if sl-is-true($value) {
-  	$list: join($value, $list, list-separator($list));
+    $list: join($value, $list, list-separator($list));
   }
 
   @return sl-to-list($list);
