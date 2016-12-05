@@ -15,7 +15,7 @@ end
 #  Version is a number. If a version contains alphas, it will be created as a prerelease version
 #  Date is in the form of YYYY-MM-DD
 module SassyLists
-  VERSION = "2.2.5"
-  DATE = "2016-06-08"
+  VERSION = "3.0.0"
+  DATE = "2016-12-05"
 end
 
