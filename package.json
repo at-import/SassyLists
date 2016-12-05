@@ -1,10 +1,12 @@
 {
   "name": "sassy-lists",
   "title": "SassyLists",
-  "version": "2.2.5",
+  "version": "3.0.0",
   "description": "A Sass API for lists.",
   "scripts": {
-    "test": "mocha test/index.js"
+    "build": "rm -rf dist/ && mkdir dist/ && cat stylesheets/**/* > dist/_SassyLists.scss",
+    "test": "mocha test/index.js",
+    "prepublish": "npm test"
   },
   "repository": {
     "type": "git",
