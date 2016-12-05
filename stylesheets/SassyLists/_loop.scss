@@ -24,7 +24,7 @@
 ///
 
 @function sl-loop($list, $value: 1) {
-  @if sl-missing-dependencies(sl-has-multiple-values) == true { @return null; }
+  $_: sl-missing-dependencies('sl-has-multiple-values');
 
   @if type-of($value) != 'number' {
     @error '#{inspect($value)} is not a number for `sl-loop`.';

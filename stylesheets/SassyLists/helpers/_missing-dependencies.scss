@@ -18,8 +18,6 @@
   }
   
   @if length($missing-dependencies) > 0 {
-    @warn 'Unmet dependencies! The following functions are required: #{$missing-dependencies}.';
+    @error 'Unmet dependencies! The following functions are required: #{$missing-dependencies}.';
   }
-  
-  @return length($missing-dependencies) != 0;
 }

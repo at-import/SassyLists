@@ -16,7 +16,7 @@
 ///
  
 @function sl-union($lists...) {
-  @if sl-missing-dependencies(sl-flatten, sl-remove-duplicates) == true { @return null; }
+  $_: sl-missing-dependencies('sl-flatten', 'sl-remove-duplicates');
 
   $result: sl-remove-duplicates(sl-flatten($lists));
   

@@ -16,7 +16,7 @@
 ///
 
 @function sl-remove($list, $value) {
-  @if sl-missing-dependencies(sl-replace) == true { @return null; }
+  $_: sl-missing-dependencies('sl-replace');
 
   @return sl-replace($list, $value, null);
 }

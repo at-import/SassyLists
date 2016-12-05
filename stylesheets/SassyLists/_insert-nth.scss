@@ -27,7 +27,7 @@
 ///
  
 @function sl-insert-nth($list, $index, $value) {
-  @if sl-missing-dependencies(sl-is-true) == true { @return null; }
+  $_: sl-missing-dependencies('sl-is-true');
 
   $length: length($list);
 
