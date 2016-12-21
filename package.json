@@ -16,9 +16,18 @@
     "sass",
     "scss",
     "list",
-    "lists"
+    "lists",
+    "eyeglass-module"
   ],
   "author": "Hugo Giraudel",
+  "main": "stylesheets/_SassyLists.scss",
+  "style": "stylesheets/_SassyLists.scss",
+  "eyeglass": {
+    "name": "SassyLists",
+    "sassDir": "stylesheets",
+    "needs": "*",
+    "exports": false
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/at-import/SassyLists/issues"
