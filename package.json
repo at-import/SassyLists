@@ -1,7 +1,7 @@
 {
   "name": "sassy-lists",
   "title": "SassyLists",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A Sass API for lists.",
   "scripts": {
     "build": "rm -rf dist/ && mkdir dist/ && cat stylesheets/**/* > dist/_SassyLists.scss",
