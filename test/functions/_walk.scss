@@ -1,7 +1,6 @@
 @include test('The sl-walk function') {
   $__TESTS__: (
     'Should apply given function to all items from list.': (
-      ( red green blue, 'complement', ): ( cyan purple yellow ),
       ( red green blue, 'darken', 20%, ): ( #990000 #001a00 #000099 ),
       ( 'one' 'two' 'three', 'to-upper-case', ): ( 'ONE' 'TWO' 'THREE' ),
     ),
