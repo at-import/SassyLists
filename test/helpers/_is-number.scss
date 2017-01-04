@@ -14,7 +14,7 @@
       ( append((), ()) ): false,
       ( true ): false,
       ( 'string' ): false,
-      ( 'a' 'b' 'c' ): false,
+      ( 'a' 'b' 'c', ): false,
     ),
   );
 
