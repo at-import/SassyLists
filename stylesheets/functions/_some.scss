@@ -21,13 +21,13 @@
 ///
 /// @return {Bool}
 ///
- 
+
 @function sl-some($list, $function, $args...) {
   @each $item in $list {
-    @if call($function, $item, $args...) {
+    @if call(sl-safe-get-function($function), $item, $args...) {
       @return true;
-    } 
+    }
   }
-  
+
   @return false;
 }

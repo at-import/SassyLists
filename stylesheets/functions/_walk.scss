@@ -18,18 +18,18 @@
 ///
 /// @return {List | Null}
 ///
- 
+
 @function sl-walk($list, $function, $args...) {
   $_: sl-missing-dependencies('sl-to-map', 'sl-to-list');
-  
+
   @if not function-exists($function) {
     @error 'There is no `#{$function}` function for `sl-walk`.';
   }
 
   @each $index, $value in sl-to-map($list) {
     $arguments: join($value, $args);
-    $list: set-nth($list, $index, call($function, $arguments...));
+    $list: set-nth($list, $index, call(sl-safe-get-function($function), $arguments...));
   }
-  
+
   @return sl-to-list($list);
 }

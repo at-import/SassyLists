@@ -20,10 +20,10 @@
 
 @function sl-every($list, $function, $args...) {
   @each $item in $list {
-    @if not call($function, $item, $args...) {
+    @if not call(sl-safe-get-function($function), $item, $args...) {
       @return false;
-    } 
+    }
   }
-  
+
   @return true;
 }
