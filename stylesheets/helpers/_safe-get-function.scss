@@ -1,0 +1,28 @@
+// Copyright (c) 2016, Kaelig Deloumeau-Prigent
+// All rights reserved.
+// BSD 2-Clause License
+// https://tldrlegal.com/license/bsd-2-clause-license-(freebsd)
+
+///
+/// Polyfill for the `get-function` function
+/// @link https://github.com/kaelig/sass-safe-get-function
+/// @link http://sass-lang.com/documentation/Sass/Script/Functions.html#get_function-instance_method
+///
+/// @access private
+///
+/// @param {String} $name - Name of the function
+///
+/// @return {Function|String}
+///
+@function safe-get-function($name) {
+  @if (type-of($name) != 'string') {
+    @error 'The parameter passed to safe-get-function() must be a String. Good: safe-get-function(\'foo\') / Bad: safe-get-function(5).';
+  }
+
+  @if function-exists('get-function') {
+    @return get-function($name);
+  }
+
+  @return $name;
+
+}
