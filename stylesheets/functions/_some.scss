@@ -24,7 +24,7 @@
 
 @function sl-some($list, $function, $args...) {
   @each $item in $list {
-    @if call(sl-safe-get-function($function), $item, $args...) {
+    @if sl-safe-call-function($function, $item, $args...) {
       @return true;
     }
   }
