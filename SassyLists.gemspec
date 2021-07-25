@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "SassyLists"
   s.description = %q{Advanced Sass list functions}
   s.summary = %q{A collection of powerful Sass (SCSS) functions to deal with your lists.}
-  s.authors = ["Hugo Giraudel"]
-  s.email = ["hugo.giraudel@gmail.com"]
+  s.authors = ["Kitty Giraudel"]
+  s.email = ["kitty.giraudel@gmail.com"]
   s.homepage = "http://at-import.github.io/SassyLists/"
   s.licenses = ['MIT']
 
