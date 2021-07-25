@@ -19,7 +19,7 @@
     "lists",
     "eyeglass-module"
   ],
-  "author": "Hugo Giraudel",
+  "author": "Kitty Giraudel",
   "main": "stylesheets/_SassyLists.scss",
   "style": "stylesheets/_SassyLists.scss",
   "eyeglass": {
