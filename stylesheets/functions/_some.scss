@@ -3,9 +3,9 @@
 ///
 /// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-some
 ///
-/// @param {List}    $list     - list to run test against
-/// @param {String}  $function - function to run against every item from list
-/// @param {ArgList} $args     - extra arguments to pass to the function
+/// @param {List}             $list     - list to run test against
+/// @param {Function|String}  $function - function or function name string to run against every item from list
+/// @param {ArgList}          $args     - extra arguments to pass to the function
 ///
 /// @example
 /// sl-some(1 2 3, unitless)
@@ -21,13 +21,13 @@
 ///
 /// @return {Bool}
 ///
- 
+
 @function sl-some($list, $function, $args...) {
   @each $item in $list {
-    @if call($function, $item, $args...) {
+    @if sl-safe-call-function($function, $item, $args...) {
       @return true;
-    } 
+    }
   }
-  
+
   @return false;
 }

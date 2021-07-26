@@ -4,6 +4,7 @@
 // Repository: https://github.com/at-import/functions/
 
 @import 'helpers/missing-dependencies';
+@import 'helpers/safe-call-function';
 @import 'helpers/str-compare';
 @import 'helpers/true';
 @import 'helpers/is-number';

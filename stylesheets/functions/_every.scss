@@ -3,9 +3,9 @@
 ///
 /// @ignore Documentation: http://at-import.github.io/SassyLists/documentation/#function-sl-every
 ///
-/// @param {List}    $list     - list to run test against
-/// @param {String}  $function - function to run against every item from list
-/// @param {ArgList} $args     - extra arguments to pass to the function
+/// @param {List}             $list     - list to run test against
+/// @param {Function|String}  $function - function or function name string to run against every item from list
+/// @param {ArgList}          $args     - extra arguments to pass to the function
 ///
 /// @example
 /// sl-every(1 2 3, unitless)
@@ -20,10 +20,10 @@
 
 @function sl-every($list, $function, $args...) {
   @each $item in $list {
-    @if not call($function, $item, $args...) {
+    @if not sl-safe-call-function($function, $item, $args...) {
       @return false;
-    } 
+    }
   }
-  
+
   @return true;
 }
